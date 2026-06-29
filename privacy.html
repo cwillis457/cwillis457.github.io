@@ -88,10 +88,13 @@
   <p>When you use the Bluetooth sharing feature, your business card data is transmitted directly from your iPhone to the nearby recipient's iPhone using Apple's CoreBluetooth framework. This is a direct device-to-device transfer. No data passes through any server, and Willis Strategy never receives or has access to this data.</p>
 
   <h2>Camera</h2>
-  <p>Camera access is requested only when you actively use the Scan Card feature. Images captured are processed immediately on your device using Apple's Vision framework (on-device text recognition). Images are never saved to your photo library and are never transmitted to any server. Once the scan is complete, the image is discarded from memory.</p>
+  <p>Camera access is requested only when you actively use the Scan Card feature. Images captured are processed on your device using Apple's Vision framework (on-device text recognition) to extract contact details. The original photo is saved within the app's own Scan History so you can refer back to it later. If you separately choose "Photos" as a save destination, that same image is also added to your iPhone's Photos library using add-only access — but otherwise, scanned images are never transmitted to any server or shared outside the app.</p>
 
   <h2>Contacts</h2>
-  <p>EOA Biz Card requests access to your Contacts only when you choose to save a received card. The app writes new contacts to your address book but never reads, copies, or transmits your existing contacts. Contact access can be revoked at any time in Settings → Privacy & Security → Contacts.</p>
+  <p>EOA Biz Card requests access to your Contacts only when you choose to save a received card. If the person is already in your Contacts (matched by email, or by name and company), the app updates their existing entry with any changed details instead of creating a duplicate. The app never reads, copies, or transmits your existing contacts beyond this matching check. Contact access can be revoked at any time in Settings → Privacy & Security → Contacts.</p>
+
+  <h2>Photos</h2>
+  <p>If you choose to save a card to Photos, EOA Biz Card requests "add only" photo library access — the most restrictive permission level Apple offers. This permission allows the app to add a new image to your library but never to view, browse, or read any existing photo. The image saved is either a business-card-style rendering of the contact's details, or — for scanned physical cards — the original photo you took.</p>
 
   <h2>Third-party SDKs and analytics</h2>
   <p>EOA Biz Card contains no third-party analytics SDKs, advertising SDKs, crash reporting services, or tracking frameworks of any kind. The only frameworks used are Apple's own first-party frameworks: CoreBluetooth, Vision, Contacts, CoreImage, and SwiftUI.</p>
