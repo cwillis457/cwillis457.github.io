@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EOA Golf Score — Every local course, three ways to find the pin.</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Poppins:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+  :root{
+    --turf:#1c3829; --turf-deep:#102219; --parchment:#f3ecd9;
+    --parchment-dark:#e7dcbd; --flag:#b34338; --gold:#b8923c; --ink:#1c1710;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--parchment);color:var(--ink);font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:underline;text-decoration-color:rgba(28,23,16,0.25);}
+  a.plain{text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(16,34,25,0.92);backdrop-filter:blur(6px);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .logo{display:flex;align-items:center;gap:10px;color:var(--parchment);font-family:'Lora',serif;font-weight:700;font-size:20px;text-decoration:none;}
+  .logo-mark{width:30px;height:30px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--turf-deep);}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:rgba(243,236,217,0.75);}
+  .navlinks a{text-decoration:none;}
+  .navlinks a:hover{color:var(--parchment);}
+  .badge-btn{background:var(--gold);color:var(--turf-deep);font-weight:600;font-size:13.5px;padding:10px 18px;border-radius:8px;text-decoration:none;}
+  @media(max-width:820px){.navlinks{display:none;}}
+
+  header.hero{background:radial-gradient(circle at 18% -10%,#244a35 0%,var(--turf) 45%,var(--turf-deep) 100%);color:var(--parchment);padding:88px 0 80px;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:60px;align-items:center;}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;}}
+  .eyebrow{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);}
+  h1{font-family:'Lora',serif;font-weight:700;font-size:52px;line-height:1.12;margin:0 0 22px;letter-spacing:-0.01em;}
+  h1 em{font-style:italic;color:var(--gold);}
+  .sub{font-size:18px;line-height:1.6;color:rgba(243,236,217,0.78);max-width:480px;margin:0 0 28px;}
+  .free-badge{display:inline-block;background:rgba(184,146,60,0.18);border:1px solid var(--gold);color:var(--gold);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px;}
+  .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .store-badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;padding:11px 20px 11px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.25);text-decoration:none;}
+  .store-badge svg{width:26px;height:26px;}
+  .store-badge .label{display:flex;flex-direction:column;line-height:1.15;}
+  .store-badge .label small{font-size:10px;opacity:.8;}
+  .store-badge .label strong{font-size:18px;font-family:'Lora',serif;}
+  .ghost-link{font-size:14px;color:rgba(243,236,217,0.7);border-bottom:1px solid rgba(243,236,217,0.35);padding-bottom:2px;text-decoration:none;}
+
+  .mock{background:var(--parchment);border-radius:26px;box-shadow:0 50px 100px rgba(0,0,0,0.45);padding:26px 26px 22px;transform:rotate(1.2deg);position:relative;}
+  .mock-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+  .mock-top .course{font-family:'Lora',serif;font-weight:700;font-size:18px;color:var(--ink);}
+  .mock-top .tee{font-family:'DM Mono',monospace;font-size:12px;color:#8a7f68;}
+  .mock-row{display:table;width:100%;font-family:'DM Mono',monospace;font-size:13px;border-bottom:1px solid var(--parchment-dark);}
+  .mock-row>div{display:table-cell;padding:8px 2px;text-align:center;}
+  .mock-row.head{color:#8a7f68;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--parchment-dark);}
+  .mock-row.sr>div:last-child{color:var(--turf);font-weight:700;}
+  .mock-row.sub{background:var(--parchment-dark);font-weight:700;}
+  .mock-row.total{background:var(--turf);color:var(--parchment);font-weight:700;border-radius:0 0 14px 14px;border-bottom:none;}
+  .float-chip{position:absolute;background:#fff;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,0.25);padding:12px 16px;font-size:13px;display:flex;align-items:center;gap:8px;color:var(--ink);}
+  .float-chip.range{top:-22px;right:-18px;transform:rotate(-3deg);background:var(--turf);color:var(--parchment);}
+  .float-chip.note{bottom:-24px;left:-22px;transform:rotate(2deg);font-size:12px;max-width:180px;}
+
+  section{padding:96px 0;}
+  .kicker{font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--flag);margin-bottom:14px;}
+  h2{font-family:'Lora',serif;font-weight:700;font-size:36px;line-height:1.2;margin:0 0 16px;max-width:640px;}
+  .lede{font-size:17px;color:#5a5142;max-width:560px;line-height:1.6;margin:0 0 50px;}
+
+  .courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:880px){.courses-grid{grid-template-columns:1fr;}}
+  .course-card{background:#fff;border:1px solid var(--parchment-dark);border-radius:18px;padding:26px;border-top:4px solid var(--turf);}
+  .course-card.nine{border-top-color:var(--gold);}
+  .course-card.al{border-top-color:#8a4a3a;}
+  .course-card.ny{border-top-color:#3a5a8a;}
+  .course-card.add{border-top-color:var(--gold);background:var(--parchment-dark);}
+  .course-card h3{font-family:'Lora',serif;font-size:18px;margin:0 0 6px;}
+  .course-card .loc{font-size:13px;color:#8a7f68;margin-bottom:14px;}
+  .cpill{display:inline-block;background:var(--parchment-dark);border-radius:999px;padding:5px 11px;font-family:'DM Mono',monospace;font-size:11.5px;margin-right:6px;margin-bottom:6px;}
+
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  @media(max-width:880px){.feature-grid{grid-template-columns:1fr;}}
+  .feature{background:#fff;border:1px solid var(--parchment-dark);border-radius:20px;padding:32px 28px;}
+  .feature .icon{width:44px;height:44px;border-radius:12px;background:var(--turf);color:var(--parchment);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:18px;}
+  .feature h3{font-family:'Lora',serif;font-size:20px;margin:0 0 10px;}
+  .feature p{font-size:14.5px;color:#5a5142;line-height:1.6;margin:0;}
+
+  .dark-band{background:var(--turf-deep);color:var(--parchment);}
+  .dark-band h2{color:var(--parchment);}
+  .dark-band .lede{color:rgba(243,236,217,0.72);}
+  .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:10px;}
+  @media(max-width:880px){.three-col{grid-template-columns:1fr;}}
+  .source-card{background:rgba(243,236,217,0.06);border:1px solid rgba(243,236,217,0.15);border-radius:16px;padding:26px;}
+  .source-card .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:14px;}
+  .source-card.gps .badge{background:rgba(46,160,90,0.18);color:#7fd9a0;}
+  .source-card.map .badge{background:rgba(184,146,60,0.18);color:var(--gold);}
+  .source-card.camera .badge{background:rgba(120,150,220,0.18);color:#a9c0f0;}
+  .source-card h3{font-family:'Lora',serif;font-size:19px;margin:0 0 8px;color:var(--parchment);}
+  .source-card p{font-size:14px;color:rgba(243,236,217,0.7);line-height:1.6;margin:0;}
+  .reconcile-note{margin-top:30px;background:rgba(243,236,217,0.05);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 12px 12px 0;font-size:14.5px;color:rgba(243,236,217,0.75);line-height:1.6;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:880px){.two-col{grid-template-columns:1fr;}}
+  .mid-band{background:var(--parchment-dark);}
+  .scan-panel{background:var(--ink);border-radius:20px;padding:30px;color:var(--parchment);}
+
+  .free-band{background:var(--turf-deep);color:var(--parchment);text-align:center;}
+  .free-band h2{color:var(--parchment);margin-left:auto;margin-right:auto;text-align:center;}
+  .free-band .lede{margin-left:auto;margin-right:auto;text-align:center;}
+
+  .final-cta{background:var(--turf);color:var(--parchment);text-align:center;padding:100px 0;}
+  .final-cta h2{color:var(--parchment);margin:0 auto 14px;text-align:center;}
+  .final-cta .lede{margin:0 auto 32px;text-align:center;}
+  .final-cta .cta-row{justify-content:center;}
+
+  /* Privacy & Legal */
+  .legal-band{background:#fff;border-top:1px solid var(--parchment-dark);}
+  .legal-band h2{font-size:30px;}
+  .legal-toc{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
+  .legal-toc a{background:var(--parchment-dark);color:var(--ink);font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;text-decoration:none;}
+  .legal-block{margin-bottom:34px;}
+  .legal-block h3{font-family:'Lora',serif;font-size:20px;margin:0 0 10px;}
+  .legal-block p, .legal-block li{font-size:14.5px;color:#5a5142;line-height:1.65;}
+  .legal-block ul{margin:8px 0;padding-left:22px;}
+  .legal-block ul li{margin-bottom:6px;}
+  .legal-updated{font-size:12.5px;color:#8a7f68;margin-bottom:36px;}
+  .legal-callout{background:var(--parchment);border:1px solid var(--parchment-dark);border-radius:14px;padding:20px 24px;margin-bottom:34px;}
+  .legal-callout p{margin:0;font-size:14px;}
+
+  footer{background:var(--turf-deep);color:rgba(243,236,217,0.5);padding:36px 0;font-size:13px;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer a{color:rgba(243,236,217,0.65);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#"><span class="logo-mark">&#9971;</span> EOA Golf Score</a>
+    <div class="navlinks">
+      <a href="#courses">Courses</a>
+      <a href="#features">Features</a>
+      <a href="#rangefinder">Range Finder</a>
+      <a href="#add-course">Add a Course</a>
+      <a href="#privacy">Privacy &amp; Legal</a>
+    </div>
+    <a class="badge-btn" href="#download">Get the app</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Columbus, GA to West Point, NY</div>
+      <h1>Every local course.<br><em>Three ways to find the pin.</em></h1>
+      <p class="sub">Eight courses built in — Columbus, GA, Fort Benning, and West Point, NY. Score every hole, get distance to the pin by GPS, satellite map, or camera, and share your round with one tap.</p>
+      <div class="free-badge">Free to download — no in-app purchases right now</div>
+      <div class="cta-row">
+        <a class="store-badge" href="#download" id="download">
+          <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.1-52.5.8-108.2 41.9-108.2 125.2 0 24.7 4.5 50.2 13.5 76.5 12 34.3 55.1 118.2 100 116.8 23.5-.6 40.1-16.7 70.7-16.7 29.7 0 45 16.7 70.7 16.7 45.3.6 84.9-78.1 96.8-112.5-61.7-29.1-58.4-85.4-43.9-78.2zM255.4 80.1c20.7-24.7 18.8-47.2 18.2-55.1-18.3 1.1-39.6 12.6-51.7 26.8-13.3 14.9-21.3 33.4-19.5 53.6 19.8 1.5 38.5-10.2 53-25.3z"/></svg>
+          <span class="label"><small>Download on the</small><strong>App Store</strong></span>
+        </a>
+        <a class="ghost-link" href="#courses">See the courses &rarr;</a>
+      </div>
+    </div>
+    <div style="position:relative;padding:20px 0 40px;">
+      <div class="mock">
+        <div class="float-chip range">&#128205; 187 yds to pin</div>
+        <div class="mock-top"><span class="course">Bull Creek &mdash; East</span><span class="tee">BLUE TEES</span></div>
+        <div class="mock-row head"><div>Hole</div><div>Yds</div><div>Par</div><div>Hcp</div><div>Score</div></div>
+        <div class="mock-row sr"><div>1</div><div>527</div><div>5</div><div>7</div><div>5</div></div>
+        <div class="mock-row sr"><div>2</div><div>330</div><div>4</div><div>15</div><div>4</div></div>
+        <div class="mock-row sr"><div>3</div><div>174</div><div>3</div><div>17</div><div>3</div></div>
+        <div class="mock-row sr"><div>4</div><div>524</div><div>5</div><div>3</div><div>6</div></div>
+        <div class="mock-row sub"><div>OUT</div><div>2178</div><div>22</div><div>—</div><div style="color:var(--turf)">18</div></div>
+        <div class="mock-row total"><div>TOTAL</div><div>6523</div><div>72</div><div>—</div><div>—</div></div>
+        <div class="float-chip note">&#128172; Great drive, misjudged the pin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="courses">
+  <div class="wrap">
+    <div class="kicker">Course library</div>
+    <h2>Eight area courses, built in and ready.</h2>
+    <p class="lede">Full hole-by-hole scorecards &mdash; par, yardage, and handicap across every tee &mdash; verified against official sources where available. Every cell is editable and saves on your device.</p>
+    <div class="courses-grid">
+      <div class="course-card"><h3>Maple Ridge Golf Club</h3><div class="loc">Columbus, GA</div><span class="cpill">Par 72</span><span class="cpill">Slope 137</span></div>
+      <div class="course-card"><h3>Follow Me Golf Course</h3><div class="loc">Fort Benning, GA &mdash; Marshall &amp; Bradley nines</div><span class="cpill">Par 72</span><span class="cpill">Slope 124</span></div>
+      <div class="course-card"><h3>Bull Creek &mdash; East</h3><div class="loc">Midland, GA</div><span class="cpill">Par 72</span><span class="cpill">Slope 124</span></div>
+      <div class="course-card"><h3>Bull Creek &mdash; West</h3><div class="loc">Midland, GA</div><span class="cpill">Par 72</span><span class="cpill">Slope 130</span></div>
+      <div class="course-card nine"><h3>Oxbow Creek Golf Course</h3><div class="loc">Columbus, GA</div><span class="cpill">Par 35</span><span class="cpill">9 holes</span></div>
+      <div class="course-card nine"><h3>Godwin Creek Golf Course</h3><div class="loc">Columbus, GA &mdash; junior/beginner course</div><span class="cpill">Par 30</span><span class="cpill">9 holes</span></div>
+      <div class="course-card al"><h3>Lakewood Golf Course</h3><div class="loc">Phenix City, AL</div><span class="cpill">Par 72</span><span class="cpill">Slope 124</span></div>
+      <div class="course-card ny"><h3>West Point Golf Course</h3><div class="loc">United States Military Academy, NY</div><span class="cpill">Par 70</span><span class="cpill">Slope 137</span></div>
+      <div class="course-card add"><h3>Add your own</h3><div class="loc">Any course, anywhere</div><span class="cpill">Type it in</span><span class="cpill">Or scan a scorecard</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="background:#fff;">
+  <div class="wrap">
+    <div class="kicker">What it does</div>
+    <h2>Everything you need between the tee box and the green.</h2>
+    <p class="lede">No login, no subscription, no internet required on the course.</p>
+    <div class="feature-grid">
+      <div class="feature"><div class="icon">&#9971;</div><h3>Editable scorecard</h3><p>Edit any yardage, par, or handicap right on the card. Changes save to the device &mdash; fix it once, it's right every round after that.</p></div>
+      <div class="feature"><div class="icon">&#9999;</div><h3>Score &amp; notes per hole</h3><p>A Score column tracks your strokes as you play. Tap any hole number to expand a note field &mdash; saved with the round.</p></div>
+      <div class="feature"><div class="icon">&#128197;</div><h3>Save, date, and revisit</h3><p>Every round gets a date and lands in Past Rounds, swipe to delete, tap to reopen and continue scoring.</p></div>
+      <div class="feature"><div class="icon">&#9993;</div><h3>Email, text, or share</h3><p>Send a full plain-text round summary via Mail, Messages, or the system share sheet &mdash; course, tee, hole-by-hole scores and notes, final total.</p></div>
+      <div class="feature"><div class="icon">&#11015;</div><h3>Download the scorecard</h3><p>Export any course's reference card as a CSV file. Mail it, save it to Files, or hand it to a guest player.</p></div>
+      <div class="feature"><div class="icon">&#9974;</div><h3>Hole graphics &mdash; free</h3><p>Stylized yardage-book sketches for every hole on every course. No purchase, no unlock screen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-band" id="rangefinder">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--gold);">Range Finder</div>
+    <h2>Three independent ways to find the pin.</h2>
+    <p class="lede">No licensed course-map database behind any of these &mdash; just three free, different methods that check each other instead of asking you to trust one number blindly.</p>
+    <div class="three-col">
+      <div class="source-card gps">
+        <span class="badge">GPS &mdash; most precise</span>
+        <h3>Walk it once</h3>
+        <p>Walk to the flag, tap Mark Pin Here. Every round after that, get live GPS distance from wherever you're standing. Expect roughly &plusmn;5&ndash;15 yds of normal phone GPS drift.</p>
+      </div>
+      <div class="source-card map">
+        <span class="badge">Satellite &mdash; no visit required</span>
+        <h3>Drop a pin from above</h3>
+        <p>Never played the hole? Tap the green on a satellite photo instead. Shows distance to roughly the middle of the green, not the day's exact pin position.</p>
+      </div>
+      <div class="source-card camera">
+        <span class="badge">Camera &mdash; works with nothing saved</span>
+        <h3>Photograph the flagstick</h3>
+        <p>Tap the top and base of the flag in a photo. Estimates distance from its apparent height &mdash; depends on an assumed flagstick height and how level the phone was held.</p>
+      </div>
+    </div>
+    <div class="reconcile-note">
+      <strong>When more than one source exists for a hole, the app cross-references them</strong> &mdash; showing how closely a GPS pin and a satellite pin agree, or how a camera estimate compares to whichever pin is already saved. A close match is reassuring; a real gap gets flagged rather than silently resolved.
+    </div>
+  </div>
+</section>
+
+<section class="mid-band" id="add-course">
+  <div class="wrap">
+    <div class="two-col">
+      <div>
+        <div class="kicker">Add a Course</div>
+        <h2>Any course in the world &mdash; scan the card or type it in.</h2>
+        <p class="lede">The seven built-in courses are a starting point. Anywhere else you play, add it two ways.</p>
+        <div style="background:#fff;border-radius:18px;padding:26px;margin-bottom:16px;border-left:4px solid var(--turf);">
+          <div style="font-family:'Lora',serif;font-weight:700;font-size:19px;margin-bottom:8px;">&#128247; Scan a scorecard</div>
+          <p style="font-size:14.5px;color:#5a5142;line-height:1.6;margin:0;">Take a photo or pick one from your library. On-device text recognition reads the par, yardage, and handicap rows, then hands you a fully editable review form before anything saves.</p>
+        </div>
+        <div style="background:#fff;border-radius:18px;padding:26px;border-left:4px solid var(--gold);">
+          <div style="font-family:'Lora',serif;font-weight:700;font-size:19px;margin-bottom:8px;">&#9998; Enter manually</div>
+          <p style="font-size:14.5px;color:#5a5142;line-height:1.6;margin:0;">Name, location, tees, and all 18 holes in a scrollable form. Added courses get their own saved rounds, range finder pins, and hole graphics &mdash; same as the built-in ones.</p>
+        </div>
+      </div>
+      <div>
+        <div class="scan-panel">
+          <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--gold);margin-bottom:16px;">SCANNED &amp; RECOGNIZED</div>
+          <div style="font-family:'Lora',serif;font-weight:700;font-size:21px;margin-bottom:18px;">Riverwood Golf Club</div>
+          <table style="width:100%;font-family:'DM Mono',monospace;font-size:13px;border-collapse:collapse;">
+            <tr style="color:rgba(243,236,217,0.5);font-size:11px;letter-spacing:.06em;"><td>HOLE</td><td>YDS</td><td>PAR</td><td>HCP</td></tr>
+            <tr style="border-top:1px solid rgba(243,236,217,0.12);"><td style="padding:8px 0;">1</td><td>415</td><td>4</td><td>5</td></tr>
+            <tr style="border-top:1px solid rgba(243,236,217,0.12);"><td style="padding:8px 0;">2</td><td>385</td><td>4</td><td>3</td></tr>
+            <tr style="border-top:1px solid rgba(243,236,217,0.12);"><td style="padding:8px 0;">3</td><td>190</td><td>3</td><td>9</td></tr>
+            <tr style="border-top:1px solid rgba(243,236,217,0.12);"><td style="padding:8px 0;">&middot;&middot;&middot;</td><td></td><td></td><td></td></tr>
+          </table>
+          <div style="margin-top:18px;background:var(--gold);color:var(--turf-deep);border-radius:10px;padding:14px;font-weight:700;font-size:15px;text-align:center;">Review &amp; Save Course</div>
+          <div style="font-size:12px;color:rgba(243,236,217,0.4);text-align:center;margin-top:10px;">All fields editable before saving</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="free-band">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--gold);">Pricing</div>
+    <h2>Free to download. Nothing to unlock right now.</h2>
+    <p class="lede">Every course, every range finder, and hole graphics are included with no purchase. A future version may introduce a purchase for the range finder tools &mdash; if that happens, it'll be announced here and on the App Store listing before it ships, not added silently.</p>
+  </div>
+</section>
+
+<section class="final-cta" id="download2">
+  <div class="wrap">
+    <h2>Pull up the card before you pull the cart.</h2>
+    <p class="lede">EOA Golf Score is on the App Store.</p>
+    <div class="cta-row">
+      <a class="store-badge" href="#">
+        <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.1-52.5.8-108.2 41.9-108.2 125.2 0 24.7 4.5 50.2 13.5 76.5 12 34.3 55.1 118.2 100 116.8 23.5-.6 40.1-16.7 70.7-16.7 29.7 0 45 16.7 70.7 16.7 45.3.6 84.9-78.1 96.8-112.5-61.7-29.1-58.4-85.4-43.9-78.2zM255.4 80.1c20.7-24.7 18.8-47.2 18.2-55.1-18.3 1.1-39.6 12.6-51.7 26.8-13.3 14.9-21.3 33.4-19.5 53.6 19.8 1.5 38.5-10.2 53-25.3z"/></svg>
+        <span class="label"><small>Download on the</small><strong>App Store</strong></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================== PRIVACY & LEGAL ============================== -->
+<section class="legal-band" id="privacy">
+  <div class="wrap">
+    <div class="kicker">Privacy &amp; Legal</div>
+    <h2>Privacy Policy &amp; Legal Notices</h2>
+    <p class="legal-updated">Last updated: July 3, 2026. This page covers EOA Golf Score on iOS. It is written to be accurate to how the app currently works — it should be reviewed and re-published whenever the app's data handling or course list changes.</p>
+
+    <div class="legal-callout">
+      <p><strong>The short version:</strong> EOA Golf Score doesn't have user accounts, doesn't run analytics or ad tracking, and doesn't send your data to a server we operate. Everything you enter — scorecards, rounds, scores, notes, GPS pins, photos you scan — stays on your device. The only outgoing network call the app makes is a brief, anonymous address lookup (via Apple's MapKit) when you first open the satellite map picker for a course, so the map can center on the right place.</p>
+    </div>
+
+    <div class="legal-toc">
+      <a href="#data-collected">What we collect</a>
+      <a href="#location-data">Location &amp; camera</a>
+      <a href="#data-storage">Where your data lives</a>
+      <a href="#third-parties">Third parties</a>
+      <a href="#accuracy">Accuracy disclaimers</a>
+      <a href="#course-affiliation">Course affiliation</a>
+      <a href="#childrens-privacy">Children's privacy</a>
+      <a href="#changes">Changes to this policy</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="legal-block" id="data-collected">
+      <h3>What we collect</h3>
+      <p>EOA Golf Score does not require an account, email address, or sign-in of any kind. The app does not collect your name, contact information, or any data that identifies you to us — because nothing you do in the app is transmitted to a server we control.</p>
+      <p>Information you create in the app — scorecards you add or edit, rounds you play and save, scores and notes per hole, GPS and map pin locations, and photos you take for scorecard scanning or the camera range finder — is stored locally in the app's own storage on your device. We have no copy of it and no way to access it.</p>
+    </div>
+
+    <div class="legal-block" id="location-data">
+      <h3>Location &amp; camera access</h3>
+      <p>The app requests two permissions, each used only for the specific feature that needs it:</p>
+      <ul>
+        <li><strong>Location ("When In Use")</strong> — used by the GPS range finder to read your current position and calculate live distance to a pin you've marked, and briefly by the satellite map picker as a fallback location if a course's address can't be geocoded. Location data is used in the moment it's needed and is not logged, stored in a history, or sent anywhere by us.</li>
+        <li><strong>Camera</strong> — used for two features: scanning a photo of a paper scorecard to help fill in a new course, and the camera range finder's flagstick-distance estimate. Photos taken for these features are processed entirely on-device (Apple's Vision framework for text recognition; on-device geometry for the distance estimate) and are not uploaded anywhere.</li>
+      </ul>
+      <p>You can review or revoke either permission at any time in iOS Settings → Privacy &amp; Security. Declining a permission only disables the feature that needs it — the rest of the app continues to work normally.</p>
+    </div>
+
+    <div class="legal-block" id="data-storage">
+      <h3>Where your data lives</h3>
+      <p>All app data is stored locally using standard iOS on-device storage. It is included in your device's normal iOS backups (iCloud or computer backup, depending on your settings) the same way any app's local data would be, but EOA Golf Score itself does not sync, back up, or transmit this data to any external service. Deleting the app deletes this data permanently, with no copy retained anywhere by us.</p>
+    </div>
+
+    <div class="legal-block" id="third-parties">
+      <h3>Third-party services</h3>
+      <p>The app uses two of Apple's own system frameworks that involve brief network activity, both fully covered by Apple's own privacy practices rather than a separate third party:</p>
+      <ul>
+        <li><strong>MapKit geocoding</strong> — when you open the satellite map pin picker for a course, the app sends that course's street address to Apple's geocoding service to center the map. No personal or account information is included in this request.</li>
+        <li><strong>App Store / StoreKit</strong> — standard Apple infrastructure for app distribution. There are currently no in-app purchases active in this version of the app.</li>
+      </ul>
+      <p>We do not use any third-party analytics, advertising, or crash-reporting SDKs. No data broker, ad network, or analytics company receives any information from this app.</p>
+    </div>
+
+    <div class="legal-block" id="accuracy">
+      <h3>Accuracy of scorecards, distances, and estimates</h3>
+      <p>Course information in this app — par, yardage, handicap index, course rating, and slope — comes from a mix of official sources, public listings, and in some cases estimates, as disclosed individually for each built-in course inside the app. None of it is guaranteed accurate or current, and none of it is a substitute for a course's own official scorecard, especially for anything involving an official handicap or tournament play. Every value is editable so you can correct it from your own experience.</p>
+      <p>None of the three range finder methods (GPS, satellite map, or camera) provide survey-grade accuracy:</p>
+      <ul>
+        <li>GPS distances rely on your device's location hardware and typically carry roughly &plusmn;5&ndash;15 yards of error depending on sky visibility and tree cover.</li>
+        <li>Satellite map pins show distance to where a pin was tapped on aerial imagery, which reflects the general area of the green — not the course's actual daily pin placement, which moves and which this app has no way to know.</li>
+        <li>Camera estimates depend on an assumed flagstick height (user-adjustable, defaulting to 7 feet) and the device's tilt at the moment of capture, both of which are approximations, not certainties.</li>
+      </ul>
+      <p>Use these tools as planning aids, not as a substitute for your own judgment or for an official, certified rangefinder where the rules of an event require one.</p>
+    </div>
+
+    <div class="legal-block" id="course-affiliation">
+      <h3>Course affiliation</h3>
+      <p>EOA Golf Score is not affiliated with, endorsed by, or sponsored by any golf course named or featured in this app, including Maple Ridge Golf Club, Follow Me Golf Course, Bull Creek Golf Course (East and West), Oxbow Creek Golf Course, Godwin Creek Golf Course, Lakewood Golf Course, or West Point Golf Course. West Point Golf Course is located at the United States Military Academy; its inclusion in this app is not an endorsement by, sponsorship from, or affiliation with the United States Military Academy, the United States Army, or the Department of Defense. Course names are used solely to identify which real-world course a given scorecard corresponds to. Any course names, logos, or marks remain the property of their respective owners.</p>
+    </div>
+
+    <div class="legal-block" id="childrens-privacy">
+      <h3>Children's privacy</h3>
+      <p>This app is not directed at children under 13, and we do not knowingly collect personal information from children. Because the app collects no personal information from any user — local-only storage, no accounts, no analytics — this risk is structurally limited regardless of a user's age.</p>
+    </div>
+
+    <div class="legal-block" id="changes">
+      <h3>Changes to this policy</h3>
+      <p>If how the app handles data changes in a future version — for example, if a future purchase feature or cloud sync is introduced — this page will be updated accordingly, and the "Last updated" date above will reflect that change. Material changes affecting how personal information is handled would also be reflected in the App Store listing's privacy disclosures at the time of that update.</p>
+    </div>
+
+    <div class="legal-block" id="contact">
+      <h3>Contact</h3>
+      <p>Questions about this policy or the app's data practices can be sent to the support contact listed on the app's App Store page.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 EOA Golf Score. Not affiliated with any course listed.</div>
+    <div><a href="#privacy">Privacy &amp; Legal</a> &middot; Scorecard data is editable in-app — verify with the pro shop before play.</div>
+  </div>
+</footer>
+</body>
+</html>
