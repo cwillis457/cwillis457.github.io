@@ -35,7 +35,6 @@
   h1{font-family:'Lora',serif;font-weight:700;font-size:52px;line-height:1.12;margin:0 0 22px;letter-spacing:-0.01em;}
   h1 em{font-style:italic;color:var(--gold);}
   .sub{font-size:18px;line-height:1.6;color:rgba(243,236,217,0.78);max-width:480px;margin:0 0 28px;}
-  .free-badge{display:inline-block;background:rgba(184,146,60,0.18);border:1px solid var(--gold);color:var(--gold);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px;}
   .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
   .store-badge{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;padding:11px 20px 11px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.25);text-decoration:none;}
   .store-badge svg{width:26px;height:26px;}
@@ -100,9 +99,6 @@
   .mid-band{background:var(--parchment-dark);}
   .scan-panel{background:var(--ink);border-radius:20px;padding:30px;color:var(--parchment);}
 
-  .free-band{background:var(--turf-deep);color:var(--parchment);text-align:center;}
-  .free-band h2{color:var(--parchment);margin-left:auto;margin-right:auto;text-align:center;}
-  .free-band .lede{margin-left:auto;margin-right:auto;text-align:center;}
 
   .final-cta{background:var(--turf);color:var(--parchment);text-align:center;padding:100px 0;}
   .final-cta h2{color:var(--parchment);margin:0 auto 14px;text-align:center;}
@@ -150,7 +146,6 @@
       <div class="eyebrow">Columbus, GA to West Point, NY</div>
       <h1>Every local course.<br><em>Three ways to find the pin.</em></h1>
       <p class="sub">Eight courses built in — Columbus, GA, Fort Benning, and West Point, NY. Score every hole, get distance to the pin by GPS, satellite map, or camera, and share your round with one tap.</p>
-      <div class="free-badge">Free to download — no in-app purchases right now</div>
       <div class="cta-row">
         <a class="store-badge" href="#download" id="download">
           <svg viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.1-52.5.8-108.2 41.9-108.2 125.2 0 24.7 4.5 50.2 13.5 76.5 12 34.3 55.1 118.2 100 116.8 23.5-.6 40.1-16.7 70.7-16.7 29.7 0 45 16.7 70.7 16.7 45.3.6 84.9-78.1 96.8-112.5-61.7-29.1-58.4-85.4-43.9-78.2zM255.4 80.1c20.7-24.7 18.8-47.2 18.2-55.1-18.3 1.1-39.6 12.6-51.7 26.8-13.3 14.9-21.3 33.4-19.5 53.6 19.8 1.5 38.5-10.2 53-25.3z"/></svg>
@@ -199,7 +194,7 @@
   <div class="wrap">
     <div class="kicker">What it does</div>
     <h2>Everything you need between the tee box and the green.</h2>
-    <p class="lede">No login, no subscription, no internet required on the course.</p>
+    <p class="lede">No login, no account required, no internet required on the course.</p>
     <div class="feature-grid">
       <div class="feature"><div class="icon">&#9971;</div><h3>Editable scorecard</h3><p>Edit any yardage, par, or handicap right on the card. Changes save to the device &mdash; fix it once, it's right every round after that.</p></div>
       <div class="feature"><div class="icon">&#9999;</div><h3>Score &amp; notes per hole</h3><p>A Score column tracks your strokes as you play. Tap any hole number to expand a note field &mdash; saved with the round.</p></div>
@@ -274,13 +269,6 @@
   </div>
 </section>
 
-<section class="free-band">
-  <div class="wrap">
-    <div class="kicker" style="color:var(--gold);">Pricing</div>
-    <h2>Free to download. Nothing to unlock right now.</h2>
-    <p class="lede">Every course, every range finder, and hole graphics are included with no purchase. A future version may introduce a purchase for the range finder tools &mdash; if that happens, it'll be announced here and on the App Store listing before it ships, not added silently.</p>
-  </div>
-</section>
 
 <section class="final-cta" id="download2">
   <div class="wrap">
@@ -344,7 +332,7 @@
       <p>The app uses two of Apple's own system frameworks that involve brief network activity, both fully covered by Apple's own privacy practices rather than a separate third party:</p>
       <ul>
         <li><strong>MapKit geocoding</strong> — when you open the satellite map pin picker for a course, the app sends that course's street address to Apple's geocoding service to center the map. No personal or account information is included in this request.</li>
-        <li><strong>App Store / StoreKit</strong> — standard Apple infrastructure for app distribution. There are currently no in-app purchases active in this version of the app.</li>
+        <li><strong>App Store / StoreKit</strong> — standard Apple infrastructure for app distribution. In-app purchases may be available in future versions.</li>
       </ul>
       <p>We do not use any third-party analytics, advertising, or crash-reporting SDKs. No data broker, ad network, or analytics company receives any information from this app.</p>
     </div>
