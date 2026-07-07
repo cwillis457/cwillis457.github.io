@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EOA Biz Card — Share Your Card Instantly</title>
+  <meta name="description" content="EOA Biz Card lets you share your business card via Bluetooth and QR code. Scan physical cards, design custom templates, and save received cards to Contacts, Photos, or right in the app — all on iPhone." />
+  <meta name="author" content="Willis Strategy" />
+  <meta property="og:title" content="EOA Biz Card — Share Your Card Instantly" />
+  <meta property="og:description" content="Share your business card via Bluetooth or QR code. No account required." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:url" content="https://cwillis457.github.io/" />
+  <link rel="canonical" href="https://cwillis457.github.io/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --navy:    #0f1b3d;
+      --indigo:  #3730a3;
+      --indigo2: #4f46e5;
+      --red:     #e94560;
+      --white:   #ffffff;
+      --off:     #f7f8fc;
+      --mid:     #6b7280;
+      --dark:    #111827;
+      --card-bg: #1a1a2e;
+
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'Inter', sans-serif;
+
+      --radius: 20px;
+      --shadow: 0 24px 64px rgba(15,27,61,.18);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(55,48,163,.08);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--red); }
+    nav a.nav-link {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    nav a.nav-link:hover { color: var(--indigo); }
+    .nav-links { display: flex; gap: 32px; }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 5vw 80px;
+      background: linear-gradient(135deg, var(--navy) 0%, #16213e 50%, #0f3460 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(233,69,96,.18) 0%, transparent 70%);
+    }
+    .hero-inner {
+      display: flex; align-items: center; gap: 80px;
+      max-width: 1100px; width: 100%;
+      position: relative; z-index: 1;
+    }
+    .hero-text { flex: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(233,69,96,.15);
+      border: 1px solid rgba(233,69,96,.3);
+      color: var(--red);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: .5rem; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.65);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(233,69,96,.4);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 32px rgba(233,69,96,.5); }
+    .btn-ghost {
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.15); }
+
+    /* ── Floating card mockup ────────────────────────────── */
+    .hero-card-wrap {
+      flex: 0 0 340px;
+      perspective: 900px;
+    }
+    .biz-card {
+      width: 340px;
+      aspect-ratio: 1.75;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      border-radius: 20px;
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+      padding: 28px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transform: rotateY(-12deg) rotateX(4deg);
+      animation: float 5s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .biz-card::after {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(255,255,255,.05), transparent 70%);
+      border-radius: 50%;
+    }
+    @keyframes float {
+      0%,100% { transform: rotateY(-12deg) rotateX(4deg) translateY(0); }
+      50%      { transform: rotateY(-12deg) rotateX(4deg) translateY(-12px); }
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .card-title { font-size: .7rem; color: rgba(255,255,255,.6); margin-top: 3px; }
+    .card-company { font-size: .7rem; color: var(--red); margin-top: 2px; }
+    .card-icon { font-size: 1.8rem; color: rgba(233,69,96,.7); }
+    .card-divider {
+      height: 1px;
+      background: rgba(255,255,255,.12);
+    }
+    .card-fields { display: flex; flex-direction: column; gap: 5px; }
+    .card-field { display: flex; align-items: center; gap: 7px; }
+    .card-field-icon { font-size: .65rem; color: var(--red); width: 12px; }
+    .card-field-val { font-size: .65rem; color: rgba(255,255,255,.65); }
+
+    /* ── Features section ────────────────────────────────── */
+    .section {
+      padding: 100px 5vw;
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--indigo2);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    /* feature grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--off);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(55,48,163,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--indigo), var(--indigo2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .feature-icon.red  { background: linear-gradient(135deg, #c0392b, var(--red)); }
+    .feature-icon.teal { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .feature-icon.gold { background: linear-gradient(135deg, #92400e, #f59e0b); }
+    .feature-icon.green{ background: linear-gradient(135deg, #14532d, #22c55e); }
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .feature-desc {
+      font-size: .9rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* ── How it works ─────────────────────────────────────── */
+    .how-section { background: var(--navy); }
+    .how-section h2, .how-section .section-label { color: var(--white); }
+    .how-section .section-sub { color: rgba(255,255,255,.55); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .step {
+      background: rgba(15,27,61,.6);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(233,69,96,.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 { color: var(--white); margin-bottom: 10px; }
+    .step p  { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+    /* ── Sharing methods ──────────────────────────────────── */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .method-pill {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 24px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(55,48,163,.12);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .method-pill:hover {
+      border-color: var(--indigo2);
+      box-shadow: 0 4px 20px rgba(55,48,163,.1);
+    }
+    .method-pill-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .method-pill-name {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--navy);
+    }
+    .method-pill-sub {
+      font-size: .75rem;
+      color: var(--mid);
+      margin-top: 2px;
+    }
+
+    /* ── Compatibility ───────────────────────────────────── */
+    .compat-section { background: var(--off); }
+    .compat-row {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .compat-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .compat-badge .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green  { background: #22c55e; }
+    .dot-blue   { background: #3b82f6; }
+    .dot-orange { background: #f97316; }
+
+    /* ── Support section ─────────────────────────────────── */
+    #support .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .support-card {
+      background: var(--off);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(55,48,163,.06);
+    }
+    .support-card h3 { margin-bottom: 12px; }
+    .support-card p {
+      font-size: .9rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .support-card a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--indigo2);
+      text-decoration: none;
+    }
+    .support-card a:hover { text-decoration: underline; }
+
+    /* ── Privacy section ─────────────────────────────────── */
+    #privacy {
+      background: linear-gradient(135deg, var(--navy), #16213e);
+      color: var(--white);
+    }
+    #privacy h2 { color: var(--white); }
+    #privacy .section-label { color: var(--red); }
+    .privacy-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .privacy-point {
+      display: flex; gap: 16px;
+      align-items: flex-start;
+    }
+    .privacy-check {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: rgba(233,69,96,.15);
+      border: 1px solid rgba(233,69,96,.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+      font-size: .85rem;
+      margin-top: 2px;
+    }
+    .privacy-point h4 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .privacy-point p {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 48px 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--red); }
+    footer p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner    { flex-direction: column; text-align: center; gap: 48px; }
+      .hero-sub      { margin: 0 auto 40px; }
+      .btn-group     { justify-content: center; }
+      .hero-card-wrap{ flex: none; width: 100%; display: flex; justify-content: center; }
+      .biz-card      { transform: rotateY(0) rotateX(0); animation: float-mobile 5s ease-in-out infinite; }
+      @keyframes float-mobile {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+      }
+      .nav-links     { display: none; }
+      footer         { flex-direction: column; text-align: center; }
+      .footer-links  { justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .biz-card { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ──────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">EOA<span>.</span>BizCard</a>
+  <div class="nav-links">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#how"      class="nav-link">How it works</a>
+    <a href="#support"  class="nav-link">Support</a>
+    <a href="privacy.html" class="nav-link">Privacy</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Available on iPhone</div>
+      <h1>Share your card.<br><em>Instantly.</em></h1>
+      <p class="hero-sub">
+        EOA Biz Card replaces the paper handshake. Share your contact via Bluetooth or QR code — right from your iPhone. No account required. Your data never leaves your device.
+      </p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">⬇ Download on the App Store</a>
+        <a href="#features" class="btn btn-ghost">See features</a>
+      </div>
+    </div>
+
+    <div class="hero-card-wrap">
+      <div class="biz-card">
+        <div class="card-top">
+          <div>
+            <div class="card-name">Your Name</div>
+            <div class="card-title">Your Title</div>
+            <div class="card-company">Your Company</div>
+          </div>
+          <div class="card-icon">📡</div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-fields">
+          <div class="card-field">
+            <span class="card-field-icon">✉</span>
+            <span class="card-field-val">you@example.com</span>
+          </div>
+          <div class="card-field">
+            <span class="card-field-icon">📞</span>
+            <span class="card-field-val">+1 (555) 000-0000</span>
+          </div>
+          <div class="card-field">
+            <span class="card-field-icon">🌐</span>
+            <span class="card-field-val">www.example.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features ──────────────────────────────────────────── -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">What it does</div>
+    <h2>Everything a business card<br>should be able to do.</h2>
+    <p class="section-sub">
+      One app for sharing, receiving, scanning, and designing business cards —
+      no paper, no apps required on the other end.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📡</div>
+        <h3>Bluetooth Sharing</h3>
+        <p class="feature-desc">Broadcast your card over BLE to nearby iPhones instantly — no internet, no pairing required.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon red">📤</div>
+        <h3>AirDrop, Email &amp; Messages</h3>
+        <p class="feature-desc">Send your card any way you already share files on iPhone — no new app required on the other end.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teal">⬛</div>
+        <h3>QR Code</h3>
+        <p class="feature-desc">Display a QR code that any phone camera can scan. Works with any device that has a camera.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon gold">📷</div>
+        <h3>Scan Physical Cards</h3>
+        <p class="feature-desc">Point the camera at any physical business card. On-device text recognition reads the text and populates contact fields — all processed locally, no internet needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">🎨</div>
+        <h3>Card Templates</h3>
+        <p class="feature-desc">Design a digital business card in your style. Choose colors and layouts, upload your own logo or background photo, and export for printing or sharing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Save Anywhere You Want</h3>
+        <p class="feature-desc">Received a card? Choose where it goes — Contacts, Photos, the app's own list, or all three at once. Pick any combination with one tap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ───────────────────────────────────────── -->
+<section class="section how-section" id="how">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2>Your card in three taps.</h2>
+    <p class="section-sub">
+      Set up once. Share anywhere, with anyone.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Enter your details</h3>
+        <p>Fill in your name, title, company, email, phone, website, and LinkedIn once. It's saved to your device.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Choose how to share</h3>
+        <p>Bluetooth for nearby iPhones, QR code for anyone with a camera, or the share sheet for email and AirDrop.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>They choose where it goes</h3>
+        <p>The other person receives a standard vCard — or if they're also on EOA Biz Card, they pick exactly where to save it: Contacts, Photos, the app, or all of the above.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Scan cards you receive</h3>
+        <p>Got a physical card? Photograph it and the app reads the details automatically, then save it anywhere you like.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Sharing methods ────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Sharing methods</div>
+    <h2>Works with every device.</h2>
+    <p class="section-sub">No app needed on the receiving end for QR code or the share sheet.</p>
+
+    <div class="methods-grid">
+      <div class="method-pill">
+        <div class="method-pill-icon">📡</div>
+        <div>
+          <div class="method-pill-name">Bluetooth LE</div>
+          <div class="method-pill-sub">iPhone → iPhone</div>
+        </div>
+      </div>
+      <div class="method-pill">
+        <div class="method-pill-icon">⬛</div>
+        <div>
+          <div class="method-pill-name">QR Code</div>
+          <div class="method-pill-sub">Any phone camera</div>
+        </div>
+      </div>
+      <div class="method-pill">
+        <div class="method-pill-icon">📤</div>
+        <div>
+          <div class="method-pill-name">Share Sheet</div>
+          <div class="method-pill-sub">AirDrop, Email, Messages</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Compatibility ──────────────────────────────────────── -->
+<section class="section compat-section">
+  <div class="section-inner">
+    <div class="section-label">Compatibility</div>
+    <h2>Requirements</h2>
+    <p class="section-sub">EOA Biz Card runs on iPhone with iOS 18 or later.</p>
+    <div class="compat-row">
+      <div class="compat-badge"><span class="dot dot-green"></span>iOS 18.0 or later</div>
+      <div class="compat-badge"><span class="dot dot-blue"></span>Any iPhone for Bluetooth &amp; QR</div>
+      <div class="compat-badge"><span class="dot dot-orange"></span>No account required</div>
+      <div class="compat-badge"><span class="dot dot-green"></span>No account or sign-in required</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Support ────────────────────────────────────────────── -->
+<section class="section" id="support">
+  <div class="section-inner">
+    <div class="section-label">Support</div>
+    <h2>Need help?</h2>
+    <p class="section-sub">Common questions and how to get in touch.</p>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>Bluetooth not working</h3>
+        <p>Make sure Bluetooth is enabled in Settings. On iOS 16 and later, you may also need to enable Developer Mode under Settings → Privacy &amp; Security. Both devices must have Bluetooth on and be within range.</p>
+      </div>
+      <div class="support-card">
+        <h3>QR code not scanning</h3>
+        <p>Make sure the QR code is well-lit and fully visible on screen. Most camera apps will recognize it automatically — no need to tap the shutter button.</p>
+      </div>
+      <div class="support-card">
+        <h3>Card scan missed some fields</h3>
+        <p>Lay the card flat on a dark, contrasting surface in good light. After scanning, all fields are editable in the review screen before saving — just correct anything the scan missed.</p>
+      </div>
+      <div class="support-card">
+        <h3>Contact not saving</h3>
+        <p>Go to Settings → Privacy &amp; Security → Contacts and make sure EOA Biz Card has permission. If it was denied, tap the toggle to allow access, then try saving again. Note that saving updates an existing contact if that person is already in your Contacts, rather than creating a duplicate.</p>
+      </div>
+      <div class="support-card">
+        <h3>Why doesn't Apple Wallet work?</h3>
+        <p>Adding a pass to Apple Wallet requires a certificate that only Apple issues directly to developers, plus a signing step this app doesn't perform. The Wallet option is shown honestly with this explanation rather than pretending it works — your other selected save destinations (Contacts, Photos, In the App) all save normally regardless.</p>
+      </div>
+      <div class="support-card">
+        <h3>Contact us</h3>
+        <p>For anything not covered here, reach out directly. We respond within one business day.</p>
+        <a href="mailto:WillisStrategy@outlook.com">WillisStrategy@outlook.com</a>
+      </div>
+      <div class="support-card">
+        <h3>App version &amp; updates</h3>
+        <p>Check the App Store for the latest version of EOA Biz Card. Updates are free and will add new features and fixes over time.</p>
+        <a href="#">View on App Store →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Privacy ────────────────────────────────────────────── -->
+<section class="section" id="privacy">
+  <div class="section-inner">
+    <div class="section-label">Privacy Policy</div>
+    <h2>Your data stays on your device.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.55)">
+      EOA Biz Card does not collect, transmit, or store any personal data on external servers.
+      Everything lives on your iPhone.
+    </p>
+
+    <div class="privacy-points">
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No server, no account</h4>
+          <p>Your business card details are stored only in your iPhone's local storage. No account is required and no sign-in is needed.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Bluetooth data stays local</h4>
+          <p>When you share via Bluetooth, your card is transmitted directly device-to-device. No data passes through any server or third party.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Camera used only on request</h4>
+          <p>The camera is only accessed when you actively tap Scan Card. Images are processed entirely on-device using Apple's Vision framework, saved to your Scan History within the app, and only added to your Photos library if you specifically choose that option.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Contacts permission is optional</h4>
+          <p>Contacts access is only requested when you choose to save a received card. The app reads nothing from your existing contacts.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Photos access is add-only</h4>
+          <p>If you choose to save a card image to Photos, the app requests permission to add photos only — it can never browse, read, or access your existing photo library.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No analytics or tracking</h4>
+          <p>EOA Biz Card contains no analytics SDKs, no advertising SDKs, and no third-party tracking of any kind.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:48px; font-size:.85rem; color:rgba(255,255,255,.35); max-width:600px;">
+      Last updated: June 2026. This policy applies to EOA Biz Card for iOS, version 1.0 and later. EOA Biz Card does not collect, transmit, sell, or share any personal data with third parties. No data retention policy is needed because no data is collected.
+      For questions, contact <a href="mailto:WillisStrategy@outlook.com" style="color:rgba(255,255,255,.5)">WillisStrategy@outlook.com</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────── -->
+<footer>
+  <a href="#" class="footer-logo">EOA<span>.</span>BizCard</a>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#support">Support</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:WillisStrategy@outlook.com">Contact</a>
+  </div>
+  <p>© 2026 EOA Biz Card by Willis Strategy. All rights reserved.<br><span style="font-size:.72rem;color:rgba(255,255,255,.25)">Apple, iPhone, and Bluetooth are trademarks of their respective owners. EOA Biz Card is not affiliated with Apple Inc.</span></p>
+</footer>
+
+  <!-- Legal disclaimer -->
+  <div style="background:#0a0a0a;padding:20px 5vw;text-align:center;">
+    <p style="font-size:.72rem;color:rgba(255,255,255,.25);max-width:800px;margin:0 auto;line-height:1.6;">
+      Apple, iPhone, iOS, Bluetooth, AirDrop, Apple Wallet, and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+      App Store is a service mark of Apple Inc. EOA Biz Card is an independent application and is not affiliated with, endorsed by, or sponsored by Apple Inc. All other trademarks are the property of their respective owners.
+    </p>
+  </div>
+
+</body>
+</html>
