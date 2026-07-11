@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefits Compass — VA Benefits Eligibility Guide</title>
+<meta name="description" content="Answer a few questions and get a personalized list of VA benefits you've earned, in plain English, with exact next steps.">
+<style>
+  :root {
+    --ink:#1C2321; --pine:#2E4034; --parchment:#F7F3E8; --paper:#FFFDF7;
+    --brass:#A87C1F; --brass-lt:#C9A040; --red:#8C3B2E; --line:#D9D2BE; --muted:#6B6A5E;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--parchment); color:var(--ink); font-family:var(--sans); }
+  header { background:var(--pine); color:var(--parchment); padding:20px 24px; border-bottom:4px solid var(--brass); }
+  .hwrap { max-width:760px; margin:0 auto; display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  h1 { font-family:var(--serif); font-size:24px; margin:0; letter-spacing:.02em; }
+  .tag { font-family:var(--mono); font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--brass-lt); }
+  main { max-width:760px; margin:0 auto; padding:28px 20px 60px; }
+  .card { background:var(--paper); border:1px solid var(--line); border-top:3px solid var(--brass); padding:28px; }
+  .eyebrow { font-family:var(--mono); font-size:12px; letter-spacing:.15em; text-transform:uppercase; color:var(--brass); margin:0 0 12px; }
+  h2 { font-family:var(--serif); font-size:28px; line-height:1.25; margin:0 0 16px; }
+  .lead { font-size:17px; line-height:1.6; margin:0 0 12px; }
+  .fine { font-size:15px; line-height:1.6; color:var(--muted); margin:0 0 24px; }
+  button { font-family:var(--sans); cursor:pointer; }
+  .btn-primary { background:var(--pine); color:var(--parchment); border:1px solid var(--pine); padding:14px 26px; font-size:17px; border-radius:6px; font-weight:600; }
+  .btn-ghost { background:transparent; color:var(--pine); border:1px solid var(--line); padding:10px 18px; font-size:15px; border-radius:6px; margin-top:20px; }
+  .qmeta { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+  .qlabel { font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--brass); }
+  .qcount { font-family:var(--mono); font-size:12px; color:var(--muted); }
+  .progress { height:2px; background:var(--line); margin-bottom:24px; }
+  .progress > div { height:2px; background:var(--brass); transition:width .3s; }
+  .qtext { font-family:var(--serif); font-size:24px; line-height:1.3; margin:0 0 10px; }
+  .qhelp { font-size:15px; line-height:1.55; color:var(--muted); margin:0 0 20px; }
+  .opts { display:grid; gap:10px; margin-top:8px; }
+  .opt { text-align:left; padding:16px 18px; font-size:17px; line-height:1.4; background:var(--paper); color:var(--ink); border:1.5px solid var(--line); border-radius:6px; }
+  .opt.sel { background:var(--pine); color:var(--parchment); border-color:var(--pine); }
+  select { width:100%; padding:16px 14px; font-size:17px; font-family:var(--sans); background:var(--paper); color:var(--ink); border:1.5px solid var(--line); border-radius:6px; }
+  .summary { background:var(--pine); color:var(--parchment); padding:26px 28px; border-top:3px solid var(--brass); }
+  .summary .eyebrow { color:var(--brass-lt); }
+  .summary h2 { color:var(--parchment); margin:0; }
+  .summary p { font-size:14px; line-height:1.5; margin:12px 0 0; color:#E8E2CF; }
+  .cat { font-family:var(--mono); font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--brass); border-bottom:1px solid var(--line); padding-bottom:8px; margin:28px 0 14px; }
+  .benefit { background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:20px 22px; margin-bottom:12px; }
+  .btitle-row { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+  .btitle { font-family:var(--serif); font-size:19px; margin:0 0 8px; line-height:1.3; }
+  .verify { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--red); border:1px solid var(--red); border-radius:4px; padding:3px 8px; white-space:nowrap; }
+  .bwhy { font-size:15.5px; line-height:1.6; margin:0 0 12px; }
+  .bstep { font-size:15px; line-height:1.55; margin:0 0 12px; color:var(--muted); }
+  .bstep strong { color:var(--ink); }
+  .blink { font-family:var(--mono); font-size:13px; color:var(--brass); text-decoration:none; border-bottom:1px solid var(--brass); }
+  .warn { margin-top:30px; padding:18px 22px; background:var(--paper); border:1px dashed var(--line); border-radius:6px; font-size:14.5px; line-height:1.6; color:var(--muted); }
+  .vso { display:block; background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:14px 18px; text-decoration:none; color:var(--ink); margin-bottom:10px; }
+  .vso-row { display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .vso strong { font-family:var(--serif); font-size:16.5px; }
+  .vso .url { font-family:var(--mono); font-size:12px; color:var(--brass); }
+  .vso p { font-size:14px; line-height:1.5; color:var(--muted); margin:6px 0 0; }
+  footer { border-top:1px solid var(--line); padding:20px 24px 36px; text-align:center; }
+  footer p { font-size:13px; color:var(--muted); max-width:640px; margin:0 auto; line-height:1.6; }
+  button:focus-visible, a:focus-visible, select:focus-visible { outline:3px solid var(--brass); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <h1>Benefits Compass</h1>
+    <span class="tag">For those who served</span>
+  </div>
+</header>
+<main id="app"></main>
+<footer>
+  <p>This guide is informational only and is not affiliated with the U.S. Department of Veterans Affairs.
+  Final eligibility determinations are made by the VA. Nothing you enter is stored or transmitted.</p>
+</footer>
+<script>
+"use strict";
+const VSOS = [
+  { name: "Disabled American Veterans (DAV)", url: "https://www.dav.org", note: "Free claims help nationwide; strong on disability claims and appeals." },
+  { name: "Veterans of Foreign Wars (VFW)", url: "https://www.vfw.org", note: "Accredited service officers in every state; also runs local posts." },
+  { name: "The American Legion", url: "https://www.legion.org", note: "Free claims assistance and discharge upgrade help." },
+  { name: "Georgia Department of Veterans Service", url: "https://veterans.georgia.gov", note: "State benefits, field offices statewide including the Columbus area." },
+  { name: "Vietnam Veterans of America (VVA)", url: "https://vva.org", note: "Serves veterans of all eras despite the name." },
+  { name: "Paralyzed Veterans of America (PVA)", url: "https://pva.org", note: "Specialists in catastrophic injury, SAH grants, and SMC claims." },
+  { name: "AMVETS", url: "https://amvets.org", note: "National service officers for claims and appeals." },
+  { name: "Wounded Warrior Project", url: "https://www.woundedwarriorproject.org", note: "Benefits counseling plus mental health and career programs (post-9/11)." },
+  { name: "VA Accredited Rep Search (official)", url: "https://www.va.gov/get-help-from-accredited-representative/find-rep/", note: "Official VA tool to find any accredited representative near you." },
+];
+
+
+const STATES = {
+  AL: { n: "Alabama", tax: "Full exemption from state, county, and municipal property taxes on the primary residence." },
+  AK: { n: "Alaska", tax: "Exemption on the first $150,000 of assessed value (50%+ rating)." },
+  AZ: { n: "Arizona", tax: "Partial exemption with income and assessed-value limits; varies by county." },
+  AR: { n: "Arkansas", tax: "Full exemption on the homestead for 100% P&T veterans." },
+  CA: { n: "California", tax: "Disabled Veterans' Exemption — roughly $170,000+ of assessed value (higher for low-income households); adjusts annually." },
+  CO: { n: "Colorado", tax: "50% exemption on the first $200,000 of actual value for 100% P&T." },
+  CT: { n: "Connecticut", tax: "Base exemption plus additional amounts by town; 100% P&T veterans now qualify for a full exemption on the primary residence under recent law." },
+  DE: { n: "Delaware", tax: "Full credit against school property taxes for 100% P&T; county programs vary." },
+  FL: { n: "Florida", tax: "Full exemption on the homestead for 100% P&T veterans." },
+  GA: { n: "Georgia", tax: "Substantial homestead exemption (over $120,000 of assessed value, adjusts annually) for 100% disabled veterans." },
+  HI: { n: "Hawaii", tax: "Full exemption on the primary residence for totally disabled veterans (small minimum tax may apply by county)." },
+  ID: { n: "Idaho", tax: "Property tax reduction (circuit breaker) plus a dedicated benefit for 100% service-connected veterans; amount varies." },
+  IL: { n: "Illinois", tax: "Full exemption for veterans rated 70%+ (up to an equalized assessed value cap)." },
+  IN: { n: "Indiana", tax: "Deductions totaling roughly $39,000 of assessed value; caps apply." },
+  IA: { n: "Iowa", tax: "Full exemption on the homestead for 100% P&T veterans." },
+  KS: { n: "Kansas", tax: "Income-based homestead refund program for disabled veterans." },
+  KY: { n: "Kentucky", tax: "Homestead exemption (~$46,000+ of assessed value, adjusts biennially)." },
+  LA: { n: "Louisiana", tax: "Full exemption on the homestead for 100% P&T veterans (parish approval)." },
+  ME: { n: "Maine", tax: "$6,000 exemption ($50,000 for specially adapted housing recipients)." },
+  MD: { n: "Maryland", tax: "Full exemption on the dwelling for 100% P&T veterans." },
+  MA: { n: "Massachusetts", tax: "Exemptions from ~$400 to full depending on clause; full exemption for certain severely disabled veterans." },
+  MI: { n: "Michigan", tax: "Full exemption on the homestead for 100% P&T veterans." },
+  MN: { n: "Minnesota", tax: "Market value exclusion of $300,000 for 100% P&T ($150,000 for 70%+)." },
+  MS: { n: "Mississippi", tax: "Full homestead exemption for 100% disabled veterans." },
+  MO: { n: "Missouri", tax: "Income-based property tax credit; full exemption only for certain former POWs." },
+  MT: { n: "Montana", tax: "Property tax reduction of 50–100% based on income for 100% P&T." },
+  NE: { n: "Nebraska", tax: "Income-based homestead exemption up to 100% for totally disabled veterans." },
+  NV: { n: "Nevada", tax: "Exemption of roughly $30,000–$40,000 of assessed value, adjusts annually; usable against property or vehicle tax." },
+  NH: { n: "New Hampshire", tax: "Tax credit ($701 minimum, up to $4,000 by town); full exemption for certain severely disabled veterans." },
+  NJ: { n: "New Jersey", tax: "Full exemption on the primary residence for 100% P&T veterans." },
+  NM: { n: "New Mexico", tax: "Full exemption on the primary residence for 100% disabled veterans." },
+  NY: { n: "New York", tax: "Alternative Veterans' Exemption — percentage reductions that vary by county, city, and school district." },
+  NC: { n: "North Carolina", tax: "Exclusion of the first $45,000 of appraised value for 100% P&T." },
+  ND: { n: "North Dakota", tax: "Credit against a portion of assessed value for 50%+ rated veterans; scales to 100%." },
+  OH: { n: "Ohio", tax: "Homestead exemption of $50,000 of market value for 100% disabled veterans." },
+  OK: { n: "Oklahoma", tax: "Full exemption on the homestead for 100% P&T veterans." },
+  OR: { n: "Oregon", tax: "Partial exemption (roughly $25,000–$35,000, adjusts annually); larger for service-connected disability." },
+  PA: { n: "Pennsylvania", tax: "Full exemption for 100% disabled wartime veterans, subject to a financial need determination." },
+  RI: { n: "Rhode Island", tax: "Exemptions vary significantly by city/town; check your local assessor." },
+  SC: { n: "South Carolina", tax: "Full exemption on the homestead (plus up to one acre) for 100% P&T veterans." },
+  SD: { n: "South Dakota", tax: "Exemption on the first ~$150,000 of value for 100% P&T; full for paraplegic veterans." },
+  TN: { n: "Tennessee", tax: "Tax relief (rebate) on the first $175,000 of appraised value for 100% P&T." },
+  TX: { n: "Texas", tax: "Full exemption on the homestead for 100% disabled veterans." },
+  UT: { n: "Utah", tax: "Exemption up to a substantial cap of taxable value (over $500,000, prorated by disability percentage)." },
+  VT: { n: "Vermont", tax: "Exemption of at least $10,000 of appraised value (up to $40,000 in many towns) for 50%+ rated veterans." },
+  VA: { n: "Virginia", tax: "Full exemption on the primary residence for 100% P&T veterans." },
+  WA: { n: "Washington", tax: "Income-based exemption/reduction program for disabled veterans." },
+  WV: { n: "West Virginia", tax: "Exemption on the first $20,000 of assessed value; a refundable state tax credit for 90–100% rated veterans was added recently." },
+  WI: { n: "Wisconsin", tax: "Refundable property tax credit for 100% disabled veterans — effectively refunds property taxes on the primary residence." },
+  WY: { n: "Wyoming", tax: "$3,000 reduction in assessed value; usable against property or vehicle tax." },
+  DC: { n: "Washington, D.C.", tax: "Homestead deduction plus a disabled-veteran cap reduction; verify current rules with the Office of Tax and Revenue." },
+};
+
+// ─── Question flow ───────────────────────────────────────────────
+
+const QUESTIONS = [
+  { id: "state", label: "Your state", q: "What state do you live in?",
+    help: "State benefits — especially property tax exemptions — vary widely.",
+    type: "select",
+    options: Object.keys(STATES).map((k) => ({ v: k, t: STATES[k].n })) },
+  { id: "discharge", label: "Discharge status", q: "What was your character of discharge?",
+    help: "Most VA benefits require a discharge that was not dishonorable. If yours was Other Than Honorable, some benefits may still be available after a Character of Discharge review.",
+    options: [
+      { v: "honorable", t: "Honorable / General (Under Honorable Conditions)" },
+      { v: "oth", t: "Other Than Honorable" },
+      { v: "unsure", t: "Not sure" },
+    ]},
+  { id: "rating", label: "Disability rating", q: "What is your current VA disability rating?",
+    help: "Your combined rating appears on your VA.gov profile or your most recent rating decision letter.",
+    options: [
+      { v: "none", t: "No rating / haven't filed" },
+      { v: "10-40", t: "10% – 40%" },
+      { v: "50-90", t: "50% – 90%" },
+      { v: "100", t: "100% (schedular or TDIU)" },
+    ]},
+  { id: "pt", label: "P&T status", q: "Are you rated Permanent and Total (P&T)?",
+    help: "P&T means the VA considers your 100% rating permanent, with no future exams scheduled. Check your rating decision letter — look for 'no future examinations scheduled' or a Chapter 35 / DEA eligibility line. This unlocks major family benefits.",
+    showIf: (a) => a.rating === "100",
+    options: [
+      { v: "yes", t: "Yes — Permanent and Total" },
+      { v: "no", t: "No — 100% but not P&T" },
+      { v: "unsure", t: "Not sure" },
+    ]},
+  { id: "dependents", label: "Family", q: "Do you have a spouse or dependent children?",
+    help: "Several benefits — CHAMPVA health coverage and Chapter 35 education — belong to your family, not just you.",
+    options: [ { v: "yes", t: "Yes" }, { v: "no", t: "No" } ]},
+  { id: "education", label: "Education", q: "Are you (or your dependents) interested in education or training?",
+    options: [
+      { v: "me", t: "Yes — for me" },
+      { v: "family", t: "Yes — for my spouse or children" },
+      { v: "both", t: "Yes — both" },
+      { v: "no", t: "Not right now" },
+    ]},
+  { id: "housing", label: "Housing", q: "Do you own a home, or plan to buy or refinance?",
+    options: [
+      { v: "own", t: "I own my home" },
+      { v: "buying", t: "Planning to buy or refinance" },
+      { v: "both", t: "Own now, may buy again" },
+      { v: "no", t: "Neither" },
+    ]},
+  { id: "mobility", label: "Mobility", q: "Do any service-connected conditions affect your mobility (use of hands, feet, or vision)?",
+    help: "This determines eligibility for adapted housing grants and the automobile allowance.",
+    options: [ { v: "yes", t: "Yes" }, { v: "no", t: "No" } ]},
+  { id: "loans", label: "Student loans", q: "Do you have federal student loans?",
+    showIf: (a) => a.rating === "100",
+    options: [ { v: "yes", t: "Yes" }, { v: "no", t: "No" } ]},
+];
+
+
+function computeBenefits(a) {
+  const out = [];
+  const rated = a.rating && a.rating !== "none";
+  const is100 = a.rating === "100";
+  const isPT = is100 && a.pt === "yes";
+  const ptMaybe = is100 && a.pt === "unsure";
+
+  const add = (cat, title, why, steps, link, flag) =>
+    out.push({ cat, title, why, steps, link, flag });
+
+  if (is100) {
+    add("Healthcare", "VA Health Care — Priority Group 1",
+      "At 100%, you're in the highest priority group: no copays for medical care or prescriptions, including non-service-connected conditions.",
+      "If not enrolled, apply at VA.gov or call 877-222-8387. If enrolled, confirm your priority group in your VA.gov profile.",
+      "https://www.va.gov/health-care/");
+    add("Healthcare", "Comprehensive VA Dental Care",
+      "Veterans rated 100% qualify for full dental — exams, cleanings, crowns, dentures — which most veterans never get.",
+      "Contact the dental clinic at your VA medical center to enroll. Routine care often books 2–4 weeks out, so schedule early.",
+      "https://www.va.gov/dental-care/");
+  } else if (rated) {
+    add("Healthcare", "VA Health Care Enrollment",
+      "Any service-connected rating qualifies you for VA health care; 50%+ means Priority Group 1 with no copays.",
+      "Apply at VA.gov or call 877-222-8387.",
+      "https://www.va.gov/health-care/");
+  }
+
+  if (isPT || ptMaybe) {
+    if (a.dependents === "yes") {
+      add("Family", "CHAMPVA — Health Coverage for Your Family",
+        "P&T status qualifies your spouse and dependent children for CHAMPVA: no premiums, $50/person annual deductible, 25% cost share, $3,000 catastrophic cap. Often worth $10,000+ per year vs. private insurance. (Dependents eligible for TRICARE are excluded.)",
+        "File VA Form 10-10d plus 10-7959c with marriage/birth certificates and your rating decision. Note: CHAMPVA does not cover dental — dependents can buy discounted coverage via VADIP.",
+        "https://www.va.gov/health-care/family-caregiver-benefits/champva/",
+        ptMaybe ? "verify" : null);
+    }
+    add("Perks", "Commissary, Exchange & MWR Access (USID Card)",
+      "P&T veterans and eligible dependents get a DoD USID card: commissary groceries (typically 20–30% savings), tax-free exchange shopping, MWR gyms, golf courses, and campgrounds, plus Space-A travel (Category 6).",
+      "Apply through your nearest installation's ID card office — bring your VA benefit summary letter and photo ID.",
+      "https://www.cac.mil/Next-Generation-Uniformed-Services-ID-Card/",
+      ptMaybe ? "verify" : null);
+    add("Perks", "Free Lifetime National Parks Pass",
+      "The America the Beautiful pass covers entrance at 2,000+ federal recreation sites and discounts camping fees.",
+      "Get it free at any national park entrance with your benefit summary letter, or order at store.usgs.gov.",
+      "https://store.usgs.gov/recreational-passes",
+      ptMaybe ? "verify" : null);
+  }
+
+  if ((isPT || ptMaybe) && a.dependents === "yes" &&
+      (a.education === "family" || a.education === "both")) {
+    add("Family", "Chapter 35 (DEA) — Education for Spouse & Children",
+      "Your spouse and each child can receive up to 36 months of education benefits — a monthly stipend for college, training, or apprenticeships.",
+      "Apply with VA Form 22-5490 at VA.gov. Children generally use it between ages 18–26.",
+      "https://www.va.gov/education/survivor-dependent-benefits/dependents-education-assistance/",
+      ptMaybe ? "verify" : null);
+  }
+
+  if (rated && (a.education === "me" || a.education === "both")) {
+    add("Education", "GI Bill / Veteran Readiness & Employment (VR&E)",
+      "Beyond any remaining GI Bill, a service-connected rating of 10%+ may qualify you for VR&E (Chapter 31): training, education, and employment support with tuition paid and a housing allowance.",
+      "Check GI Bill status and apply for VR&E at VA.gov.",
+      "https://www.va.gov/careers-employment/vocational-rehabilitation/");
+  }
+
+  if (a.housing && a.housing !== "no") {
+    if (rated) {
+      add("Housing", "VA Home Loan — Funding Fee Waived",
+        "Any rating of 10%+ waives the VA funding fee entirely — typically 2.15–3.3% of the loan. On a $400,000 loan, that's $8,600–$13,200 saved, on every VA loan including refinances.",
+        "Get your Certificate of Eligibility at VA.gov; confirm the waiver with your lender.",
+        "https://www.va.gov/housing-assistance/home-loans/");
+    }
+    if (is100 && (a.housing === "own" || a.housing === "both")) {
+      const st = STATES[a.state];
+      add("Housing", "Property Tax Exemption — " + (st ? st.n : "Your State"),
+        (st ? st.tax : "Most states exempt some or all of a 100% disabled veteran's primary residence from property tax.") +
+        " Amounts change with legislation and can vary by county — confirm current rules locally.",
+        "Take your VA benefit summary letter to your county tax assessor's office and ask for the disabled veteran homestead exemption application.",
+        "https://www.nasdva.us/");
+    }
+  }
+
+  if (a.mobility === "yes" && rated) {
+    add("Housing", "Adapted Housing Grants & Automobile Allowance",
+      "Service-connected mobility loss can qualify you for the SAH grant (up to ~$117,000 in FY2026) or SHA grant for home adaptations, plus a one-time automobile grant (~$25,000) with adaptive equipment.",
+      "Apply with VA Form 26-4555 (housing) and VA Form 21-4502 (auto) at VA.gov.",
+      "https://www.va.gov/housing-assistance/disability-housing-grants/");
+  }
+
+  if (is100) {
+    add("Financial", "Check for Special Monthly Compensation (SMC)",
+      "SMC pays above the 100% rate for specific conditions — loss of use of extremities, need for aid and attendance, housebound status, and others. Many qualifying veterans have never been evaluated.",
+      "Review your conditions against SMC criteria; file a supplemental claim (or VA Form 21-4138) requesting SMC evaluation with supporting medical evidence.",
+      "https://www.va.gov/disability/compensation-rates/special-monthly-compensation-rates/");
+    if (a.loans === "yes") {
+      add("Financial", "Federal Student Loan Discharge (TPD)",
+        "100% P&T (and certain other total disability determinations) qualifies your federal student loans for complete Total and Permanent Disability discharge.",
+        "The VA now shares data with Education — many veterans are discharged automatically — but you can apply directly.",
+        "https://studentaid.gov/manage-loans/forgiveness-cancellation/disability-discharge");
+    }
+    add("Financial", "VALife Insurance — Guaranteed Acceptance",
+      "Any service-connected rating qualifies you for VALife: up to $40,000 whole life coverage, guaranteed acceptance regardless of health.",
+      "Apply online at VA.gov; coverage has a two-year waiting period before full benefit.",
+      "https://www.va.gov/life-insurance/options-eligibility/valife/");
+    const stp = STATES[a.state];
+    add("Perks", "State Benefits" + (stp ? " — " + stp.n : ""),
+      "Nearly every state offers 100% disabled veterans additional perks — commonly free or discounted hunting and fishing licenses, disabled-veteran license plates (often with vehicle tax waived), state park access, free tuition programs, and more. Your state's veterans department maintains the current list.",
+      "Find your state's veterans affairs department through the NASDVA directory and ask specifically what a 100% rating unlocks.",
+      "https://www.nasdva.us/");
+  }
+
+  if (a.discharge === "oth" || a.discharge === "unsure") {
+    add("First step", "Character of Discharge Review",
+      "An Other Than Honorable discharge doesn't automatically bar benefits — the VA makes its own character-of-service determination, and discharge upgrades are possible.",
+      "Talk to an accredited Veterans Service Officer (free) — see the VSO directory below.",
+      "https://www.va.gov/discharge-upgrade-instructions/",
+      "verify");
+  }
+
+  if (!rated) {
+    add("First step", "File a Disability Claim",
+      "Many benefits key off a rating. If you have any condition connected to service, filing costs nothing and a VSO will help for free.",
+      "Start an Intent to File at VA.gov (locks in your effective date), then work with an accredited VSO from the directory below.",
+      "https://www.va.gov/disability/how-to-file-claim/");
+  }
+
+  return out;
+}
+
+
+const CATS = ["First step", "Healthcare", "Family", "Financial", "Housing", "Education", "Perks"];
+
+// ─── Vanilla JS app (no dependencies) ─────────────────────────────
+let answers = {};
+let step = -1; // -1 = intro
+const app = document.getElementById("app");
+
+function esc(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function visibleQuestions() {
+  return QUESTIONS.filter(q => !q.showIf || q.showIf(answers));
+}
+function setAnswer(id, v) {
+  answers[id] = v;
+  const vis = visibleQuestions();
+  step = Math.min(step + 1, vis.length);
+  render();
+  window.scrollTo(0, 0);
+}
+function goBack() { step = Math.max(-1, step - 1); render(); window.scrollTo(0, 0); }
+function restart() { answers = {}; step = -1; render(); window.scrollTo(0, 0); }
+function start() { step = 0; render(); window.scrollTo(0, 0); }
+
+function render() {
+  const vis = visibleQuestions();
+  const done = step >= 0 && step >= vis.length;
+  if (step === -1) app.innerHTML = introHTML() + vsoHTML();
+  else if (!done) app.innerHTML = questionHTML(vis[step], step, vis.length);
+  else app.innerHTML = resultsHTML() + vsoHTML();
+  wireEvents();
+}
+
+function introHTML() {
+  return '<div class="card">' +
+    '<p class="eyebrow">Eligibility guide \u00B7 2026</p>' +
+    '<h2>Find every benefit you\u2019ve earned.</h2>' +
+    '<p class="lead">Most veterans leave benefits unclaimed \u2014 not because they don\u2019t qualify, but because nobody told them. Answer a few questions and get a personalized list of federal and state benefits, in plain English, with exactly what to do next.</p>' +
+    '<p class="fine">Nothing you enter leaves this page. This is a guide, not an official determination \u2014 final eligibility always rests with the VA.</p>' +
+    '<button class="btn-primary" data-action="start">Start \u2014 about 2 minutes</button>' +
+    '</div>';
+}
+
+function questionHTML(q, idx, total) {
+  let body;
+  if (q.type === "select") {
+    body = '<select data-select="' + q.id + '"><option value="">Select your state\u2026</option>' +
+      q.options.map(o => '<option value="' + o.v + '"' + (answers[q.id] === o.v ? " selected" : "") + '>' + esc(o.t) + '</option>').join("") +
+      '</select>';
+  } else {
+    body = '<div class="opts">' + q.options.map(o =>
+      '<button class="opt' + (answers[q.id] === o.v ? " sel" : "") + '" data-answer="' + q.id + '" data-value="' + o.v + '">' + esc(o.t) + '</button>'
+    ).join("") + '</div>';
+  }
+  return '<div class="card">' +
+    '<div class="qmeta"><span class="qlabel">' + esc(q.label) + '</span><span class="qcount">' + (idx + 1) + ' of ' + total + '</span></div>' +
+    '<div class="progress"><div style="width:' + ((idx / total) * 100) + '%"></div></div>' +
+    '<h2 class="qtext">' + esc(q.q) + '</h2>' +
+    (q.help ? '<p class="qhelp">' + esc(q.help) + '</p>' : "") +
+    body +
+    (idx > 0 ? '<button class="btn-ghost" data-action="back">\u2190 Back</button>' : "") +
+    '</div>';
+}
+
+function resultsHTML() {
+  const results = computeBenefits(answers);
+  const needsVerify = results.some(r => r.flag === "verify");
+  let html = '<div class="summary">' +
+    '<p class="eyebrow">Your benefits summary</p>' +
+    '<h2>' + results.length + ' benefit' + (results.length !== 1 ? 's' : '') + ' to pursue</h2>' +
+    (needsVerify ? '<p>Items marked \u201CVerify\u201D depend on your P&amp;T or discharge status \u2014 check your rating decision letter or your VA.gov benefit summary first.</p>' : '') +
+    '</div>';
+  for (const cat of CATS) {
+    const items = results.filter(r => r.cat === cat);
+    if (!items.length) continue;
+    html += '<h3 class="cat">' + esc(cat) + '</h3>';
+    for (const b of items) {
+      html += '<article class="benefit">' +
+        '<div class="btitle-row"><h4 class="btitle">' + esc(b.title) + '</h4>' +
+        (b.flag === "verify" ? '<span class="verify">Verify</span>' : '') + '</div>' +
+        '<p class="bwhy">' + esc(b.why) + '</p>' +
+        '<p class="bstep"><strong>Next step:</strong> ' + esc(b.steps) + '</p>' +
+        '<a class="blink" href="' + b.link + '" target="_blank" rel="noreferrer">Official page \u2192</a>' +
+        '</article>';
+    }
+  }
+  html += '<div class="warn">A free accredited Veterans Service Officer can file any of these for you at no cost \u2014 see the directory below. Never pay anyone a percentage of your benefits to apply.</div>' +
+    '<button class="btn-ghost" data-action="restart">Start over</button>';
+  return html;
+}
+
+function vsoHTML() {
+  return '<h3 class="cat" style="margin-top:40px">Get free help \u2014 Veterans Service Organizations</h3>' +
+    '<p class="fine" style="margin-bottom:16px">Accredited service officers file claims, gather evidence, and handle appeals \u2014 always free of charge.</p>' +
+    VSOS.map(v =>
+      '<a class="vso" href="' + v.url + '" target="_blank" rel="noreferrer">' +
+      '<div class="vso-row"><strong>' + esc(v.name) + '</strong>' +
+      '<span class="url">' + v.url.replace("https://","").replace("www.","") + ' \u2192</span></div>' +
+      '<p>' + esc(v.note) + '</p></a>'
+    ).join("");
+}
+
+function wireEvents() {
+  app.querySelectorAll("[data-action=start]").forEach(el => el.onclick = start);
+  app.querySelectorAll("[data-action=back]").forEach(el => el.onclick = goBack);
+  app.querySelectorAll("[data-action=restart]").forEach(el => el.onclick = restart);
+  app.querySelectorAll("[data-answer]").forEach(el =>
+    el.onclick = () => setAnswer(el.getAttribute("data-answer"), el.getAttribute("data-value")));
+  app.querySelectorAll("[data-select]").forEach(el =>
+    el.onchange = () => { if (el.value) setAnswer(el.getAttribute("data-select"), el.value); });
+}
+
+render();
+</script>
+</body>
+</html>
