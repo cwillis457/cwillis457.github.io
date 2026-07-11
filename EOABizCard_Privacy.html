@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — EOA Biz Card</title>
+  <meta name="description" content="Privacy policy for EOA Biz Card. Your data never leaves your device." />
+  <meta name="author" content="Willis Strategy" />
+  <meta property="og:url" content="https://cwillis457.github.io/EOABizCard_Privacy.html" />
+  <link rel="canonical" href="https://cwillis457.github.io/EOABizCard_Privacy.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1b3d; --indigo: #3730a3; --red: #e94560;
+      --white: #ffffff; --off: #f7f8fc; --mid: #6b7280; --dark: #111827;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); -webkit-font-smoothing: antialiased; }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    nav a.back { font-size: .85rem; color: rgba(255,255,255,.5); text-decoration: none; }
+    nav a.back:hover { color: var(--white); }
+    .hero {
+      background: linear-gradient(135deg, var(--navy), #16213e);
+      padding: 80px 5vw 60px; text-align: center;
+    }
+    .hero h1 { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: var(--white); letter-spacing: -.03em; margin-bottom: 16px; }
+    .hero p  { font-size: 1rem; color: rgba(255,255,255,.55); }
+    .content { max-width: 720px; margin: 0 auto; padding: 64px 5vw 80px; }
+    .updated { font-size: .8rem; color: var(--mid); margin-bottom: 40px; padding: 10px 16px; background: var(--off); border-radius: 8px; display: inline-block; }
+    h2 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--navy); margin: 40px 0 12px; letter-spacing: -.01em; }
+    h2:first-of-type { margin-top: 0; }
+    p  { font-size: .95rem; color: #374151; line-height: 1.75; margin-bottom: 16px; }
+    ul { margin: 8px 0 16px 20px; }
+    li { font-size: .95rem; color: #374151; line-height: 1.75; margin-bottom: 6px; }
+    .highlight {
+      background: rgba(55,48,163,.06); border-left: 3px solid var(--indigo);
+      border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0;
+    }
+    .highlight p { margin: 0; font-weight: 500; color: var(--navy); }
+    a { color: var(--indigo); }
+    footer { background: var(--dark); padding: 32px 5vw; text-align: center; }
+    footer p { font-size: .8rem; color: rgba(255,255,255,.3); }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="EOABizCard.html" class="nav-logo">EOA<span>.</span>BizCard</a>
+  <a href="EOABizCard.html" class="back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <h1>Privacy Policy</h1>
+  <p>EOA Biz Card was built with privacy as a foundation, not an afterthought.</p>
+</div>
+
+<div class="content">
+  <span class="updated">Last updated: June 2026 · Applies to EOA Biz Card v1.0+</span>
+
+  <div class="highlight">
+    <p>Summary: EOA Biz Card collects no personal data. Everything stays on your device. No accounts, no servers, no tracking.</p>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>EOA Biz Card is developed and published by Willis Strategy. Questions about this policy can be directed to <a href="mailto:WillisStrategy@outlook.com">WillisStrategy@outlook.com</a>.</p>
+
+  <h2>What data we collect</h2>
+  <p>We collect no data. EOA Biz Card does not transmit any information to Willis Strategy or any third party. Specifically:</p>
+  <ul>
+    <li>Your business card details (name, title, company, email, phone, website, LinkedIn) are stored only in your iPhone's local storage using Apple's standard UserDefaults and AppStorage APIs.</li>
+    <li>Card templates you create are stored only on your device.</li>
+    <li>Received cards are stored only on your device.</li>
+    <li>Photos taken for card scanning are processed entirely on-device using Apple's Vision framework and are never saved to your photo library or transmitted anywhere.</li>
+  </ul>
+
+  <h2>Bluetooth</h2>
+  <p>When you use the Bluetooth sharing feature, your business card data and a compressed JPEG image of your card are transmitted directly from your iPhone to the nearby recipient's iPhone using Apple's CoreBluetooth framework. This is a direct device-to-device transfer — no data passes through any server, and Willis Strategy never receives or has access to this data. The card image is generated entirely on your device before transmission.</p>
+
+  <h2>Camera</h2>
+  <p>Camera access is requested only when you actively use the Scan Card feature. Images captured are processed on your device using Apple's Vision framework (on-device text recognition) to extract contact details. The original photo is always saved to the app's on-device Scan History folder (Documents/ScannedCards/). If you separately choose "Photos" as a save destination, that image is also added to your iPhone Photos library using add-only permission — otherwise, images are never transmitted to any server or shared outside the app.</p>
+
+  <h2>On-Device File System</h2>
+  <p>EOA Biz Card stores two categories of files in your iPhone's Documents directory:</p>
+  <ul style="margin:8px 0 16px 20px;font-size:.95rem;color:#374151;line-height:1.75">
+    <li><strong>Documents/ReceivedCards/</strong> — JPEG photos of every card received via Bluetooth or QR code, automatically generated the moment a card arrives.</li>
+    <li><strong>Documents/ScannedCards/</strong> — JPEG photos of every physical business card you have scanned with the camera.</li>
+  </ul>
+  <p>Both folders live entirely on your device. No file is ever uploaded or shared with any server. You can remove individual items (or clear all) from within the app. Deleting the app removes all stored files.</p>
+
+  <h2>Contacts</h2>
+  <p>EOA Biz Card requests access to your Contacts only when you choose to save a received card. If the person is already in your Contacts (matched by email, or by name and company), the app updates their existing entry with any changed details instead of creating a duplicate. The app never reads, copies, or transmits your existing contacts beyond this matching check. Contact access can be revoked at any time in Settings → Privacy & Security → Contacts.</p>
+
+  <h2>Photos</h2>
+  <p>If you choose to save a card to Photos, EOA Biz Card requests "add only" photo library access — the most restrictive permission level Apple offers. This permission allows the app to add a new image to your library but never to view, browse, or read any existing photo. The image saved is either a business-card-style rendering of the contact's details, or — for scanned physical cards — the original photo you took.</p>
+
+  <h2>In-App Purchase</h2>
+  <p>EOA Biz Card offers a one-time optional Pro upgrade ($2.99) via Apple's In-App Purchase system (StoreKit). The purchase is processed entirely by Apple — EOA Biz Card and Willis Strategy never receive or store your payment information, billing details, or Apple ID. Purchase history is managed by Apple and can be restored on any iPhone signed in to the same Apple ID.</p>
+
+  <h2>Third-party SDKs and analytics</h2>
+  <p>EOA Biz Card contains no third-party analytics SDKs, advertising SDKs, crash reporting services, or tracking frameworks of any kind. The only frameworks used are Apple's own first-party frameworks: CoreBluetooth, Vision, Contacts, CoreImage, Photos, and SwiftUI.</p>
+
+  <h2>Data retention</h2>
+  <p>Because we collect no data, there is nothing to retain or delete on our end. Data stored on your device can be deleted at any time by deleting the app. Deleting EOA Biz Card removes all locally stored business card data, templates, and received cards from your device.</p>
+
+  <h2>Children's privacy</h2>
+  <p>EOA Biz Card is not directed at children under the age of 13 and does not knowingly collect any information from children. The app is rated 4+ on the App Store and contains no content inappropriate for any age group.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this privacy policy changes in a future version of the app, the updated policy will be published at this URL with a new "Last updated" date. We will not make changes that reduce your privacy protections without prominently notifying users.</p>
+
+  <h2>Contact</h2>
+  <p>For any questions about this privacy policy or EOA Biz Card's data practices, contact:<br>
+  <a href="mailto:WillisStrategy@outlook.com">WillisStrategy@outlook.com</a></p>
+
+  <h2>Legal notices</h2>
+  <p>Apple, iPhone, and Bluetooth are trademarks of Apple Inc., registered in the U.S. and other countries. EOA Biz Card is an independent application and is not affiliated with, endorsed by, or sponsored by Apple Inc.</p>
+  <p>© 2026 EOA Biz Card by Willis Strategy. All rights reserved.</p>
+</div>
+
+<footer>
+  <p><a href="EOABizCard.html">EOA Biz Card</a> · <a href="mailto:WillisStrategy@outlook.com">WillisStrategy@outlook.com</a> · © 2026 Willis Strategy</p>
+</footer>
+
+</body>
+</html>
