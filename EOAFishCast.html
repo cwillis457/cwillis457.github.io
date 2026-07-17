@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOA FishCast — Bite Forecast</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root{
+    --deep:#0b2e33; --mid:#134b52; --shallow:#1f6f74;
+    --foam:#e9f4ef; --sand:#d9c9a3; --lure:#e8743b;
+    --line:#8fb8ad; --ink:#0a2226;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:var(--deep);color:var(--foam);min-height:100vh}
+  header{padding:14px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(143,184,173,.25);flex-wrap:wrap}
+  header h1{font-size:22px;font-weight:normal;white-space:nowrap}
+  header h1 b{color:var(--lure)}
+  .searchwrap{flex:1;min-width:220px;position:relative}
+  .searchwrap input{
+    width:100%;padding:9px 12px 9px 34px;background:rgba(233,244,239,.08);
+    border:1px solid rgba(143,184,173,.35);color:var(--foam);
+    font-family:'Courier New',monospace;font-size:13px;border-radius:8px;outline:none;
+  }
+  .searchwrap input::placeholder{color:var(--line)}
+  .searchwrap input:focus{border-color:var(--lure)}
+  .searchwrap .icon{position:absolute;left:11px;top:9px;color:var(--line);font-size:14px}
+  .probtn{
+    padding:8px 16px;background:var(--lure);border:none;color:var(--ink);
+    font-family:'Courier New',monospace;font-size:12px;letter-spacing:.08em;
+    font-weight:bold;cursor:pointer;border-radius:8px;text-transform:uppercase;
+  }
+  .probtn.owned{background:transparent;border:1px solid var(--line);color:var(--line);cursor:default}
+  .wrap{display:grid;grid-template-columns:1fr 400px;height:calc(100vh - 63px)}
+  .mapcol{position:relative}
+  #map{height:100%;filter:saturate(.85)}
+  .zoomctl{
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:1000;
+    display:flex;flex-direction:column;background:rgba(10,34,38,.85);
+    border:1px solid rgba(143,184,173,.35);border-radius:10px;overflow:hidden;
+  }
+  .zoomctl button{
+    width:42px;height:42px;background:none;border:none;color:var(--foam);
+    font-size:20px;cursor:pointer;font-family:Georgia,serif;
+  }
+  .zoomctl button:hover{background:rgba(232,116,59,.25)}
+  .zoomctl button:first-child{border-bottom:1px solid rgba(143,184,173,.25)}
+  .panel{background:linear-gradient(180deg,var(--mid),var(--deep));border-left:1px solid rgba(143,184,173,.25);padding:20px;overflow-y:auto}
+  .hint{color:var(--line);font-size:14px;line-height:1.6}
+  .hint .cast{color:var(--lure);font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px}
+  .mono{font-family:'Courier New',monospace}
+  .dial{position:relative;width:200px;height:110px;margin:6px auto 0;overflow:hidden}
+  .score-num{text-align:center;font-size:42px;line-height:1;margin-top:-50px;position:relative}
+  .score-label{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--line);margin-top:4px}
+  .verdict{text-align:center;font-size:18px;color:var(--sand);margin:12px 0 2px;font-style:italic}
+  .locname{font-size:15px}
+  .coords{font-family:'Courier New',monospace;font-size:11px;color:var(--line);margin-bottom:8px}
+  .sect{margin-top:22px}
+  .sect h3{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--line);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .lock{color:var(--lure);font-size:13px}
+  .factor{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(143,184,173,.22);font-size:14px}
+  .factor .val{font-family:'Courier New',monospace;font-size:12px;color:var(--sand);text-align:right}
+  .factor .sub{font-size:12px;color:var(--line);grid-column:2/4;line-height:1.4}
+  .pip{width:9px;height:9px;border-radius:50%;justify-self:center}
+  .good{background:#7fc98f}.ok{background:#d9c25e}.bad{background:#d1603d}
+  .hourly{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+  .hour{min-width:58px;text-align:center;background:rgba(233,244,239,.06);border:1px solid rgba(143,184,173,.2);border-radius:8px;padding:8px 4px;font-size:12px}
+  .hour .t{font-size:15px;color:var(--sand)}
+  .hour .h{color:var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+  .sol{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;border-bottom:1px dashed rgba(143,184,173,.22)}
+  .sol .kind{display:flex;gap:8px;align-items:center}
+  .sol .major{color:var(--lure);font-weight:bold}
+  .sol time{font-family:'Courier New',monospace;font-size:12px;color:var(--sand)}
+  .day{background:rgba(233,244,239,.05);border:1px solid rgba(143,184,173,.25);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center}
+  .day.best{border-color:#7fc98f}
+  .day .dname{font-weight:bold;font-size:14px}
+  .day .best-tag{display:inline-block;font-size:9px;letter-spacing:.1em;background:#7fc98f;color:var(--ink);padding:2px 6px;border-radius:20px;font-family:'Courier New',monospace;margin-left:6px;vertical-align:middle}
+  .day .meta{font-size:11px;color:var(--line);font-family:'Courier New',monospace;margin-top:2px}
+  .day .dscore{width:42px;height:42px;border-radius:50%;border:3px solid;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-weight:bold;font-size:15px}
+  .teaser{
+    background:rgba(233,244,239,.05);border:1px dashed rgba(232,116,59,.5);border-radius:12px;
+    padding:14px;text-align:center;font-size:13px;color:var(--line);cursor:pointer;line-height:1.5;
+  }
+  .teaser b{color:var(--foam);display:block;margin-bottom:2px}
+  .teaser:hover{border-color:var(--lure)}
+  .loading{color:var(--line);font-size:14px;margin-top:14px}
+  .bobber{display:inline-block;animation:bob 1.2s ease-in-out infinite;color:var(--lure)}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  .err{color:#d1603d;font-size:13px;margin-top:12px;line-height:1.5}
+  /* Paywall modal */
+  .modal-bg{position:fixed;inset:0;background:rgba(10,34,38,.85);display:none;align-items:center;justify-content:center;z-index:2000}
+  .modal-bg.show{display:flex}
+  .modal{background:var(--mid);border:1px solid rgba(143,184,173,.35);border-radius:16px;padding:28px;max-width:380px;width:92%;text-align:center}
+  .modal h2{font-size:24px;margin-bottom:16px}
+  .modal .feat{text-align:left;font-size:14px;margin:10px 0;display:flex;gap:10px;line-height:1.4}
+  .modal .feat span{color:var(--lure)}
+  .modal .buy{width:100%;margin-top:18px;padding:13px;background:var(--lure);border:none;color:var(--ink);font-weight:bold;font-size:15px;border-radius:10px;cursor:pointer;font-family:Georgia,serif}
+  .modal .fine{font-size:11px;color:var(--line);margin-top:10px}
+  .modal .close{background:none;border:none;color:var(--line);margin-top:14px;cursor:pointer;font-size:13px;text-decoration:underline;font-family:Georgia,serif}
+  @media (max-width:860px){
+    .wrap{grid-template-columns:1fr;grid-template-rows:42vh 1fr;height:auto}
+    #map{height:42vh}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>EOA Fish<b>Cast</b></h1>
+  <div class="searchwrap">
+    <span class="icon">⌕</span>
+    <input id="searchbox" type="text" placeholder="Search a lake, river, marina, town… (press Enter)">
+  </div>
+  <button class="probtn" id="probtn" onclick="openPaywall()">Pro</button>
+</header>
+
+<div class="wrap">
+  <div class="mapcol">
+    <div id="map"></div>
+    <div class="zoomctl">
+      <button onclick="map.zoomIn()" aria-label="Zoom in">+</button>
+      <button onclick="map.zoomOut()" aria-label="Zoom out">−</button>
+    </div>
+  </div>
+  <aside class="panel" id="panel">
+    <div class="hint">
+      <span class="cast">⌖ No spot selected</span>
+      Tap the water anywhere, or search above. EOA FishCast pulls live weather for that spot and scores the bite from barometric pressure trend, wind, temperature, cloud cover, and moon phase.
+    </div>
+  </aside>
+</div>
+
+<div class="modal-bg" id="paywall">
+  <div class="modal">
+    <h2>EOA FishCast <b style="color:var(--lure)">Pro</b></h2>
+    <div class="feat"><span>◷</span><div><b style="display:block">Hour-by-hour bite forecast</b>See the best feeding windows across the next 24 hours.</div></div>
+    <div class="feat"><span>☾</span><div><b style="display:block">Solunar major &amp; minor periods</b>Moon-driven feeding times for any date.</div></div>
+    <div class="feat"><span>▦</span><div><b style="display:block">3-day trip planner</b>Compare bite scores across upcoming days before you commit.</div></div>
+    <button class="buy" onclick="unlockPro()">Unlock Pro — $5.99</button>
+    <div class="fine">One-time purchase. No subscription. Yours forever.<br>(Web demo — purchase is simulated)</div>
+    <button class="close" onclick="closePaywall()">Not now</button>
+  </div>
+</div>
+
+<script>
+// ---------- State ----------
+let isPro = false;
+let lastData = null, lastLoc = null;
+
+// ---------- Map ----------
+const map = L.map('map', {zoomControl:false}).setView([32.46,-84.99], 9);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(map);
+let marker = null;
+
+map.on('click', e => selectSpot(e.latlng.lat, e.latlng.lng, null));
+
+// ---------- Search ----------
+document.getElementById('searchbox').addEventListener('keydown', async (e)=>{
+  if(e.key!=='Enter') return;
+  const q = e.target.value.trim();
+  if(!q) return;
+  setPanel(`<div class="loading"><span class="bobber">◉</span> Searching for “${q}”…</div>`);
+  try{
+    const r = await callClaude(`Search the web to find the geographic coordinates of this place (likely a fishing spot, lake, river, marina, or town): "${q}". Respond ONLY with JSON, no markdown: {"name":"resolved place name","lat":number,"lng":number}`);
+    map.setView([r.lat, r.lng], 12);
+    selectSpot(r.lat, r.lng, r.name);
+  }catch(err){
+    setPanel(`<div class="err">Couldn't find “${q}”. Try a different search.</div>`);
+  }
+});
+
+// ---------- Core flow ----------
+async function selectSpot(lat, lng, name){
+  if(marker) marker.remove();
+  marker = L.marker([lat,lng]).addTo(map);
+  setPanel(`<div class="hint"><span class="cast">⌖ ${name||''} ${lat.toFixed(4)}, ${lng.toFixed(4)}</span></div>
+    <div class="loading"><span class="bobber">◉</span> Pulling live weather &amp; reading the water…</div>`);
+  try{
+    const data = await fetchConditions(lat,lng);
+    lastData = data; lastLoc = {lat,lng,name:name||data.name};
+    render();
+  }catch(err){
+    setPanel(`<div class="err">Couldn't fetch weather for that spot. Tap again to retry.</div>`);
+  }
+}
+
+async function fetchConditions(lat,lng){
+  const prompt = `Search the web for weather at latitude ${lat.toFixed(3)}, longitude ${lng.toFixed(3)}. Also find the nearest named place/water body. Respond ONLY with JSON, no markdown:
+{"name":"place","temp_f":n,"wind_mph":n,"wind_dir":"SW","pressure_mb":n,"pressure_trend":"falling"|"steady"|"rising","cloud_pct":n,"summary":"3-5 words",
+"hourly":[{"hour":"3PM","temp_f":n,"wind_mph":n,"cloud_pct":n} for the next 8 hours],
+"daily":[{"day":"Saturday","high_f":n,"low_f":n,"wind_mph":n,"precip_pct":n} for today plus next 2 days]}
+Infer pressure trend from the forecast if not stated (approaching storm=falling, clearing=rising, stable=steady).`;
+  return await callClaude(prompt, true);
+}
+
+async function callClaude(prompt, useSearch){
+  const body = {model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]};
+  if(useSearch!==false) body.tools=[{type:"web_search_20250305",name:"web_search"}];
+  const r = await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  const data = await r.json();
+  const text = data.content.map(c=>c.type==='text'?c.text:'').join('');
+  const m = text.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
+  return JSON.parse(m[0]);
+}
+
+// ---------- Scoring (mirrors BiteScoreEngine.swift) ----------
+function moonPhase(d){
+  const syn=29.53058867, known=new Date(Date.UTC(2000,0,6,18,14));
+  return (((d-known)/86400000)%syn+syn)%syn/syn;
+}
+function moonLabel(p){
+  if(p<0.03||p>0.97) return ['New Moon',true];
+  if(Math.abs(p-0.5)<0.03) return ['Full Moon',true];
+  if(p<0.25) return ['Waxing Crescent',false];
+  if(p<0.5) return ['Waxing Gibbous',false];
+  if(p<0.75) return ['Waning Gibbous',false];
+  return ['Waning Crescent',false];
+}
+function scoreCurrent(w){
+  const f=[];
+  if(w.pressure_trend==='falling') f.push([30,'good','Barometric Pressure',`${w.pressure_mb} mb · falling`,'Falling pressure — fish feed aggressively ahead of weather.']);
+  else if(w.pressure_trend==='rising') f.push([8,'bad','Barometric Pressure',`${w.pressure_mb} mb · rising`,'Rising pressure (post-front) — fish hold tight and sluggish.']);
+  else f.push([20,'ok','Barometric Pressure',`${w.pressure_mb} mb · steady`,'Steady pressure — normal feeding patterns.']);
+  const ws=w.wind_mph;
+  if(ws>=4&&ws<=12) f.push([20,'good','Wind',`${ws} mph ${w.wind_dir||''}`,'Light chop breaks surface visibility and pushes bait.']);
+  else if(ws<4) f.push([12,'ok','Wind',`${ws} mph`,'Calm — fish can be spooky in clear water.']);
+  else if(ws<=18) f.push([12,'ok','Wind',`${ws} mph ${w.wind_dir||''}`,'Breezy — fish wind-blown banks.']);
+  else f.push([4,'bad','Wind',`${ws} mph ${w.wind_dir||''}`,'Heavy wind — tough boat control, scattered bait.']);
+  const cc=w.cloud_pct;
+  if(cc>=40&&cc<=90) f.push([15,'good','Cloud Cover',`${cc}%`,'Overcast keeps fish shallow and roaming.']);
+  else if(cc>90) f.push([12,'ok','Cloud Cover',`${cc}%`,'Fully socked in — decent low-light bite.']);
+  else f.push([8,'ok','Cloud Cover',`${cc}%`,'Bright sun pushes fish deep to cover.']);
+  const t=w.temp_f;
+  if(t>=55&&t<=85) f.push([15,'good','Temperature',`${t}°F`,'In the active feeding band.']);
+  else if(t>=45&&t<95) f.push([10,'ok','Temperature',`${t}°F`,'Marginal — slow your presentation.']);
+  else f.push([5,'bad','Temperature',`${t}°F`,'Outside prime metabolic range.']);
+  const [ml,major]=moonLabel(moonPhase(new Date()));
+  f.push([major?20:12,major?'good':'ok','Moon Phase',ml,major?'Major solunar period — strongest feeding windows.':'Minor solunar influence.']);
+  const total=Math.min(100,f.reduce((s,x)=>s+x[0],0));
+  return {total,factors:f};
+}
+function scoreDay(d,dayOffset){
+  let pts=0;
+  const p=d.precip_pct;
+  pts += (p>=25&&p<=60)?28:(p<25?18:10);
+  const ws=d.wind_mph;
+  pts += (ws>=4&&ws<=12)?20:(ws<=18?12:4);
+  const t=d.high_f;
+  pts += (t>=55&&t<=85)?17:((t>=45&&t<95)?11:5);
+  pts += (d.high_f-d.low_f<=20)?15:8;
+  const dt=new Date(); dt.setDate(dt.getDate()+dayOffset);
+  const [,major]=moonLabel(moonPhase(dt));
+  pts += major?20:12;
+  return Math.min(100,pts);
+}
+function verdict(s){
+  if(s>=80) return 'Drop everything. Go now.';
+  if(s>=65) return 'Solid bite likely — worth the trip.';
+  if(s>=50) return 'Fair. Work it slow and deep.';
+  return 'Tough conditions. Fish anyway — it beats not fishing.';
+}
+const scol = s => s>=65?'#7fc98f':(s>=50?'#d9c25e':'#d1603d');
+
+// ---------- Solunar (approximation for web demo) ----------
+// Moonrise advances ~50 min/day from ~6:00 at new moon.
+function solunarToday(){
+  const phase = moonPhase(new Date());
+  const riseH = (6 + phase*29.53*(50/60)) % 24;
+  const setH = (riseH + 12.42) % 24;
+  const transitH = (riseH + 6.21) % 24;
+  const antiH = (transitH + 12.42) % 24;
+  const fmt = h => {
+    const hh=Math.floor(h), mm=Math.round((h-hh)*60);
+    const ampm=hh>=12?'PM':'AM', h12=((hh+11)%12)+1;
+    return `${h12}:${String(mm).padStart(2,'0')} ${ampm}`;
+  };
+  const win=(c,half)=>`${fmt((c-half+24)%24)} – ${fmt((c+half)%24)}`;
+  return [
+    {kind:'Major',time:win(transitH,1)},
+    {kind:'Major',time:win(antiH,1)},
+    {kind:'Minor',time:win(riseH,0.5)},
+    {kind:'Minor',time:win(setH,0.5)},
+  ].sort((a,b)=>a.time.localeCompare(b.time));
+}
+
+// ---------- Render ----------
+function setPanel(html){document.getElementById('panel').innerHTML=html}
+
+function render(){
+  const w=lastData, loc=lastLoc;
+  const {total,factors}=scoreCurrent(w);
+  const arc=total/100*180, rad=(180-arc)*Math.PI/180;
+  const x=100+85*Math.cos(rad), y=100-85*Math.sin(rad);
+
+  const factorHtml = factors.map(([pts,rate,name,val,note])=>`
+    <div class="factor"><span class="pip ${rate}"></span><span>${name}</span>
+    <span class="val">${val}</span><span class="sub">${note}</span></div>`).join('');
+
+  const hourlyHtml = isPro
+    ? `<div class="hourly">${(w.hourly||[]).map(h=>`
+        <div class="hour"><div class="h">${h.hour}</div><div class="t">${Math.round(h.temp_f)}°</div>
+        <div>${h.cloud_pct>50?'☁':'☀'}</div><div class="h">${Math.round(h.wind_mph)} mph</div></div>`).join('')}</div>`
+    : teaser('Unlock the hour-by-hour bite forecast','Plan your trip around the best feeding windows');
+
+  const solHtml = isPro
+    ? solunarToday().map(s=>`<div class="sol"><span class="kind"><span class="${s.kind==='Major'?'major':''}">${s.kind==='Major'?'●':'○'} ${s.kind} feed</span></span><time>${s.time}</time></div>`).join('')
+    : teaser('Unlock solunar feeding windows','Major and minor moon-driven feed times, every day');
+
+  let plannerHtml;
+  if(isPro){
+    const days=(w.daily||[]).slice(0,3);
+    const scores=days.map((d,i)=>scoreDay(d,i));
+    const best=scores.indexOf(Math.max(...scores));
+    plannerHtml = days.map((d,i)=>`
+      <div class="day ${i===best?'best':''}">
+        <div><span class="dname">${d.day}${i===best?'<span class="best-tag">BEST</span>':''}</span>
+        <div class="meta">${Math.round(d.high_f)}°/${Math.round(d.low_f)}° · ${Math.round(d.wind_mph)} mph · ${Math.round(d.precip_pct)}% rain</div></div>
+        <div></div>
+        <div class="dscore" style="border-color:${scol(scores[i])};color:${scol(scores[i])}">${scores[i]}</div>
+      </div>`).join('');
+  } else {
+    plannerHtml = teaser('Unlock the 3-day trip planner','Compare bite scores across upcoming days before you commit');
+  }
+
+  setPanel(`
+    <div class="locname">${loc.name||'Selected water'}</div>
+    <div class="coords">${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)} · ${w.summary||''}</div>
+    <div class="dial"><svg width="200" height="110" viewBox="0 0 200 110">
+      <path d="M 15 100 A 85 85 0 0 1 185 100" fill="none" stroke="rgba(143,184,173,.25)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M 15 100 A 85 85 0 0 1 ${x.toFixed(1)} ${y.toFixed(1)}" fill="none" stroke="${scol(total)}" stroke-width="10" stroke-linecap="round"/>
+    </svg></div>
+    <div class="score-num" style="color:${scol(total)}">${total}</div>
+    <div class="score-label">Bite Score / 100</div>
+    <div class="verdict">“${verdict(total)}”</div>
+    <div class="sect"><h3>Conditions</h3>${factorHtml}</div>
+    <div class="sect"><h3>Next Hours ${isPro?'':'<span class="lock">🔒</span>'}</h3>${hourlyHtml}</div>
+    <div class="sect"><h3>Today's Feeding Windows ${isPro?'':'<span class="lock">🔒</span>'}</h3>${solHtml}</div>
+    <div class="sect"><h3>3-Day Trip Planner ${isPro?'':'<span class="lock">🔒</span>'}</h3>${plannerHtml}</div>
+  `);
+}
+
+function teaser(title,sub){
+  return `<div class="teaser" onclick="openPaywall()"><b>${title}</b>${sub}</div>`;
+}
+
+// ---------- Paywall ----------
+function openPaywall(){ if(!isPro) document.getElementById('paywall').classList.add('show'); }
+function closePaywall(){ document.getElementById('paywall').classList.remove('show'); }
+function unlockPro(){
+  isPro = true;
+  closePaywall();
+  const b=document.getElementById('probtn');
+  b.textContent='✓ Pro'; b.classList.add('owned'); b.onclick=null;
+  if(lastData) render();
+}
+</script>
+</body>
+</html>
