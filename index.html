@@ -1,370 +1,788 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Willis Strategy Group — Defense BD &amp; Capture Consulting</title>
-<meta name="description" content="Independent business development and capture management consulting for defense contractors. Columbus, Georgia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0B1D33;
-  --navy:#12294A;
-  --steel:#3E5C76;
-  --slate:#8A9BB0;
-  --mist:#DCE3EC;
-  --paper:#F5F7FA;
-  --brass:#C9A227;
-  --brass-dim:#9C7F1E;
-  --max:1120px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EOA Biz Card — Share Your Card Instantly</title>
+  <meta name="description" content="EOA Biz Card shares your business card via Bluetooth and QR code, with a real visual photo of the card every time. Scan physical cards, build templates, save to Contacts or Photos — all on iPhone." />
+  <meta name="author" content="Willis Strategy" />
+  <meta property="og:title" content="EOA Biz Card — Share Your Card Instantly" />
+  <meta property="og:description" content="Share your business card via Bluetooth or QR code — every transfer includes a real visual photo of the card. No account, no server required." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:url" content="https://cwillis457.github.io/" />
+  <link rel="canonical" href="https://cwillis457.github.io/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-/* ---------- Nav ---------- */
-nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-.mark{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:110%;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
-.mark span{color:var(--brass)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--mist);text-decoration:none;font-size:.82rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
-.nav-links a:hover{color:var(--brass)}
-@media(max-width:720px){.nav-links{display:none}}
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --navy:    #0f1b3d;
+      --indigo:  #3730a3;
+      --indigo2: #4f46e5;
+      --red:     #e94560;
+      --white:   #ffffff;
+      --off:     #f7f8fc;
+      --mid:     #6b7280;
+      --dark:    #111827;
+      --card-bg: #1a1a2e;
 
-/* ---------- Hero ---------- */
-header{background:var(--ink);color:#fff;position:relative;overflow:hidden}
-header::before{content:"";position:absolute;inset:0;background:
-  linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:56px 56px;pointer-events:none}
-.hero{padding:110px 0 0;position:relative}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:22px}
-h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:75%;text-transform:uppercase;line-height:.95;font-size:clamp(2.6rem,7vw,5.2rem);letter-spacing:.01em;max-width:15ch}
-h1 em{font-style:normal;color:var(--brass)}
-.hero p{max-width:56ch;color:var(--mist);margin-top:26px;font-size:1.06rem}
-.hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
-.btn{display:inline-block;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 28px;border:1px solid var(--brass);transition:background .2s,color .2s}
-.btn-solid{background:var(--brass);color:var(--ink);font-weight:500}
-.btn-solid:hover{background:var(--brass-dim);border-color:var(--brass-dim)}
-.btn-ghost{color:var(--brass)}
-.btn-ghost:hover{background:rgba(201,162,39,.12)}
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'Inter', sans-serif;
 
-/* Lifecycle strip — signature element */
-.lifecycle{margin-top:90px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(5,1fr)}
-.gate{padding:22px 18px 30px;border-right:1px solid rgba(255,255,255,.14);position:relative}
-.gate:last-child{border-right:none}
-.gate::before{content:"";position:absolute;top:-1px;left:0;width:0;height:3px;background:var(--brass);transition:width .6s ease}
-.gate:hover::before,.gate:focus-within::before{width:100%}
-.gate .g-num{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.12em}
-.gate .g-name{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1rem;margin-top:6px;color:#fff}
-.gate .g-desc{font-size:.8rem;color:var(--slate);margin-top:6px;line-height:1.45}
-@media(max-width:860px){.lifecycle{grid-template-columns:repeat(2,1fr)}.gate{border-bottom:1px solid rgba(255,255,255,.14)}}
-@media(max-width:480px){.lifecycle{grid-template-columns:1fr}}
+      --radius: 20px;
+      --shadow: 0 24px 64px rgba(15,27,61,.18);
+    }
 
-/* ---------- Sections ---------- */
-section{padding:96px 0}
-.sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
-.sec-label b{color:var(--brass-dim);font-weight:500}
-h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.02;margin-bottom:20px}
-.lede{max-width:62ch;color:#33465e;font-size:1.05rem}
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--dark);
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* Services */
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--mist);border:1px solid var(--mist);margin-top:48px}
-.svc{background:#fff;padding:34px 28px}
-.svc h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1.05rem;margin-bottom:12px}
-.svc .cite{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.08em;display:block;margin-bottom:14px}
-.svc p{font-size:.92rem;color:#33465e}
-@media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+    /* ── Nav ─────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(55,48,163,.08);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -.01em;
+    }
+    .nav-logo span { color: var(--red); }
+    nav a.nav-link {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    nav a.nav-link:hover { color: var(--indigo); }
+    .nav-links { display: flex; gap: 32px; }
 
-/* Approach */
-#approach{background:var(--navy);color:#fff}
-#approach .sec-label{color:var(--slate)}
-#approach .sec-label b{color:var(--brass)}
-#approach .lede{color:var(--mist)}
-.approach-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.approach-item{border-left:3px solid var(--brass);padding-left:22px;margin-bottom:34px}
-.approach-item h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1rem;margin-bottom:8px}
-.approach-item p{font-size:.92rem;color:var(--mist)}
-@media(max-width:760px){.approach-cols{grid-template-columns:1fr;gap:0}}
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 5vw 80px;
+      background: linear-gradient(135deg, var(--navy) 0%, #16213e 50%, #0f3460 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(233,69,96,.18) 0%, transparent 70%);
+    }
+    .hero-inner {
+      display: flex; align-items: center; gap: 80px;
+      max-width: 1100px; width: 100%;
+      position: relative; z-index: 1;
+    }
+    .hero-text { flex: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(233,69,96,.15);
+      border: 1px solid rgba(233,69,96,.3);
+      color: var(--red);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: .5rem; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.65);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 8px 24px rgba(233,69,96,.4);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 32px rgba(233,69,96,.5); }
+    .btn-ghost {
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.2);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.15); }
 
-/* Apps */
-#apps{background:#fff;border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)}
-.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
-.app-card{border:1px solid var(--mist);background:var(--paper);padding:38px 32px;display:flex;flex-direction:column;position:relative}
-.app-card::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:3px;background:var(--brass)}
-.app-tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
-.app-card h3{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:1.4rem;margin-bottom:12px}
-.app-card p{font-size:.93rem;color:#33465e;margin-bottom:12px}
-.app-feats{list-style:none;margin:10px 0 26px;font-size:.85rem;color:#33465e}
-.app-feats li{padding:7px 0;border-bottom:1px solid var(--mist)}
-.app-feats li::before{content:"—";color:var(--brass-dim);margin-right:10px}
-.app-cta{margin-top:auto;display:flex;gap:14px;flex-wrap:wrap}
-.app-cta .btn{font-size:.75rem;padding:12px 20px;border-color:var(--ink)}
-.app-cta .btn-solid{background:var(--ink);color:#fff}
-.app-cta .btn-solid:hover{background:var(--navy);border-color:var(--navy)}
-.app-cta .btn-ghost{color:var(--ink)}
-.app-cta .btn-ghost:hover{background:rgba(11,29,51,.06)}
-@media(max-width:820px){.app-grid{grid-template-columns:1fr}}
+    /* ── Floating card mockup ────────────────────────────── */
+    .hero-card-wrap {
+      flex: 0 0 340px;
+      perspective: 900px;
+    }
+    .biz-card {
+      width: 340px;
+      aspect-ratio: 1.75;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      border-radius: 20px;
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
+      padding: 28px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transform: rotateY(-12deg) rotateX(4deg);
+      animation: float 5s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .biz-card::after {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(255,255,255,.05), transparent 70%);
+      border-radius: 50%;
+    }
+    @keyframes float {
+      0%,100% { transform: rotateY(-12deg) rotateX(4deg) translateY(0); }
+      50%      { transform: rotateY(-12deg) rotateX(4deg) translateY(-12px); }
+    }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .card-title { font-size: .7rem; color: rgba(255,255,255,.6); margin-top: 3px; }
+    .card-company { font-size: .7rem; color: var(--red); margin-top: 2px; }
+    .card-icon { font-size: 1.8rem; color: rgba(233,69,96,.7); }
+    .card-divider {
+      height: 1px;
+      background: rgba(255,255,255,.12);
+    }
+    .card-fields { display: flex; flex-direction: column; gap: 5px; }
+    .card-field { display: flex; align-items: center; gap: 7px; }
+    .card-field-icon { font-size: .65rem; color: var(--red); width: 12px; }
+    .card-field-val { font-size: .65rem; color: rgba(255,255,255,.65); }
 
-/* About */
-.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start;margin-top:24px}
-.about-facts{border:1px solid var(--mist);background:#fff}
-.fact{display:flex;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--mist);font-size:.85rem}
-.fact:last-child{border-bottom:none}
-.fact .k{font-family:'IBM Plex Mono',monospace;color:var(--slate);letter-spacing:.06em;text-transform:uppercase;font-size:.72rem;padding-top:2px}
-.fact .v{text-align:right;font-weight:500}
-@media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+    /* ── Features section ────────────────────────────────── */
+    .section {
+      padding: 100px 5vw;
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .75rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--indigo2);
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
 
-/* Contact */
-#contact{background:var(--ink);color:#fff}
-#contact .sec-label{color:var(--slate)}
-#contact .sec-label b{color:var(--brass)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:40px}
-.contact-line{font-family:'IBM Plex Mono',monospace;font-size:.95rem;color:var(--mist);margin-bottom:14px}
-.contact-line a{color:var(--brass);text-decoration:none}
-.contact-line a:hover{text-decoration:underline}
-.cform label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin:18px 0 6px}
-.cform input,.cform textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);color:#fff;padding:12px 14px;font-family:'IBM Plex Sans',sans-serif;font-size:.95rem}
-.cform input:focus,.cform textarea:focus{outline:2px solid var(--brass);outline-offset:0;border-color:var(--brass)}
-.cform textarea{min-height:130px;resize:vertical}
-.cform button{margin-top:24px;cursor:pointer;background:var(--brass);color:var(--ink);border:1px solid var(--brass);font-family:'IBM Plex Mono',monospace;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 28px;font-weight:500}
-.cform button:hover{background:var(--brass-dim);border-color:var(--brass-dim)}
-.cform .form-note{font-size:.75rem;color:var(--slate);margin-top:12px;font-family:'IBM Plex Mono',monospace}
-@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+    /* feature grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--off);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(55,48,163,.06);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--indigo), var(--indigo2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .feature-icon.red  { background: linear-gradient(135deg, #c0392b, var(--red)); }
+    .feature-icon.teal { background: linear-gradient(135deg, #0f766e, #14b8a6); }
+    .feature-icon.gold { background: linear-gradient(135deg, #92400e, #f59e0b); }
+    .feature-icon.green{ background: linear-gradient(135deg, #14532d, #22c55e); }
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      letter-spacing: -.01em;
+    }
+    .feature-desc {
+      font-size: .9rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
 
-footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,255,255,.08);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em}
-.foot-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-</style>
+    /* ── How it works ─────────────────────────────────────── */
+    .how-section { background: var(--navy); }
+    .how-section h2, .how-section .section-label { color: var(--white); }
+    .how-section .section-sub { color: rgba(255,255,255,.55); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .step {
+      background: rgba(15,27,61,.6);
+      padding: 40px 32px;
+      position: relative;
+    }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(233,69,96,.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 { color: var(--white); margin-bottom: 10px; }
+    .step p  { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+    /* ── Sharing methods ──────────────────────────────────── */
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .method-pill {
+      display: flex; align-items: center; gap: 14px;
+      padding: 20px 24px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(55,48,163,.12);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .method-pill:hover {
+      border-color: var(--indigo2);
+      box-shadow: 0 4px 20px rgba(55,48,163,.1);
+    }
+    .method-pill-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .method-pill-name {
+      font-weight: 600;
+      font-size: .9rem;
+      color: var(--navy);
+    }
+    .method-pill-sub {
+      font-size: .75rem;
+      color: var(--mid);
+      margin-top: 2px;
+    }
+
+    /* ── Compatibility ───────────────────────────────────── */
+    .compat-section { background: var(--off); }
+    .compat-row {
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .compat-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .compat-badge .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green  { background: #22c55e; }
+    .dot-blue   { background: #3b82f6; }
+    .dot-orange { background: #f97316; }
+
+    /* ── Support section ─────────────────────────────────── */
+    #support .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .support-card {
+      background: var(--off);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(55,48,163,.06);
+    }
+    .support-card h3 { margin-bottom: 12px; }
+    .support-card p {
+      font-size: .9rem;
+      color: var(--mid);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .support-card a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--indigo2);
+      text-decoration: none;
+    }
+    .support-card a:hover { text-decoration: underline; }
+
+    /* ── Privacy section ─────────────────────────────────── */
+    #privacy {
+      background: linear-gradient(135deg, var(--navy), #16213e);
+      color: var(--white);
+    }
+    #privacy h2 { color: var(--white); }
+    #privacy .section-label { color: var(--red); }
+    .privacy-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .privacy-point {
+      display: flex; gap: 16px;
+      align-items: flex-start;
+    }
+    .privacy-check {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: rgba(233,69,96,.15);
+      border: 1px solid rgba(233,69,96,.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--red);
+      font-size: .85rem;
+      margin-top: 2px;
+    }
+    .privacy-point h4 {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .privacy-point p {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 48px 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--red); }
+    footer p {
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner    { flex-direction: column; text-align: center; gap: 48px; }
+      .hero-sub      { margin: 0 auto 40px; }
+      .btn-group     { justify-content: center; }
+      .hero-card-wrap{ flex: none; width: 100%; display: flex; justify-content: center; }
+      .biz-card      { transform: rotateY(0) rotateX(0); animation: float-mobile 5s ease-in-out infinite; }
+      @keyframes float-mobile {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+      }
+      .nav-links     { display: none; }
+      footer         { flex-direction: column; text-align: center; }
+      .footer-links  { justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .biz-card { animation: none; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- ── Nav ──────────────────────────────────────────────── -->
 <nav>
-  <div class="wrap nav-inner">
-    <a class="mark" href="#top">WILLIS <span>STRATEGY</span> GROUP</a>
-    <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#apps">Apps</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <a href="#" class="nav-logo">EOA<span>.</span>BizCard</a>
+  <div class="nav-links">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#how"      class="nav-link">How it works</a>
+    <a href="#support"  class="nav-link">Support</a>
+    <a href="privacy.html" class="nav-link">Privacy</a>
   </div>
 </nav>
 
-<header id="top">
-  <div class="wrap hero">
-    <p class="eyebrow">Leader Development · Experimentation &amp; M&amp;S · Management Consulting</p>
-    <h1>Strategic insight that <em>drives results.</em></h1>
-    <p>Welcome to Willis Strategy Group — a consulting firm dedicated to developing leaders, advancing combat capability through experimentation and modeling &amp; simulation, and helping organizations thrive in today's competitive landscape. We tailor strategies to the unique needs of each client, with a focus on sustainable growth and long-term success.</p>
-    <div class="hero-cta">
-      <a class="btn btn-solid" href="#contact">Start a Conversation</a>
-      <a class="btn btn-ghost" href="#services">View Services</a>
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Available on iPhone</div>
+      <h1>Share your card.<br><em>Instantly.</em></h1>
+      <p class="hero-sub">
+        EOA Biz Card replaces the paper handshake. Every card transfer — Bluetooth or QR code — includes a real visual photo of your card. No account. No server. Your data never leaves your device.
+      </p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-primary">⬇ Download on the App Store</a>
+        <a href="#features" class="btn btn-ghost">See features</a>
+      </div>
     </div>
-  </div>
-  <div class="wrap">
-    <div class="lifecycle" aria-label="Engagement methodology">
-      <div class="gate"><div class="g-num">PHASE 1</div><div class="g-name">Assess</div><div class="g-desc">Understand the leader, the organization, or the capability gap — before prescribing anything.</div></div>
-      <div class="gate"><div class="g-num">PHASE 2</div><div class="g-name">Design</div><div class="g-desc">Tailored development plans, experiment designs, and strategies built to the client's need.</div></div>
-      <div class="gate"><div class="g-num">PHASE 3</div><div class="g-name">Experiment</div><div class="g-desc">Test in live, virtual, and constructive environments — Battle Lab methodology, applied.</div></div>
-      <div class="gate"><div class="g-num">PHASE 4</div><div class="g-name">Validate</div><div class="g-desc">Measure against objective criteria. Data over opinion, evidence over enthusiasm.</div></div>
-      <div class="gate"><div class="g-num">PHASE 5</div><div class="g-name">Deliver</div><div class="g-desc">Leaders developed, capabilities fielded, decisions informed — results that endure.</div></div>
-    </div>
-  </div>
-</header>
 
-<section id="services">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 01</b> — Services</p>
-    <h2>What We Deliver</h2>
-    <p class="lede">At Willis Strategy Group, we are committed to delivering exceptional leader development, experimentation, and management consulting services. We excel in tailoring strategies to meet the unique needs of each client — partner with us for innovative solutions and strategic insights that drive results.</p>
-    <div class="svc-grid">
-      <div class="svc">
-        <h3>Leadership Coaching &amp; Leader Development</h3>
-        <span class="cite">EXECUTIVE · TEAM · ORGANIZATIONAL</span>
-        <p>Leadership coaching and development grounded in 35 years of leading organizations from platoon to division, backed by a Master of Science in Leader Development. We grow leaders who grow organizations.</p>
-      </div>
-      <div class="svc">
-        <h3>Experimentation &amp; M&amp;S</h3>
-        <span class="cite">CMSP · BATTLE LAB METHODOLOGY</span>
-        <p>Design and advisory support for combat capability experimentation and modeling &amp; simulation — live, virtual, and constructive — led by a Certified Modeling and Simulation Professional with Battle Lab directorship experience.</p>
-      </div>
-      <div class="svc">
-        <h3>Combat Capability Development</h3>
-        <span class="cite">MANEUVER FORCE · REQUIREMENTS</span>
-        <p>Advising on capability development for the maneuver force — Infantry, Armor, and unmanned systems — informed by a decade delivering combat capabilities at Fort Benning's MFCD and Maneuver Battle Lab.</p>
-      </div>
-      <div class="svc">
-        <h3>Management Consulting</h3>
-        <span class="cite">STRATEGY · GROWTH · OPERATIONS</span>
-        <p>Management consulting focused on sustainable growth and long-term success — organizational strategy, operational excellence, and tailored solutions for each client's competitive landscape.</p>
-      </div>
-      <div class="svc">
-        <h3>iOS Apps — EOA</h3>
-        <span class="cite">EVERY OUNCE OF ADVANTAGE</span>
-        <p>Privacy-first iOS apps designed and built in-house under the EOA brand — no accounts, no tracking, everything on your device. See the Products section below.</p>
-      </div>
-      <div class="svc">
-        <h3>Defense Business Support</h3>
-        <span class="cite">BD ADVISORY · FAR / OCI AWARE</span>
-        <p>Selective business development advisory for defense clients, with engagements structured for FAR allowability, OCI screening, and audit-ready documentation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="approach">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 02</b> — Approach</p>
-    <h2>How We Work</h2>
-    <p class="lede">Most consultants sell frameworks. We sell discipline — the kind forged leading soldiers and proven running experiments where the results had to hold up.</p>
-    <div class="approach-cols">
-      <div>
-        <div class="approach-item">
-          <h3>Leaders first</h3>
-          <p>Every organizational problem is ultimately a leadership problem. We develop the leader before we redesign the org chart — coaching built on 35 years of leading at every echelon.</p>
+    <div class="hero-card-wrap">
+      <div class="biz-card">
+        <div class="card-top">
+          <div>
+            <div class="card-name">Your Name</div>
+            <div class="card-title">Your Title</div>
+            <div class="card-company">Your Company</div>
+          </div>
+          <div class="card-icon">📡</div>
         </div>
-        <div class="approach-item">
-          <h3>Experiment, don't speculate</h3>
-          <p>Battle Lab methodology applied to your questions: structured hypotheses, live-virtual-constructive environments, and objective measures — data over opinion, evidence over enthusiasm.</p>
-        </div>
-      </div>
-      <div>
-        <div class="approach-item">
-          <h3>Tailored, not templated</h3>
-          <p>No two clients get the same plan. Strategies are built to your unique needs, your culture, and your definition of long-term success.</p>
-        </div>
-        <div class="approach-item">
-          <h3>Clean by design</h3>
-          <p>Engagements structured with OCI screening and compliance-aware documentation from day one — so the work stands up to any scrutiny, always.</p>
+        <div class="card-divider"></div>
+        <div class="card-fields">
+          <div class="card-field">
+            <span class="card-field-icon">✉</span>
+            <span class="card-field-val">you@example.com</span>
+          </div>
+          <div class="card-field">
+            <span class="card-field-icon">📞</span>
+            <span class="card-field-val">+1 (555) 000-0000</span>
+          </div>
+          <div class="card-field">
+            <span class="card-field-icon">🌐</span>
+            <span class="card-field-val">www.example.com</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="apps">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 03</b> — Products</p>
-    <h2>EOA — Every Ounce of Advantage</h2>
-    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="https://cwillis457.github.io/index.html" target="_blank" rel="noopener" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
-    <div class="app-grid">
-      <div class="app-card">
-        <p class="app-tag">iOS · iPhone · No Account Required</p>
-        <h3>EOA Biz Card</h3>
-        <p>Replaces the paper handshake. Share your business card via Bluetooth or QR code straight from your iPhone — the other person doesn't need the app.</p>
-        <ul class="app-feats">
-          <li>Bluetooth LE sharing, iPhone to iPhone</li>
-          <li>QR code readable by any phone camera</li>
-          <li>Scan physical cards with on-device text recognition</li>
-          <li>Custom card templates — colors, layouts, your logo</li>
-          <li>Save received cards to Contacts, Photos, or in-app</li>
-          <li>Zero analytics, zero tracking — data never leaves your device</li>
-        </ul>
-        <div class="app-cta">
-          <a class="btn btn-solid" href="https://cwillis457.github.io/EOABizCard" target="_blank" rel="noopener">Learn More</a>
+<!-- ── Features ──────────────────────────────────────────── -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">What it does</div>
+    <h2>Everything a business card<br>should be able to do.</h2>
+    <p class="section-sub">
+      One app for sharing, receiving, scanning, and designing business cards —
+      no paper, no apps required on the other end.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📡</div>
+        <h3>Bluetooth Sharing</h3>
+        <p class="feature-desc">Broadcast your card to nearby iPhones instantly. Every Bluetooth transfer includes a real visual photo of your card bundled with the contact data — not just plain text fields.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon red">📤</div>
+        <h3>AirDrop, Email &amp; Messages</h3>
+        <p class="feature-desc">Send your card photo and contact file together via AirDrop, Messages, or Email. The recipient gets the actual card image plus a .vcf they can tap to save — no app required on their end.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon teal">⬛</div>
+        <h3>QR Code</h3>
+        <p class="feature-desc">Display a QR code that any phone camera can scan. Works with any device that has a camera.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon gold">📷</div>
+        <h3>Scan Physical Cards</h3>
+        <p class="feature-desc">Point the camera at any physical business card. On-device text recognition reads the text and populates contact fields — all processed locally, no internet needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon green">🎨</div>
+        <h3>Card Templates</h3>
+        <p class="feature-desc">Design a digital business card in your style. Choose colors and layouts, upload your own logo or background photo, and export for printing or sharing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Save Anywhere You Want</h3>
+        <p class="feature-desc">Received a card? Choose where it goes — Contacts, Photos, EOA Biz Card's own permanent file system, or all at once. Contacts are updated instead of duplicated when someone re-shares.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How it works ───────────────────────────────────────── -->
+<section class="section how-section" id="how">
+  <div class="section-inner">
+    <div class="section-label">How it works</div>
+    <h2>Your card in three taps.</h2>
+    <p class="section-sub">
+      Set up once. Share anywhere, with anyone.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Enter your details</h3>
+        <p>Fill in your name, title, company, email, phone, website, and LinkedIn once. It's saved to your device.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Choose how to share</h3>
+        <p>Bluetooth for nearby iPhones (card photo included automatically), QR code for anyone with a camera, or the share sheet — which sends the card photo plus a contact file together.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>They choose where it goes</h3>
+        <p>The other person receives a visual photo of your card plus your contact data — they pick where it saves: Contacts, Photos, the app's permanent file system, or all of the above.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Scan cards you receive</h3>
+        <p>Got a physical card? Photograph it and the app reads the details automatically. Every scan is saved permanently with its photo to Scan History — even if you don't immediately save to Contacts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Sharing methods ────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Sharing methods</div>
+    <h2>Works with every device.</h2>
+    <p class="section-sub">Every method delivers a real photo of your card alongside the contact data. No app required on the receiving end for QR code or the share sheet.</p>
+
+    <div class="methods-grid">
+      <div class="method-pill">
+        <div class="method-pill-icon">📡</div>
+        <div>
+          <div class="method-pill-name">Bluetooth LE</div>
+          <div class="method-pill-sub">iPhone → iPhone</div>
         </div>
       </div>
-      <div class="app-card">
-        <p class="app-tag">iOS · iPhone · Free + One-Time Pro Upgrade</p>
-        <h3>EOA Golf Score</h3>
-        <p>Every local course, three ways to find the pin. Six Columbus-area courses built in with full scorecards — plus GPS, satellite, and camera rangefinding.</p>
-        <ul class="app-feats">
-          <li>Editable hole-by-hole scorecards that save on-device</li>
-          <li>Free GPS distance to pins you've marked</li>
-          <li>Satellite &amp; camera rangefinders with EOA Golf Pro ($5.99, one-time)</li>
-          <li>4-player group scoring with Pro</li>
-          <li>Scan any paper scorecard to add a course anywhere</li>
-          <li>No login, no internet needed on the course</li>
-        </ul>
-        <div class="app-cta">
-          <a class="btn btn-solid" href="https://cwillis457.github.io/EOAGolfScore" target="_blank" rel="noopener">Learn More</a>
+      <div class="method-pill">
+        <div class="method-pill-icon">⬛</div>
+        <div>
+          <div class="method-pill-name">QR Code</div>
+          <div class="method-pill-sub">Any phone camera</div>
+        </div>
+      </div>
+      <div class="method-pill">
+        <div class="method-pill-icon">📤</div>
+        <div>
+          <div class="method-pill-name">Share Sheet</div>
+          <div class="method-pill-sub">AirDrop, Email, Messages</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 04</b> — About</p>
-    <h2>Willis Strategy Group</h2>
-    <div class="about-grid">
-      <div>
-        <p class="lede" style="margin-bottom:18px">Colonel (Retired) Chris Willis brings more than 35 years of combined leadership and management experience. A 1991 graduate of West Point, Chris spent 25 years as a US Army Infantry officer — including tours in Afghanistan, Iraq, and Korea — leading organizations to the highest levels of excellence from platoon to division.</p>
-        <p class="lede" style="margin-bottom:18px">Chris then spent 10 years as a Department of the Army Civilian delivering combat capabilities to the US Army Maneuver Force — Infantry, Armor, and unmanned systems — as Director of the Maneuver Battle Lab (MBL) and Deputy Director of the Maneuver Force Capability Development (MFCD) at Fort Benning, Georgia.</p>
-        <p class="lede" style="margin-bottom:18px">His experience, Master of Science in Leader Development, and status as a Certified Modeling and Simulation Professional (CMSP) give him the unique ability to conduct leadership coaching, advise on combat capability development, and advise on combat capability experimentation.</p>
-        <p class="lede">Under the EOA brand, the firm also designs and ships privacy-first iOS apps — the same discipline, applied to software: no accounts, no tracking, no data leaving your device.</p>
+<!-- ── Compatibility ──────────────────────────────────────── -->
+<section class="section compat-section">
+  <div class="section-inner">
+    <div class="section-label">Compatibility</div>
+    <h2>Requirements</h2>
+    <p class="section-sub">EOA Biz Card runs on iPhone with iOS 18 or later.</p>
+    <div class="compat-row">
+      <div class="compat-badge"><span class="dot dot-green"></span>iOS 18.0 or later</div>
+      <div class="compat-badge"><span class="dot dot-blue"></span>Any iPhone for Bluetooth &amp; QR</div>
+      <div class="compat-badge"><span class="dot dot-orange"></span>No account required</div>
+      <div class="compat-badge"><span class="dot dot-green"></span>No account or sign-in required</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Support ────────────────────────────────────────────── -->
+<section class="section" id="support">
+  <div class="section-inner">
+    <div class="section-label">Support</div>
+    <h2>Need help?</h2>
+    <p class="section-sub">Common questions and how to get in touch.</p>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <h3>Bluetooth not working</h3>
+        <p>Make sure Bluetooth is enabled in Settings. On iOS 16 and later, you may also need to enable Developer Mode under Settings → Privacy &amp; Security. Both devices must have Bluetooth on and be within range.</p>
       </div>
-      <div class="about-facts">
-        <div class="fact"><span class="k">Principal</span><span class="v">COL (Ret) Chris Willis</span></div>
-        <div class="fact"><span class="k">Commissioned</span><span class="v">West Point, 1991</span></div>
-        <div class="fact"><span class="k">Service</span><span class="v">25 Yrs US Army Infantry</span></div>
-        <div class="fact"><span class="k">Deployments</span><span class="v">Afghanistan · Iraq · Korea</span></div>
-        <div class="fact"><span class="k">DAC Service</span><span class="v">10 Yrs · MBL Dir · MFCD Dep Dir</span></div>
-        <div class="fact"><span class="k">Credentials</span><span class="v">MS Leader Development · CMSP</span></div>
-        <div class="fact"><span class="k">Base</span><span class="v">Columbus, GA</span></div>
-        <div class="fact"><span class="k">Products</span><span class="v">EOA Biz Card · EOA Golf Score</span></div>
+      <div class="support-card">
+        <h3>QR code not scanning</h3>
+        <p>Make sure the QR code is well-lit and fully visible on screen. Most camera apps will recognize it automatically — no need to tap the shutter button.</p>
+      </div>
+      <div class="support-card">
+        <h3>Does the share sheet send the card photo?</h3>
+        <p>Yes. When you share via AirDrop, Messages, or Email, EOA Biz Card attaches both a visual photo of your card and a .vcf contact file. The photo shows exactly how your card is designed — the recipient sees the real card, not just text.</p>
+      </div>
+      <div class="support-card">
+        <h3>Card scan missed some fields</h3>
+        <p>Lay the card flat on a dark, contrasting surface in good light. After scanning, all fields are editable in the review screen before saving — just correct anything the scan missed.</p>
+      </div>
+      <div class="support-card">
+        <h3>Contact not saving</h3>
+        <p>Go to Settings → Privacy &amp; Security → Contacts and make sure EOA Biz Card has permission. If it was denied, tap the toggle to allow access, then try saving again. Note that saving updates an existing contact if that person is already in your Contacts, rather than creating a duplicate.</p>
+      </div>
+      <div class="support-card">
+        <h3>Why doesn't Apple Wallet work?</h3>
+        <p>Adding a pass to Apple Wallet requires a certificate that only Apple issues directly to developers, plus a signing step this app doesn't perform. The Wallet option is shown honestly with this explanation rather than pretending it works — your other selected save destinations (Contacts, Photos, In the App) all save normally regardless.</p>
+      </div>
+      <div class="support-card">
+        <h3>Contact us</h3>
+        <p>For anything not covered here, reach out directly. We respond within one business day.</p>
+        <a href="mailto:WillisStrategy@outlook.com">WillisStrategy@outlook.com</a>
+      </div>
+      <div class="support-card">
+        <h3>Where are my received cards stored?</h3>
+        <p>All received cards and scanned cards are stored privately on your iPhone in the app's own folder — never on a server. Every card has a real visual photo of the business card saved alongside its data. Cards survive app restarts and updates. You can delete individual cards or clear all at any time.</p>
+      </div>
+      <div class="support-card">
+        <h3>App version &amp; updates</h3>
+        <p>Check the App Store for the latest version of EOA Biz Card. Updates are free and will add new features and fixes over time.</p>
+        <a href="#">View on App Store →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 05</b> — Contact</p>
-    <h2>Start the Conversation</h2>
-    <div class="contact-grid">
-      <div>
-        <p style="color:var(--mist);max-width:48ch;margin-bottom:28px">Initial consultations are no-cost and no-obligation. Tell us about the pursuit, the capability, or the problem — we'll tell you honestly whether we can move the needle.</p>
-        <p class="contact-line">EMAIL &nbsp;<a href="mailto:ChrisWillis@willis-strategy.com">ChrisWillis@willis-strategy.com</a></p>
-        <p class="contact-line">LOCATION &nbsp;Columbus, Georgia</p>
-        <p class="contact-line" style="color:var(--slate);font-size:.78rem;line-height:1.7;margin-top:28px">TYPICAL RESPONSE — 1 BUSINESS DAY<br>NDA AVAILABLE ON REQUEST<br>OCI SCREENING PERFORMED PRIOR TO ENGAGEMENT</p>
+<!-- ── Privacy ────────────────────────────────────────────── -->
+<section class="section" id="privacy">
+  <div class="section-inner">
+    <div class="section-label">Privacy Policy</div>
+    <h2>Your data stays on your device.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.55)">
+      EOA Biz Card does not collect, transmit, or store any personal data on external servers.
+      Everything lives on your iPhone.
+    </p>
+
+    <div class="privacy-points">
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No server, no account</h4>
+          <p>Your business card details are stored only in your iPhone's local storage. No account is required and no sign-in is needed.</p>
+        </div>
       </div>
-      <div>
-        <form class="cform" id="contactForm">
-          <label for="cf-name">Name</label>
-          <input id="cf-name" name="name" type="text" autocomplete="name" required>
-          <label for="cf-email">Email</label>
-          <input id="cf-email" name="email" type="email" autocomplete="email" required>
-          <label for="cf-org">Organization</label>
-          <input id="cf-org" name="org" type="text" autocomplete="organization">
-          <label for="cf-msg">Message</label>
-          <textarea id="cf-msg" name="message" required></textarea>
-          <button type="submit">Send Message</button>
-          <p class="form-note">Opens your email app addressed to ChrisWillis@willis-strategy.com</p>
-        </form>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Bluetooth data stays local</h4>
+          <p>When you share via Bluetooth, your card data and card photo are transmitted directly device-to-device. No data passes through any server or third party. The photo is generated on your device and sent only to the person you're sharing with.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Camera used only on request</h4>
+          <p>The camera is only accessed when you actively tap Scan Card. Images are processed entirely on-device using Apple's Vision framework. Every scan is stored in your on-device Scan History. Images are only added to your Photos library if you specifically choose that option — never automatically.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Contacts permission is optional</h4>
+          <p>Contacts access is only requested when you choose to save a received card. The app reads nothing from your existing contacts.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Photos access is add-only</h4>
+          <p>If you choose to save a card image to Photos, the app requests permission to add photos only — it can never browse, read, or access your existing photo library.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No analytics or tracking</h4>
+          <p>EOA Biz Card contains no analytics SDKs, no advertising SDKs, and no third-party tracking of any kind.</p>
+        </div>
       </div>
     </div>
+
+    <p style="margin-top:48px; font-size:.85rem; color:rgba(255,255,255,.35); max-width:600px;">
+      Last updated: June 2026. This policy applies to EOA Biz Card for iOS, version 1.0 and later. EOA Biz Card does not collect, transmit, sell, or share any personal data with third parties. No data retention policy is needed because no data is collected.
+      For questions, contact <a href="mailto:WillisStrategy@outlook.com" style="color:rgba(255,255,255,.5)">WillisStrategy@outlook.com</a>.
+    </p>
   </div>
 </section>
 
+<!-- ── Footer ─────────────────────────────────────────────── -->
 <footer>
-  <div class="wrap foot-inner">
-    <span>© 2026 WILLIS STRATEGY GROUP, LLC · COLUMBUS, GA</span>
-    <span>LEADER DEVELOPMENT · EXPERIMENTATION &amp; M&amp;S · EOA APPS FOR iOS</span>
+  <a href="#" class="footer-logo">EOA<span>.</span>BizCard</a>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#support">Support</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:WillisStrategy@outlook.com">Contact</a>
   </div>
+  <p>© 2026 EOA Biz Card by Willis Strategy. All rights reserved.<br><span style="font-size:.72rem;color:rgba(255,255,255,.25)">Apple, iPhone, and Bluetooth are trademarks of their respective owners. EOA Biz Card is not affiliated with Apple Inc.</span></p>
 </footer>
 
-<script>
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  var n=document.getElementById('cf-name').value.trim();
-  var em=document.getElementById('cf-email').value.trim();
-  var o=document.getElementById('cf-org').value.trim();
-  var m=document.getElementById('cf-msg').value.trim();
-  var subject='Website Inquiry — '+n+(o?' ('+o+')':'');
-  var body='Name: '+n+'\nEmail: '+em+(o?'\nOrganization: '+o:'')+'\n\n'+m;
-  window.location.href='mailto:ChrisWillis@willis-strategy.com?subject='
-    +encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-});
-</script>
+  <!-- Legal disclaimer -->
+  <div style="background:#0a0a0a;padding:20px 5vw;text-align:center;">
+    <p style="font-size:.72rem;color:rgba(255,255,255,.25);max-width:800px;margin:0 auto;line-height:1.6;">
+      Apple, iPhone, iOS, Bluetooth, AirDrop, Apple Wallet, and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+      App Store is a service mark of Apple Inc. EOA Biz Card is an independent application and is not affiliated with, endorsed by, or sponsored by Apple Inc. All other trademarks are the property of their respective owners.
+    </p>
+  </div>
+
 </body>
 </html>

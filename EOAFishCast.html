@@ -1,359 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EOA FishCast — Bite Forecast</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<style>
-  :root{
-    --deep:#0b2e33; --mid:#134b52; --shallow:#1f6f74;
-    --foam:#e9f4ef; --sand:#d9c9a3; --lure:#e8743b;
-    --line:#8fb8ad; --ink:#0a2226;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Georgia,'Times New Roman',serif;background:var(--deep);color:var(--foam);min-height:100vh}
-  header{padding:14px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(143,184,173,.25);flex-wrap:wrap}
-  header h1{font-size:22px;font-weight:normal;white-space:nowrap}
-  header h1 b{color:var(--lure)}
-  .searchwrap{flex:1;min-width:220px;position:relative}
-  .searchwrap input{
-    width:100%;padding:9px 12px 9px 34px;background:rgba(233,244,239,.08);
-    border:1px solid rgba(143,184,173,.35);color:var(--foam);
-    font-family:'Courier New',monospace;font-size:13px;border-radius:8px;outline:none;
-  }
-  .searchwrap input::placeholder{color:var(--line)}
-  .searchwrap input:focus{border-color:var(--lure)}
-  .searchwrap .icon{position:absolute;left:11px;top:9px;color:var(--line);font-size:14px}
-  .probtn{
-    padding:8px 16px;background:var(--lure);border:none;color:var(--ink);
-    font-family:'Courier New',monospace;font-size:12px;letter-spacing:.08em;
-    font-weight:bold;cursor:pointer;border-radius:8px;text-transform:uppercase;
-  }
-  .probtn.owned{background:transparent;border:1px solid var(--line);color:var(--line);cursor:default}
-  .wrap{display:grid;grid-template-columns:1fr 400px;height:calc(100vh - 63px)}
-  .mapcol{position:relative}
-  #map{height:100%;filter:saturate(.85)}
-  .zoomctl{
-    position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:1000;
-    display:flex;flex-direction:column;background:rgba(10,34,38,.85);
-    border:1px solid rgba(143,184,173,.35);border-radius:10px;overflow:hidden;
-  }
-  .zoomctl button{
-    width:42px;height:42px;background:none;border:none;color:var(--foam);
-    font-size:20px;cursor:pointer;font-family:Georgia,serif;
-  }
-  .zoomctl button:hover{background:rgba(232,116,59,.25)}
-  .zoomctl button:first-child{border-bottom:1px solid rgba(143,184,173,.25)}
-  .panel{background:linear-gradient(180deg,var(--mid),var(--deep));border-left:1px solid rgba(143,184,173,.25);padding:20px;overflow-y:auto}
-  .hint{color:var(--line);font-size:14px;line-height:1.6}
-  .hint .cast{color:var(--lure);font-family:'Courier New',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px}
-  .mono{font-family:'Courier New',monospace}
-  .dial{position:relative;width:200px;height:110px;margin:6px auto 0;overflow:hidden}
-  .score-num{text-align:center;font-size:42px;line-height:1;margin-top:-50px;position:relative}
-  .score-label{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--line);margin-top:4px}
-  .verdict{text-align:center;font-size:18px;color:var(--sand);margin:12px 0 2px;font-style:italic}
-  .locname{font-size:15px}
-  .coords{font-family:'Courier New',monospace;font-size:11px;color:var(--line);margin-bottom:8px}
-  .sect{margin-top:22px}
-  .sect h3{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--line);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-  .lock{color:var(--lure);font-size:13px}
-  .factor{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:9px 0;border-bottom:1px dashed rgba(143,184,173,.22);font-size:14px}
-  .factor .val{font-family:'Courier New',monospace;font-size:12px;color:var(--sand);text-align:right}
-  .factor .sub{font-size:12px;color:var(--line);grid-column:2/4;line-height:1.4}
-  .pip{width:9px;height:9px;border-radius:50%;justify-self:center}
-  .good{background:#7fc98f}.ok{background:#d9c25e}.bad{background:#d1603d}
-  .hourly{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
-  .hour{min-width:58px;text-align:center;background:rgba(233,244,239,.06);border:1px solid rgba(143,184,173,.2);border-radius:8px;padding:8px 4px;font-size:12px}
-  .hour .t{font-size:15px;color:var(--sand)}
-  .hour .h{color:var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
-  .sol{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;border-bottom:1px dashed rgba(143,184,173,.22)}
-  .sol .kind{display:flex;gap:8px;align-items:center}
-  .sol .major{color:var(--lure);font-weight:bold}
-  .sol time{font-family:'Courier New',monospace;font-size:12px;color:var(--sand)}
-  .day{background:rgba(233,244,239,.05);border:1px solid rgba(143,184,173,.25);border-radius:12px;padding:12px 14px;margin-bottom:10px;display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center}
-  .day.best{border-color:#7fc98f}
-  .day .dname{font-weight:bold;font-size:14px}
-  .day .best-tag{display:inline-block;font-size:9px;letter-spacing:.1em;background:#7fc98f;color:var(--ink);padding:2px 6px;border-radius:20px;font-family:'Courier New',monospace;margin-left:6px;vertical-align:middle}
-  .day .meta{font-size:11px;color:var(--line);font-family:'Courier New',monospace;margin-top:2px}
-  .day .dscore{width:42px;height:42px;border-radius:50%;border:3px solid;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-weight:bold;font-size:15px}
-  .teaser{
-    background:rgba(233,244,239,.05);border:1px dashed rgba(232,116,59,.5);border-radius:12px;
-    padding:14px;text-align:center;font-size:13px;color:var(--line);cursor:pointer;line-height:1.5;
-  }
-  .teaser b{color:var(--foam);display:block;margin-bottom:2px}
-  .teaser:hover{border-color:var(--lure)}
-  .loading{color:var(--line);font-size:14px;margin-top:14px}
-  .bobber{display:inline-block;animation:bob 1.2s ease-in-out infinite;color:var(--lure)}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-  .err{color:#d1603d;font-size:13px;margin-top:12px;line-height:1.5}
-  /* Paywall modal */
-  .modal-bg{position:fixed;inset:0;background:rgba(10,34,38,.85);display:none;align-items:center;justify-content:center;z-index:2000}
-  .modal-bg.show{display:flex}
-  .modal{background:var(--mid);border:1px solid rgba(143,184,173,.35);border-radius:16px;padding:28px;max-width:380px;width:92%;text-align:center}
-  .modal h2{font-size:24px;margin-bottom:16px}
-  .modal .feat{text-align:left;font-size:14px;margin:10px 0;display:flex;gap:10px;line-height:1.4}
-  .modal .feat span{color:var(--lure)}
-  .modal .buy{width:100%;margin-top:18px;padding:13px;background:var(--lure);border:none;color:var(--ink);font-weight:bold;font-size:15px;border-radius:10px;cursor:pointer;font-family:Georgia,serif}
-  .modal .fine{font-size:11px;color:var(--line);margin-top:10px}
-  .modal .close{background:none;border:none;color:var(--line);margin-top:14px;cursor:pointer;font-size:13px;text-decoration:underline;font-family:Georgia,serif}
-  @media (max-width:860px){
-    .wrap{grid-template-columns:1fr;grid-template-rows:42vh 1fr;height:auto}
-    #map{height:42vh}
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EOA Fish Cast — Fishing Log & Spot Tracker for iPhone</title>
+  <meta name="description" content="EOA Fish Cast logs every catch with GPS, photo, and conditions. Save fishing spots, track personal records, and review trip history — all on your iPhone. No account, no internet required on the water." />
+  <meta name="author" content="Willis Strategy" />
+  <meta property="og:title" content="EOA Fish Cast — Fishing Log & Spot Tracker" />
+  <meta property="og:description" content="Log catches, save spots, track records — all on your iPhone. No account. No server. Works offline. Free + optional $2.99 Pro." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cwillis457.github.io/EOAFishCast.html" />
+  <link rel="canonical" href="https://cwillis457.github.io/EOAFishCast.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --teal:    #0f4c4c;
+      --teal2:   #0d7377;
+      --green:   #14a085;
+      --gold:    #e8a020;
+      --white:   #ffffff;
+      --off:     #f3f9f8;
+      --mid:     #6b7280;
+      --dark:    #111827;
+      --card-bg: #0a2020;
+
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --radius: 20px;
+      --shadow: 0 24px 64px rgba(15,76,76,.18);
+    }
+
+    body { font-family: var(--font-body); background: var(--white); color: var(--dark); -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 64px;
+      background: rgba(255,255,255,.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(13,115,119,.1);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--teal); text-decoration: none; letter-spacing: -.01em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--mid); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal2); }
+    .nav-cta { background: var(--teal2); color: #fff; padding: .45rem 1.2rem; border-radius: 99px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: opacity .2s; }
+    .nav-cta:hover { opacity: .85; }
+
+    /* Hero */
+    .hero {
+      min-height: 96vh; display: flex; align-items: center;
+      background: linear-gradient(150deg, var(--teal) 0%, #0a2a2a 55%, #061818 100%);
+      padding: 7rem 5vw 5rem; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(13,115,119,.25) 0%, transparent 70%);
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+    .hero-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; color: var(--gold); margin-bottom: 1rem; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem,4.5vw,3.8rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1.25rem; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 2rem; max-width: 480px; }
+    .hero-badges { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .badge { font-size: .72rem; font-weight: 600; letter-spacing: .06em; padding: .3rem .85rem; border-radius: 99px; }
+    .badge-free  { background: rgba(20,160,133,.2); color: #5eead4; border: 1px solid rgba(20,160,133,.3); }
+    .badge-pro   { background: rgba(232,160,32,.2); color: #fbbf24; border: 1px solid rgba(232,160,32,.3); }
+    .badge-priv  { background: rgba(255,255,255,.07); color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.12); }
+    .hero-btns { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; background: var(--gold); color: #fff; font-weight: 700; font-size: .95rem; padding: .85rem 2rem; border-radius: 14px; text-decoration: none; transition: filter .2s; }
+    .btn-primary:hover { filter: brightness(1.1); }
+    .btn-ghost { font-size: .9rem; color: rgba(255,255,255,.55); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .btn-ghost:hover { color: #fff; }
+
+    /* Card mockup */
+    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .phone-shell {
+      width: 260px; height: 520px;
+      background: linear-gradient(160deg, #1a3a3a, #0a1f1f);
+      border-radius: 40px; border: 2px solid rgba(255,255,255,.1);
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
+      overflow: hidden; padding: 16px;
+    }
+    .phone-screen { background: #061616; border-radius: 28px; height: 100%; overflow: hidden; }
+    .phone-header { background: linear-gradient(135deg, #0d7377, #0f4c4c); padding: 16px 14px 12px; }
+    .phone-app-name { font-family: var(--font-display); font-size: .85rem; color: #fff; margin-bottom: 4px; }
+    .phone-subtitle { font-size: .65rem; color: rgba(255,255,255,.5); }
+    .catch-cards { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+    .catch-card { background: #0f2a2a; border-radius: 12px; padding: 10px 12px; border: 1px solid rgba(13,115,119,.25); }
+    .catch-species { font-size: .75rem; font-weight: 700; color: #5eead4; margin-bottom: 2px; }
+    .catch-stats { font-size: .62rem; color: rgba(255,255,255,.5); }
+    .catch-weight { font-size: .7rem; font-weight: 600; color: var(--gold); float: right; }
+    .spot-bar { margin: 4px 10px; background: rgba(232,160,32,.12); border-radius: 8px; padding: 7px 10px; }
+    .spot-label { font-size: .62rem; color: var(--gold); font-weight: 600; }
+    .spot-name { font-size: .68rem; color: rgba(255,255,255,.7); }
+
+    /* Sections */
+    .section { padding: 6rem 5vw; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--teal2); margin-bottom: .75rem; }
+    .section-label.gold { color: var(--gold); }
+    h2 { font-family: var(--font-display); font-size: clamp(1.8rem,3.2vw,2.6rem); font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--mid); max-width: 580px; line-height: 1.7; margin-bottom: 3rem; }
+    .section-sub.wide { max-width: 100%; }
+
+    /* Feature grid */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .feature-card { background: var(--off); border-radius: var(--radius); padding: 2rem; border: 1px solid rgba(13,115,119,.08); transition: transform .2s, box-shadow .2s; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; color: var(--dark); }
+    .feature-desc { font-size: .88rem; color: var(--mid); line-height: 1.65; }
+    .pro-tag { display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .06em; background: linear-gradient(90deg, var(--teal2), var(--green)); color: #fff; padding: 2px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; }
+
+    /* How it works */
+    .how-section { background: linear-gradient(160deg, var(--teal) 0%, #0a2828 100%); color: #fff; }
+    .how-section h2 { color: #fff; }
+    .how-section .section-sub { color: rgba(255,255,255,.6); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 2rem; }
+    .step { }
+    .step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: rgba(20,160,133,.3); line-height: 1; margin-bottom: .5rem; }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .4rem; color: #fff; }
+    .step p { font-size: .88rem; color: rgba(255,255,255,.55); line-height: 1.65; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 760px; margin: 3rem auto 0; }
+    .plan { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 24px; padding: 2.5rem 2rem; }
+    .plan.pro-plan { background: linear-gradient(160deg, rgba(13,115,119,.25), rgba(20,160,133,.12)); border-color: rgba(13,115,119,.4); position: relative; }
+    .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--teal2), var(--green)); color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .08em; padding: 5px 18px; border-radius: 99px; white-space: nowrap; }
+    .plan-tier { font-size: .75rem; font-weight: 700; letter-spacing: .1em; margin-bottom: .5rem; }
+    .plan.free-plan .plan-tier { color: rgba(255,255,255,.5); }
+    .plan.pro-plan .plan-tier { color: var(--green); }
+    .plan-price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: #fff; margin-bottom: .25rem; }
+    .plan-cycle { font-size: .82rem; color: rgba(255,255,255,.4); margin-bottom: 2rem; }
+    .plan ul { list-style: none; display: flex; flex-direction: column; gap: .75rem; font-size: .9rem; color: rgba(255,255,255,.75); }
+    .plan ul li::before { content: '✓  '; color: var(--green); font-weight: 700; }
+    .plan.pro-plan ul li { color: rgba(180,255,220,.85); }
+
+    /* Privacy */
+    .privacy-section { background: linear-gradient(160deg, #0a1a1a 0%, var(--teal) 100%); color: #fff; }
+    .privacy-section h2 { color: #fff; }
+    .privacy-section .section-sub { color: rgba(255,255,255,.6); }
+    .privacy-points { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    .privacy-point { display: flex; gap: 1rem; align-items: flex-start; }
+    .privacy-check { width: 28px; height: 28px; background: rgba(20,160,133,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 800; color: var(--green); flex-shrink: 0; }
+    .privacy-point h4 { font-size: .9rem; font-weight: 700; margin-bottom: .25rem; }
+    .privacy-point p { font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+    /* Footer */
+    footer { background: #060f0f; padding: 3rem 5vw; text-align: center; color: rgba(255,255,255,.35); font-size: .82rem; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: rgba(255,255,255,.5); text-decoration: none; display: block; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.35); text-decoration: none; font-size: .8rem; transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.7); }
+    .eoa-family-bar { background: #050d0d; padding: 1.25rem 5vw; text-align: center; font-size: .78rem; color: rgba(255,255,255,.25); }
+    .eoa-family-bar a { color: rgba(255,255,255,.4); text-decoration: none; margin: 0 .6rem; }
+    .eoa-family-bar a:hover { color: rgba(255,255,255,.7); }
+
+    @media (max-width: 768px) {
+      .hero-inner, .pricing-grid, .privacy-points { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>EOA Fish<b>Cast</b></h1>
-  <div class="searchwrap">
-    <span class="icon">⌕</span>
-    <input id="searchbox" type="text" placeholder="Search a lake, river, marina, town… (press Enter)">
-  </div>
-  <button class="probtn" id="probtn" onclick="openPaywall()">Pro</button>
-</header>
 
-<div class="wrap">
-  <div class="mapcol">
-    <div id="map"></div>
-    <div class="zoomctl">
-      <button onclick="map.zoomIn()" aria-label="Zoom in">+</button>
-      <button onclick="map.zoomOut()" aria-label="Zoom out">−</button>
+<!-- ── Nav ──────────────────────────────────────────────────── -->
+<nav>
+  <a href="https://cwillis457.github.io/" class="nav-logo">EOA<span>.</span>FishCast</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+  </ul>
+  <a href="#download" class="nav-cta">Download</a>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-label">EOA — EVERY OUNCE OF ADVANTAGE</p>
+      <h1>Every cast.<br><em>Every catch.</em><br>Every spot.</h1>
+      <p class="hero-sub">EOA Fish Cast logs your catches with GPS, photo, species, weight, and conditions — then saves your best spots so you find them again. Works offline. No account. Your data never leaves your phone.</p>
+      <div class="hero-badges">
+        <span class="badge badge-free">Free</span>
+        <span class="badge badge-pro">Pro $2.99 one-time</span>
+        <span class="badge badge-priv">No Account · No Internet Required</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#download" class="btn-primary">⬇ Download — Free</a>
+        <a href="#features" class="btn-ghost">See all features →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <div class="phone-header">
+            <div class="phone-app-name">🎣 EOA Fish Cast</div>
+            <div class="phone-subtitle">3 catches today · Mill Pond</div>
+          </div>
+          <div class="catch-cards">
+            <div class="catch-card">
+              <span class="catch-weight">4 lb 2 oz</span>
+              <div class="catch-species">Largemouth Bass</div>
+              <div class="catch-stats">📍 Mill Pond · 7:42 AM · Plastic worm</div>
+            </div>
+            <div class="catch-card">
+              <span class="catch-weight">1 lb 8 oz</span>
+              <div class="catch-species">Bluegill</div>
+              <div class="catch-stats">📍 Mill Pond · 9:15 AM · Cricket</div>
+            </div>
+            <div class="catch-card">
+              <span class="catch-weight">2 lb 11 oz</span>
+              <div class="catch-species">Crappie</div>
+              <div class="catch-stats">📍 Dock #3 · 10:40 AM · Jig</div>
+            </div>
+            <div class="spot-bar">
+              <div class="spot-label">📌 Saved Spot</div>
+              <div class="spot-name">Big Bass Corner — 32.4871° N</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <aside class="panel" id="panel">
-    <div class="hint">
-      <span class="cast">⌖ No spot selected</span>
-      Tap the water anywhere, or search above. EOA FishCast pulls live weather for that spot and scores the bite from barometric pressure trend, wind, temperature, cloud cover, and moon phase.
+</section>
+
+<!-- ── Features ──────────────────────────────────────────────── -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">FEATURES</div>
+    <h2>Everything on the water. Nothing in the cloud.</h2>
+    <p class="section-sub">EOA Fish Cast keeps a complete record of every outing — catches, spots, conditions, and photos — stored privately on your iPhone.</p>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">🐟</div>
+        <h3>Catch Log</h3>
+        <p class="feature-desc">Log every catch with species, date, time, weight, length, water body, bait or lure, water conditions, and personal notes. Your full fishing history, always on device.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Fishing Spot Saver</h3>
+        <p class="feature-desc">Drop a GPS pin on any spot — dock, cove, channel break, or that exact spot off the bank where you know they're holding. Name it, add notes, find it again.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📸</div>
+        <h3>Photo Log <span class="pro-tag">PRO</span></h3>
+        <p class="feature-desc">Attach a photo to every catch and every saved spot. Your biggest bass, favorite lure, best morning light — stored permanently in the app alongside the data.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Personal Records</h3>
+        <p class="feature-desc">Automatic personal bests by species — biggest ever, longest ever, most caught in a day. The app tracks records as you log, so you always know when you've topped yourself.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Trip Analytics <span class="pro-tag">PRO</span></h3>
+        <p class="feature-desc">Review your best days by water body, species, season, bait, and conditions. Spot patterns. Know which spots produce in which month and what conditions set off the bite.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>CSV Export <span class="pro-tag">PRO</span></h3>
+        <p class="feature-desc">Export your full catch log as a CSV file — share with a fishing partner, open in Numbers or Excel, or back up your records any time you want.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌤</div>
+        <h3>Conditions Tracking</h3>
+        <p class="feature-desc">Log water temperature, clarity, wind direction, sky cover, and moon phase at the time of each catch. Over time, build a real picture of what conditions trigger bites.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎣</div>
+        <h3>Multi-Species Support</h3>
+        <p class="feature-desc">Bass, crappie, bluegill, catfish, trout, walleye, pike, redfish, flounder — any species you log. Custom species names supported so any fish you catch fits your log.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📵</div>
+        <h3>Works Completely Offline</h3>
+        <p class="feature-desc">No internet required on the water. GPS works without cell service. All logging, spot saving, and photo storage happens on your phone — no signal, no problem.</p>
+      </div>
+
     </div>
-  </aside>
-</div>
-
-<div class="modal-bg" id="paywall">
-  <div class="modal">
-    <h2>EOA FishCast <b style="color:var(--lure)">Pro</b></h2>
-    <div class="feat"><span>◷</span><div><b style="display:block">Hour-by-hour bite forecast</b>See the best feeding windows across the next 24 hours.</div></div>
-    <div class="feat"><span>☾</span><div><b style="display:block">Solunar major &amp; minor periods</b>Moon-driven feeding times for any date.</div></div>
-    <div class="feat"><span>▦</span><div><b style="display:block">3-day trip planner</b>Compare bite scores across upcoming days before you commit.</div></div>
-    <button class="buy" onclick="unlockPro()">Unlock Pro — $5.99</button>
-    <div class="fine">One-time purchase. No subscription. Yours forever.<br>(Web demo — purchase is simulated)</div>
-    <button class="close" onclick="closePaywall()">Not now</button>
   </div>
+</section>
+
+<!-- ── How It Works ───────────────────────────────────────────── -->
+<section class="section how-section" id="how">
+  <div class="section-inner">
+    <div class="section-label gold">HOW IT WORKS</div>
+    <h2>Log in seconds. Review for seasons.</h2>
+    <p class="section-sub">Designed to be fast enough to use the moment you land a fish — before you even unhook it.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Land the fish</h3>
+        <p>Tap New Catch — species, weight, and location auto-fill from your last entry so repeat catches take five seconds to log.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Snap a photo (Pro)</h3>
+        <p>Attach a photo while the fish is still in hand. It saves with the catch data so every record is a real moment, not just numbers.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Pin the spot</h3>
+        <p>One tap saves your current GPS location as a named spot. Find the exact point again — not just the general area.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Review your patterns</h3>
+        <p>Over time, your log becomes a real fishing intelligence tool — what works where, when, and under what conditions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Pricing ────────────────────────────────────────────────── -->
+<section class="section" id="pricing" style="background: linear-gradient(160deg, #0a1a1a 0%, #061010 100%);">
+  <div class="section-inner">
+    <div class="section-label gold">PRICING</div>
+    <h2 style="color:#fff;">Free to fish. Pro when you're ready.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.6);">EOA Fish Cast is free to download with no time limit. Upgrade once for Pro features — no subscription, ever.</p>
+
+    <div class="pricing-grid">
+      <div class="plan free-plan">
+        <div class="plan-tier">FREE</div>
+        <div class="plan-price">$0</div>
+        <div class="plan-cycle">Download &amp; keep forever</div>
+        <ul>
+          <li>Unlimited catch logging</li>
+          <li>GPS fishing spot saver</li>
+          <li>Conditions &amp; bait tracking</li>
+          <li>Personal records by species</li>
+          <li>Multi-species support</li>
+          <li>100% offline — no internet needed</li>
+        </ul>
+      </div>
+      <div class="plan pro-plan">
+        <div class="plan-badge">BEST VALUE</div>
+        <div class="plan-tier">PRO</div>
+        <div class="plan-price">$2.99</div>
+        <div class="plan-cycle">One-time · No subscription · No account</div>
+        <ul>
+          <li>Everything in Free</li>
+          <li>Photo per catch &amp; per spot</li>
+          <li>Full trip analytics &amp; charts</li>
+          <li>CSV export of catch history</li>
+          <li>Spot photos &amp; notes</li>
+          <li>Conditions pattern analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3);">
+      Payment via Apple ID. One-time purchase — no recurring charges. Restore on any iPhone signed in to the same Apple ID.
+    </p>
+  </div>
+</section>
+
+<!-- ── Privacy ────────────────────────────────────────────────── -->
+<section class="section privacy-section" id="privacy">
+  <div class="section-inner">
+    <div class="section-label">PRIVACY</div>
+    <h2>Your catches stay your catches.</h2>
+    <p class="section-sub">EOA Fish Cast stores everything on your iPhone. No account. No server. No analytics. Your fishing spots and personal records are yours alone.</p>
+    <div class="privacy-points">
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No account required</h4>
+          <p>EOA Fish Cast requires no sign-up, no email, and no account of any kind — before or after the Pro upgrade.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>All data stored on-device</h4>
+          <p>Every catch, spot, photo, and condition log is stored in the app's private folder on your iPhone. Nothing is uploaded to any server.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>GPS is local only</h4>
+          <p>Location is used to tag catches and save spots, stored on your device. Your coordinates are never transmitted anywhere.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Photos add-only permission</h4>
+          <p>If you choose to save a catch photo to your library, the app requests add-only permission — it cannot read or browse your existing photos.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>No analytics or tracking</h4>
+          <p>EOA Fish Cast contains no analytics SDKs, no advertising SDKs, and no third-party tracking of any kind.</p>
+        </div>
+      </div>
+      <div class="privacy-point">
+        <div class="privacy-check">✓</div>
+        <div>
+          <h4>Works fully offline</h4>
+          <p>No internet connection is needed at any point. GPS, logging, photo storage, and all Pro features work without cell service or Wi-Fi.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Download ───────────────────────────────────────────────── -->
+<section class="section" id="download" style="text-align:center; background: var(--off);">
+  <div class="section-inner">
+    <div class="section-label" style="text-align:center;">AVAILABLE ON THE APP STORE</div>
+    <h2 style="margin:0 auto 1rem;">Ready to log your next catch?</h2>
+    <p class="section-sub" style="margin:0 auto 2.5rem; text-align:center;">EOA Fish Cast is free to download. No account needed. Works offline from the first tap.</p>
+    <a href="#" class="btn-primary" style="display:inline-flex; margin: 0 auto; font-size:1.05rem; padding:1rem 2.5rem;">⬇ Download on the App Store</a>
+    <p style="margin-top:1.5rem; font-size:.8rem; color:var(--mid);">Requires iOS 18.0 or later · iPhone · Free + optional $2.99 Pro upgrade</p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer>
+  <a href="#" class="footer-logo">EOA<span>.</span>FishCast</a>
+  <div class="footer-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#privacy">Privacy</a>
+    <a href="https://cwillis457.github.io/">Willis Strategy</a>
+    <a href="mailto:WillisStrategy@outlook.com">Contact</a>
+  </div>
+  <p>© 2026 EOA Fish Cast by Willis Strategy. All rights reserved.</p>
+</footer>
+
+<div class="eoa-family-bar">
+  EOA™ — Every Ounce of Advantage &nbsp;·&nbsp;
+  <a href="EOABizCard.html">EOA Biz Card</a>
+  <a href="EOAGolfScore.html">EOA Golf Score</a>
+  <a href="EOAFishCast.html">EOA Fish Cast</a>
+  &nbsp;·&nbsp; <a href="https://cwillis457.github.io/">Willis Strategy Group</a>
 </div>
 
-<script>
-// ---------- State ----------
-let isPro = false;
-let lastData = null, lastLoc = null;
-
-// ---------- Map ----------
-const map = L.map('map', {zoomControl:false}).setView([32.46,-84.99], 9);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap'}).addTo(map);
-let marker = null;
-
-map.on('click', e => selectSpot(e.latlng.lat, e.latlng.lng, null));
-
-// ---------- Search ----------
-document.getElementById('searchbox').addEventListener('keydown', async (e)=>{
-  if(e.key!=='Enter') return;
-  const q = e.target.value.trim();
-  if(!q) return;
-  setPanel(`<div class="loading"><span class="bobber">◉</span> Searching for “${q}”…</div>`);
-  try{
-    const r = await callClaude(`Search the web to find the geographic coordinates of this place (likely a fishing spot, lake, river, marina, or town): "${q}". Respond ONLY with JSON, no markdown: {"name":"resolved place name","lat":number,"lng":number}`);
-    map.setView([r.lat, r.lng], 12);
-    selectSpot(r.lat, r.lng, r.name);
-  }catch(err){
-    setPanel(`<div class="err">Couldn't find “${q}”. Try a different search.</div>`);
-  }
-});
-
-// ---------- Core flow ----------
-async function selectSpot(lat, lng, name){
-  if(marker) marker.remove();
-  marker = L.marker([lat,lng]).addTo(map);
-  setPanel(`<div class="hint"><span class="cast">⌖ ${name||''} ${lat.toFixed(4)}, ${lng.toFixed(4)}</span></div>
-    <div class="loading"><span class="bobber">◉</span> Pulling live weather &amp; reading the water…</div>`);
-  try{
-    const data = await fetchConditions(lat,lng);
-    lastData = data; lastLoc = {lat,lng,name:name||data.name};
-    render();
-  }catch(err){
-    setPanel(`<div class="err">Couldn't fetch weather for that spot. Tap again to retry.</div>`);
-  }
-}
-
-async function fetchConditions(lat,lng){
-  const prompt = `Search the web for weather at latitude ${lat.toFixed(3)}, longitude ${lng.toFixed(3)}. Also find the nearest named place/water body. Respond ONLY with JSON, no markdown:
-{"name":"place","temp_f":n,"wind_mph":n,"wind_dir":"SW","pressure_mb":n,"pressure_trend":"falling"|"steady"|"rising","cloud_pct":n,"summary":"3-5 words",
-"hourly":[{"hour":"3PM","temp_f":n,"wind_mph":n,"cloud_pct":n} for the next 8 hours],
-"daily":[{"day":"Saturday","high_f":n,"low_f":n,"wind_mph":n,"precip_pct":n} for today plus next 2 days]}
-Infer pressure trend from the forecast if not stated (approaching storm=falling, clearing=rising, stable=steady).`;
-  return await callClaude(prompt, true);
-}
-
-async function callClaude(prompt, useSearch){
-  const body = {model:"claude-sonnet-4-6",max_tokens:1000,messages:[{role:"user",content:prompt}]};
-  if(useSearch!==false) body.tools=[{type:"web_search_20250305",name:"web_search"}];
-  const r = await fetch("https://api.anthropic.com/v1/messages",{
-    method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-  const data = await r.json();
-  const text = data.content.map(c=>c.type==='text'?c.text:'').join('');
-  const m = text.replace(/```json|```/g,'').match(/\{[\s\S]*\}/);
-  return JSON.parse(m[0]);
-}
-
-// ---------- Scoring (mirrors BiteScoreEngine.swift) ----------
-function moonPhase(d){
-  const syn=29.53058867, known=new Date(Date.UTC(2000,0,6,18,14));
-  return (((d-known)/86400000)%syn+syn)%syn/syn;
-}
-function moonLabel(p){
-  if(p<0.03||p>0.97) return ['New Moon',true];
-  if(Math.abs(p-0.5)<0.03) return ['Full Moon',true];
-  if(p<0.25) return ['Waxing Crescent',false];
-  if(p<0.5) return ['Waxing Gibbous',false];
-  if(p<0.75) return ['Waning Gibbous',false];
-  return ['Waning Crescent',false];
-}
-function scoreCurrent(w){
-  const f=[];
-  if(w.pressure_trend==='falling') f.push([30,'good','Barometric Pressure',`${w.pressure_mb} mb · falling`,'Falling pressure — fish feed aggressively ahead of weather.']);
-  else if(w.pressure_trend==='rising') f.push([8,'bad','Barometric Pressure',`${w.pressure_mb} mb · rising`,'Rising pressure (post-front) — fish hold tight and sluggish.']);
-  else f.push([20,'ok','Barometric Pressure',`${w.pressure_mb} mb · steady`,'Steady pressure — normal feeding patterns.']);
-  const ws=w.wind_mph;
-  if(ws>=4&&ws<=12) f.push([20,'good','Wind',`${ws} mph ${w.wind_dir||''}`,'Light chop breaks surface visibility and pushes bait.']);
-  else if(ws<4) f.push([12,'ok','Wind',`${ws} mph`,'Calm — fish can be spooky in clear water.']);
-  else if(ws<=18) f.push([12,'ok','Wind',`${ws} mph ${w.wind_dir||''}`,'Breezy — fish wind-blown banks.']);
-  else f.push([4,'bad','Wind',`${ws} mph ${w.wind_dir||''}`,'Heavy wind — tough boat control, scattered bait.']);
-  const cc=w.cloud_pct;
-  if(cc>=40&&cc<=90) f.push([15,'good','Cloud Cover',`${cc}%`,'Overcast keeps fish shallow and roaming.']);
-  else if(cc>90) f.push([12,'ok','Cloud Cover',`${cc}%`,'Fully socked in — decent low-light bite.']);
-  else f.push([8,'ok','Cloud Cover',`${cc}%`,'Bright sun pushes fish deep to cover.']);
-  const t=w.temp_f;
-  if(t>=55&&t<=85) f.push([15,'good','Temperature',`${t}°F`,'In the active feeding band.']);
-  else if(t>=45&&t<95) f.push([10,'ok','Temperature',`${t}°F`,'Marginal — slow your presentation.']);
-  else f.push([5,'bad','Temperature',`${t}°F`,'Outside prime metabolic range.']);
-  const [ml,major]=moonLabel(moonPhase(new Date()));
-  f.push([major?20:12,major?'good':'ok','Moon Phase',ml,major?'Major solunar period — strongest feeding windows.':'Minor solunar influence.']);
-  const total=Math.min(100,f.reduce((s,x)=>s+x[0],0));
-  return {total,factors:f};
-}
-function scoreDay(d,dayOffset){
-  let pts=0;
-  const p=d.precip_pct;
-  pts += (p>=25&&p<=60)?28:(p<25?18:10);
-  const ws=d.wind_mph;
-  pts += (ws>=4&&ws<=12)?20:(ws<=18?12:4);
-  const t=d.high_f;
-  pts += (t>=55&&t<=85)?17:((t>=45&&t<95)?11:5);
-  pts += (d.high_f-d.low_f<=20)?15:8;
-  const dt=new Date(); dt.setDate(dt.getDate()+dayOffset);
-  const [,major]=moonLabel(moonPhase(dt));
-  pts += major?20:12;
-  return Math.min(100,pts);
-}
-function verdict(s){
-  if(s>=80) return 'Drop everything. Go now.';
-  if(s>=65) return 'Solid bite likely — worth the trip.';
-  if(s>=50) return 'Fair. Work it slow and deep.';
-  return 'Tough conditions. Fish anyway — it beats not fishing.';
-}
-const scol = s => s>=65?'#7fc98f':(s>=50?'#d9c25e':'#d1603d');
-
-// ---------- Solunar (approximation for web demo) ----------
-// Moonrise advances ~50 min/day from ~6:00 at new moon.
-function solunarToday(){
-  const phase = moonPhase(new Date());
-  const riseH = (6 + phase*29.53*(50/60)) % 24;
-  const setH = (riseH + 12.42) % 24;
-  const transitH = (riseH + 6.21) % 24;
-  const antiH = (transitH + 12.42) % 24;
-  const fmt = h => {
-    const hh=Math.floor(h), mm=Math.round((h-hh)*60);
-    const ampm=hh>=12?'PM':'AM', h12=((hh+11)%12)+1;
-    return `${h12}:${String(mm).padStart(2,'0')} ${ampm}`;
-  };
-  const win=(c,half)=>`${fmt((c-half+24)%24)} – ${fmt((c+half)%24)}`;
-  return [
-    {kind:'Major',time:win(transitH,1)},
-    {kind:'Major',time:win(antiH,1)},
-    {kind:'Minor',time:win(riseH,0.5)},
-    {kind:'Minor',time:win(setH,0.5)},
-  ].sort((a,b)=>a.time.localeCompare(b.time));
-}
-
-// ---------- Render ----------
-function setPanel(html){document.getElementById('panel').innerHTML=html}
-
-function render(){
-  const w=lastData, loc=lastLoc;
-  const {total,factors}=scoreCurrent(w);
-  const arc=total/100*180, rad=(180-arc)*Math.PI/180;
-  const x=100+85*Math.cos(rad), y=100-85*Math.sin(rad);
-
-  const factorHtml = factors.map(([pts,rate,name,val,note])=>`
-    <div class="factor"><span class="pip ${rate}"></span><span>${name}</span>
-    <span class="val">${val}</span><span class="sub">${note}</span></div>`).join('');
-
-  const hourlyHtml = isPro
-    ? `<div class="hourly">${(w.hourly||[]).map(h=>`
-        <div class="hour"><div class="h">${h.hour}</div><div class="t">${Math.round(h.temp_f)}°</div>
-        <div>${h.cloud_pct>50?'☁':'☀'}</div><div class="h">${Math.round(h.wind_mph)} mph</div></div>`).join('')}</div>`
-    : teaser('Unlock the hour-by-hour bite forecast','Plan your trip around the best feeding windows');
-
-  const solHtml = isPro
-    ? solunarToday().map(s=>`<div class="sol"><span class="kind"><span class="${s.kind==='Major'?'major':''}">${s.kind==='Major'?'●':'○'} ${s.kind} feed</span></span><time>${s.time}</time></div>`).join('')
-    : teaser('Unlock solunar feeding windows','Major and minor moon-driven feed times, every day');
-
-  let plannerHtml;
-  if(isPro){
-    const days=(w.daily||[]).slice(0,3);
-    const scores=days.map((d,i)=>scoreDay(d,i));
-    const best=scores.indexOf(Math.max(...scores));
-    plannerHtml = days.map((d,i)=>`
-      <div class="day ${i===best?'best':''}">
-        <div><span class="dname">${d.day}${i===best?'<span class="best-tag">BEST</span>':''}</span>
-        <div class="meta">${Math.round(d.high_f)}°/${Math.round(d.low_f)}° · ${Math.round(d.wind_mph)} mph · ${Math.round(d.precip_pct)}% rain</div></div>
-        <div></div>
-        <div class="dscore" style="border-color:${scol(scores[i])};color:${scol(scores[i])}">${scores[i]}</div>
-      </div>`).join('');
-  } else {
-    plannerHtml = teaser('Unlock the 3-day trip planner','Compare bite scores across upcoming days before you commit');
-  }
-
-  setPanel(`
-    <div class="locname">${loc.name||'Selected water'}</div>
-    <div class="coords">${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)} · ${w.summary||''}</div>
-    <div class="dial"><svg width="200" height="110" viewBox="0 0 200 110">
-      <path d="M 15 100 A 85 85 0 0 1 185 100" fill="none" stroke="rgba(143,184,173,.25)" stroke-width="10" stroke-linecap="round"/>
-      <path d="M 15 100 A 85 85 0 0 1 ${x.toFixed(1)} ${y.toFixed(1)}" fill="none" stroke="${scol(total)}" stroke-width="10" stroke-linecap="round"/>
-    </svg></div>
-    <div class="score-num" style="color:${scol(total)}">${total}</div>
-    <div class="score-label">Bite Score / 100</div>
-    <div class="verdict">“${verdict(total)}”</div>
-    <div class="sect"><h3>Conditions</h3>${factorHtml}</div>
-    <div class="sect"><h3>Next Hours ${isPro?'':'<span class="lock">🔒</span>'}</h3>${hourlyHtml}</div>
-    <div class="sect"><h3>Today's Feeding Windows ${isPro?'':'<span class="lock">🔒</span>'}</h3>${solHtml}</div>
-    <div class="sect"><h3>3-Day Trip Planner ${isPro?'':'<span class="lock">🔒</span>'}</h3>${plannerHtml}</div>
-  `);
-}
-
-function teaser(title,sub){
-  return `<div class="teaser" onclick="openPaywall()"><b>${title}</b>${sub}</div>`;
-}
-
-// ---------- Paywall ----------
-function openPaywall(){ if(!isPro) document.getElementById('paywall').classList.add('show'); }
-function closePaywall(){ document.getElementById('paywall').classList.remove('show'); }
-function unlockPro(){
-  isPro = true;
-  closePaywall();
-  const b=document.getElementById('probtn');
-  b.textContent='✓ Pro'; b.classList.add('owned'); b.onclick=null;
-  if(lastData) render();
-}
-</script>
 </body>
 </html>

@@ -85,10 +85,18 @@
   </ul>
 
   <h2>Bluetooth</h2>
-  <p>When you use the Bluetooth sharing feature, your business card data is transmitted directly from your iPhone to the nearby recipient's iPhone using Apple's CoreBluetooth framework. This is a direct device-to-device transfer. No data passes through any server, and Willis Strategy never receives or has access to this data.</p>
+  <p>When you use the Bluetooth sharing feature, your business card data and a compressed JPEG image of your card are transmitted directly from your iPhone to the nearby recipient's iPhone using Apple's CoreBluetooth framework. This is a direct device-to-device transfer — no data passes through any server, and Willis Strategy never receives or has access to this data. The card image is generated entirely on your device before transmission.</p>
 
   <h2>Camera</h2>
-  <p>Camera access is requested only when you actively use the Scan Card feature. Images captured are processed on your device using Apple's Vision framework (on-device text recognition) to extract contact details. The original photo is saved within the app's own Scan History so you can refer back to it later. If you separately choose "Photos" as a save destination, that same image is also added to your iPhone's Photos library using add-only access — but otherwise, scanned images are never transmitted to any server or shared outside the app.</p>
+  <p>Camera access is requested only when you actively use the Scan Card feature. Images captured are processed on your device using Apple's Vision framework (on-device text recognition) to extract contact details. The original photo is always saved to the app's on-device Scan History folder (Documents/ScannedCards/). If you separately choose "Photos" as a save destination, that image is also added to your iPhone Photos library using add-only permission — otherwise, images are never transmitted to any server or shared outside the app.</p>
+
+  <h2>On-Device File System</h2>
+  <p>EOA Biz Card stores two categories of files in your iPhone's Documents directory:</p>
+  <ul style="margin:8px 0 16px 20px;font-size:.95rem;color:#374151;line-height:1.75">
+    <li><strong>Documents/ReceivedCards/</strong> — JPEG photos of every card received via Bluetooth or QR code, automatically generated the moment a card arrives.</li>
+    <li><strong>Documents/ScannedCards/</strong> — JPEG photos of every physical business card you have scanned with the camera.</li>
+  </ul>
+  <p>Both folders live entirely on your device. No file is ever uploaded or shared with any server. You can remove individual items (or clear all) from within the app. Deleting the app removes all stored files.</p>
 
   <h2>Contacts</h2>
   <p>EOA Biz Card requests access to your Contacts only when you choose to save a received card. If the person is already in your Contacts (matched by email, or by name and company), the app updates their existing entry with any changed details instead of creating a duplicate. The app never reads, copies, or transmits your existing contacts beyond this matching check. Contact access can be revoked at any time in Settings → Privacy & Security → Contacts.</p>
@@ -97,7 +105,7 @@
   <p>If you choose to save a card to Photos, EOA Biz Card requests "add only" photo library access — the most restrictive permission level Apple offers. This permission allows the app to add a new image to your library but never to view, browse, or read any existing photo. The image saved is either a business-card-style rendering of the contact's details, or — for scanned physical cards — the original photo you took.</p>
 
   <h2>Third-party SDKs and analytics</h2>
-  <p>EOA Biz Card contains no third-party analytics SDKs, advertising SDKs, crash reporting services, or tracking frameworks of any kind. The only frameworks used are Apple's own first-party frameworks: CoreBluetooth, Vision, Contacts, CoreImage, and SwiftUI.</p>
+  <p>EOA Biz Card contains no third-party analytics SDKs, advertising SDKs, crash reporting services, or tracking frameworks of any kind. The only frameworks used are Apple's own first-party frameworks: CoreBluetooth, Vision, Contacts, CoreImage, Photos, and SwiftUI.</p>
 
   <h2>Data retention</h2>
   <p>Because we collect no data, there is nothing to retain or delete on our end. Data stored on your device can be deleted at any time by deleting the app. Deleting EOA Biz Card removes all locally stored business card data, templates, and received cards from your device.</p>
