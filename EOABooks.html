@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EOA Books &mdash; Private double-entry bookkeeping for iPhone</title>
+<meta name="description" content="A double-entry bookkeeping app for one-person businesses. On-device only: no accounts, no servers, no bank logins, no analytics." />
+<meta name="author" content="Willis Strategy" />
+<link rel="canonical" href="https://willis-strategy.com/EOABooks/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="EOA Books" />
+<meta property="og:title" content="EOA Books &mdash; Private double-entry bookkeeping for iPhone" />
+<meta property="og:description" content="A double-entry bookkeeping app for one-person businesses. On-device only: no accounts, no servers, no bank logins, no analytics." />
+<meta property="og:url" content="https://willis-strategy.com/EOABooks/" />
+<style>
+:root {
+  --ink: #10242e;
+  --body: #33454e;
+  --muted: #6a7c85;
+  --teal: #135a7a;
+  --teal-dark: #0a2c3c;
+  --cream: #f7f3e8;
+  --line: #dfe6ea;
+  --bg: #ffffff;
+  --panel: #f4f7f8;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--body);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 17px;
+}
+a { color: var(--teal); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+header.site {
+  background: var(--teal-dark);
+  background: linear-gradient(160deg, #185c7c 0%, #092a3c 100%);
+  color: var(--cream);
+  padding: 26px 0 0;
+}
+nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+nav .brand { font-weight: 700; color: var(--cream); text-decoration: none; font-size: 18px; }
+nav .links { margin-left: auto; display: flex; gap: 20px; flex-wrap: wrap; }
+nav .links a { color: #cddde5; text-decoration: none; font-size: 15px; }
+nav .links a:hover { color: #fff; }
+.hero { padding: 58px 0 72px; }
+.hero h1 { font-size: 44px; line-height: 1.15; margin: 0 0 14px; color: #fff; letter-spacing: -0.5px; }
+.hero p.lede { font-size: 20px; color: #cddde5; margin: 0 0 26px; max-width: 34em; }
+.badge {
+  display: inline-block; border: 1px solid rgba(255,255,255,.35);
+  color: var(--cream); padding: 11px 20px; border-radius: 10px;
+  text-decoration: none; font-size: 15px;
+}
+main { padding: 54px 0 10px; }
+h2 { color: var(--ink); font-size: 27px; margin: 46px 0 14px; letter-spacing: -0.3px; }
+h3 { color: var(--ink); font-size: 19px; margin: 30px 0 8px; }
+p { margin: 0 0 16px; }
+ul { margin: 0 0 18px; padding-left: 22px; }
+li { margin-bottom: 9px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 26px 0 8px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+.card h3 { margin-top: 0; }
+.card p { margin: 0; font-size: 15.5px; color: var(--muted); }
+.note {
+  border-left: 3px solid var(--teal); background: var(--panel);
+  padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 26px 0;
+}
+.note strong { color: var(--ink); }
+.meta { color: var(--muted); font-size: 15px; }
+footer.site { border-top: 1px solid var(--line); margin-top: 62px; padding: 30px 0 46px; }
+footer.site .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 14px; }
+footer.site a { text-decoration: none; font-size: 15px; }
+footer.site p { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+.legal-strip { font-size: 12.5px; color: #8b9aa2; line-height: 1.6; margin-top: 16px; }
+table { border-collapse: collapse; width: 100%; margin: 18px 0 24px; font-size: 15.5px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink); font-weight: 600; }
+@media (max-width: 560px) {
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="https://willis-strategy.com/EOABooks/">EOA Books</a>
+      <span class="links">
+        <a href="https://willis-strategy.com/EOABooks/">Overview</a>
+        <a href="https://willis-strategy.com/EOABooks/privacy.html">Privacy</a>
+        <a href="https://willis-strategy.com/EOABooks/terms.html">Terms</a>
+        <a href="https://willis-strategy.com/EOABooks/support.html">Support</a>
+      </span>
+    </nav>
+  </div>
+  <div class="wrap hero">
+    <h1>Your books. Your iPhone. Nowhere else.</h1>
+    <p class="lede">Double-entry bookkeeping for a one-person business, with no account to create, no server to trust, and no bank credentials to hand over.</p>
+    <a class="badge" href="#availability">Availability and pricing</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <h2>Bookkeeping that stays on your phone</h2>
+    <p>
+      EOA Books is a double-entry ledger for a one-person business. It records income
+      and expenses, keeps your accounts in balance, and produces the reports you need at
+      year end &mdash; without an account to create, a server to trust, or a bank login
+      to hand over to anyone.
+    </p>
+
+    <div class="note">
+      <strong>No bank connections, by design.</strong> Most bookkeeping apps ask you to
+      give a third-party aggregator the credentials to your bank. EOA Books never asks,
+      because it has nowhere to send them. You enter what you spend, or import a
+      statement you downloaded yourself.
+    </div>
+
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Real double-entry</h3>
+        <p>Every transaction balances or it will not save. Simple two-account entry by
+        default, full splits when you need them.</p>
+      </div>
+      <div class="card">
+        <h3>Your chart of accounts</h3>
+        <p>Starts with a sensible set for a service business. Rename, add, and archive
+        as your books grow.</p>
+      </div>
+      <div class="card">
+        <h3>Profit and loss</h3>
+        <p>Month, quarter, or year, with income and expenses broken out by account and a
+        net profit figure at the bottom.</p>
+      </div>
+      <div class="card">
+        <h3>Schedule C grouping</h3>
+        <p>Tag accounts to the Schedule C line they belong on and roll the whole year up
+        for your tax preparer.</p>
+      </div>
+      <div class="card">
+        <h3>Export anything</h3>
+        <p>CSV of every entry, a category summary, or a complete JSON backup. Always
+        free, never behind a purchase.</p>
+      </div>
+      <div class="card">
+        <h3>Amounts that add up</h3>
+        <p>Money is stored in exact cents rather than as decimal approximations, so your
+        totals do not drift over time.</p>
+      </div>
+    </div>
+
+    <h2>Privacy</h2>
+    <p>
+      EOA Books has no user accounts, no analytics, no advertising, and no servers
+      operated by Willis Strategy. Your ledger is written to this app's private storage
+      on your iPhone and stays there. Nothing is uploaded, and there is no copy of your
+      books anywhere else unless you export one yourself.
+    </p>
+    <p>
+      Because of that, keeping a backup is your responsibility, and the app makes it a
+      one-tap job. Read the full <a href="https://willis-strategy.com/EOABooks/privacy.html">privacy policy</a>.
+    </p>
+
+    <h2 id="availability">Availability and pricing</h2>
+    <p>
+      EOA Books is being prepared for release on the App Store for iPhone, running
+      iOS&nbsp;17 or later.
+    </p>
+    <p>
+      The app is free to download. Recording transactions, managing accounts, running
+      reports, and exporting or backing up your data are all free and will remain so.
+      An optional one-time in-app purchase, <strong>EOA Books Pro</strong>, unlocks
+      additional convenience features. It is a single purchase, not a subscription, and
+      it applies to every device signed in to the same Apple Account. Pricing is shown
+      in the app and on the App Store listing.
+    </p>
+
+    <div class="note">
+      <strong>Not tax or accounting advice.</strong> EOA Books is a record-keeping tool.
+      It does not calculate, prepare, or file tax returns, and it does not provide tax,
+      legal, or accounting advice. Schedule C categories in the app are an organizing
+      aid only. How any particular item should be treated is a question for you and a
+      qualified tax professional.
+    </div>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href="https://willis-strategy.com/EOABooks/">Overview</a>
+      <a href="https://willis-strategy.com/EOABooks/privacy.html">Privacy Policy</a>
+      <a href="https://willis-strategy.com/EOABooks/terms.html">Terms &amp; Conditions</a>
+      <a href="https://willis-strategy.com/EOABooks/support.html">Support</a>
+      <a href="mailto:WillisStrategy@outlook.com">Contact</a>
+    </div>
+    <p>&copy; 2026 EOA Books by Willis Strategy. All rights reserved.</p>
+    <p class="legal-strip">
+      Apple, iPhone, iOS, App Store and TestFlight are trademarks of Apple Inc.,
+      registered in the U.S. and other countries. Willis Strategy is not affiliated
+      with, endorsed by, or sponsored by Apple Inc. Schedule C is a form published by
+      the U.S. Internal Revenue Service; EOA Books is not affiliated with, endorsed by,
+      or sponsored by the IRS or any government agency. EOA Books is a bookkeeping
+      tool and does not provide tax, legal, or accounting advice.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
