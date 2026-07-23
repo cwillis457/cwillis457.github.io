@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
 <title>Willis Strategy Group — Defense BD &amp; Capture Consulting</title>
 <meta name="description" content="Independent business development and capture management consulting for defense contractors. Columbus, Georgia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:light only;
   --ink:#0B1D33;
   --navy:#12294A;
   --steel:#3E5C76;
@@ -23,6 +25,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{background:var(--paper)}
 body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 a{color:inherit}
@@ -69,7 +72,7 @@ h1 em{font-style:normal;color:var(--brass)}
 @media(max-width:480px){.lifecycle{grid-template-columns:1fr}}
 
 /* ---------- Sections ---------- */
-section{padding:96px 0}
+section{padding:96px 0;background:var(--paper);color:var(--ink)}
 .sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .sec-label b{color:var(--brass-dim);font-weight:500}
 h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.02;margin-bottom:20px}
@@ -254,7 +257,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
   <div class="wrap">
     <p class="sec-label"><b>§ 03</b> — Products</p>
     <h2>EOA — Every Ounce of Advantage</h2>
-    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="https://cwillis457.github.io/EOABizCard.html" target="_blank" rel="noopener" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
+    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="/eoa/" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
     <div class="app-grid">
       <div class="app-card">
         <p class="app-tag">iOS · iPhone · No Account Required</p>
@@ -269,7 +272,8 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
           <li>Zero analytics, zero tracking — data never leaves your device</li>
         </ul>
         <div class="app-cta">
-          <a class="btn btn-solid" href="https://cwillis457.github.io/EOABizCard" target="_blank" rel="noopener">Learn More</a>
+          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416" target="_blank" rel="noopener">App Store</a>
+          <a class="btn btn-ghost" href="/EOABizCard.html">Learn More</a>
         </div>
       </div>
       <div class="app-card">
@@ -285,7 +289,8 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
           <li>No login, no internet needed on the course</li>
         </ul>
         <div class="app-cta">
-          <a class="btn btn-solid" href="https://cwillis457.github.io/EOAGolfScore" target="_blank" rel="noopener">Learn More</a>
+          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366" target="_blank" rel="noopener">App Store</a>
+          <a class="btn btn-ghost" href="/EOAGolfScore.html">Learn More</a>
         </div>
       </div>
     </div>
