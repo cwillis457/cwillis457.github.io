@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOA — Every Ounce of Advantage | Willis Strategy Group</title>
+<meta name="description" content="EOA is the privacy-first iOS app line from Willis Strategy Group. No accounts, no tracking, everything processed on your device.">
+<meta name="theme-color" content="#0B1D33">
+<meta name="color-scheme" content="light only">
+<meta property="og:title" content="EOA — Every Ounce of Advantage">
+<meta property="og:description" content="Privacy-first iPhone apps from Willis Strategy Group. No accounts, no tracking, everything on your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://willis-strategy.com/eoa/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  color-scheme:light only;
+  --ink:#0B1D33;
+  --navy:#12294A;
+  --steel:#3E5C76;
+  --slate:#8A9BB0;
+  --mist:#DCE3EC;
+  --paper:#F5F7FA;
+  --brass:#C9A227;
+  --brass-dim:#9C7F1E;
+  --max:1120px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{background:var(--paper)}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:96px 0;background:var(--paper);color:var(--ink)}
+a{color:inherit}
+
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:75%;text-transform:uppercase;line-height:.95;font-size:clamp(2.6rem,7vw,5.2rem);letter-spacing:.01em;max-width:15ch}
+h1 em{font-style:normal;color:var(--brass)}
+h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.02;margin-bottom:20px}
+h3{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:1.4rem;margin-bottom:12px}
+
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:22px}
+.sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
+.sec-label b{color:var(--brass);font-weight:500}
+
+/* ---------- nav + header ---------- */
+header{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brandmark{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:.95rem;letter-spacing:.06em;text-decoration:none;color:#fff}
+.brandmark span{color:var(--brass)}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);text-decoration:none}
+.nav-back:hover{color:var(--brass)}
+
+.hero{padding:110px 0 120px;position:relative}
+.hero-lede{max-width:56ch;color:var(--mist);margin-top:28px;font-size:1.08rem}
+.hero-lede strong{color:#fff;font-weight:500}
+.hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 28px;border:1px solid var(--brass);transition:background .2s,color .2s}
+.btn-solid{background:var(--brass);color:var(--ink);font-weight:500}
+.btn-solid:hover{background:var(--brass-dim);color:#fff}
+.btn-ghost{color:var(--brass)}
+.btn-ghost:hover{background:var(--brass);color:var(--ink)}
+
+.creed{display:flex;flex-wrap:wrap;gap:0;margin-top:64px;border-top:1px solid #23385A}
+.creed div{flex:1 1 200px;padding:22px 24px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+.creed div b{display:block;color:#fff;font-weight:500;margin-bottom:4px}
+
+/* ---------- apps ---------- */
+#apps{background:#fff;border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)}
+.app-grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));margin-top:44px}
+.app-card{border:1px solid var(--mist);background:var(--paper);padding:38px 32px;display:flex;flex-direction:column;position:relative}
+.app-card .status{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:18px}
+.app-card .status.live{color:var(--brass-dim)}
+.app-card p{color:var(--steel);font-size:.95rem;flex:1}
+.app-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.app-actions .btn{font-size:.75rem;padding:12px 20px;border-color:var(--ink)}
+.app-actions .btn-solid{background:var(--ink);color:#fff}
+.app-actions .btn-solid:hover{background:var(--navy)}
+.app-actions .btn-ghost{color:var(--ink)}
+.app-actions .btn-ghost:hover{background:var(--ink);color:#fff}
+.soon{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-top:26px}
+
+/* ---------- architecture ---------- */
+#architecture{background:var(--paper);color:var(--ink)}
+.arch-grid{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:44px}
+.arch h3{font-size:1.05rem;margin-bottom:10px}
+.arch .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:var(--brass-dim);display:block;margin-bottom:10px}
+.arch p{color:var(--steel);font-size:.95rem}
+
+/* ---------- contact ---------- */
+#contact{background:var(--ink);color:#fff}
+#contact p{color:var(--mist);max-width:56ch}
+.contact-grid{display:grid;gap:44px;grid-template-columns:1.2fr .8fr;margin-top:40px}
+.contact-line{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:8px}
+.contact-mail{font-family:'IBM Plex Mono',monospace;font-size:clamp(.95rem,2.6vw,1.25rem);color:var(--brass);text-decoration:none;border-bottom:1px solid var(--brass-dim);padding-bottom:6px;word-break:break-all}
+.contact-mail:hover{color:#fff;border-color:#fff}
+.contact-facts{font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);line-height:2.1}
+.reasons{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.reasons a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mist);text-decoration:none;border:1px solid #23385A;padding:10px 16px}
+.reasons a:hover{border-color:var(--brass);color:var(--brass)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--slate);border-top:1px solid #23385A;padding:28px 0}
+.foot-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.foot-inner a{color:var(--slate);text-decoration:none}
+.foot-inner a:hover{color:var(--brass)}
+
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+@media (max-width:760px){
+  section{padding:64px 0}
+  .hero{padding:72px 0 80px}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap">
+    <nav class="nav-inner">
+      <a class="brandmark" href="/">Willis Strategy Group</a>
+      <a class="nav-back" href="/">← Consulting</a>
+    </nav>
+  </div>
+
+  <div class="wrap hero">
+    <p class="eyebrow">iOS · iPhone · No Account Required</p>
+    <h1>EOA — <em>every ounce of advantage.</em></h1>
+    <p class="hero-lede">Willis Strategy Group builds iPhone apps under the EOA brand — the same discipline applied to software. <strong>No accounts, no tracking, everything processed on your device.</strong> The data you put in is data only you can read.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#apps">See the Lineup</a>
+      <a class="btn btn-ghost" href="#contact">Contact Support</a>
+    </div>
+
+    <div class="creed">
+      <div><b>No servers</b>Nothing to breach</div>
+      <div><b>No analytics</b>Nothing measured</div>
+      <div><b>Keychain only</b>Credentials stay put</div>
+      <div><b>System frameworks</b>No third-party SDKs</div>
+    </div>
+  </div>
+</header>
+
+<section id="apps">
+  <div class="wrap">
+    <p class="sec-label"><b>§ 01</b> — Products</p>
+    <h2>The EOA Lineup</h2>
+    <p style="max-width:60ch;color:var(--steel)">Eight titles across productivity, business, and the outdoors. Two are on the App Store today; the rest are in review or in development. Every one of them runs entirely on the device.</p>
+
+    <div class="app-grid">
+
+      <div class="app-card">
+        <p class="status live">On the App Store</p>
+        <h3>EOA Biz Card</h3>
+        <p>Replaces the paper handshake. Share your business card over Bluetooth or QR code straight from your iPhone — the other person doesn't need the app. Scan physical cards with on-device text recognition.</p>
+        <div class="app-actions">
+          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">App Store</a>
+          <a class="btn btn-ghost" href="/EOABizCard.html">Details</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <p class="status live">On the App Store</p>
+        <h3>EOA Golf Score</h3>
+        <p>Every local course, three ways to find the pin. Six Columbus-area courses built in with full scorecards, plus GPS, satellite, and camera rangefinding. No login, no internet needed on the course.</p>
+        <div class="app-actions">
+          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">App Store</a>
+          <a class="btn btn-ghost" href="/EOAGolfScore.html">Details</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In App Review</p>
+        <h3>EOA Fax</h3>
+        <p>Send and receive a fax from your phone when an office still insists on one. Documents are assembled on the device, not staged in someone else's cloud.</p>
+        <p class="soon">Terms available · listing pending</p>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In App Review</p>
+        <h3>EOA Mail</h3>
+        <p>A plain IMAP and SMTP mail client with OAuth2, drafts, and background sync. Your credentials live in the iOS Keychain and are never transmitted to us.</p>
+        <p class="soon">Terms available · listing pending</p>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In Development</p>
+        <h3>EOA Books</h3>
+        <p>Accounting for a small business, kept on your own device. Your ledger is not a subscription to somebody else's cloud, and your books are not training data.</p>
+        <div class="app-actions">
+          <a class="btn btn-ghost" href="/EOABooks/">Details</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In Development</p>
+        <h3>EOA FishCast</h3>
+        <p>Read the conditions before you drive to the water. Forecast and timing in one place, without an account or a feed.</p>
+        <div class="app-actions">
+          <a class="btn btn-ghost" href="/EOAFishCast.html">Details</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In Development</p>
+        <h3>EOA VA Benefits</h3>
+        <p>Find your way through VA benefits without handing your service record to a third party. Built by a retired Infantry colonel who has been through the process.</p>
+        <div class="app-actions">
+          <a class="btn btn-ghost" href="/benefits.html">Details</a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <p class="status">In Development</p>
+        <h3>EOA Bicycling</h3>
+        <p>Track your ride without broadcasting your route to a fitness network. Your rides stay on your phone, where a training log belongs.</p>
+        <p class="soon">Terms available · listing pending</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <p class="sec-label"><b>§ 02</b> — Architecture</p>
+    <h2>What "On Device" Actually Means</h2>
+    <p style="max-width:60ch;color:var(--steel)">Privacy claims are cheap. These are the specific engineering decisions behind them, and they are the same in every EOA title.</p>
+
+    <div class="arch-grid">
+      <div class="arch">
+        <span class="k">01 / STORAGE</span>
+        <h3>There is no server</h3>
+        <p>Willis Strategy Group does not operate a backend for these apps. There is no database holding your contacts, mail, ledger, routes, or scores — because no copy exists anywhere but your phone.</p>
+      </div>
+      <div class="arch">
+        <span class="k">02 / TRACKING</span>
+        <h3>Nothing is measured</h3>
+        <p>No analytics SDK, no crash reporter, no advertising identifier. Nobody counts what you tap, and there is no usage record to sell, breach, or subpoena.</p>
+      </div>
+      <div class="arch">
+        <span class="k">03 / CREDENTIALS</span>
+        <h3>Keychain only</h3>
+        <p>When an app needs a password or an OAuth token, it goes into Apple's encrypted Keychain on your device. It is never transmitted to us, because there is nowhere to transmit it.</p>
+      </div>
+      <div class="arch">
+        <span class="k">04 / DEPENDENCIES</span>
+        <h3>System frameworks only</h3>
+        <p>Every EOA app is built against Apple's own frameworks — Network, AVFoundation, CryptoKit, PhotosUI, WebKit. No third-party SDKs ship in the binary, so nothing arrives that we did not write.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="sec-label"><b>§ 03</b> — Support</p>
+    <h2>Talk to a Person</h2>
+    <p>Support requests, bug reports, feature ideas, privacy questions, press, and licensing all reach the same inbox — and the same person answers it.</p>
+
+    <div class="contact-grid">
+      <div>
+        <p class="contact-line">Email</p>
+        <a class="contact-mail" href="mailto:management@willis-strategy.com">management@willis-strategy.com</a>
+
+        <div class="reasons">
+          <a href="mailto:management@willis-strategy.com?subject=EOA%20Support%20Request">Support request</a>
+          <a href="mailto:management@willis-strategy.com?subject=EOA%20Bug%20Report">Report a bug</a>
+          <a href="mailto:management@willis-strategy.com?subject=EOA%20Feature%20Request">Feature request</a>
+          <a href="mailto:management@willis-strategy.com?subject=EOA%20Privacy%20Question">Privacy question</a>
+        </div>
+      </div>
+
+      <div class="contact-facts">
+        Typical response — 1 business day<br>
+        Columbus, Georgia<br>
+        Apple Developer FHKM6B769W<br>
+        No account required for support
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Willis Strategy Group, LLC · Columbus, GA</span>
+    <span><a href="/privacy.html">Privacy</a> · <a href="/">Consulting</a> · iPhone and App Store are trademarks of Apple Inc.</span>
+  </div>
+</footer>
+
+</body>
+</html>
