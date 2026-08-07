@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  color-scheme:light only;
   --ink:#0B1D33;
   --navy:#12294A;
   --steel:#3E5C76;
@@ -25,7 +24,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-html{background:var(--paper)}
 body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 a{color:inherit}
@@ -72,7 +70,7 @@ h1 em{font-style:normal;color:var(--brass)}
 @media(max-width:480px){.lifecycle{grid-template-columns:1fr}}
 
 /* ---------- Sections ---------- */
-section{padding:96px 0;background:var(--paper);color:var(--ink)}
+section{padding:96px 0}
 .sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .sec-label b{color:var(--brass-dim);font-weight:500}
 h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.02;margin-bottom:20px}
@@ -117,6 +115,16 @@ h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transf
 .app-cta .btn-ghost:hover{background:rgba(11,29,51,.06)}
 @media(max-width:820px){.app-grid{grid-template-columns:1fr}}
 
+/* Insights */
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+.ins-card{border:1px solid var(--mist);background:#fff;padding:30px 28px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s}
+.ins-card:hover{border-color:var(--brass)}
+.ins-kind{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:12px}
+.ins-card h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.1rem;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+.ins-card p{font-size:.88rem;color:#33465e;margin-bottom:18px}
+.ins-meta{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.06em}
+@media(max-width:900px){.ins-grid{grid-template-columns:1fr}}
+
 /* About */
 .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start;margin-top:24px}
 .about-facts{border:1px solid var(--mist);background:#fff}
@@ -156,6 +164,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
       <li><a href="#services">Services</a></li>
       <li><a href="#approach">Approach</a></li>
       <li><a href="#apps">Apps</a></li>
+      <li><a href="#insights">Insights</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -257,7 +266,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
   <div class="wrap">
     <p class="sec-label"><b>§ 03</b> — Products</p>
     <h2>EOA — Every Ounce of Advantage</h2>
-    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="/eoa/" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
+    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="https://cwillis457.github.io/index.html" target="_blank" rel="noopener" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
     <div class="app-grid">
       <div class="app-card">
         <p class="app-tag">iOS · iPhone · No Account Required</p>
@@ -272,8 +281,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
           <li>Zero analytics, zero tracking — data never leaves your device</li>
         </ul>
         <div class="app-cta">
-          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416" target="_blank" rel="noopener">App Store</a>
-          <a class="btn btn-ghost" href="/EOABizCard.html">Learn More</a>
+          <a class="btn btn-solid" href="https://cwillis457.github.io/EOABizCard" target="_blank" rel="noopener">Learn More</a>
         </div>
       </div>
       <div class="app-card">
@@ -289,17 +297,32 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
           <li>No login, no internet needed on the course</li>
         </ul>
         <div class="app-cta">
-          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366" target="_blank" rel="noopener">App Store</a>
-          <a class="btn btn-ghost" href="/EOAGolfScore.html">Learn More</a>
+          <a class="btn btn-solid" href="https://cwillis457.github.io/EOAGolfScore" target="_blank" rel="noopener">Learn More</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section id="insights" style="background:var(--paper)">
+  <div class="wrap">
+    <p class="sec-label"><b>§ 04</b> — Insights</p>
+    <h2>Book Reviews</h2>
+    <p class="lede">Reviews of the books that shape how we think about leading, learning, and building capability — through the lens of experience, not theory.</p>
+    <div class="ins-grid">
+      <a class="ins-card" href="/insights/review-project-maven.html">
+        <span class="ins-kind">Book Review</span>
+        <h3>Project Maven — Katrina Manson</h3>
+        <p>The story of the Maven Smart System, reviewed through a Battle Lab lens: what a decade of AI-warfare development teaches about experimentation, iteration, and fielding capability under friction.</p>
+        <span class="ins-meta">AUG 2026 · ★★★★☆</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="wrap">
-    <p class="sec-label"><b>§ 04</b> — About</p>
+    <p class="sec-label"><b>§ 05</b> — About</p>
     <h2>Willis Strategy Group</h2>
     <div class="about-grid">
       <div>
@@ -324,12 +347,12 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 
 <section id="contact">
   <div class="wrap">
-    <p class="sec-label"><b>§ 05</b> — Contact</p>
+    <p class="sec-label"><b>§ 06</b> — Contact</p>
     <h2>Start the Conversation</h2>
     <div class="contact-grid">
       <div>
         <p style="color:var(--mist);max-width:48ch;margin-bottom:28px">Initial consultations are no-cost and no-obligation. Tell us about the pursuit, the capability, or the problem — we'll tell you honestly whether we can move the needle.</p>
-        <p class="contact-line">EMAIL &nbsp;<a href="mailto:management@willis-strategy.com">management@willis-strategy.com</a></p>
+        <p class="contact-line">EMAIL &nbsp;<a href="mailto:ChrisWillis@willis-strategy.com">ChrisWillis@willis-strategy.com</a></p>
         <p class="contact-line">LOCATION &nbsp;Columbus, Georgia</p>
         <p class="contact-line" style="color:var(--slate);font-size:.78rem;line-height:1.7;margin-top:28px">TYPICAL RESPONSE — 1 BUSINESS DAY<br>NDA AVAILABLE ON REQUEST<br>OCI SCREENING PERFORMED PRIOR TO ENGAGEMENT</p>
       </div>
@@ -344,7 +367,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
           <label for="cf-msg">Message</label>
           <textarea id="cf-msg" name="message" required></textarea>
           <button type="submit">Send Message</button>
-          <p class="form-note">Opens your email app addressed to management@willis-strategy.com</p>
+          <p class="form-note">Opens your email app addressed to ChrisWillis@willis-strategy.com</p>
         </form>
       </div>
     </div>
@@ -367,7 +390,7 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   var m=document.getElementById('cf-msg').value.trim();
   var subject='Website Inquiry — '+n+(o?' ('+o+')':'');
   var body='Name: '+n+'\nEmail: '+em+(o?'\nOrganization: '+o:'')+'\n\n'+m;
-  window.location.href='mailto:management@willis-strategy.com?subject='
+  window.location.href='mailto:ChrisWillis@willis-strategy.com?subject='
     +encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
 });
 </script>
