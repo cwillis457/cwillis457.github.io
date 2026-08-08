@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>A Hybrid Approach to Combat Simulation Experimentation &mdash; Willis Strategy Group</title>
+<meta name="description" content="Combining human-in-the-loop and closed-loop constructive simulation to maximize both the validity and real-world applicability of warfighting experiments. I/ITSEC 2023 paper by Chris Willis et al., Maneuver Battle Lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.art-head{background:var(--ink);color:#fff;padding:80px 0 64px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:18px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.05;font-size:clamp(1.7rem,4.5vw,2.6rem);text-transform:uppercase}
+.byline{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--slate);letter-spacing:.08em;text-transform:uppercase;line-height:2}
+.pubnote{margin-top:18px;color:#DCE3EC;font-size:.9rem;font-style:italic}
+article{padding:56px 0 40px}
+article p{margin-bottom:22px;color:#3c4f68;font-weight:400}
+article h2{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:1.3rem;margin:44px 0 16px;color:var(--ink)}
+article h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.05rem;margin:32px 0 12px;color:var(--ink)}
+article ul{margin:0 0 22px 24px;color:#3c4f68}
+article li{margin-bottom:8px}
+article blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 22px;margin:30px 0;color:var(--steel);font-size:.98rem}
+article img{max-width:100%;height:auto;display:block;margin:28px auto;border:1px solid var(--mist);background:#fff}
+article table{border-collapse:collapse;width:100%;margin:28px 0;font-size:.85rem}
+article th,article td{border:1px solid var(--mist);padding:10px 12px;text-align:left;vertical-align:top;color:#3c4f68}
+article th{background:var(--navy);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+article caption{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;text-align:left}
+.refs p{font-size:.82rem;color:#5a6b81;margin-bottom:10px;padding-left:24px;text-indent:-24px}
+.dlbar{border:1px solid var(--mist);background:#fff;padding:18px 22px;margin:36px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.06em}
+.art-foot{border-top:1px solid var(--mist);padding:36px 0 80px;margin-top:24px}
+.art-foot .bio{font-size:.88rem;color:#33465e}
+.art-foot .bio b{font-family:'Archivo',sans-serif;text-transform:uppercase;font-stretch:85%}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/insights/index.html">&larr; Insights</a>
+  </div>
+</nav>
+
+<div class="art-head">
+  <div class="wrap">
+    <p class="kind">Article &middot; Professional Publication</p>
+    <h1>A Hybrid Approach to Combat Simulation Experimentation</h1>
+    <p class="byline">Chris Willis &middot; John Bayer &middot; MAJ Jake Kelly &middot; Sam Anderson<br>Maneuver Battle Lab, Fort Moore, Georgia</p>
+    <p class="pubnote">Originally presented at the Interservice/Industry Training, Simulation, and Education Conference (I/ITSEC), 2023.</p>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+<h2 id="abstract">Abstract</h2>
+
+<p>In order to ensure the validity of a warfighting experiment, the
+experimenter must be able to detect change, isolate its cause, and
+relate experimentation results to real-world (combat) operations.
+Constructive simulation experiments (SIMEXps) with multiple runs are
+ideal to detect change and to isolate its cause. However, because
+modeling complex events requires many assumptions, critics often
+question the applicability of constructive simulation results to
+operational situations. This is juxtaposed by command-and-control human
+in the loop (HITL) experiments in which military staffs receive
+real-time, simulated sensor inputs, make real-time decisions and direct
+simulated friendly forces against simulated threat forces. The use of
+actual military operators and staffs allows this type of experiment to
+reflect warfighting decision-making better than purely closed loop
+constructive experiments thus increasing the applicability to real-world
+operations. However, when humans make decisions, variability increases,
+and changes are more difficult to detect. The Maneuver Battle Lab (MBL)
+uses a hybrid approach to SIMEXps in order to capitalize on the
+strengths of both the closed loop constructive and HITL approaches,
+while minimizing the weaknesses of each technique. The MBL uses
+operational force military role players (MRPs) to replicate staffs
+during HITL SIMEXps in order to ensure applicability to real-world
+operations. The tactics developed by these MRPs – during several
+replications per case – are then scripted into the simulation scenario
+and replicated in a constructive (or closed loop) manner for the
+required number of times to ensure statistical significance. The hybrid
+approach described in this paper provides a means for other
+organizations conducting military experimentation to increase the
+validity of their constructive experiments, while simultaneously
+increasing the real-world applicability of their experiments.</p>
+
+<h2 id="about-the-authors">About the Authors</h2>
+
+<p>Chris Willis, an Army Civilian, currently serves as the Director of
+the Maneuver Battle Lab (MBL), Fort Moore, Georgia. He is a graduate of
+the United States Military Academy and holds a master’s degree from Long
+Island University. Chris is a retired United States Army Infantry
+Officer. His assignments included service in Afghanistan, Iraq and
+Korea. Chris has led virtual and constructive experimentation both
+locally at the MBL and distributed through the Army Persistent
+Experimentation Network (APEN). He is a Certified Modeling and
+Simulation Professional (CMSP) and holds a professional certificate in
+modeling and simulation from the University of Alabama, Huntsville.</p>
+<p>John Bayer, an Army Civilian, currently serves as the Chief of the
+Modeling and Simulation Branch (MSB) for the Maneuver Battle Lab (MBL),
+Fort Moore, Georgia. He holds a bachelor’s degree from the University of
+Phoenix. John has served as an Army experimentation simulationist for
+over 20 years. He has participated in virtual and constructive
+experiments at the current MBL, the former Mounted Maneuver Battle Lab
+(Fort Knox, Kentucky), and those distributed through the APEN. John is a
+Certified Modeling and Simulation Professional (CMSP).</p>
+<p>MAJ Jake Kelly currently serves as a Project Officer within the
+Modeling and Simulation Branch for the Maneuver Battle Lab, Fort Moore,
+Georgia. He graduated from Stephen F. Austin State University and
+commissioned through ROTC as an Armor Officer. He also holds a Masters
+in Operational Studies from the U.S. Army Command and General Staff
+College. His assignments include service in the Sinai Peninsula,
+European RAF mission, and Korean RAF mission. He is a Certified Modeling
+and Simulation Professional (CMSP) and has led live, virtual and
+constructive experimentation at MBL and distributed through the
+APEN.</p>
+<p>Sam Anderson, a Department of Defense Contractor, currently employed
+as a Senior Research Operations Analyst with Science Applications
+International Corporation for the Fort Moore, Maneuver Center of
+Excellence, Maneuver Battle Lab. Sam is a retired United States Army
+Officer. He served in Kuwait, Bosnia, Korea, and Iraq. Sam has conducted
+simulation experimentation on future force design for Army Brigade
+Combat Formations. His college education consists of a bachelor’s degree
+from the University of Hawaii and a master’s degree from Regents
+University. Sam is a Certified Modeling and Simulation Professional.</p>
+
+<h1 id="a-hybrid-approach-to-combat-simulation-experimentation-1">A
+Hybrid Approach to Combat Simulation Experimentation</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The Maneuver Battle Lab (MBL), in support of the US Army Maneuver
+Capabilities Development and Integration Directorate (MCDID), conducts
+live and constructive experimentation and analysis to support concepts,
+requirements, and integration for the Soldier, Brigade Combat Teams, and
+Cross Functional Teams (Soldier Lethality and Next Generation Combat
+Vehicles). A government project officer (PO) leads the coordination and
+synchronization process to ensure that the experiment planning is
+synchronized and that the planning will result in an experiment that
+produces outcomes to answer the partner’s experiment objectives. The
+warfighting experiment may result in an acquisition decision, changes to
+US Army concepts or doctrine, inform science and technology (S&amp;T)
+investments, and/or inform the Joint Capabilities Integration and
+Development System (JCIDS). Some of the outcomes of recent experiments
+include:</p>
+
+<ul>
+<li><p>Informing the Optionally Manned Fighting Vehicle (OMFV) Request
+for Proposal (RFP) and Capability Development Document (CDD)</p></li>
+<li><p>Refinement to Next Generation Combat Vehicle (NGCV) Cross
+Functional Team (CFT) Robotic Combat Vehicle (RCV) program
+requirements</p></li>
+<li><p>Informing the Multi-Domain Operations (MDO) Concept</p></li>
+<li><p>Assessing an artificial intelligence (AI) enabled Adaptive
+Command and Control Web (AC2W) designed to control swarms of
+drones</p></li>
+<li><p>Informing AC2W/Human Interface Requirements</p></li>
+<li><p>Informing AC2W strike requirements</p></li>
+<li><p>Assessing Modeling and Simulation (M&amp;S) capability to model
+intelligent behaviors for swarm Unmanned Aerial Systems (UAS)</p></li>
+</ul>
+
+<p>As the MBL staff designs experiments to address desired outcomes that
+inform requirements as described above, they often struggle with
+balancing the establishment of statistical significance with real-world
+(combat) applicability of the new capability that is being assessed.
+This paper will address an experimentation method that balances those
+two demands.</p>
+
+<h2 id="military-experimentation">Military Experimentation</h2>
+
+<p>In <em>The Logic of Warfighting Experiments,</em> Richard Kass,
+states that the purpose of military warfighting experiments is to
+explore the effects of manipulating proposed warfighting capabilities or
+conditions (Kass, 2006). Conditions include terrain, threat, and
+weather. At the MBL, we further Kass’ definition to include the
+manipulation of new warfighting concepts and new combat unit formations.
+Therefore, a military warfighting experiment at the MBL explores the
+effects of changing the variables of concepts, capabilities, unit
+formations and conditions.</p>
+<p>Combat is an inherently dangerous endeavor; failure in the design and
+experimentation of Army weapons and combat vehicles could ultimately
+lead to the loss of American lives. Due to the deadly serious
+consequences of NOT providing legitimate results to military
+experimentation, the MBL must ensure the validity of its experiments.
+According to Kass, there are four requirements for ensuring warfighting
+experiment validity. They are, 1) the ability to use a new capability,
+2) the ability to detect change, 3) the ability to isolate the cause of
+the change, and 4) the ability to relate experimentation results to
+real-world (combat) operations (Kass, 2006).</p>
+<p>Kass further states that most warfighting experiments can be grouped
+into one of four general methods: analytic wargame, constructive
+experiments, human-in-the-loop experiments, and field (or live)
+experiments. Each of these four methods has inherent strengths and
+weaknesses with respect to the previously discussed validity
+requirements (see figure 1, below). Because no single experimentation
+method can satisfy all four requirements, a comprehensive campaign of
+learning requires multiple experimentation methods (Kass, 2006).
+Although the MBL conducts all four methods of experimentation, we will
+focus only on the constructive and human-in-the-loop (HITL) methods for
+the purposes of this paper.</p>
+
+<p><img src="/insights/media/hybrid-figure1.png" alt="Figure 1. The four methods of military experimentation"></p>
+
+<p style="font-family:\'IBM Plex Mono\',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);text-align:center;margin-top:-16px">Figure 1</p>
+
+<h2 id="statistical-significance-and-power">STATISTICAL SIGNIFICANCE AND
+POWER</h2>
+
+<p>Assuming that change can be detected during an experiment, then
+determining the cause of that change is essential to valid
+experimentation. Because any experiment will only simulate a sampling of
+real-world data, the experimenter must establish that the detected
+change is not due to chance. Statistical significance helps us quantify
+whether our results are likely due to a measurable change or to chance
+(Gallo, 2016). Statistical significance is established by the
+experimenter, but generally understood to be inside the 95% confidence
+interval of a sample.</p>
+<p>According to the central limit theorem (CLT), for almost all
+populations the sampling distribution of the mean is approximately
+normal when the simple random sample size is sufficiently large.
+Statisticians generally agree that if the sample size is 30 or larger,
+then the distribution will be normal and the CLT will apply. However, if
+the distribution is skewed, then a larger sample size may be required
+for the CLT to apply (Brase &amp; Brase, 2012).</p>
+<p>Large sample sizes reduce the chance that variability (or noise) will
+impact on the chance that change is detected. An experiment’s ability to
+detect change is known as power. Various statistical techniques exist to
+determine the sample size required to achieve specific statistical power
+levels. As sample size increases, so does statistical power (Kass
+2006).</p>
+<p>Statistical techniques, known as power analysis, can be used to
+estimate the probability of detecting change given a certain magnitude
+for a specified effect. A power analysis prior to data collection can be
+accomplished by estimating the sample size required for statistical
+significance. Following data collection, the true statistical power
+provided by the experiment can be determined (Kass, 2006). If sufficient
+power is not attained, then more replications may be required.</p>
+
+<h2 id="constructive-simulation">Constructive Simulation</h2>
+
+<p>Constructive simulations are those that use simulated people
+operating simulated systems. However, real people can be allowed to
+stimulate (make inputs) to constructive simulations (MSCO, 2022).
+Constructive simulations normally involve two opposing sides that each
+make independent decisions based on their perception of the battlefield.
+Military command and control (C2) systems are stimulated by the
+simulation, which creates the common operational picture (COP) for both
+the friendly and enemy MRPs (see figure 2, below) (SOC Course, 2023).
+For the purposes of this paper, constructive simulations are further
+subdivided into closed loop and human in the loop (HITL).</p>
+
+<p><img src="/insights/media/hybrid-figure2.png" alt="Figure 2. Categories of military simulation"></p>
+
+<p style="font-family:\'IBM Plex Mono\',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);text-align:center;margin-top:-16px">Figure 2</p>
+
+<h3 id="closed-loop-constructive-experimentation">Closed Loop
+Constructive Experimentation</h3>
+<p>Constructive simulations, in a closed form fashion, allow us to
+conduct the required number of replications to establish statistical
+significance. Additionally, constructive experiments provide
+statistically defensible evidence of improvements across a wide range of
+conditions (Kass, 2006).</p>
+<p>In a closed loop SIMEXp, no human intervention occurs in the play
+after experimenters choose the initial parameters and then conduct the
+simulation. Constructive simulations are a mainstay of warfighting
+experimentation and are conducted by practically all military analytical
+agencies and battle labs. Constructive simulations allow for
+repeatability of the same battle under identical conditions, while
+allowing for a controlled and systematic variation</p>
+<p>of variables. As previously discussed, this can include the insertion
+of a new weapon or sensor, employment of different concepts, doctrine,
+and/or tactics, or the encounter of a different threat. Closed loop
+constructive simulation experiments (SIMEXps) with multiple replications
+are ideal to detect change and to isolate its cause. However, because
+modeling complex events requires many assumptions, critics often
+question the applicability of constructive simulation results to
+real-world operations (Kass, 2006).</p>
+
+<p>Furthermore, an important consideration for warfighting experiments
+is the distinction between statistical significance and operational
+relevance in the military context. There may be cases in which
+statistical differences are found between two alternatives but the
+relative difference between them has no operational impact. Oftentimes,
+insights around the operational relevance of the differences between
+alternative configurations are considered by subject matter expert (SME)
+input after the simulations have been completed. This approach can lead
+to potential inefficiencies relating to the number of replications that
+need to be conducted. An alternative approach would be to identify the
+operational relevance threshold, or desired effect size, for each metric
+of interest prior to running the simulation. This may allow a smaller
+number of replications for each metric to be calculated using
+statistical techniques, assuming a pilot set of replications was run to
+estimate the variance of each metric. However, this approach is
+predicated on the assumption that the magnitude of the absolute values
+generated by the simulation is comparable to those expected in the
+real-world. Anecdotal evidence indicates that combat simulations can
+produce trends consistent with real-world military scenarios although
+the order of magnitude of the results is likely to be different (Chau,
+Gill &amp; Griefer, 2017).</p>
+<h3 id="human-in-the-loop-hitl-simulation-experimentation">Human in the
+Loop (HITL) Simulation Experimentation</h3>
+
+<p>To overcome the disadvantages of post hoc SME input, military
+simulation experiments often use a HITL approach. HITL SIMEXps are a
+blend of constructive experiments and field experiments. In a C2 HITL
+SIMEXp, a military staff receives real-time, simulated sensor inputs,
+makes real-time decisions and directs simulated friendly forces against
+simulated threat forces. The use of operational force MRPs and staffs
+allows this type of experiment to reflect warfighting decision-making
+processes better than purely closed loop constructive experiments. This
+increases the applicability to real-world operations. However, humans
+may play differently against computer opponents than against real
+opponents. Additionally, when humans make decisions, variability
+increases, and changes are invariably more difficult to detect (Kass,
+2006).</p>
+<p>HITL simulations are used extensively for training exercises in the
+military, but they can also be used for both concept and capability
+development simulation experiments. HITL experiments essentially use a
+simulation to stimulate military C2 systems. This allows the
+experimenter to garner both qualitative and quantitative data from the
+experiment. Qualitative data is obtained through the use of after-action
+reviews (AARs), surveys, and interviews. Since combat is an inherently
+human endeavor, the input of human MRPs is vital to understanding the
+applicability of new concepts and capabilities to a combat formation.
+However, it is extremely resource intensive to conduct enough
+replications to establish statistical significance while using HITL
+SIMEXps. In order to garner both the qualitative data provided by a HITL
+experiment, and the statistical significance provided by a closed loop
+experiment, a hybrid approach should be used.</p>
+
+<h2 id="maneuver-battle-lab-hybrid-approach">MANEUVER BATTLE LAB HYBRID
+APPROACH</h2>
+
+<p>The Maneuver Battle Lab (MBL) has developed a hybrid approach to
+SIMEXps in order to capitalize on the strengths of both the closed loop
+constructive and HITL approaches, while minimizing the weaknesses of
+each technique. The MBL uses operational force MRPs to replicate staffs
+during HITL simulation experiments to ensure the validity of operational
+employment and applicability to real-world operations. The tactics
+developed by these MRPs – during several replications per case – are
+then scripted into the simulation scenario and replicated in a closed
+loop manner for the required number of times to establish statistical
+significance. The current hybrid execution model has evolved as training
+and capability opportunities presented themselves.</p>
+
+<h3 id="maneuver-battle-lab-hitl-execution">Maneuver Battle Lab HITL
+Execution</h3>
+
+<p>In the past, the MBL exclusively conducted HITL experiments. During
+these HITL experiments, participants took great care to understand the
+new formation or equipment and how to employ it. MRPs would conduct the
+Military Decision-Making Process (MDMP) to develop tactics, techniques,
+and procedures (TTPs) that would leverage the changes to a tactical
+advantage. They would then conduct mission rehearsals in the simulation
+to ensure that the developed TTPs would provide the desired effect. The
+MRPs would then modify the TTPs until they were confident in their
+effectiveness.</p>
+<p>The MRPs would finalize their plans during pilot runs, adjusting for
+new conditions presented by an enemy threat MRP. The pilot runs also
+allow for standardization of communication and tactics between the MRPs
+and simulation interactors (SIs). The MRPs would then lock down their
+schemes of maneuver in the first iterations of record replications such
+that deviation among runs was kept to a bare minimum. The intent was to
+try to ensure that conditions among record replications were as
+consistent as possible. Once plans were locked in, deviations to the
+scheme of maneuver had to be approved by the experiment director. To
+prevent the MRPs from learning from their previous mistakes and
+modifying their actions among runs, the base case and alternative cases
+were executed in pseudo-random order. Random order run sequencing
+reduces the likelihood of artificially increasing variability in the
+experiment.</p>
+<p>The MBL would then record approximately ten replications per base
+case and each alternative case by the end of the experiment. These
+results were the best effort given the time and human resources
+available for HITL experiment execution.</p>
+
+<h3 id="limitations-of-hitl-execution-at-the-mbl">Limitations of HITL
+Execution at the MBL</h3>
+
+<p>As previously stated, time and human resource limitations constrained
+the number of HITL iterations to a relatively small number. Although the
+number of iterations was considered sufficient, they tended to be on the
+lower end of the scale. Conducting the required number of runs to
+establish statistical significance would have required investments that
+were untenable in terms of time, personnel, and money.</p>
+<p>Furthermore, it is extremely difficult to prevent military
+professionals from attempting to correct errors that become obvious as
+the experiment progresses; also known as the learning effect. Small,
+almost imperceptible changes were often discovered after the completion
+of experiments. Removing these record runs, when discovered, reduced the
+number of viable replications, further complicating the establishment of
+statistical significance.</p>
+<p>In 2012, prior to the MBL developing a hybrid approach, the MBL
+conducted an experiment focused on the utilization of a future weapon
+optic. During the experiment, the MBL had operational MRPs conduct
+missions within three different scenarios (Attack, Cordon and Search,
+and React to Enemy Ambush). Within each scenario they conducted three
+different use cases: Base Case with current optics, Alternate Case 1
+with Rapid Target Acquisition (RTA) at a basic level, and Alternate Case
+2 with RTA at an advanced level. The objective of the experiment was to
+compare the operational impacts of using an advanced weapons optic when
+operating over urban terrain, against hybrid/irregular forces. An
+important aspect of the future weapon optic is the capability to acquire
+and engage targets faster and at longer ranges than current optics.
+Therefore, to compare and assess the operational impact of the future
+optic, analysis focused on the performance of the optics and minimized
+the effects of other variables (such as specific weapon system,
+probability of hit, operator proficiency, tactics, etc.). In an effort
+to increase assurance that assessment outcomes are directly attributable
+to the specific optics, each optic was separated into subcomponents and
+analyzed as a function of range and time.</p>
+<p>At conclusion, the MBL completed a total of 52 record runs with an
+average of 17 runs per case. While 17 runs per case is nearing the
+threshold for quantifiable significance for closed loop, throughout the
+HITL record runs the operational MRPs and Threat Force continued to make
+refinements and adjustments to their TTPs which added variability. An
+example of this learning effect noted in the experiment report was how
+the threat force adjusted and slowed their maneuver in order to limit
+the friendly force’s target acquisition capability. Additionally, during
+execution of the record runs six different adjustments were made within
+the simulation ranging from illumination levels to windowsill heights
+which added additional unintended variables throughout the simulation
+runs.</p>
+<p>Due to the adjustments and variables listed above, the analysis team
+had difficulty determining causality and providing quantifiable,
+statistically significant data for use in the final report. As the MBL
+continues to execute constructive experiments, unforeseen adjustments
+and variables in the simulation will always appear. Acknowledging and
+executing these necessary adjustments is instrumental in ensuring the
+experiment scenario is valid. However, before the close of an
+experiment, the analyst must ensure the data output has quantifiable
+integrity and statistical significance that is only established through
+closed loop iterative runs. Without the use of multiple closed loop
+runs, the analysis team is left with a dilemma of sifting through
+multiple variables both from the simulation and from the MRPs and Threat
+Force learning effect to try and determine whether and to what degree of
+influence those variables had on the final result.</p>
+
+<h3 id="maneuver-battle-lab-hybrid-execution">Maneuver Battle Lab Hybrid
+Execution</h3>
+
+<p>In order to increase the statistical significance of its SIMEXps,
+while maintaining their real-world applicability, the MBL developed a
+hybrid approach beginning in 2019. The experiments are still initially
+conducted as HITL, which allowed for the MRPs to define and refine TTPs
+during execution, to evaluate the new organization or new capability,
+and to provide qualitative feedback to the analysts. Unlike the
+previously used HITL technique, MRPs are now encouraged to improve their
+performance during each replication until the results are as useful as
+can be expected. Additionally, the MRP feedback is collected as
+qualitative data through surveys, interviews, and AARs,</p>
+<p>In the MBL, MRPs do not typically interact directly with the
+simulation. The MBL provides SIs, or professionals, that are trained in
+the operation of the MBL’s primary simulation tool One Semi-Automated
+Forces (OneSAF). The SIs take notes on the progression of the missions
+during HITL run execution. They are tasked with reproducing the final
+schemes of maneuver as directed by the MRPs. The notes are compiled into
+execution matrices by which an OneSAF Battle Master can script the
+battle from both the friendly and threat perspectives. The scripted
+scenarios are then run for the MRPs and evaluated to ensure that the
+results match the intent as provided (see figure 3 below).</p>
+<p><img src="/insights/media/hybrid-figure3.png" alt="Figure 3. Scripting and validating scenarios for closed-loop replication">Once the scripted scenarios
+are finalized, they are replicated in closed loop fashion at least
+thirty times per case or more if the power analysis determines that more
+replications are required. The MBL data collectors have developed
+software to process the raw quantitative data provided by the OneSAF
+replications and then to the experiment analyst with summarized ordered
+data. Using this data, the analyst computes measures of merit (MOMs) and
+determines if changes can be detected and if that change is
+statistically significant. This quantitative analysis will then be
+correlated with qualitative data from the MRPs and will ultimately
+inform experiment findings. It is important to note that the experiment
+analyst also observes the HITL replication execution in order to truly
+understand why the MRPS made certain decisions and how they arrived at
+their qualitative feedback. The final report is published following
+review by all stakeholders for accuracy of content.</p>
+
+<p style="font-family:\'IBM Plex Mono\',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);text-align:center;margin-top:-16px">Figure 3</p>
+<p><strong>MBL’s Hybrid Technique Example</strong></p>
+<p>MBL completed its first hybrid constructive OneSAF SIMEXp in July
+2020. The focus of the SIMEXp was to determine the changes in mobility,
+lethality and survivability effects of a military combat unit employing
+different caliber mortar indirect fire munitions and capabilities
+against a formidable opposing force. In contrast to a three-week HITL
+SIMEXp MBL usually executes, the hybrid constructive SIMEXp was a
+four-week event. It included operational force MRPs, an opposing force
+commander, simulation interactors, and an experiment control (EXCON)
+element. The first week focused on training and familiarizing the MRPs
+with technical systems and three experiment cases, then culminated with
+pilot runs. Weeks two and three comprised of HITL record runs and
+writing scenarios scripts for each case. Week four consisted of closed
+loop replication runs. The SIMEXp replicated each case 38 times, eight
+times during the HITL phase and 30 times during the closed loop
+replication phase.</p>
+<p>During execution of each HITL run, simulation interactors wrote
+scripts for individual Soldiers, weapon systems, and platform
+capabilities. In addition to scripting, timings for specific OneSAF
+behaviors were segmented into time intervals. For example, after
+successful completion of the prescribed HITL runs for a case, the
+average simulation run time was 60 minutes. OneSAF behaviors and timings
+were then scripted for two x 30-minute intervals. The Battle Master then
+executed the first 30-minute simulation run interval at an accelerated
+time. This allowed MRPs with their assigned SIs to review the scripted
+scenario for discrepancies with timing and OneSAF behaviors. If
+corrections were required for the first 30-minute interval, then they
+were made, and the first 30-minute interval was re-executed and reviewed
+again by the MRPs and SIs until zero discrepancies were noted. The same
+process occurred for the second 30-minute interval. The Battle Master
+then executed the completed 60-minute simulation at an accelerated time
+with a final review and approval by the MRPs.</p>
+<p>The MBL hybrid constructive SIMEXp, which was comprised of both HITL
+and closed loop replication simulation runs was successfully
+executed<mark>. (Stenbit, et al., 2002)</mark> stated “Replication is
+important because it demonstrates that the experimentation results are
+not the product of some particular circumstances (selection of subjects,
+choice of the experimentation situation or scenario, bias of the
+researchers, etc.) (pg.24). By isolating variables in the closed loop
+simulation runs, MBL was able to determine that of the three
+experimental cases, one case outperformed the other two cases in terms
+of mobility, lethality, survivability, and capabilities of the
+employment of different mortar munitions.</p>
+<h3
+id="differential-experimentation-using-hybrid-execution">Differential
+Experimentation using Hybrid Execution</h3>
+<p>A considerable benefit of hybrid execution is the ability to conduct
+differential experimentation, which is the ability to change a variable
+in the scenario and run it again while still being able to make
+comparisons to the original data set. For example, the MBL conducted a
+hybrid experiment that compared an infantry platoon equipped with
+current rifles against two alternate cases with two different new rifle
+capabilities. Following closed loop execution, the experiment lead
+determined that the second alternate case provided the greatest increase
+in both lethality and survivability. Subsequently, the experiment
+sponsor requested that the MBL consider a third new rifle capability.
+The MBL was able to inject this new rifle capability into the
+simulation, modify the script, and ultimately provide a third alternate
+case without building an entire new simulation experiment. This saved
+considerable time, money, and effort to both the MBL and to the
+experiment sponsor. This process will continue to allow the MBL to reuse
+previous experiments for the benefit of future considerations.</p>
+<h2
+id="applicability-of-the-mbl-hybrid-approach-to-other-organizations">APPLICABILITY
+OF THE MBL HYBRID APPROACH TO OTHER ORGANIZATIONS</h2>
+<p><em><strong>The MBL hybrid approach is a previously unknown technique
+that potentially creates a fifth warfighting experiment method as
+described by Kass above. The five warfighting experiment methods would
+now be the analytic wargame, constructive experiments, human-in-the-loop
+experiments, hybrid (constructive/HITL) experiments, and field (or live)
+experiments.</strong></em> The MBL hybrid approach described in this
+paper provides a means for other organizations conducting warfighting
+experiments to increase the validity of their constructive experiments,
+while simultaneously increasing the real-world applicability of those
+experiments.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>The MBL hybrid approach has been developed over several years. US
+Army Officer, Department of the Army (DA) Civilians, and the MBL prime
+contractors from the Science Applications International Corporation
+(SAIC) have been instrumental in its development. It is a living process
+that continues to improve on a daily basis. The competence and
+professionalism of the MBL team allows this improvement to happen.</p>
+<p>We would also like to thank our ‘bird-dog’ Dr. Tim Cooley for his
+feedback and for guiding us through this process. Finally, we want to
+thank Dr. Cindy Forgie, Major Sean Fraser, Cindy Dunn, Bill Miller, and
+Tom Yanoschik for their constructive criticism and feedback on this
+paper.</p>
+<h2 id="references">References</h2><div class="refs">
+
+<p>Alberts, D. S., &amp; Hayes, R. E. (2006), <em>Code of best practice:
+Campaigns of Experimentation</em>. Department of Defense (DoD) Command
+and Control Research Program (CCRP).</p>
+<p>Alberts, D. S,, &amp; Hayes, R. E. (2002), <em>Code of best practice:
+Experimentation</em>. Department of Defense (DoD) Command and Control
+Research Program (CCRP).</p>
+<p>Banks, J. (Ed.). (1998) <em>Handbook of Simulation: Principles,
+Methodology, Advances, Applications, and Practice</em>.</p>
+<p>John S. Wiley &amp; Sons, Inc.</p>
+<p>Brase, C.H. &amp; Brase, C. P. (2012). <em>Understandable
+statistics</em> (10<sup>th</sup> ed.). Brooks/Cole CENGAGE Learning.</p>
+<p>Chau, W. &amp; Gill, A. &amp; Griefer, D. (2017, December 3-8).
+22<sup>nd</sup> International Congress on Modeling and Simulation,
+Hobart, Tasmania, Australia. <a
+href="http://mssanz.org.au/modsim2017"><u>http://mssanz.org.au/modsim2017</u>.</a></p>
+<p>Gallo, A. (2021, December 9). <em>A refresher on statistical
+significance.</em> Harvard Business Review. Retrieved April 1, 2022,
+from:
+https://hbr.org/2016/02/a-refresher-on-statistical-significance</p>
+<p>Kass, R. A. (2006), <em>The Logic of Warfighting Experiments.</em>
+Department of Defense (DoD) Command and Control Research Program
+(CCRP).</p>
+<p>Modeling and Simulation Professional Certification Commission, <a
+href="http://Simprofessional.org/">http://Simprofessional.org,</a>
+(accessed 11 May 2021).</p>
+<p>Tolk, A. (2012), <em>Engineering principles of combat modeling and
+distributed simulation</em>. S. Wiley &amp; Sons, Inc. US Army Modeling
+and Simulation School. Simulation Operations Course (SOC) (2023).</p>
+<p><a
+href="https://www.ms.army.mil/sp-div2/school/soc.html"><u>https://www.ms.army.mil/sp-div2/school/soc.html</u>.</a></p>
+<p>US Army Data Analysis Center (DAC), https<a
+href="http://www.dac.ccdc.army.mil/">://w</a>ww.<a
+href="http://www.dac.ccdc.army.mil/">dac.ccdc.army.mil/,</a> (last
+accessed 11 May 2021).</p>
+<p>US Army Maneuver Capabilities Development Integration Directorate
+(MCDID). (2020). <em>Maneuver Battle Lab- Modeling and Simulation Branch
+face validation standard operating procedure (SOP).</em> Fort Moore,
+GA.</p>
+<p>US Modeling and Simulation Coordination Office (MSCO). (2011).
+Glossary-Terms and Definitions, https<a
+href="http://www.msco.mil/MSReferences/Glossary/TermsDfinitions">://w</a>ww.<a
+href="http://www.msco.mil/MSReferences/Glossary/TermsDfinitions">msco.mil/MSReferences/Glossary/TermsDfinitions</a>
+(accessed 25 April 2022).</p>
+
+</div>
+  </div>
+</article>
+
+<div class="art-foot">
+  <div class="wrap">
+    <p class="bio"><b>About Willis Strategy Group &mdash;</b> Colonel (Retired) Chris Willis is the founder of Willis Strategy Group, a Columbus, Georgia consulting firm focused on leader development, experimentation and modeling &amp; simulation, and management consulting. A 1991 West Point graduate, he served 25 years as an Army Infantry officer and 10 years as a Department of the Army Civilian, including as Director of the Maneuver Battle Lab. <a href="/#contact">Get in touch.</a></p>
+  </div>
+</div>
+
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Insights — Willis Strategy Group</title>
+<meta name="description" content="Articles and book reviews from Willis Strategy Group on leader development, experimentation, and capability — by COL (Ret) Chris Willis.">
+<link rel="alternate" type="application/rss+xml" title="Willis Strategy Group Insights" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.head{background:var(--ink);color:#fff;padding:72px 0 56px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.02;font-size:clamp(2.2rem,5vw,3.4rem);text-transform:uppercase}
+.head p.sub{color:#DCE3EC;max-width:60ch;margin-top:18px}
+.head .rss{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.head .rss a{color:var(--brass);text-decoration:none}
+.head .rss a:hover{text-decoration:underline}
+.filters{display:flex;gap:12px;margin:48px 0 0;flex-wrap:wrap}
+.fbtn{cursor:pointer;background:#fff;border:1px solid var(--mist);color:var(--steel);font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 20px}
+.fbtn:hover{border-color:var(--brass)}
+.fbtn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin:36px 0 96px}
+.card{border:1px solid var(--mist);background:#fff;padding:30px 28px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s}
+.card:hover{border-color:var(--brass)}
+.ckind{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:12px}
+.card h2{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.15rem;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+.card p{font-size:.88rem;color:#3c4f68;margin-bottom:18px}
+.cmeta{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.06em}
+.card.hidden{display:none}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/#insights">&larr; Home</a>
+  </div>
+</nav>
+
+<div class="head">
+  <div class="wrap">
+    <p class="kind">&sect; Insights</p>
+    <h1>Articles &amp; Book Reviews</h1>
+    <p class="sub">Perspectives on leader development, experimentation, and capability &mdash; and reviews of the books that shape how we think about leading and learning. Written by COL (Ret) Chris Willis.</p>
+    <p class="rss"><a href="/feed.xml">RSS Feed &rarr;</a></p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="filters" role="group" aria-label="Filter posts">
+    <button class="fbtn active" data-filter="all">All</button>
+    <button class="fbtn" data-filter="review">Book Reviews</button>
+    <button class="fbtn" data-filter="article">Articles</button>
+  </div>
+
+  <div class="grid" id="postGrid">
+    <!-- POSTS: newest first. To add a post, copy a card, set data-kind="review" or "article" -->
+    <a class="card" data-kind="article" href="/insights/article-hybrid-experimentation.html">
+      <span class="ckind">Article &middot; I/ITSEC 2023</span>
+      <h2>A Hybrid Approach to Combat Simulation Experimentation</h2>
+      <p>Combining human-in-the-loop and closed-loop constructive simulation to capture the strengths of both &mdash; real-world applicability and statistical significance &mdash; in warfighting experiments.</p>
+      <span class="cmeta">WILLIS, BAYER, KELLY &amp; ANDERSON &middot; MANEUVER BATTLE LAB</span>
+    </a>
+    <a class="card" data-kind="article" href="/insights/article-accreditation-framework.html">
+      <span class="ckind">Article &middot; I/ITSEC 2021</span>
+      <h2>A Framework for the Accreditation of Simulation-Based Experiments</h2>
+      <p>Who accredits your experiments? A cross-functional framework for accrediting the entire simulation experiment &mdash; models, scenario, environment, and analysis &mdash; not just the M&amp;S.</p>
+      <span class="cmeta">YANOSCHIK &amp; WILLIS &middot; MANEUVER BATTLE LAB</span>
+    </a>
+    <a class="card" data-kind="review" href="/insights/review-george-marshall.html">
+      <span class="ckind">Book Review</span>
+      <h2>George Marshall: Defender of the Republic &mdash; David L. Roll</h2>
+      <p>The Army's greatest soldier-statesman as a field manual for leader development: talent management as a weapon system, candor as a career strategy, selflessness as strategic capital.</p>
+      <span class="cmeta">AUG 2026 &middot; DUTTON CALIBER &middot; 704 PP</span>
+    </a>
+    <a class="card" data-kind="review" href="/insights/review-project-maven.html">
+      <span class="ckind">Book Review</span>
+      <h2>Project Maven &mdash; Katrina Manson</h2>
+      <p>The story of the Maven Smart System, reviewed through a Battle Lab lens: what a decade of AI-warfare development teaches about experimentation, iteration, and fielding capability under friction.</p>
+      <span class="cmeta">AUG 2026 &middot; W.W. NORTON</span>
+    </a>
+    <a class="card" data-kind="review" href="/insights/review-sicily-43.html">
+      <span class="ckind">Book Review</span>
+      <h2>Sicily &rsquo;43 &mdash; James Holland</h2>
+      <p>Operation Husky and the first assault on Fortress Europe &mdash; timeless lessons on Joint Forcible Entry Operations, airborne fragility, and air and naval superiority.</p>
+      <span class="cmeta">AUG 2026 &middot; GROVE PRESS &middot; 640 PP</span>
+    </a>
+    <a class="card" data-kind="review" href="/insights/review-savage-storm.html">
+      <span class="ckind">Book Review</span>
+      <h2>The Savage Storm &mdash; James Holland</h2>
+      <p>Salerno and the battle for Italy, 1943 &mdash; what an infantry-centric slog against a determined defender teaches the modern student of large-scale combat operations.</p>
+      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 624 PP</span>
+    </a>
+    <a class="card" data-kind="review" href="/insights/review-brothers-in-arms.html">
+      <span class="ckind">Book Review</span>
+      <h2>Brothers in Arms &mdash; James Holland</h2>
+      <p>The Sherwood Rangers' transformation from horse cavalry to legendary tank regiment &mdash; and its lessons for the Army Transformation Initiative.</p>
+      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 529 PP</span>
+    </a>
+  </div>
+</div>
+
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+<script>
+document.querySelectorAll('.fbtn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    var f=btn.dataset.filter;
+    document.querySelectorAll('#postGrid .card').forEach(function(c){
+      c.classList.toggle('hidden', f!=='all' && c.dataset.kind!==f);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
