@@ -7,6 +7,12 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://willis-strategy.com/insights/index.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://willis-strategy.com/insights/review-project-maven.html</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>yearly</changefreq>
@@ -32,6 +38,18 @@
   </url>
   <url>
     <loc>https://willis-strategy.com/insights/review-george-marshall.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/article-hybrid-experimentation.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/article-accreditation-framework.html</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

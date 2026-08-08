@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Willis Strategy Group — Insights</title>
+  <link>https://willis-strategy.com/insights/index.html</link>
+  <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Articles and book reviews on leader development, experimentation, and capability by COL (Ret) Chris Willis.</description>
+  <language>en-us</language>
+  <lastBuildDate>Sat, 08 Aug 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>A Hybrid Approach to Combat Simulation Experimentation (I/ITSEC 2023)</title>
+    <link>https://willis-strategy.com/insights/article-hybrid-experimentation.html</link>
+    <guid>https://willis-strategy.com/insights/article-hybrid-experimentation.html</guid>
+    <pubDate>Sat, 08 Aug 2026 13:00:00 GMT</pubDate>
+    <description>Combining human-in-the-loop and closed-loop constructive simulation to capture both real-world applicability and statistical significance in warfighting experiments. By Willis, Bayer, Kelly and Anderson, Maneuver Battle Lab.</description>
+  </item>
+
+  <item>
+    <title>A Framework for the Accreditation of Simulation-Based Experiments (I/ITSEC 2021)</title>
+    <link>https://willis-strategy.com/insights/article-accreditation-framework.html</link>
+    <guid>https://willis-strategy.com/insights/article-accreditation-framework.html</guid>
+    <pubDate>Sat, 08 Aug 2026 12:30:00 GMT</pubDate>
+    <description>A cross-functional framework for accrediting the entire simulation-based experiment — models, scenario, environment, and analysis — not just the M&amp;S. By Yanoschik and Willis, Maneuver Battle Lab.</description>
+  </item>
+
+  <item>
+    <title>Book Review: George Marshall: Defender of the Republic — David L. Roll</title>
+    <link>https://willis-strategy.com/insights/review-george-marshall.html</link>
+    <guid>https://willis-strategy.com/insights/review-george-marshall.html</guid>
+    <pubDate>Sat, 08 Aug 2026 12:00:00 GMT</pubDate>
+    <description>The Army's greatest soldier-statesman as a field manual for leader development: talent management as a weapon system, candor as a career strategy, selflessness as strategic capital.</description>
+  </item>
+
+  <item>
+    <title>Book Review: Project Maven — Katrina Manson</title>
+    <link>https://willis-strategy.com/insights/review-project-maven.html</link>
+    <guid>https://willis-strategy.com/insights/review-project-maven.html</guid>
+    <pubDate>Fri, 07 Aug 2026 12:00:00 GMT</pubDate>
+    <description>The story of the Maven Smart System, reviewed through a Battle Lab lens: what a decade of AI-warfare development teaches about experimentation, iteration, and fielding capability under friction.</description>
+  </item>
+
+  <item>
+    <title>Book Review: Sicily '43 — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-sicily-43.html</link>
+    <guid>https://willis-strategy.com/insights/review-sicily-43.html</guid>
+    <pubDate>Fri, 07 Aug 2026 11:00:00 GMT</pubDate>
+    <description>Operation Husky and the first assault on Fortress Europe — timeless lessons on Joint Forcible Entry Operations, airborne fragility, and air and naval superiority.</description>
+  </item>
+
+  <item>
+    <title>Book Review: The Savage Storm — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-savage-storm.html</link>
+    <guid>https://willis-strategy.com/insights/review-savage-storm.html</guid>
+    <pubDate>Fri, 07 Aug 2026 10:00:00 GMT</pubDate>
+    <description>Salerno and the battle for Italy, 1943 — what an infantry-centric slog against a determined defender teaches the modern student of large-scale combat operations.</description>
+  </item>
+
+  <item>
+    <title>Book Review: Brothers in Arms — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-brothers-in-arms.html</link>
+    <guid>https://willis-strategy.com/insights/review-brothers-in-arms.html</guid>
+    <pubDate>Fri, 07 Aug 2026 09:00:00 GMT</pubDate>
+    <description>The Sherwood Rangers' transformation from horse cavalry to legendary tank regiment — and its lessons for the Army Transformation Initiative.</description>
+  </item>
+
+</channel>
+</rss>
