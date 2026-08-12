@@ -44,10 +44,19 @@ h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height
 .card.hidden{display:none}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
 footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+
+/* EOA promo bars */
+.eoa-bar{background:var(--brass);color:var(--ink);text-align:center;padding:9px 16px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.5}
+.eoa-bar a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(11,29,51,.45)}
+.eoa-bar a:hover{border-bottom-color:var(--ink)}
+.eoa-bar .eoa-mark{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.06em;margin-right:8px}
+@media(max-width:560px){.eoa-bar{font-size:.62rem;letter-spacing:.08em}}
 </style>
 </head>
 <body>
 
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span>Every Ounce of Advantage &middot; Privacy-first iOS apps &middot; <a href="https://willis-strategy.com/eoa">Explore the lineup &rarr;</a></div>
 <nav>
   <div class="nav-inner">
     <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
@@ -73,6 +82,12 @@ footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM 
 
   <div class="grid" id="postGrid">
     <!-- POSTS: newest first. To add a post, copy a card, set data-kind="review" or "article" -->
+    <a class="card" data-kind="review" href="/insights/review-cassino-44.html">
+      <span class="ckind">Book Review</span>
+      <h2>Cassino &rsquo;44 &mdash; James Holland</h2>
+      <p>Monte Cassino, Anzio, and the liberation of Rome &mdash; the brutal conclusion of the Italian Campaign trilogy, and its lessons for sustained large-scale combat operations.</p>
+      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 672 PP</span>
+    </a>
     <a class="card" data-kind="review" href="/insights/review-dam-busters.html">
       <span class="ckind">Book Review</span>
       <h2>Dam Busters &mdash; James Holland</h2>
@@ -130,6 +145,7 @@ footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM 
   </div>
 </div>
 
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
 <footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
 
 <script>
