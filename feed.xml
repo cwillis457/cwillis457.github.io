@@ -6,7 +6,31 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles and book reviews on leader development, experimentation, and capability by COL (Ret) Chris Willis.</description>
   <language>en-us</language>
-  <lastBuildDate>Tue, 11 Aug 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 16 Aug 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Book Review: Victory '45 — James Holland with Al Murray</title>
+    <link>https://willis-strategy.com/insights/review-victory-45.html</link>
+    <guid>https://willis-strategy.com/insights/review-victory-45.html</guid>
+    <pubDate>Sun, 16 Aug 2026 12:00:00 GMT</pubDate>
+    <description>The eight surrenders that ended the Second World War — and the case-study anthology in conflict termination that every leader who plans operations without planning endings should read.</description>
+  </item>
+
+  <item>
+    <title>Book Review: The Allies Strike Back — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-allies-strike-back.html</link>
+    <guid>https://willis-strategy.com/insights/review-allies-strike-back.html</guid>
+    <pubDate>Thu, 13 Aug 2026 12:10:00 GMT</pubDate>
+    <description>The War in the West, Vol. 2: how coalition machinery, operational research, and honest after-action learning turned the tide from 1941 to 1943.</description>
+  </item>
+
+  <item>
+    <title>Book Review: The Rise of Germany — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-rise-of-germany.html</link>
+    <guid>https://willis-strategy.com/insights/review-rise-of-germany.html</guid>
+    <pubDate>Thu, 13 Aug 2026 12:00:00 GMT</pubDate>
+    <description>The War in the West, Vol. 1: why the Wehrmacht's early victories concealed fatal weakness — and what net assessment misses without the logistics ledger.</description>
+  </item>
 
   <item>
     <title>Book Review: Cassino '44 — James Holland</title>
