@@ -6,7 +6,23 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles and book reviews on leader development, experimentation, and capability by COL (Ret) Chris Willis.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 16 Aug 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 18 Aug 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Book Review: Donovan's Devils — Albert Lulushi</title>
+    <link>https://willis-strategy.com/insights/review-donovans-devils.html</link>
+    <guid>https://willis-strategy.com/insights/review-donovans-devils.html</guid>
+    <pubDate>Tue, 18 Aug 2026 12:00:00 GMT</pubDate>
+    <description>The OSS Operational Groups — immigrant soldiers who became the forerunners of Army Special Forces — and a founding case study in building capability from nothing.</description>
+  </item>
+
+  <item>
+    <title>Book Review: The Spurs of Service — Jacob P. Kelly</title>
+    <link>https://willis-strategy.com/insights/review-spurs-of-service.html</link>
+    <guid>https://willis-strategy.com/insights/review-spurs-of-service.html</guid>
+    <pubDate>Mon, 17 Aug 2026 12:00:00 GMT</pubDate>
+    <description>A cavalry officer's poems on service, loss, and the long ride home — and why a leader's emotional honesty may be the most protective example he can set.</description>
+  </item>
 
   <item>
     <title>Book Review: Victory '45 — James Holland with Al Murray</title>
