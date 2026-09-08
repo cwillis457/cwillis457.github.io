@@ -6,7 +6,23 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles and book reviews on leader development, experimentation, and capability by COL (Ret) Chris Willis.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 05 Sep 2026 12:20:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 08 Sep 2026 13:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Review: World War II with Tom Hanks</title>
+    <link>https://willis-strategy.com/insights/review-wwii-with-tom-hanks.html</link>
+    <guid>https://willis-strategy.com/insights/review-wwii-with-tom-hanks.html</guid>
+    <pubDate>Mon, 08 Sep 2026 13:00:00 GMT</pubDate>
+    <description>The twenty-hour HISTORY Channel series as command education and a study in strategic communication — the map before the terrain walk of the campaign histories.</description>
+  </item>
+
+  <item>
+    <title>Book Review: The Visionaries — James Holland</title>
+    <link>https://willis-strategy.com/insights/review-visionaries.html</link>
+    <guid>https://willis-strategy.com/insights/review-visionaries.html</guid>
+    <pubDate>Mon, 08 Sep 2026 12:00:00 GMT</pubDate>
+    <description>How the postwar order was deliberately engineered — Bretton Woods, the Marshall Plan, and the long-horizon leadership that built eighty years of peace on purpose.</description>
+  </item>
 
   <item>
     <title>Book Review: The Arms of the Future — Jack Watling</title>
