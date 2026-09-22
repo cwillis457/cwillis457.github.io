@@ -43,6 +43,14 @@ h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height
 .cmeta{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.06em}
 .card.hidden{display:none}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
+.dispatch-banner{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:36px 0 0;background:var(--ink);color:#fff;text-decoration:none;padding:30px 34px;border-left:5px solid var(--brass);transition:background .2s}
+.dispatch-banner:hover{background:var(--navy)}
+.db-left{display:flex;flex-direction:column}
+.db-tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+.db-title{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:80%;text-transform:uppercase;font-size:1.6rem;line-height:1;color:#fff}
+.db-sub{margin-top:10px;color:var(--mist);font-size:.9rem;max-width:60ch}
+.db-cta{flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--brass);padding:14px 24px;font-weight:500;white-space:nowrap}
+@media(max-width:700px){.dispatch-banner{flex-direction:column;align-items:flex-start;gap:20px}.db-cta{align-self:stretch;text-align:center}}
 footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
 
 /* EOA promo bars */
@@ -79,6 +87,15 @@ footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM 
     <button class="fbtn" data-filter="review">Book Reviews</button>
     <button class="fbtn" data-filter="article">Articles</button>
   </div>
+
+  <a class="dispatch-banner" href="/insights/defense-dispatch-issue-01.html">
+    <div class="db-left">
+      <span class="db-tag">New &middot; Weekly Briefing</span>
+      <span class="db-title">Defense Dispatch</span>
+      <span class="db-sub">Columbus&ndash;Chattahoochee Valley defense innovation &amp; investment, every week. Issue 01 &mdash; SBIR Release 6, CMI2, and Hanwha&rsquo;s $262M Army contract.</span>
+    </div>
+    <span class="db-cta">Read Issue 01 &rarr;</span>
+  </a>
 
   <div class="grid" id="postGrid">
     <!-- POSTS: newest first. To add a post, copy a card, set data-kind="review" or "article" -->
