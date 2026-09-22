@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles and book reviews on leader development, experimentation, and capability by COL (Ret) Chris Willis.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 08 Sep 2026 13:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 22 Sep 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 01 (Week of Sept 21, 2026)</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-01.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-01.html</guid>
+    <pubDate>Mon, 22 Sep 2026 12:00:00 GMT</pubDate>
+    <description>The weekly Columbus–Chattahoochee Valley defense briefing: SBIR/STTR Release 6 opens, CMI2 and Fort Benning's innovation pipeline, and Hanwha Defense USA's $262M Army contract in nearby Opelika.</description>
+  </item>
 
   <item>
     <title>Review: World War II with Tom Hanks</title>
