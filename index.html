@@ -131,6 +131,10 @@ h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transf
 .ins-meta{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.06em}
 @media(max-width:900px){.ins-grid{grid-template-columns:1fr}}
 /* Defense Dispatch banner */
+.dispatch-top{background:var(--ink);border-bottom:2px solid var(--brass)}
+.dispatch-top .dispatch-banner{max-width:1120px;margin:0 auto;border-left:none;padding:26px 24px;background:transparent}
+.dispatch-top .dispatch-banner:hover{background:transparent}
+.dispatch-top .dispatch-banner:hover .db-cta{background:var(--brass-dim)}
 .dispatch-banner{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:44px;background:var(--ink);color:#fff;text-decoration:none;padding:30px 34px;border-left:5px solid var(--brass);transition:background .2s}
 .dispatch-banner:hover{background:var(--navy)}
 .db-left{display:flex;flex-direction:column}
@@ -194,6 +198,17 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
     </ul>
   </div>
 </nav>
+
+<div class="dispatch-top">
+  <a class="dispatch-banner" href="/insights/defense-dispatch-issue-01.html">
+    <div class="db-left">
+      <span class="db-tag">New &middot; Weekly Briefing</span>
+      <span class="db-title">Defense Dispatch</span>
+      <span class="db-sub">Columbus&ndash;Chattahoochee Valley defense innovation &amp; investment, every week. Issue 01 &mdash; SBIR Release 6, CMI2, and Hanwha&rsquo;s $262M Army contract.</span>
+    </div>
+    <span class="db-cta">Read Issue 01 &rarr;</span>
+  </a>
+</div>
 
 <header id="top">
   <div class="wrap hero">
@@ -335,14 +350,6 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
     <p class="sec-label"><b>§ 04</b> — Insights</p>
     <h2>Articles &amp; Book Reviews</h2>
     <p class="lede">Professional publications on experimentation and M&amp;S, plus reviews of the books that shape how we think about leading, learning, and building capability.</p>
-    <a class="dispatch-banner" href="/insights/defense-dispatch-issue-01.html">
-      <div class="db-left">
-        <span class="db-tag">New &middot; Weekly Briefing</span>
-        <span class="db-title">Defense Dispatch</span>
-        <span class="db-sub">Columbus&ndash;Chattahoochee Valley defense innovation &amp; investment, every week. Issue 01 &mdash; SBIR Release 6, CMI2, and Hanwha&rsquo;s $262M Army contract.</span>
-      </div>
-      <span class="db-cta">Read Issue 01 &rarr;</span>
-    </a>
     <div class="ins-grid">
       <a class="ins-card" href="/insights/review-wwii-with-tom-hanks.html">
         <span class="ins-kind">Series Review</span>
