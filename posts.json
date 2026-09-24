@@ -11,7 +11,7 @@
   {
     "type": "review",
     "date": "2026-09-24",
-    "featured": false,
+    "featured": true,
     "kind": "Report Review",
     "href": "/insights/review-mwi-pacific-papers.html",
     "title": "The MWI Pacific Papers",
@@ -21,7 +21,7 @@
   {
     "type": "review",
     "date": "2026-09-09",
-    "featured": true,
+    "featured": false,
     "kind": "Series Review",
     "href": "/insights/review-wwii-with-tom-hanks.html",
     "title": "World War II with Tom Hanks",
