@@ -88,148 +88,64 @@ footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM 
     <button class="fbtn" data-filter="article">Articles</button>
   </div>
 
-  <a class="dispatch-banner" href="/insights/defense-dispatch-issue-01.html">
+  <a class="dispatch-banner" id="ddBanner" href="/insights/defense-dispatch-issue-01.html">
     <div class="db-left">
-      <span class="db-tag">New &middot; Weekly Briefing</span>
-      <span class="db-title">Defense Dispatch</span>
-      <span class="db-sub">Columbus&ndash;Chattahoochee Valley defense innovation &amp; investment, every week. Issue 01 &mdash; SBIR Release 6, CMI2, and Hanwha&rsquo;s $262M Army contract.</span>
+      <span class="db-tag" id="ddTag">New &middot; Weekly Briefing</span>
+      <span class="db-title" id="ddTitle">Defense Dispatch</span>
+      <span class="db-sub" id="ddSub">Columbus&ndash;Chattahoochee Valley defense innovation &amp; investment, every week. Issue 01 &mdash; SBIR Release 6, CMI2, and Hanwha&rsquo;s $262M Army contract.</span>
     </div>
-    <span class="db-cta">Read Issue 01 &rarr;</span>
+    <span class="db-cta" id="ddCta">Read Issue 01 &rarr;</span>
   </a>
 
-  <div class="grid" id="postGrid">
-    <!-- POSTS: newest first. To add a post, copy a card, set data-kind="review" or "article" -->
-    <a class="card" data-kind="review" href="/insights/review-wwii-with-tom-hanks.html">
-      <span class="ckind">Series Review</span>
-      <h2>World War II with Tom Hanks</h2>
-      <p>The twenty-hour HISTORY Channel series as command education and a study in strategic communication &mdash; the map before the terrain walk of the campaign histories.</p>
-      <span class="cmeta">SEP 2026 &middot; HISTORY / AUDACY</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-visionaries.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Visionaries &mdash; James Holland</h2>
-      <p>How the postwar order was deliberately engineered &mdash; Bretton Woods, the Marshall Plan, and the long-horizon leadership that built eighty years of peace on purpose.</p>
-      <span class="cmeta">SEP 2026 &middot; GROVE ATLANTIC</span>
-    </a>
-    <a class="card" data-kind="article" href="/insights/review-arms-of-the-future.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Arms of the Future &mdash; Jack Watling</h2>
-      <p>Why ubiquitous sensors and precision fires may have made twentieth-century maneuver doctrine obsolete &mdash; and a research agenda for the force that must replace it.</p>
-      <span class="cmeta">AUG 2026 &middot; BLOOMSBURY ACADEMIC</span>
-    </a>
-    <a class="card" data-kind="article" href="/insights/review-gce-2040.html">
-      <span class="ckind">Concept Assessment</span>
-      <h2>Ground Combat Element 2040 &mdash; USMC</h2>
-      <p>The Marine Corps' human-centric framework for future ground forces &mdash; five pillars, a phased path to 2040, and the experimentation that will decide whether it holds.</p>
-      <span class="cmeta">AUG 2026 &middot; HQMC PP&amp;O</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-donovans-devils.html">
-      <span class="ckind">Book Review</span>
-      <h2>Donovan&rsquo;s Devils &mdash; Albert Lulushi</h2>
-      <p>The OSS Operational Groups &mdash; immigrant soldiers who became the forerunners of Army Special Forces &mdash; and a founding case study in building capability from nothing.</p>
-      <span class="cmeta">AUG 2026 &middot; ARCADE &middot; 384 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-spurs-of-service.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Spurs of Service &mdash; Jacob P. Kelly</h2>
-      <p>A cavalry officer&rsquo;s poems on service, loss, and the long ride home &mdash; and why a leader&rsquo;s emotional honesty may be the most protective example he can set.</p>
-      <span class="cmeta">AUG 2026 &middot; SAWDUST PUBLISHING</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-victory-45.html">
-      <span class="ckind">Book Review</span>
-      <h2>Victory &rsquo;45 &mdash; Holland &amp; Murray</h2>
-      <p>The eight surrenders that ended the Second World War &mdash; and the case-study anthology in conflict termination that every leader who plans operations without planning endings should read.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 400 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-allies-strike-back.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Allies Strike Back &mdash; James Holland</h2>
-      <p>The War in the West, Vol. 2: how coalition machinery, operational research, and honest after-action learning turned the tide from 1941 to 1943.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 752 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-rise-of-germany.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Rise of Germany &mdash; James Holland</h2>
-      <p>The War in the West, Vol. 1: why the Wehrmacht's early victories concealed fatal weakness &mdash; and what net assessment misses without the logistics ledger.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 656 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-cassino-44.html">
-      <span class="ckind">Book Review</span>
-      <h2>Cassino &rsquo;44 &mdash; James Holland</h2>
-      <p>Monte Cassino, Anzio, and the liberation of Rome &mdash; the brutal conclusion of the Italian Campaign trilogy, and its lessons for sustained large-scale combat operations.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 672 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-dam-busters.html">
-      <span class="ckind">Book Review</span>
-      <h2>Dam Busters &mdash; James Holland</h2>
-      <p>Operation Chastise as a case study in rapid capability development: from unproven concept to war-changing raid in under ten weeks &mdash; and the leadership that made it possible.</p>
-      <span class="cmeta">AUG 2026 &middot; GROVE PRESS</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-pacific-blitzkrieg.html">
-      <span class="ckind">Book Review</span>
-      <h2>Pacific Blitzkrieg &mdash; Sharon Tosi Lacey</h2>
-      <p>How the Army and Marine Corps forged joint ground operations across five Central Pacific invasions &mdash; and why integration is forged by leaders, not declared by doctrine.</p>
-      <span class="cmeta">AUG 2026 &middot; UNT PRESS &middot; 282 PP</span>
-    </a>
-    <a class="card" data-kind="article" href="/insights/article-hybrid-experimentation.html">
-      <span class="ckind">Article &middot; I/ITSEC 2023</span>
-      <h2>A Hybrid Approach to Combat Simulation Experimentation</h2>
-      <p>Combining human-in-the-loop and closed-loop constructive simulation to capture the strengths of both &mdash; real-world applicability and statistical significance &mdash; in warfighting experiments.</p>
-      <span class="cmeta">WILLIS, BAYER, KELLY &amp; ANDERSON &middot; MANEUVER BATTLE LAB</span>
-    </a>
-    <a class="card" data-kind="article" href="/insights/article-accreditation-framework.html">
-      <span class="ckind">Article &middot; I/ITSEC 2021</span>
-      <h2>A Framework for the Accreditation of Simulation-Based Experiments</h2>
-      <p>Who accredits your experiments? A cross-functional framework for accrediting the entire simulation experiment &mdash; models, scenario, environment, and analysis &mdash; not just the M&amp;S.</p>
-      <span class="cmeta">YANOSCHIK &amp; WILLIS &middot; MANEUVER BATTLE LAB</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-george-marshall.html">
-      <span class="ckind">Book Review</span>
-      <h2>George Marshall: Defender of the Republic &mdash; David L. Roll</h2>
-      <p>The Army's greatest soldier-statesman as a field manual for leader development: talent management as a weapon system, candor as a career strategy, selflessness as strategic capital.</p>
-      <span class="cmeta">AUG 2026 &middot; DUTTON CALIBER &middot; 704 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-project-maven.html">
-      <span class="ckind">Book Review</span>
-      <h2>Project Maven &mdash; Katrina Manson</h2>
-      <p>The story of the Maven Smart System, reviewed through a Battle Lab lens: what a decade of AI-warfare development teaches about experimentation, iteration, and fielding capability under friction.</p>
-      <span class="cmeta">AUG 2026 &middot; W.W. NORTON</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-sicily-43.html">
-      <span class="ckind">Book Review</span>
-      <h2>Sicily &rsquo;43 &mdash; James Holland</h2>
-      <p>Operation Husky and the first assault on Fortress Europe &mdash; timeless lessons on Joint Forcible Entry Operations, airborne fragility, and air and naval superiority.</p>
-      <span class="cmeta">AUG 2026 &middot; GROVE PRESS &middot; 640 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-savage-storm.html">
-      <span class="ckind">Book Review</span>
-      <h2>The Savage Storm &mdash; James Holland</h2>
-      <p>Salerno and the battle for Italy, 1943 &mdash; what an infantry-centric slog against a determined defender teaches the modern student of large-scale combat operations.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 624 PP</span>
-    </a>
-    <a class="card" data-kind="review" href="/insights/review-brothers-in-arms.html">
-      <span class="ckind">Book Review</span>
-      <h2>Brothers in Arms &mdash; James Holland</h2>
-      <p>The Sherwood Rangers' transformation from horse cavalry to legendary tank regiment &mdash; and its lessons for the Army Transformation Initiative.</p>
-      <span class="cmeta">AUG 2026 &middot; ATLANTIC MONTHLY &middot; 529 PP</span>
-    </a>
-  </div>
+  <div class="grid" id="postGrid"></div>
+  <noscript><p style="color:var(--steel);margin-top:24px">Enable JavaScript to see the full list of insights.</p></noscript>
 </div>
 
 <div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
 <footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
 
 <script>
-document.querySelectorAll('.fbtn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active')});
-    btn.classList.add('active');
-    var f=btn.dataset.filter;
-    document.querySelectorAll('#postGrid .card').forEach(function(c){
-      c.classList.toggle('hidden', f!=='all' && c.dataset.kind!==f);
+/* Insights are data-driven from /posts.json — do not hand-edit cards here.
+   Add a post by adding an entry to posts.json (use generator.html). */
+(function(){
+  var grid=document.getElementById('postGrid');
+  function bindFilters(){
+    document.querySelectorAll('.fbtn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        document.querySelectorAll('.fbtn').forEach(function(b){b.classList.remove('active');});
+        btn.classList.add('active');
+        var f=btn.dataset.filter;
+        document.querySelectorAll('#postGrid .card').forEach(function(c){
+          c.classList.toggle('hidden', f!=='all' && c.dataset.kind!==f);
+        });
+      });
     });
-  });
-});
+  }
+  fetch('/posts.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(posts){
+    var byDate=function(a,b){return (b.date||'').localeCompare(a.date||'');};
+    // Defense Dispatch banner — newest dispatch entry
+    var d=posts.filter(function(p){return p.type==='dispatch';}).sort(byDate)[0];
+    if(d){
+      var b=document.getElementById('ddBanner'); if(b&&d.href)b.setAttribute('href',d.href);
+      var set=function(id,v){var el=document.getElementById(id); if(el&&v!=null)el.textContent=v;};
+      set('ddTag',d.tag); set('ddTitle',d.title); set('ddSub',d.blurb); set('ddCta',d.cta);
+    }
+    // All cards (newest first)
+    var cards=posts.filter(function(p){return p.type!=='dispatch';}).sort(byDate);
+    grid.innerHTML='';
+    cards.forEach(function(p){
+      var a=document.createElement('a'); a.className='card'; a.href=p.href;
+      a.setAttribute('data-kind', p.type);
+      var k=document.createElement('span'); k.className='ckind'; k.textContent=p.kind||'';
+      var h2=document.createElement('h2'); h2.textContent=p.title||'';
+      var pp=document.createElement('p'); pp.textContent=p.blurb||'';
+      var m=document.createElement('span'); m.className='cmeta'; m.textContent=p.meta||'';
+      a.appendChild(k); a.appendChild(h2); a.appendChild(pp); a.appendChild(m);
+      grid.appendChild(a);
+    });
+    bindFilters();
+  }).catch(function(){ bindFilters(); });
+})();
 </script>
 
 </body>

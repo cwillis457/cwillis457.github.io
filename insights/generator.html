@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex,nofollow">
+<title>Insights Manager — Willis Strategy Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;padding:0 0 80px}
+.bar{background:var(--ink);color:#fff;padding:18px 24px;font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.04em}
+.bar span{color:var(--brass)}
+.wrap{max-width:960px;margin:0 auto;padding:28px 24px}
+h2{font-family:'Archivo',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;margin:34px 0 12px;color:var(--ink)}
+p.help{color:var(--steel);font-size:.9rem;margin-bottom:14px}
+label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin:14px 0 5px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--mist);font-family:'IBM Plex Sans',sans-serif;font-size:.92rem;background:#fff}
+textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+button{cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;border:none;font-weight:500}
+.btn-primary{background:var(--brass);color:var(--ink)}
+.btn-primary:hover{background:var(--brass-dim)}
+.btn-ghost{background:#fff;border:1px solid var(--ink);color:var(--ink)}
+.step{background:#fff;border:1px solid var(--mist);border-left:4px solid var(--brass);padding:20px 22px;margin:16px 0}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.85rem;background:#fff}
+th,td{border:1px solid var(--mist);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--navy);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase}
+td.c{text-align:center;white-space:nowrap}
+.pill{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--mist);color:var(--steel)}
+.out{width:100%;min-height:160px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;margin-top:10px;white-space:pre;overflow:auto}
+.note{font-size:.82rem;color:var(--steel);background:#fff;border:1px solid var(--mist);padding:14px 16px;margin-top:10px}
+.dispatch-fields,.card-fields{display:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+small{color:var(--slate)}
+</style>
+</head>
+<body>
+<div class="bar">WILLIS <span>STRATEGY</span> GROUP &nbsp;·&nbsp; INSIGHTS MANAGER</div>
+<div class="wrap">
+
+  <p class="help">This tool builds the three files that drive your insights listings &mdash; <code>posts.json</code>, <code>feed.xml</code>, and <code>sitemap.xml</code>. You never hand-edit the homepage or the insights page. Workflow: (1) load your current <code>posts.json</code>, (2) add the new article or flip a &ldquo;featured&rdquo; box, (3) download the three files and commit them alongside the article&rsquo;s HTML page.</p>
+
+  <div class="step">
+    <h2 style="margin-top:0">Step 1 &middot; Load current posts.json</h2>
+    <p class="help">On the live site this loads automatically. Locally, choose your <code>posts.json</code> file or paste it in.</p>
+    <div class="actions">
+      <button class="btn-ghost" id="loadLive">Load from live site</button>
+      <label style="margin:0;display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;color:var(--ink);font-family:'IBM Plex Sans'">
+        <input type="file" id="loadFile" accept=".json,application/json" style="width:auto;border:none;padding:0">
+      </label>
+    </div>
+    <label>…or paste posts.json here</label>
+    <textarea id="pasteJson" class="out" placeholder="[ ... ]"></textarea>
+    <div class="actions"><button class="btn-ghost" id="usePaste">Use pasted JSON</button> <small id="loadStatus">No data loaded yet.</small></div>
+  </div>
+
+  <h2>Current entries &mdash; check &ldquo;Featured&rdquo; to pin to the homepage</h2>
+  <p class="help">The homepage shows the newest three <strong>featured</strong> items. The Defense Dispatch banner uses the newest <strong>dispatch</strong> entry. Uncheck to remove from the homepage; use &times; to delete an entry entirely.</p>
+  <table id="tbl"><thead><tr><th>Title</th><th>Type</th><th>Date</th><th class="c">Featured</th><th class="c">Del</th></tr></thead><tbody></tbody></table>
+
+  <div class="step">
+    <h2 style="margin-top:0">Step 2 &middot; Add a new entry</h2>
+    <div class="row">
+      <div><label>Type</label>
+        <select id="fType">
+          <option value="review">review (Book / Report / Series Review)</option>
+          <option value="article">article (WSG article, concept assessment, paper)</option>
+          <option value="dispatch">dispatch (Defense Dispatch banner)</option>
+        </select>
+      </div>
+      <div><label>Date (YYYY-MM-DD)</label><input id="fDate" placeholder="2026-09-24"></div>
+    </div>
+    <label>Link (href) &mdash; the page you uploaded to /insights/</label>
+    <input id="fHref" placeholder="/insights/review-example.html">
+
+    <div class="card-fields">
+      <div class="row">
+        <div><label>Kind label (shows on the card)</label><input id="fKind" placeholder="Book Review"></div>
+        <div><label>Meta line</label><input id="fMeta" placeholder="AUG 2026 · PUBLISHER · 320 PP"></div>
+      </div>
+      <label>Title</label><input id="fTitle" placeholder="Title — Author">
+      <label>Blurb</label><textarea id="fBlurb" placeholder="One or two sentences."></textarea>
+      <label style="display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;color:var(--ink)"><input type="checkbox" id="fFeatured" style="width:auto"> Feature on homepage</label>
+    </div>
+
+    <div class="dispatch-fields">
+      <label>Banner tag</label><input id="dTag" placeholder="New · Weekly Briefing">
+      <label>Banner title</label><input id="dTitle" placeholder="Defense Dispatch">
+      <label>Banner blurb</label><textarea id="dBlurb" placeholder="Issue 02 — …"></textarea>
+      <label>Button text</label><input id="dCta" placeholder="Read Issue 02 →">
+    </div>
+
+    <div class="actions"><button class="btn-primary" id="addBtn">Add entry</button></div>
+  </div>
+
+  <div class="step">
+    <h2 style="margin-top:0">Step 3 &middot; Download &amp; commit</h2>
+    <p class="help">Regenerate, then download all three and commit them to your repo (root: <code>posts.json</code>, <code>feed.xml</code>, <code>sitemap.xml</code>). Then upload the article&rsquo;s HTML page to <code>/insights/</code>.</p>
+    <div class="actions">
+      <button class="btn-primary" id="genBtn">Regenerate files</button>
+      <button class="btn-ghost" id="dlPosts">Download posts.json</button>
+      <button class="btn-ghost" id="dlFeed">Download feed.xml</button>
+      <button class="btn-ghost" id="dlMap">Download sitemap.xml</button>
+    </div>
+    <label>posts.json preview</label>
+    <textarea id="outPosts" class="out"></textarea>
+    <div class="note">The article&rsquo;s <em>page</em> still has to exist at the link you gave. This tool manages the listings, banner, feed, and sitemap &mdash; not the page itself. Keep exactly three items featured for a full homepage row.</div>
+  </div>
+
+</div>
+<script>
+var SITE='https://willis-strategy.com';
+var STATIC=['/','/insights/index.html','/eoa'];  // always-included site pages
+var data=[];
+
+function status(msg){document.getElementById('loadStatus').textContent=msg;}
+function render(){
+  var tb=document.querySelector('#tbl tbody'); tb.innerHTML='';
+  data.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');}).forEach(function(p){
+    var tr=document.createElement('tr');
+    var title=p.type==='dispatch'?(p.title||'Defense Dispatch')+' — '+(p.href||''):(p.title||'');
+    var feat=p.type==='dispatch'?'—':'<input type="checkbox" data-h="'+p.href+'" class="ftog"'+(p.featured?' checked':'')+'>';
+    tr.innerHTML='<td>'+esc(title)+'</td><td><span class="pill">'+esc(p.type)+'</span></td><td>'+esc(p.date||'')+'</td><td class="c">'+feat+'</td><td class="c"><button class="btn-ghost del" data-h="'+p.href+'" style="padding:3px 9px">×</button></td>';
+    tb.appendChild(tr);
+  });
+  document.querySelectorAll('.ftog').forEach(function(cb){cb.onchange=function(){var e=data.find(function(x){return x.href===cb.dataset.h;}); if(e)e.featured=cb.checked;};});
+  document.querySelectorAll('.del').forEach(function(b){b.onclick=function(){data=data.filter(function(x){return x.href!==b.dataset.h;}); render();};});
+}
+function esc(s){return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function load(arr){ if(!Array.isArray(arr)){status('That is not a JSON array.');return;} data=arr; status('Loaded '+data.length+' entries.'); render(); }
+
+document.getElementById('loadLive').onclick=function(){
+  fetch(SITE+'/posts.json',{cache:'no-store'}).then(function(r){return r.json();}).then(load).catch(function(){status('Could not reach the live site — use the file picker or paste instead.');});
+};
+document.getElementById('loadFile').onchange=function(e){var f=e.target.files[0]; if(!f)return; var rd=new FileReader(); rd.onload=function(){try{load(JSON.parse(rd.result));}catch(x){status('Invalid JSON file.');}}; rd.readAsText(f);};
+document.getElementById('usePaste').onclick=function(){try{load(JSON.parse(document.getElementById('pasteJson').value));}catch(x){status('Invalid JSON pasted.');}};
+
+// toggle conditional fields
+function syncFields(){var t=document.getElementById('fType').value; document.querySelector('.card-fields').style.display=(t==='dispatch')?'none':'block'; document.querySelector('.dispatch-fields').style.display=(t==='dispatch')?'block':'none';}
+document.getElementById('fType').onchange=syncFields; syncFields();
+
+document.getElementById('addBtn').onclick=function(){
+  var t=document.getElementById('fType').value;
+  var href=document.getElementById('fHref').value.trim();
+  var date=document.getElementById('fDate').value.trim();
+  if(!href||!date){alert('Link and date are required.');return;}
+  var e;
+  if(t==='dispatch'){
+    e={type:'dispatch',date:date,href:href,tag:val('dTag'),title:val('dTitle'),blurb:val('dBlurb'),cta:val('dCta')};
+  }else{
+    e={type:t,date:date,featured:document.getElementById('fFeatured').checked,kind:val('fKind'),href:href,title:val('fTitle'),blurb:val('fBlurb'),meta:val('fMeta')};
+  }
+  data=data.filter(function(x){return x.href!==href;}); // replace if same href
+  data.push(e); status('Added: '+(e.title||href)); render();
+  ['fHref','fDate','fKind','fMeta','fTitle','fBlurb','dTag','dTitle','dBlurb','dCta'].forEach(function(id){var el=document.getElementById(id); if(el)el.value='';});
+  document.getElementById('fFeatured').checked=false;
+};
+function val(id){return document.getElementById(id).value.trim();}
+
+function buildFeed(){
+  var items=data.slice().sort(function(a,b){return (b.date||'').localeCompare(a.date||'');});
+  var body=items.map(function(p){
+    var title=p.type==='dispatch'?(p.title||'Defense Dispatch'):(p.title||'');
+    var desc=p.blurb||'';
+    var pub=new Date((p.date||'2026-01-01')+'T12:00:00Z').toUTCString();
+    var url=SITE+p.href;
+    return '  <item>\n    <title>'+esc(title)+'</title>\n    <link>'+url+'</link>\n    <guid>'+url+'</guid>\n    <pubDate>'+pub+'</pubDate>\n    <description>'+esc(desc)+'</description>\n  </item>';
+  }).join('\n\n');
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>Willis Strategy Group — Insights</title>\n  <link>'+SITE+'/insights/index.html</link>\n  <atom:link href="'+SITE+'/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>\n  <language>en-us</language>\n  <lastBuildDate>'+new Date().toUTCString()+'</lastBuildDate>\n\n'+body+'\n\n</channel>\n</rss>\n';
+}
+function buildMap(){
+  var urls=STATIC.map(function(u){return {loc:SITE+u,freq:'weekly',pri:u==='/'?'1.0':'0.8',mod:iso()};});
+  data.forEach(function(p){urls.push({loc:SITE+p.href,freq:p.type==='dispatch'?'weekly':'yearly',pri:p.type==='dispatch'?'0.8':'0.7',mod:p.date||iso()});});
+  var body=urls.map(function(u){return '  <url>\n    <loc>'+u.loc+'</loc>\n    <lastmod>'+u.mod+'</lastmod>\n    <changefreq>'+u.freq+'</changefreq>\n    <priority>'+u.pri+'</priority>\n  </url>';}).join('\n');
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+body+'\n</urlset>\n';
+}
+function iso(){return new Date().toISOString().slice(0,10);}
+
+document.getElementById('genBtn').onclick=function(){document.getElementById('outPosts').value=JSON.stringify(data,null,2);};
+function dl(name,text,type){var b=new Blob([text],{type:type}); var a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=name; a.click();}
+document.getElementById('dlPosts').onclick=function(){dl('posts.json',JSON.stringify(data,null,2),'application/json');};
+document.getElementById('dlFeed').onclick=function(){dl('feed.xml',buildFeed(),'application/xml');};
+document.getElementById('dlMap').onclick=function(){dl('sitemap.xml',buildMap(),'application/xml');};
+
+document.getElementById('loadLive').click(); // try live on open
+</script>
+</body>
+</html>
