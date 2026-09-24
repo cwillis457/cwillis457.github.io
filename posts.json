@@ -1,0 +1,211 @@
+[
+  {
+    "type": "dispatch",
+    "date": "2026-09-22",
+    "href": "/insights/defense-dispatch-issue-01.html",
+    "tag": "New · Weekly Briefing",
+    "title": "Defense Dispatch",
+    "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 01 — SBIR Release 6, CMI2, and Hanwha’s $262M Army contract.",
+    "cta": "Read Issue 01 →"
+  },
+  {
+    "type": "review",
+    "date": "2026-09-24",
+    "featured": false,
+    "kind": "Report Review",
+    "href": "/insights/review-mwi-pacific-papers.html",
+    "title": "The MWI Pacific Papers",
+    "blurb": "West Point’s 2026 collection on deterring China by denying a quick victory — a contest for time, and where the land force fits.",
+    "meta": "MWI WEST POINT · ~18 ESSAYS"
+  },
+  {
+    "type": "review",
+    "date": "2026-09-09",
+    "featured": true,
+    "kind": "Series Review",
+    "href": "/insights/review-wwii-with-tom-hanks.html",
+    "title": "World War II with Tom Hanks",
+    "blurb": "The twenty-hour HISTORY Channel series as command education and a study in strategic communication — the map before the terrain walk of the campaign histories.",
+    "meta": "SEP 2026 · HISTORY / AUDACY"
+  },
+  {
+    "type": "review",
+    "date": "2026-09-08",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-visionaries.html",
+    "title": "The Visionaries — James Holland",
+    "blurb": "How the postwar order was deliberately engineered — Bretton Woods, the Marshall Plan, and the long-horizon leadership that built eighty years of peace on purpose.",
+    "meta": "SEP 2026 · GROVE ATLANTIC"
+  },
+  {
+    "type": "article",
+    "date": "2026-08-30",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-arms-of-the-future.html",
+    "title": "The Arms of the Future — Jack Watling",
+    "blurb": "Why ubiquitous sensors and precision fires may have made twentieth-century maneuver doctrine obsolete — and a research agenda for the force that must replace it.",
+    "meta": "AUG 2026 · BLOOMSBURY ACADEMIC"
+  },
+  {
+    "type": "article",
+    "date": "2026-08-29",
+    "featured": true,
+    "kind": "Concept Assessment",
+    "href": "/insights/review-gce-2040.html",
+    "title": "Ground Combat Element 2040 — USMC",
+    "blurb": "The Marine Corps' human-centric framework for future ground forces — five pillars, a phased path to 2040, and the experimentation that will decide whether it holds.",
+    "meta": "AUG 2026 · HQMC PP&O"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-28",
+    "featured": true,
+    "kind": "Book Review",
+    "href": "/insights/review-donovans-devils.html",
+    "title": "Donovan’s Devils — Albert Lulushi",
+    "blurb": "The OSS Operational Groups — immigrant soldiers who became the forerunners of Army Special Forces — and a founding case study in building capability from nothing.",
+    "meta": "AUG 2026 · ARCADE · 384 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-27",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-spurs-of-service.html",
+    "title": "The Spurs of Service — Jacob P. Kelly",
+    "blurb": "A cavalry officer’s poems on service, loss, and the long ride home — and why a leader’s emotional honesty may be the most protective example he can set.",
+    "meta": "AUG 2026 · SAWDUST PUBLISHING"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-26",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-victory-45.html",
+    "title": "Victory ’45 — Holland & Murray",
+    "blurb": "The eight surrenders that ended the Second World War — and the case-study anthology in conflict termination that every leader who plans operations without planning endings should read.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 400 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-25",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-allies-strike-back.html",
+    "title": "The Allies Strike Back — James Holland",
+    "blurb": "The War in the West, Vol. 2: how coalition machinery, operational research, and honest after-action learning turned the tide from 1941 to 1943.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 752 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-24",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-rise-of-germany.html",
+    "title": "The Rise of Germany — James Holland",
+    "blurb": "The War in the West, Vol. 1: why the Wehrmacht's early victories concealed fatal weakness — and what net assessment misses without the logistics ledger.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 656 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-23",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-cassino-44.html",
+    "title": "Cassino ’44 — James Holland",
+    "blurb": "Monte Cassino, Anzio, and the liberation of Rome — the brutal conclusion of the Italian Campaign trilogy, and its lessons for sustained large-scale combat operations.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 672 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-22",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-dam-busters.html",
+    "title": "Dam Busters — James Holland",
+    "blurb": "Operation Chastise as a case study in rapid capability development: from unproven concept to war-changing raid in under ten weeks — and the leadership that made it possible.",
+    "meta": "AUG 2026 · GROVE PRESS"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-21",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-pacific-blitzkrieg.html",
+    "title": "Pacific Blitzkrieg — Sharon Tosi Lacey",
+    "blurb": "How the Army and Marine Corps forged joint ground operations across five Central Pacific invasions — and why integration is forged by leaders, not declared by doctrine.",
+    "meta": "AUG 2026 · UNT PRESS · 282 PP"
+  },
+  {
+    "type": "article",
+    "date": "2026-08-20",
+    "featured": false,
+    "kind": "Article · I/ITSEC 2023",
+    "href": "/insights/article-hybrid-experimentation.html",
+    "title": "A Hybrid Approach to Combat Simulation Experimentation",
+    "blurb": "Combining human-in-the-loop and closed-loop constructive simulation to capture the strengths of both — real-world applicability and statistical significance — in warfighting experiments.",
+    "meta": "WILLIS, BAYER, KELLY & ANDERSON · MANEUVER BATTLE LAB"
+  },
+  {
+    "type": "article",
+    "date": "2026-08-19",
+    "featured": false,
+    "kind": "Article · I/ITSEC 2021",
+    "href": "/insights/article-accreditation-framework.html",
+    "title": "A Framework for the Accreditation of Simulation-Based Experiments",
+    "blurb": "Who accredits your experiments? A cross-functional framework for accrediting the entire simulation experiment — models, scenario, environment, and analysis — not just the M&S.",
+    "meta": "YANOSCHIK & WILLIS · MANEUVER BATTLE LAB"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-18",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-george-marshall.html",
+    "title": "George Marshall: Defender of the Republic — David L. Roll",
+    "blurb": "The Army's greatest soldier-statesman as a field manual for leader development: talent management as a weapon system, candor as a career strategy, selflessness as strategic capital.",
+    "meta": "AUG 2026 · DUTTON CALIBER · 704 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-17",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-project-maven.html",
+    "title": "Project Maven — Katrina Manson",
+    "blurb": "The story of the Maven Smart System, reviewed through a Battle Lab lens: what a decade of AI-warfare development teaches about experimentation, iteration, and fielding capability under friction.",
+    "meta": "AUG 2026 · W.W. NORTON"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-16",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-sicily-43.html",
+    "title": "Sicily ’43 — James Holland",
+    "blurb": "Operation Husky and the first assault on Fortress Europe — timeless lessons on Joint Forcible Entry Operations, airborne fragility, and air and naval superiority.",
+    "meta": "AUG 2026 · GROVE PRESS · 640 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-15",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-savage-storm.html",
+    "title": "The Savage Storm — James Holland",
+    "blurb": "Salerno and the battle for Italy, 1943 — what an infantry-centric slog against a determined defender teaches the modern student of large-scale combat operations.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 624 PP"
+  },
+  {
+    "type": "review",
+    "date": "2026-08-14",
+    "featured": false,
+    "kind": "Book Review",
+    "href": "/insights/review-brothers-in-arms.html",
+    "title": "Brothers in Arms — James Holland",
+    "blurb": "The Sherwood Rangers' transformation from horse cavalry to legendary tank regiment — and its lessons for the Army Transformation Initiative.",
+    "meta": "AUG 2026 · ATLANTIC MONTHLY · 529 PP"
+  }
+]

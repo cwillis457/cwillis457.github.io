@@ -2,115 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://willis-strategy.com/</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://willis-strategy.com/insights/index.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://willis-strategy.com/insights/review-project-maven.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <loc>https://willis-strategy.com/eoa</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-mwi-pacific-papers.html</loc>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://willis-strategy.com/insights/review-sicily-43.html</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://willis-strategy.com/insights/defense-dispatch-issue-01.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://willis-strategy.com/insights/review-savage-storm.html</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-brothers-in-arms.html</loc>
-    <lastmod>2026-08-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-george-marshall.html</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/article-hybrid-experimentation.html</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/article-accreditation-framework.html</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-pacific-blitzkrieg.html</loc>
-    <lastmod>2026-08-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-dam-busters.html</loc>
-    <lastmod>2026-08-10</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-cassino-44.html</loc>
-    <lastmod>2026-08-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-rise-of-germany.html</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-allies-strike-back.html</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-victory-45.html</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-spurs-of-service.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-donovans-devils.html</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-arms-of-the-future.html</loc>
-    <lastmod>2026-09-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://willis-strategy.com/insights/review-gce-2040.html</loc>
-    <lastmod>2026-09-05</lastmod>
+    <loc>https://willis-strategy.com/insights/review-wwii-with-tom-hanks.html</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -121,15 +43,105 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://willis-strategy.com/insights/review-wwii-with-tom-hanks.html</loc>
-    <lastmod>2026-09-08</lastmod>
+    <loc>https://willis-strategy.com/insights/review-arms-of-the-future.html</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://willis-strategy.com/insights/defense-dispatch-issue-01.html</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://willis-strategy.com/insights/review-gce-2040.html</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-donovans-devils.html</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-spurs-of-service.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-victory-45.html</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-allies-strike-back.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-rise-of-germany.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-cassino-44.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-dam-busters.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-pacific-blitzkrieg.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/article-hybrid-experimentation.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/article-accreditation-framework.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-george-marshall.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-project-maven.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-sicily-43.html</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-savage-storm.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-brothers-in-arms.html</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
