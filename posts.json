@@ -1,17 +1,30 @@
 [
   {
     "type": "dispatch",
-    "date": "2026-09-22",
-    "href": "/insights/defense-dispatch-issue-01.html",
+    "date": "2026-09-28",
+    "href": "/insights/defense-dispatch-issue-02.html",
     "tag": "New · Weekly Briefing",
     "title": "Defense Dispatch",
+    "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 02 — GM Defense’s $700M ISV contract, the Battle Lab’s tethered drones, and CMI2 at the Maneuver Warfighter Conference.",
+    "cta": "Read Issue 02 →",
+    "issueLabel": "Issue 02",
+    "issueDate": "Week of September 28, 2026"
+  },
+  {
+    "type": "dispatch",
+    "date": "2026-09-22",
+    "href": "/insights/defense-dispatch-issue-01.html",
+    "tag": "Weekly Briefing",
+    "title": "Defense Dispatch",
     "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 01 — SBIR Release 6, CMI2, and Hanwha’s $262M Army contract.",
-    "cta": "Read Issue 01 →"
+    "cta": "Read Issue 01 →",
+    "issueLabel": "Issue 01",
+    "issueDate": "Week of September 21, 2026"
   },
   {
     "type": "review",
     "date": "2026-09-24",
-    "featured": true,
+    "featured": false,
     "kind": "Report Review",
     "href": "/insights/review-mwi-pacific-papers.html",
     "title": "The MWI Pacific Papers",
@@ -21,7 +34,7 @@
   {
     "type": "review",
     "date": "2026-09-09",
-    "featured": false,
+    "featured": true,
     "kind": "Series Review",
     "href": "/insights/review-wwii-with-tom-hanks.html",
     "title": "World War II with Tom Hanks",
@@ -207,14 +220,5 @@
     "title": "Brothers in Arms — James Holland",
     "blurb": "The Sherwood Rangers' transformation from horse cavalry to legendary tank regiment — and its lessons for the Army Transformation Initiative.",
     "meta": "AUG 2026 · ATLANTIC MONTHLY · 529 PP"
-  },
-  {
-    "type": "dispatch",
-    "date": "2026-09-26",
-    "href": "https://willis-strategygroup.com/insights/defense-dispatch-issue-02.html",
-    "tag": "New Weekly Edition",
-    "title": "Defense Dispatch",
-    "blurb": "Issue 02 - ISV experimentation, local opportunities, and the Pacific Papers.",
-    "cta": "Read Issue 02 here"
   }
 ]
