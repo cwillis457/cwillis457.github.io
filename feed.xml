@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Thu, 24 Sep 2026 12:50:51 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 17:56:46 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch</title>
+    <link>https://willis-strategy.comhttps://willis-strategygroup.com/insights/defense-dispatch-issue-02.html</link>
+    <guid>https://willis-strategy.comhttps://willis-strategygroup.com/insights/defense-dispatch-issue-02.html</guid>
+    <pubDate>Sat, 26 Sep 2026 12:00:00 GMT</pubDate>
+    <description>Issue 02 - ISV experimentation, local opportunities, and the Pacific Papers.</description>
+  </item>
 
   <item>
     <title>The MWI Pacific Papers</title>
