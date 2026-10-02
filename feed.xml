@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Sat, 26 Sep 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Valley of Death — Sharon Weinberger</title>
+    <link>https://willis-strategy.com/insights/review-valley-of-death.html</link>
+    <guid>https://willis-strategy.com/insights/review-valley-of-death.html</guid>
+    <pubDate>Fri, 02 Oct 2026 12:00:00 GMT</pubDate>
+    <description>Venture-backed defense tech is crossing the valley of death on its own dime — and quietly taking ownership of the capability with it. What that means for the government as buyer.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 02</title>
