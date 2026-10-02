@@ -1,9 +1,20 @@
 [
   {
     "type": "dispatch",
+    "date": "2026-10-05",
+    "href": "/insights/defense-dispatch-issue-03.html",
+    "tag": "New · Weekly Briefing",
+    "title": "Defense Dispatch",
+    "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 03 — the first XM30 “Wolf” prototype, the year of the ground robot, SOCOM’s SOF RACER fast lane, and the Army’s humanoid robot competition.",
+    "cta": "Read Issue 03 →",
+    "issueLabel": "Issue 03",
+    "issueDate": "Week of October 5, 2026"
+  },
+  {
+    "type": "dispatch",
     "date": "2026-09-28",
     "href": "/insights/defense-dispatch-issue-02.html",
-    "tag": "New · Weekly Briefing",
+    "tag": "Weekly Briefing",
     "title": "Defense Dispatch",
     "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 02 — GM Defense’s $700M ISV contract, the Battle Lab’s tethered drones, and CMI2 at the Maneuver Warfighter Conference.",
     "cta": "Read Issue 02 →",
@@ -24,7 +35,7 @@
   {
     "type": "review",
     "date": "2026-10-02",
-    "featured": false,
+    "featured": true,
     "kind": "Book Review",
     "href": "/insights/review-valley-of-death.html",
     "title": "Valley of Death — Sharon Weinberger",
