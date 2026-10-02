@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 02 Oct 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 05 Oct 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 03</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-03.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-03.html</guid>
+    <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+    <description>Columbus–Chattahoochee Valley defense innovation &amp; investment, every week. Issue 03 — the first XM30 “Wolf” prototype, the year of the ground robot, SOCOM’s SOF RACER fast lane, and the Army’s humanoid robot competition.</description>
+  </item>
 
   <item>
     <title>Valley of Death — Sharon Weinberger</title>
