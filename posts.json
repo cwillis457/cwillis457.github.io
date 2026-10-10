@@ -1,9 +1,20 @@
 [
   {
     "type": "dispatch",
+    "date": "2026-10-12",
+    "href": "/insights/defense-dispatch-issue-04.html",
+    "tag": "New · Weekly Briefing",
+    "title": "Defense Dispatch",
+    "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 04 — DevX Autonomy’s $3.4M in small-business awards, the JIOP virtual Industry Day, the Pentagon’s In-Q-Tel partnership, and the Army’s new robotics warrant officers.",
+    "cta": "Read Issue 04 →",
+    "issueLabel": "Issue 04",
+    "issueDate": "Week of October 12, 2026"
+  },
+  {
+    "type": "dispatch",
     "date": "2026-10-05",
     "href": "/insights/defense-dispatch-issue-03.html",
-    "tag": "New · Weekly Briefing",
+    "tag": "Weekly Briefing",
     "title": "Defense Dispatch",
     "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 03 — the first XM30 “Wolf” prototype, the year of the ground robot, SOCOM’s SOF RACER fast lane, and the Army’s humanoid robot competition.",
     "cta": "Read Issue 03 →",
