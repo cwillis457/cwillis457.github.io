@@ -1,9 +1,20 @@
 [
   {
     "type": "dispatch",
+    "date": "2026-10-19",
+    "href": "/insights/defense-dispatch-issue-05-part-1.html",
+    "tag": "New · AUSA 2026 Special",
+    "title": "Defense Dispatch",
+    "blurb": "AUSA 2026 Special, Part 1 — how the Army is rewiring itself: a Soldier-facing marketplace, the new FASCOM autonomy command, “How the Army Fights,” private capital for installations, and the Smaller War Plants Commission.",
+    "cta": "Read Issue 05, Part 1 →",
+    "issueLabel": "Issue 05 · Part 1",
+    "issueDate": "Week of October 19, 2026"
+  },
+  {
+    "type": "dispatch",
     "date": "2026-10-12",
     "href": "/insights/defense-dispatch-issue-04.html",
-    "tag": "New · Weekly Briefing",
+    "tag": "Weekly Briefing",
     "title": "Defense Dispatch",
     "blurb": "Columbus–Chattahoochee Valley defense innovation & investment, every week. Issue 04 — DevX Autonomy’s $3.4M in small-business awards, the JIOP virtual Industry Day, the Pentagon’s In-Q-Tel partnership, and the Army’s new robotics warrant officers.",
     "cta": "Read Issue 04 →",
