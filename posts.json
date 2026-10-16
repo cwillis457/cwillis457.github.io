@@ -56,6 +56,16 @@
   },
   {
     "type": "review",
+    "date": "2026-10-16",
+    "featured": true,
+    "kind": "Book Review",
+    "href": "/insights/review-damn-fine-soldiers.html",
+    "title": "Damn Fine Soldiers — Scott Rutter & Matt Paul",
+    "blurb": "Task Force 2-7 Infantry’s 21-day, 400-mile attack to Baghdad in 2003 — a firsthand case study in combined-arms integration, sustainment, and leadership for the Army’s return to large-scale ground combat.",
+    "meta": "JUL 2026 · STACKPOLE BOOKS"
+  },
+  {
+    "type": "review",
     "date": "2026-10-02",
     "featured": true,
     "kind": "Book Review",
