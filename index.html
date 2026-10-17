@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>Willis Strategy Group — Leader Development, Experimentation &amp; M&amp;S, App Development</title>
-<meta name="description" content="Willis Strategy Group develops leaders, advances capability through experimentation and modeling &amp; simulation, and builds privacy-first iOS apps under the EOA brand. Columbus, Georgia.">
+<title>Willis Strategy Group — Leader Development, Experimentation &amp; M&amp;S</title>
+<meta name="description" content="Willis Strategy Group develops leaders and advances capability through experimentation and modeling &amp; simulation. Columbus, Georgia.">
 <meta property="og:title" content="Willis Strategy Group — Leader Development &amp; Experimentation">
-<meta property="og:description" content="Developing leaders, advancing capability through experimentation and M&amp;S, and building privacy-first iOS apps under the EOA brand. Columbus, Georgia.">
+<meta property="og:description" content="Developing leaders and advancing capability through experimentation and M&amp;S. Columbus, Georgia.">
 <meta property="og:url" content="https://willis-strategy.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Willis Strategy Group">
@@ -88,8 +88,9 @@ h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transf
 .svc h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1.05rem;margin-bottom:12px}
 .svc .cite{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.08em;display:block;margin-bottom:14px}
 .svc p{font-size:.92rem;color:#33465e}
+.svc:last-child{grid-column:span 2}
 @media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}.svc:last-child{grid-column:auto}}
 
 /* Approach */
 #approach{background:var(--navy);color:#fff}
@@ -101,25 +102,6 @@ h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transf
 .approach-item h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1rem;margin-bottom:8px}
 .approach-item p{font-size:.92rem;color:var(--mist)}
 @media(max-width:760px){.approach-cols{grid-template-columns:1fr;gap:0}}
-
-/* Apps */
-#apps{background:#fff;border-top:1px solid var(--mist);border-bottom:1px solid var(--mist)}
-.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
-.app-card{border:1px solid var(--mist);background:var(--paper);padding:38px 32px;display:flex;flex-direction:column;position:relative}
-.app-card::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:3px;background:var(--brass)}
-.app-tag{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:14px}
-.app-card h3{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:82%;text-transform:uppercase;font-size:1.4rem;margin-bottom:12px}
-.app-card p{font-size:.93rem;color:#33465e;margin-bottom:12px}
-.app-feats{list-style:none;margin:10px 0 26px;font-size:.85rem;color:#33465e}
-.app-feats li{padding:7px 0;border-bottom:1px solid var(--mist)}
-.app-feats li::before{content:"—";color:var(--brass-dim);margin-right:10px}
-.app-cta{margin-top:auto;display:flex;gap:14px;flex-wrap:wrap}
-.app-cta .btn{font-size:.75rem;padding:12px 20px;border-color:var(--ink)}
-.app-cta .btn-solid{background:var(--ink);color:#fff}
-.app-cta .btn-solid:hover{background:var(--navy);border-color:var(--navy)}
-.app-cta .btn-ghost{color:var(--ink)}
-.app-cta .btn-ghost:hover{background:rgba(11,29,51,.06)}
-@media(max-width:820px){.app-grid{grid-template-columns:1fr}}
 
 /* Insights */
 .ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
@@ -135,6 +117,7 @@ h2{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;text-transf
 .dispatch-top .dispatch-banner{max-width:1120px;margin:0 auto;border-left:none;padding:26px 24px;background:transparent}
 .dispatch-top .dispatch-banner:hover{background:transparent}
 .dispatch-top .dispatch-banner:hover .db-cta{background:var(--brass-dim)}
+.dispatch-top .dispatch-banner + .dispatch-banner{border-top:1px solid rgba(255,255,255,.12)}
 .dispatch-banner{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:44px;background:var(--ink);color:#fff;text-decoration:none;padding:30px 34px;border-left:5px solid var(--brass);transition:background .2s}
 .dispatch-banner:hover{background:var(--navy)}
 .db-left{display:flex;flex-direction:column}
@@ -187,14 +170,12 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 <body>
 
 
-<div class="eoa-bar" aria-hidden="true"></div>
 <nav>
   <div class="wrap nav-inner">
     <a class="mark" href="#top">WILLIS <span>STRATEGY</span> GROUP</a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li><a href="#apps">Apps</a></li>
       <li><a href="#insights">Insights</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -205,11 +186,19 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 <div class="dispatch-top">
   <a class="dispatch-banner" id="ddBanner" href="/insights/defense-dispatch-issue-05-part-1.html">
     <div class="db-left">
-      <span class="db-tag" id="ddTag">New &middot; AUSA 2026 Special</span>
+      <span class="db-tag" id="ddTag">AUSA 2026 Special &middot; Part 1</span>
       <span class="db-title" id="ddTitle">Defense Dispatch</span>
       <span class="db-sub" id="ddSub">AUSA 2026 Special, Part 1 &mdash; how the Army is rewiring itself: a Soldier-facing marketplace, the new FASCOM autonomy command, &ldquo;How the Army Fights,&rdquo; private capital for installations, and the Smaller War Plants Commission.</span>
     </div>
     <span class="db-cta" id="ddCta">Read Issue 05, Part 1 &rarr;</span>
+  </a>
+  <a class="dispatch-banner db-extra" href="/insights/defense-dispatch-issue-05-part-2.html">
+    <div class="db-left">
+      <span class="db-tag">New &middot; AUSA 2026 Special &middot; Part 2</span>
+      <span class="db-title">Defense Dispatch</span>
+      <span class="db-sub">AUSA 2026 Special, Part 2 &mdash; the hardware on the floor: the XM1776 cannon taking shape in Opelika, armor built for the drone age, the XM30 downselect, squad counter-drone kit, and the readiness test.</span>
+    </div>
+    <span class="db-cta">Read Issue 05, Part 2 &rarr;</span>
   </a>
   <div class="dispatch-archive-row"><a href="/insights/dispatch-archive.html">Past Issues &rarr;</a></div>
 </div>
@@ -262,11 +251,6 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
         <p>Management consulting focused on sustainable growth and long-term success — organizational strategy, operational excellence, and tailored solutions for each client's competitive landscape.</p>
       </div>
       <div class="svc">
-        <h3>iOS Apps — EOA</h3>
-        <span class="cite">EVERY OUNCE OF ADVANTAGE</span>
-        <p>Privacy-first iOS apps designed and built in-house under the EOA brand — no accounts, no tracking, everything on your device. See the Products section below.</p>
-      </div>
-      <div class="svc">
         <h3>Defense Business Support</h3>
         <span class="cite">BD ADVISORY · FAR / OCI AWARE</span>
         <p>Selective business development advisory for defense clients, with engagements structured for FAR allowability, OCI screening, and audit-ready documentation.</p>
@@ -305,53 +289,9 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
   </div>
 </section>
 
-<section id="apps">
-  <div class="wrap">
-    <p class="sec-label"><b>§ 03</b> — Products</p>
-    <h2>EOA — Every Ounce of Advantage</h2>
-    <p class="lede">Beyond consulting, Willis Strategy Group builds iOS apps under the EOA brand — privacy-first tools with no accounts, no tracking, and everything processed on your device. Visit the <a href="https://willis-strategy.com/eoa" style="color:var(--brass-dim);font-weight:600">EOA home page</a> for the full lineup.</p>
-    <div class="app-grid">
-      <div class="app-card">
-        <p class="app-tag">iOS · iPhone · No Account Required</p>
-        <h3>EOA Biz Card</h3>
-        <p>Replaces the paper handshake. Share your business card via Bluetooth or QR code straight from your iPhone — the other person doesn't need the app.</p>
-        <ul class="app-feats">
-          <li>Bluetooth LE sharing, iPhone to iPhone</li>
-          <li>QR code readable by any phone camera</li>
-          <li>Scan physical cards with on-device text recognition</li>
-          <li>Custom card templates — colors, layouts, your logo</li>
-          <li>Save received cards to Contacts, Photos, or in-app</li>
-          <li>Zero analytics, zero tracking — data never leaves your device</li>
-        </ul>
-        <div class="app-cta">
-          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416" target="_blank" rel="noopener">App Store</a>
-          <a class="btn btn-ghost" href="https://cwillis457.github.io/EOABizCard" target="_blank" rel="noopener">Learn More</a>
-        </div>
-      </div>
-      <div class="app-card">
-        <p class="app-tag">iOS · iPhone · Free + One-Time Pro Upgrade</p>
-        <h3>EOA Golf Score</h3>
-        <p>Every local course, three ways to find the pin. Six Columbus-area courses built in with full scorecards — plus GPS, satellite, and camera rangefinding.</p>
-        <ul class="app-feats">
-          <li>Editable hole-by-hole scorecards that save on-device</li>
-          <li>Free GPS distance to pins you've marked</li>
-          <li>Satellite &amp; camera rangefinders with EOA Golf Pro ($5.99, one-time)</li>
-          <li>4-player group scoring with Pro</li>
-          <li>Scan any paper scorecard to add a course anywhere</li>
-          <li>No login, no internet needed on the course</li>
-        </ul>
-        <div class="app-cta">
-          <a class="btn btn-solid" href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366" target="_blank" rel="noopener">App Store</a>
-          <a class="btn btn-ghost" href="https://cwillis457.github.io/EOAGolfScore" target="_blank" rel="noopener">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="insights" style="background:var(--paper)">
   <div class="wrap">
-    <p class="sec-label"><b>§ 04</b> — Insights</p>
+    <p class="sec-label"><b>§ 03</b> — Insights</p>
     <h2>Articles &amp; Book Reviews</h2>
     <p class="lede">Professional publications on experimentation and M&amp;S, plus reviews of the books that shape how we think about leading, learning, and building capability.</p>
     <div class="ins-grid" id="insGrid" data-count="3"></div>
@@ -362,14 +302,13 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 
 <section id="about">
   <div class="wrap">
-    <p class="sec-label"><b>§ 05</b> — About</p>
+    <p class="sec-label"><b>§ 04</b> — About</p>
     <h2>Willis Strategy Group</h2>
     <div class="about-grid">
       <div>
         <p class="lede" style="margin-bottom:18px">Colonel (Retired) Chris Willis brings more than 35 years of combined leadership and management experience. A 1991 graduate of West Point, Chris spent 25 years as a US Army Infantry officer — including tours in Afghanistan, Iraq, and Korea — leading organizations to the highest levels of excellence from platoon to division.</p>
         <p class="lede" style="margin-bottom:18px">Chris then spent 10 years as a Department of the Army Civilian delivering combat capabilities to the US Army Maneuver Force — Infantry, Armor, and unmanned systems — as Director of the Maneuver Battle Lab (MBL) and Deputy Director of the Maneuver Force Capability Development (MFCD) at Fort Benning, Georgia.</p>
-        <p class="lede" style="margin-bottom:18px">His experience, Master of Science in Leader Development, and status as a Certified Modeling and Simulation Professional (CMSP) give him the unique ability to conduct leadership coaching, advise on combat capability development, and advise on combat capability experimentation.</p>
-        <p class="lede">Under the EOA brand, the firm also designs and ships privacy-first iOS apps — the same discipline, applied to software: no accounts, no tracking, no data leaving your device.</p>
+        <p class="lede">His experience, Master of Science in Leader Development, and status as a Certified Modeling and Simulation Professional (CMSP) give him the unique ability to conduct leadership coaching, advise on combat capability development, and advise on combat capability experimentation.</p>
       </div>
       <div class="about-facts">
         <div class="fact"><span class="k">Principal</span><span class="v">COL (Ret) Chris Willis</span></div>
@@ -379,7 +318,6 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
         <div class="fact"><span class="k">DAC Service</span><span class="v">10 Yrs · MBL Dir · MFCD Dep Dir</span></div>
         <div class="fact"><span class="k">Credentials</span><span class="v">MS Leader Development · CMSP</span></div>
         <div class="fact"><span class="k">Base</span><span class="v">Columbus, GA</span></div>
-        <div class="fact"><span class="k">Products</span><span class="v">EOA Biz Card · EOA Golf Score</span></div>
       </div>
     </div>
   </div>
@@ -387,7 +325,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 
 <section id="contact">
   <div class="wrap">
-    <p class="sec-label"><b>§ 06</b> — Contact</p>
+    <p class="sec-label"><b>§ 05</b> — Contact</p>
     <h2>Start the Conversation</h2>
     <div class="contact-grid">
       <div>
@@ -418,7 +356,7 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 <footer>
   <div class="wrap foot-inner">
     <span>© 2026 WILLIS STRATEGY GROUP, LLC · COLUMBUS, GA</span>
-    <span>LEADER DEVELOPMENT · EXPERIMENTATION &amp; M&amp;S · EOA APPS FOR iOS</span>
+    <span>LEADER DEVELOPMENT · EXPERIMENTATION &amp; M&amp;S</span>
   </div>
 </footer>
 
@@ -441,12 +379,28 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
 (function(){
   fetch('/posts.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(posts){
     var byDate=function(a,b){return (b.date||'').localeCompare(a.date||'');};
-    // Defense Dispatch banner — newest dispatch entry
-    var d=posts.filter(function(p){return p.type==='dispatch';}).sort(byDate)[0];
+    // Defense Dispatch banner — newest issue. When an issue has several parts
+    // (entries sharing an "issue" value), each part gets a banner, Part 1 first.
+    var dispatches=posts.filter(function(p){return p.type==='dispatch';}).sort(byDate);
+    var d=dispatches[0];
     if(d){
-      var b=document.getElementById('ddBanner'); if(b&&d.href)b.setAttribute('href',d.href);
-      var set=function(id,v){var el=document.getElementById(id); if(el&&v!=null)el.textContent=v;};
-      set('ddTag',d.tag); set('ddTitle',d.title); set('ddSub',d.blurb); set('ddCta',d.cta);
+      var parts=d.issue?dispatches.filter(function(p){return p.issue===d.issue;}).reverse():[d];
+      var b=document.getElementById('ddBanner');
+      Array.prototype.forEach.call(document.querySelectorAll('.dispatch-top .db-extra'),function(x){x.parentNode.removeChild(x);});
+      var fill=function(el,p){
+        if(p.href)el.setAttribute('href',p.href);
+        var set=function(sel,v){var n=el.querySelector(sel); if(n&&v!=null)n.textContent=v;};
+        set('.db-tag',p.tag); set('.db-title',p.title); set('.db-sub',p.blurb); set('.db-cta',p.cta);
+      };
+      if(b){
+        fill(b,parts[0]);
+        var prev=b;
+        parts.slice(1).forEach(function(p){
+          var c=b.cloneNode(true); c.removeAttribute('id'); c.classList.add('db-extra');
+          Array.prototype.forEach.call(c.querySelectorAll('[id]'),function(n){n.removeAttribute('id');});
+          fill(c,p); prev.parentNode.insertBefore(c,prev.nextSibling); prev=c;
+        });
+      }
     }
     // Featured cards (newest first, capped by data-count)
     var g=document.getElementById('insGrid'); if(!g)return;

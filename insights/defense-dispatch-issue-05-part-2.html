@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Defense Dispatch — Issue 05, Part 2 | Willis Strategy Group</title>
+<meta name="description" content="Columbus–Chattahoochee Valley Area Defense Dispatch, Issue 05 Part 2 — AUSA 2026 Special: the XM1776 Mobile Tactical Cannon, armor in the drone age, the XM30 downselect, squad counter-drone kit, Next-Gen C2, and the readiness test.">
+<meta property="og:title" content="Defense Dispatch — Issue 05, Part 2 | Willis Strategy Group">
+<meta property="og:description" content="A weekly defense innovation and investment briefing for the Columbus–Fort Benning region.">
+<meta property="og:url" content="https://willis-strategy.com/insights/defense-dispatch-issue-05-part-2.html">
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" title="Willis Strategy Group Insights" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.art-head{background:var(--ink);color:#fff;padding:72px 0 56px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.02;font-size:clamp(2rem,5.5vw,3.2rem);text-transform:uppercase}
+.subtitle{margin-top:14px;color:var(--mist);font-size:1.05rem;max-width:60ch}
+.issue-line{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--brass);letter-spacing:.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.issue-line span{color:var(--slate)}
+article{padding:20px 0 40px}
+.lead-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-dim);margin:44px 0 10px}
+h2{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.5rem;line-height:1.1;margin:6px 0 18px;color:var(--ink)}
+h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.1rem;margin:28px 0 10px;color:var(--ink)}
+article p{margin-bottom:20px;color:#3c4f68}
+article ul{margin:0 0 22px 22px;color:#3c4f68}
+article li{margin-bottom:10px;padding-left:4px}
+.section{border-top:1px solid var(--mist);padding-top:8px;margin-top:44px}
+.callout{background:var(--navy);color:#fff;padding:26px 28px;margin:28px 0;border-left:4px solid var(--brass)}
+.callout .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.callout p{color:var(--mist);margin:0;font-size:.96rem}
+.aud{background:#fff;border:1px solid var(--mist);padding:26px 28px;margin:22px 0}
+.aud h3{margin-top:0;color:var(--brass-dim);display:flex;align-items:baseline;gap:10px}
+.aud h3 .num{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--slate)}
+.aud ul{margin-bottom:0}
+.cal{background:#fff;border:1px solid var(--mist)}
+.cal-row{display:flex;gap:18px;padding:13px 20px;border-bottom:1px solid var(--mist);font-size:.9rem}
+.cal-row:last-child{border-bottom:none}
+.cal-row .d{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--brass-dim);min-width:118px;flex-shrink:0;padding-top:2px}
+.cal-row .e{color:#3c4f68}
+@media(max-width:560px){.cal-row{flex-direction:column;gap:3px}.cal-row .d{min-width:0}}
+.cal-note{font-size:.82rem;color:var(--slate);margin-top:12px}
+.cta{background:var(--ink);color:#fff;padding:36px 32px;margin:52px 0 0;text-align:center}
+.cta h3{color:#fff;margin-top:0;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.3rem}
+.cta p{color:var(--mist);max-width:52ch;margin:12px auto 22px;font-size:.96rem}
+.cta a{display:inline-block;background:var(--brass);color:var(--ink);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;font-weight:500}
+.cta a:hover{background:var(--brass-dim)}
+.src{font-size:.82rem;color:var(--slate)}
+.insight-box{background:var(--navy);color:#fff;padding:26px 28px;margin:22px 0;border-left:4px solid var(--brass)}
+.insight-box h3{color:#fff;margin-top:0}
+.insight-box p{color:var(--mist)}
+.insight-box a.readit{display:inline-block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(201,162,39,.5)}
+.insight-box a.readit:hover{color:#fff;border-bottom-color:#fff}
+.special{margin-top:16px;font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.15rem;color:var(--brass)}
+.intro{font-size:1.1rem;color:var(--steel) !important;border-left:3px solid var(--brass);padding-left:20px;margin-top:40px}
+article blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 22px;margin:4px 0 26px;font-size:1.15rem;color:var(--steel);font-style:italic}
+.callout a{color:var(--brass)}
+.next-up{background:#fff;border:1px solid var(--mist);border-left:4px solid var(--brass);padding:22px 26px;margin:48px 0 0}
+.next-up .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:8px}
+.next-up a{color:var(--brass-dim)}
+.intro a{color:var(--brass-dim)}
+.next-up p{margin:0;color:#3c4f68}
+.disclaimer{font-size:.78rem;color:var(--slate);border-top:1px solid var(--mist);margin-top:44px;padding-top:20px;font-style:italic}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+
+/* EOA promo bars */
+.eoa-bar{background:var(--brass);color:var(--ink);text-align:center;padding:16px 20px;font-family:'IBM Plex Mono',monospace;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.6}
+.eoa-bar a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(11,29,51,.45)}
+.eoa-bar a:hover{border-bottom-color:var(--ink)}
+.eoa-bar .eoa-mark{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.06em;margin-right:12px;font-size:1.1rem}
+@media(max-width:560px){.eoa-bar{font-size:.78rem;letter-spacing:.08em;padding:13px 14px}}
+</style>
+</head>
+<body>
+
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/insights/index.html">&larr; Insights</a>
+  </div>
+</nav>
+
+<div class="art-head">
+  <div class="wrap">
+    <p class="kind">Defense Dispatch &middot; AUSA 2026 Special</p>
+    <h1>Columbus&ndash;Chattahoochee Valley Area Defense Dispatch</h1>
+    <p class="special">AUSA 2026 Special &mdash; Part 2: The Hardware on the Floor</p>
+    <p class="subtitle">A weekly briefing for owners, investors, government leaders, and small businesses in the Columbus&ndash;Fort Benning region.</p>
+    <p class="issue-line">Issue 05 &middot; Part 2 &nbsp;&middot;&nbsp; <span>AUSA 2026 &middot; Week of October 26, 2026</span></p>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+
+    <p class="intro"><a href="/insights/defense-dispatch-issue-05-part-1.html">Part 1</a> covered how the Army is rewiring the institution &mdash; new commands, a reshaped acquisition machine, and private capital flowing into the base. This issue turns to the iron on the floor at AUSA 2026, and one theme runs through all of it: the maneuver force is re-equipping for a battlefield saturated with small drones and long-range sensors. Artillery that shoots and scoots, armor that can strike first and survive the first shot, a counter-drone weapon for the infantry squad, a smarter sight, and a lighter network to tie it together. The best regional story leads &mdash; a new Army cannon whose U.S. production is taking shape 30 miles from Columbus &mdash; and we close with a review that frames the whole set.</p>
+
+    <p class="lead-tag">This Week&rsquo;s Lead</p>
+    <h2>The Army Names a New Cannon &mdash; Built in the Chattahoochee Valley</h2>
+    <p>At a naming ceremony at Hanwha&rsquo;s AUSA booth on October 12, the Army designated its new wheeled howitzer the XM1776 Mobile Tactical Cannon &mdash; the U.S. version of Hanwha&rsquo;s combat-proven K9, an eight-wheeled 155 mm / 52-caliber self-propelled gun now in testing to replace the towed M777 in select units. The name, announced by Lt. Gen. Francisco Lozano of the Army&rsquo;s Rapid Capabilities and Critical Technologies Office, nods to 1776 and the nation&rsquo;s 250th year. At the show the Army raised its prototype order from six guns to nine, with an option for nine more (18 maximum); the August 2026 selection was an initial action of about $100.3 million, roughly $262.9 million if all options are exercised, though the added value for the increase was not disclosed (<a href="https://www.armyrecognition.com/archives/archives-defense-exhibitions/2026-archives-news-defense-exhibitions/ausa-2026-news/u-s-army-and-hanwha-defense-usa-unveils-xm1776-wheeled-155mm-howitzer-to-replace-m777-towed-howitzers" target="_blank" rel="noopener">Army Recognition</a>).</p>
+    <p>The case for it is survivability and reach. Against the towed M777, the Army and Hanwha cite roughly 37 miles of range versus about 20, up to nine rounds per minute versus four, a crew of three, and an automated loader run from inside the vehicle &mdash; a gun that can displace before counter-battery fire arrives, with counter-UAS protection to be fitted per Army preference. It is a prototype on an experimentation contract, not a fielding decision, and it would not replace the M777 outright &mdash; only in select formations if it is fielded, with a ready version targeted for units by 2031. Worth noting the pattern: the XM1776 reflects an Army turn toward adapting mature, proven foreign designs rather than clean-sheet development, explicitly after the 2024 cancellation of the Extended Range Cannon Artillery program over barrel-wear problems. &ldquo;Buy mature, reduce development risk&rdquo; is the same instinct behind the &ldquo;speed of business&rdquo; message that ran through Part 1.</p>
+
+    <div class="section">
+      <p class="lead-tag">The Armored Force</p>
+      <h2>Armor in the Drone Age: Shoot First, Survive the First Shot</h2>
+      <p>Two AUSA items, taken together, show how the armored force is adapting to ubiquitous drones. On offense, General Dynamics Land Systems and AeroVironment debuted PERCH 2.0 (Precision Effects &amp; Reconnaissance, Canister-Housed) &mdash; a modular kit that lets a crew launch tube-launched loitering munitions, AeroVironment&rsquo;s Switchblade 300, from inside the vehicle with the hatches closed. It fits the M1A2 Abrams SEPv3 and the Stryker and lets a tank sense and strike a suspected anti-tank position beyond line of sight before exposing itself, with a simplified reload drawn from a 2025 demonstration at Fort Hood. It is industry-developed and under demonstration &mdash; not an announced Army fleet program, and the munition&rsquo;s range figures are the vendor&rsquo;s &mdash; so read it as a capability on offer, not a buy (<a href="https://www.armyrecognition.com/archives/archives-defense-exhibitions/2026-archives-news-defense-exhibitions/ausa-2026-news/u-s-army-abrams-tank-and-stryker-combat-vehicle-get-perch-2-0-for-under-armor-attack-drone-launches" target="_blank" rel="noopener">Army Recognition</a>).</p>
+      <p>On defense, the Army&rsquo;s newest Bradley &mdash; the M2A4E1, with the M7A4E1 fire-support variant &mdash; is reaching units with Iron Fist installed, the active protection system from Elbit Systems. Turret-mounted radar and infrared sensors detect an incoming threat and fire an interceptor that detonates near it before impact, countering anti-tank missiles, RPGs, loitering munitions, and drones. BAE Systems builds the Bradley; the first vehicles went to the 1st Cavalry Division, and the Elbit program ran from a roughly $37 million contract in 2024 to a $228 million follow-on in January 2026. With the XM30 &mdash; the Bradley&rsquo;s eventual replacement &mdash; still in development, this is the Army hardening the vehicle it has against exactly the threats that have reshaped the battlefield (Defence Blog).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Next Fighting Vehicle</p>
+      <h2>The Bradley&rsquo;s Replacement: Open Architecture Becomes the Test</h2>
+      <p>The Bradley&rsquo;s successor moved at AUSA too &mdash; and the news is how the Army intends to conduct its downselect. Brig. Gen. Troy Denomy, the portfolio acquisition executive for ground maneuver, told Breaking Defense that open systems architecture will be &ldquo;hyper important&rdquo; and an explicitly scored criterion in the downselect for the XM30 Optionally Manned Fighting Vehicle. The reason is the counter-drone fight: an open architecture lets the Army and its vendors plug new software and hardware into the platform as threats evolve, &ldquo;particularly in the counter-unmanned aerial systems fight.&rdquo; Two competitors remain &mdash; American Rheinmetall and General Dynamics Land Systems &mdash; and each has delivered one prototype to Aberdeen Proving Ground for testing; Denomy said it is &ldquo;too early to tell&rdquo; which has the more open design, and that early software fixes between subsystems have been &ldquo;nothing atypical for a prototype&rdquo; (<a href="https://breakingdefense.com/2026/10/open-system-architecture-will-be-hyper-important-in-downselect-of-armys-xm30-senior-official/" target="_blank" rel="noopener">Breaking Defense</a>).</p>
+      <p>The program is not without risk. The Army requested $547 million to buy 19 XM30s in fiscal 2027, but the House Appropriations defense subcommittee&rsquo;s bill cut that procurement line to $33.1 million &mdash; a gap worth watching under a continuing resolution, though Denomy said he expects the program to move forward and called the two offerings &ldquo;very viable.&rdquo; Separately, BAE Systems is self-funding an AMPV-30 &mdash; its Armored Multi-Purpose Vehicle fitted with a 30 mm Kongsberg turret &mdash; now being demonstrated in an infantry-fighting-vehicle role in a Transformation in Contact rotation; Denomy praised the company for investing its own money to give the Army options, while cautioning against conflating it with the XM30.</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Dismounted Fight</p>
+      <h2>Kit for the Close Fight: a Squad Counter-Drone Launcher and a Smarter Sight</h2>
+      <p>The counter-drone problem is also being pushed down to the individual Soldier. Northrop Grumman and Barrett Firearms have teamed on the Precision Grenadier System (PGS) &mdash; a lightweight (under 5.4 kg) semi-automatic 25 mm grenade launcher with a five-round magazine, an advanced fire-control system, and an inductive programmer that configures each round before firing. Northrop has developed four 25 mm round types, including a proximity-detonated round built to engage small drones, hovering or moving, and a programmable airburst round for enemy behind walls or earthworks. Under the teaming, Barrett would manufacture the launcher at its Nashville, Tennessee facility while Northrop continues developing the weapon and its ammunition. The aim is to give an infantry squad its own answer to the small-drone threat without reaching for a vehicle weapon, electronic warfare, or dedicated air defense. This is a teaming and development effort, not a procurement &mdash; no production volumes, delivery schedule, or confirmed order have been announced (<a href="https://www.northropgrumman.com/what-we-do/advanced-weapons/guided-projectiles-and-precision-weapons/precision-grenadier-system" target="_blank" rel="noopener">Northrop Grumman</a>).</p>
+      <p>Alongside it, Leonardo DRS took a $63 million production order &mdash; under an existing contract &mdash; for the Family of Weapon Sights&ndash;Individual (FWS-I), a clip-on uncooled thermal sight that streams its image wirelessly to the Soldier&rsquo;s ENVG-B goggles and IVAS headset, letting them aim without shouldering the rifle to the eye. It is close-combat kit, already fielded alongside ENVG-B; quantities and delivery dates were not disclosed (Defence Blog).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Network</p>
+      <h2>The Pipes Behind the Picture: Next-Generation Command and Control</h2>
+      <p>None of the solutions discussed to this point matter without a network to tie them together, and the Army used AUSA to lay out where that is heading. Next-Generation Command and Control (Next-Gen C2) is meant to give commanders an integrated picture for rapid decisions and to give tactical units lighter, more mobile, more survivable network and command-post equipment in place of legacy systems. Brig. Gen. Shane Taylor, the capability program executive for the command-and-control information network, framed it as replacing those systems with &ldquo;better, newer, lighter, more capable&rdquo; ones while balancing readiness against modernization (AUSA 2026 Warriors Corner).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Readiness Engine</p>
+      <h2>Turning Widgets Into Combat Power: The Readiness Test</h2>
+      <p>The week&rsquo;s most important theme was not a system at all &mdash; it was whether any of the hardware builds readiness. At an AUSA forum on foundational readiness, commanders from the Army&rsquo;s Transformation and Training Command (T2COM, in Austin) and its Combined Arms Command (Fort Leavenworth) said procurement and implementation that once took months can now be done in weeks, and that Soldier feedback &mdash; on new technology and on training &mdash; is reaching decision-makers faster than before. Lt. Gen. Edmond &ldquo;Miles&rdquo; Brown, acting commander of T2COM, described the command as an &ldquo;assembly line&rdquo; that takes an idea &ldquo;from a concept all the way through to a doctrine&rdquo; and a capability into a formation (AUSA 2026 readiness forum).</p>
+      <p>Brown said that:</p>
+      <blockquote>&ldquo;People will always bring us a widget or bring us a capability, but if I can&rsquo;t figure out how it fits into a formation and how it can fight, it&rsquo;s almost impossible to really integrate it. And if you don&rsquo;t integrate it correctly, you&rsquo;re not really building readiness. You&rsquo;re actually detracting from readiness.&rdquo;</blockquote>
+      <p>Lt. Gen. Jim Isenhower, commander of Combined Arms Command, said the Army owes Soldiers modernized combat training centers and is now moving exercise data to commanders &ldquo;in some cases &hellip; in weeks, instead of years.&rdquo; And Lt. Gen. Matthew McFarlane of I Corps added the discipline of fit-to-theater: &ldquo;The same carbon-fiber drone that works in the Pacific will not work in Europe.&rdquo;</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">WSG Insights</p>
+      <h2>From the Willis Strategy Group Desk</h2>
+      <p>A recurring feature spotlighting our own analysis of the ideas shaping defense, experimentation, and leadership. This week&rsquo;s pick is chosen on purpose &mdash; because all the hardware on the AUSA floor is in service of one thing: a modernized force that can fight and win a large-scale ground campaign.</p>
+      <div class="insight-box">
+        <h3>Damn Fine Soldiers, by Scott E. Rutter and Matthew Paul, reviewed &mdash; five stars</h3>
+        <p>LTC Scott Rutter commanded Task Force 2-7 Infantry in the opening campaign of Operation Iraqi Freedom, and his firsthand account of the 21-day, roughly 400-mile attack from Kuwait to Baghdad is the best kind of modernization story: not a brochure, but a combined-arms battalion task force &mdash; mechanized infantry, armor, engineers, and fires fought as one system &mdash; proving itself at the tempo and scale a continental offensive demands. After two decades oriented on counterinsurgency, the Army is re-centering on exactly this kind of large-scale ground combat, and Rutter hands the requirements community a living picture of the capability it is trying to rebuild.</p>
+        <p>Read against this issue, the connection is direct. Every system on the floor &mdash; active protection and organic loitering munitions for armor, counter-drone fires and thermal sensing for the squad, a lighter and more survivable network &mdash; exists to let a combined-arms force move, survive, and win the kind of fight Rutter describes. His book is equally clear-eyed about the unglamorous half of modernization, the sustainment and training that turn platforms into combat power, and about its human core: the leadership, brotherhood, and sacrifice &mdash; including the airport action that earned Sergeant First Class Paul Ray Smith a posthumous Medal of Honor &mdash; that are the real reason the hardware works. It belongs on the shelf next to the doctrine, and it is a far better read. Our full review is on the WSG Insights page.</p>
+        <a class="readit" href="https://willis-strategy.com/insights/review-damn-fine-soldiers.html">Read it &rarr;</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">By Audience</p>
+      <h2>What This Week Means for You</h2>
+
+      <div class="aud">
+        <h3><span class="num">01</span> For Business Owners &amp; Small Business</h3>
+        <ul>
+          <li><strong>The Opelika door:</strong> Hanwha is courting 70-plus U.S. suppliers for an Artillery Industrial Base Coalition around XM1776 production 30 miles away. If you machine, cast, forge, or supply components, this is the most concrete local opportunity of the year &mdash; and it pairs with the SWPC capital channel from Part 1 to help you tool up.</li>
+          <li><strong>Counter-UAS is a standing requirement, not a fad:</strong> PGS (squad), Iron Fist (vehicle), and PERCH (organic strike) all point the same way. Regional EW, sensor, and counter-drone firms should read these as durable demand lines.</li>
+          <li><strong>A spec sheet for the network:</strong> Next-Gen C2&rsquo;s stated needs &mdash; ruggedized, rapid-emplacement, open, Soldier-shaped &mdash; are a clear target for comms and networking firms. Build to them.</li>
+          <li><strong>Show how it fights:</strong> the readiness commanders were blunt that a capability they can&rsquo;t integrate into a formation detracts from readiness. Pitch your product with its place in a formation and its training tail, not just its specs.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">02</span> For Investors</h3>
+        <ul>
+          <li>The through-line is a maneuver force re-equipping for the drone age &mdash; survivability (active protection), organic lethality (loitering munitions), squad counter-UAS, and a lighter network. Durable demand across primes (GDLS, BAE, Northrop Grumman, Hanwha, Leonardo DRS) and, more to the point here, their suppliers.</li>
+          <li>Mind the difference between a program and a demo: XM1776 (prototype order, funded) and the Bradley/Iron Fist line (fielding, contracts in hand) are real money now; PERCH 2.0 and the PGS teaming are industry-funded demonstrations without an order. Watch for the procurement decisions that convert them.</li>
+          <li>On the XM30, open architecture is now a scored downselect criterion &mdash; a durable requirement for any subsystem or supplier wanting onto the program &mdash; but note the FY27 funding fight (a $547M request cut to $33.1M in the House bill). The requirement is firming up; the dollars are not yet settled.</li>
+          <li>The Opelika build-out is a localized play on the artillery-industrial-base reshoring thesis &mdash; a supply chain being assembled in the Chattahoochee Valley, not just a prime&rsquo;s backlog.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">03</span> For Government &amp; Community Leaders</h3>
+        <ul>
+          <li>Opelika puts the national artillery-industrial-base story in the region. Helping local firms get into Hanwha&rsquo;s supplier coalition &mdash; and pair it with SWPC financing &mdash; is economic development with a name and a deadline.</li>
+          <li>The close-combat kit on the floor (PGS, FWS-I) and the Next-Gen C2 requirements are shaped where the Army writes maneuver and infantry requirements. The Maneuver Center of Excellence&rsquo;s seat at that table is a regional asset worth protecting and promoting.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">On the Calendar</p>
+      <h2>Dates to Watch</h2>
+      <div class="cal">
+        <div class="cal-row"><span class="d">Nov. 6</span><span class="e">Deadline to register for the JIOP Virtual Industry Day, 6:00 p.m. ET.</span></div>
+        <div class="cal-row"><span class="d">Nov. 17</span><span class="e">JIOP Virtual Industry Day, 2:00&ndash;3:30 p.m. ET (virtual).</span></div>
+        <div class="cal-row"><span class="d">Feb. 23&ndash;24, 2027</span><span class="e">Chattahoochee Valley&ndash;Fort Benning AUSA Chapter Industry Days, Columbus Convention Center.</span></div>
+        <div class="cal-row"><span class="d">Mar. 30&ndash;31, 2027</span><span class="e">IDGA Future of Ground Maneuver Conference, Columbus Convention Center.</span></div>
+      </div>
+      <p class="cal-note">Small-business resources: <a href="https://www.sba.gov/swpc" target="_blank" rel="noopener">SBA Smaller War Plants Commission</a> &middot; SBIR/STTR: <a href="https://www.sbir.gov/topics" target="_blank" rel="noopener">SBIR.gov</a> &middot; <a href="https://www.dodsbirsttr.mil/topics-app/" target="_blank" rel="noopener">DoD SBIR/STTR (DSIP)</a>.</p>
+    </div>
+
+    <div class="next-up">
+      <p class="c-tag">AUSA 2026 &mdash; Wrap-Up</p>
+      <p>That closes our two-part AUSA 2026 report. <a href="/insights/defense-dispatch-issue-05-part-1.html">Part 1</a> covered the reorganization; this issue covered the hardware. The common thread &mdash; from the Telle keynote to the XM1776 to a thermal sight on an infantryman&rsquo;s rifle &mdash; is an Army trying to field faster what the modern battlefield already demands.</p>
+    </div>
+
+    <div class="cta">
+      <h3>Talk to Willis Strategy Group</h3>
+      <p>Trying to get into the Opelika supplier coalition, position for a counter-UAS or network requirement, or read what the Army&rsquo;s hardware turn means for your company?</p>
+      <a href="/#contact">Contact WSG</a>
+    </div>
+
+    <p class="disclaimer">The Defense Dispatch summarizes publicly reported information for general awareness and is not legal, financial, or investment advice. Figures, dates, and program details reflect sources available at publication &mdash; much of it announced during AUSA week, and several items are prototypes or industry demonstrations rather than programs of record &mdash; and are subject to change; verify against the primary source before acting.</p>
+
+  </div>
+</article>
+
+
+
+
+
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+</body>
+</html>
