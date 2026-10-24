@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 26 Oct 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 26 Oct 2026 13:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 06</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-06.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-06.html</guid>
+    <pubDate>Mon, 26 Oct 2026 13:00:00 GMT</pubDate>
+    <description>Issue 06 — The On-Ramps: how to get into the defense business, from G-TEAD’s weeks-not-years Accelerated Capability Events and free APEX counseling to Hanwha’s onshoring push and Columbus Ahead’s $19.7M plan.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 05, Part 2 (AUSA 2026 Special)</title>
