@@ -51,7 +51,7 @@ header::before{content:"";position:absolute;inset:0;background:
   linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
   linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
   background-size:56px 56px;pointer-events:none}
-.hero{padding:110px 0 0;position:relative}
+.hero{padding:110px 24px 100px;position:relative}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:22px}
 h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:75%;text-transform:uppercase;line-height:.95;font-size:clamp(2.6rem,7vw,5.2rem);letter-spacing:.01em;max-width:15ch}
 h1 em{font-style:normal;color:var(--brass)}
@@ -64,16 +64,6 @@ h1 em{font-style:normal;color:var(--brass)}
 .btn-ghost:hover{background:rgba(201,162,39,.12)}
 
 /* Lifecycle strip — signature element */
-.lifecycle{margin-top:90px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(5,1fr)}
-.gate{padding:22px 18px 30px;border-right:1px solid rgba(255,255,255,.14);position:relative}
-.gate:last-child{border-right:none}
-.gate::before{content:"";position:absolute;top:-1px;left:0;width:0;height:3px;background:var(--brass);transition:width .6s ease}
-.gate:hover::before,.gate:focus-within::before{width:100%}
-.gate .g-num{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);letter-spacing:.12em}
-.gate .g-name{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;text-transform:uppercase;font-size:1rem;margin-top:6px;color:#fff}
-.gate .g-desc{font-size:.8rem;color:var(--slate);margin-top:6px;line-height:1.45}
-@media(max-width:860px){.lifecycle{grid-template-columns:repeat(2,1fr)}.gate{border-bottom:1px solid rgba(255,255,255,.14)}}
-@media(max-width:480px){.lifecycle{grid-template-columns:1fr}}
 
 /* ---------- Sections ---------- */
 section{padding:96px 0}
@@ -203,15 +193,6 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
     <div class="hero-cta">
       <a class="btn btn-solid" href="#contact">Start a Conversation</a>
       <a class="btn btn-ghost" href="#services">View Services</a>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="lifecycle" aria-label="Engagement methodology">
-      <div class="gate"><div class="g-num">PHASE 1</div><div class="g-name">Assess</div><div class="g-desc">Understand the leader, the organization, or the capability gap — before prescribing anything.</div></div>
-      <div class="gate"><div class="g-num">PHASE 2</div><div class="g-name">Design</div><div class="g-desc">Tailored development plans, experiment designs, and strategies built to the client's need.</div></div>
-      <div class="gate"><div class="g-num">PHASE 3</div><div class="g-name">Experiment</div><div class="g-desc">Test in live, virtual, and constructive environments — Battle Lab methodology, applied.</div></div>
-      <div class="gate"><div class="g-num">PHASE 4</div><div class="g-name">Validate</div><div class="g-desc">Measure against objective criteria. Data over opinion, evidence over enthusiasm.</div></div>
-      <div class="gate"><div class="g-num">PHASE 5</div><div class="g-name">Deliver</div><div class="g-desc">Leaders developed, capabilities fielded, decisions informed — results that endure.</div></div>
     </div>
   </div>
 </header>
