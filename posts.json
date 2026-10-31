@@ -1,9 +1,20 @@
 [
   {
     "type": "dispatch",
+    "date": "2026-11-02",
+    "href": "/insights/defense-dispatch-issue-07.html",
+    "tag": "New · Weekly Briefing",
+    "title": "Defense Dispatch",
+    "blurb": "Issue 07 — Autonomy Comes to the Maneuver Force: DIU’s self-driving logistics pilot at Fort Benning, a robotic hauler fielded in Germany, the four-star AUTOWARCOM, and how to tell which new tech actually works.",
+    "cta": "Read Issue 07 →",
+    "issueLabel": "Issue 07",
+    "issueDate": "Week of November 2, 2026"
+  },
+  {
+    "type": "dispatch",
     "date": "2026-10-26",
     "href": "/insights/defense-dispatch-issue-06.html",
-    "tag": "New · Weekly Briefing",
+    "tag": "Weekly Briefing",
     "title": "Defense Dispatch",
     "blurb": "Issue 06 — The On-Ramps: how to get into the defense business, from G-TEAD’s weeks-not-years Accelerated Capability Events and free APEX counseling to Hanwha’s onshoring push and Columbus Ahead’s $19.7M plan.",
     "cta": "Read Issue 06 →",
