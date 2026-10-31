@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Defense Dispatch — Issue 07 | Willis Strategy Group</title>
+<meta name="description" content="Columbus–Chattahoochee Valley Area Defense Dispatch, Issue 07 — Autonomy Comes to the Maneuver Force: DIU's ROADS self-driving logistics pilot at Fort Benning, AZAK's robotic hauler in Germany, the four-star AUTOWARCOM, the Stryker power upgrade, and PAE Maneuver Ground.">
+<meta property="og:title" content="Defense Dispatch — Issue 07 | Willis Strategy Group">
+<meta property="og:description" content="A weekly defense innovation and investment briefing for the Columbus–Fort Benning region.">
+<meta property="og:url" content="https://willis-strategy.com/insights/defense-dispatch-issue-07.html">
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" title="Willis Strategy Group Insights" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.art-head{background:var(--ink);color:#fff;padding:72px 0 56px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.02;font-size:clamp(2rem,5.5vw,3.2rem);text-transform:uppercase}
+.subtitle{margin-top:14px;color:var(--mist);font-size:1.05rem;max-width:60ch}
+.issue-line{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--brass);letter-spacing:.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.issue-line span{color:var(--slate)}
+article{padding:20px 0 40px}
+.lead-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-dim);margin:44px 0 10px}
+h2{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.5rem;line-height:1.1;margin:6px 0 18px;color:var(--ink)}
+h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.1rem;margin:28px 0 10px;color:var(--ink)}
+article p{margin-bottom:20px;color:#3c4f68}
+article ul{margin:0 0 22px 22px;color:#3c4f68}
+article li{margin-bottom:10px;padding-left:4px}
+.section{border-top:1px solid var(--mist);padding-top:8px;margin-top:44px}
+.callout{background:var(--navy);color:#fff;padding:26px 28px;margin:28px 0;border-left:4px solid var(--brass)}
+.callout .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.callout p{color:var(--mist);margin:0;font-size:.96rem}
+.aud{background:var(--navy);border:1px solid var(--navy);padding:26px 28px;margin:22px 0}
+.aud h3{margin-top:0;color:var(--brass);display:flex;align-items:baseline;gap:10px}
+.aud h3 .num{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--slate)}
+.aud ul{color:var(--mist)}
+.aud li strong{color:#fff}
+.aud a{color:var(--brass)}
+.aud ul{margin-bottom:0}
+.cal{background:#fff;border:1px solid var(--mist)}
+.cal-row{display:flex;gap:18px;padding:13px 20px;border-bottom:1px solid var(--mist);font-size:.9rem}
+.cal-row:last-child{border-bottom:none}
+.cal-row .d{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--brass-dim);min-width:118px;flex-shrink:0;padding-top:2px}
+.cal-row .e{color:#3c4f68}
+@media(max-width:560px){.cal-row{flex-direction:column;gap:3px}.cal-row .d{min-width:0}}
+.cal-note{font-size:.82rem;color:var(--slate);margin-top:12px}
+.cta{background:var(--ink);color:#fff;padding:36px 32px;margin:52px 0 0;text-align:center}
+.cta h3{color:#fff;margin-top:0;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.3rem}
+.cta p{color:var(--mist);max-width:52ch;margin:12px auto 22px;font-size:.96rem}
+.cta a{display:inline-block;background:var(--brass);color:var(--ink);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;font-weight:500}
+.cta a:hover{background:var(--brass-dim)}
+.src{font-size:.82rem;color:var(--slate)}
+.insight-box{background:#fff;color:var(--ink);border:1px solid var(--mist);padding:26px 28px;margin:22px 0;border-left:4px solid var(--brass)}
+.insight-box h3{color:var(--ink);margin-top:0}
+.insight-box p{color:#3c4f68}
+.insight-box a.readit{display:inline-block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dim);text-decoration:none;border-bottom:1px solid rgba(156,127,30,.5)}
+.insight-box .related{margin:14px 0 0;font-size:.88rem}
+.insight-box .related a{color:var(--brass-dim)}
+.insight-box a.readit:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.special{margin-top:16px;font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.15rem;color:var(--brass)}
+.intro{font-size:1.1rem;color:var(--steel) !important;border-left:3px solid var(--brass);padding-left:20px;margin-top:40px}
+article blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 22px;margin:4px 0 26px;font-size:1.15rem;color:var(--steel);font-style:italic}
+.callout a{color:var(--brass)}
+.next-up{background:#fff;border:1px solid var(--mist);border-left:4px solid var(--brass);padding:22px 26px;margin:48px 0 0}
+.next-up .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:8px}
+.next-up a{color:var(--brass-dim)}
+.intro a{color:var(--brass-dim)}
+.next-up p{margin:0;color:#3c4f68}
+.disclaimer{font-size:.78rem;color:var(--slate);border-top:1px solid var(--mist);margin-top:44px;padding-top:20px;font-style:italic}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+
+/* EOA promo bars */
+.eoa-bar{background:var(--brass);color:var(--ink);text-align:center;padding:16px 20px;font-family:'IBM Plex Mono',monospace;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.6}
+.eoa-bar a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(11,29,51,.45)}
+.eoa-bar a:hover{border-bottom-color:var(--ink)}
+.eoa-bar .eoa-mark{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.06em;margin-right:12px;font-size:1.1rem}
+@media(max-width:560px){.eoa-bar{font-size:.78rem;letter-spacing:.08em;padding:13px 14px}}
+</style>
+</head>
+<body>
+
+
+<div class="eoa-bar" role="complementary" aria-label="Contact Willis Strategy Group"><span class="eoa-mark">WSG</span>Defense Business Development &middot; Business Management Consulting &middot; <a href="/#contact" style="white-space:nowrap">Contact WSG &rarr;</a></div>
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/insights/index.html">&larr; Insights</a>
+  </div>
+</nav>
+
+<div class="art-head">
+  <div class="wrap">
+    <p class="kind">Defense Dispatch &middot; Weekly Briefing</p>
+    <h1>Columbus&ndash;Chattahoochee Valley Area Defense Dispatch</h1>
+    <p class="special">Issue 07 &mdash; Autonomy Comes to the Maneuver Force</p>
+    <p class="subtitle">A weekly briefing for owners, investors, government leaders, and small businesses in the Columbus&ndash;Fort Benning region.</p>
+    <p class="issue-line">Issue 07 &nbsp;&middot;&nbsp; <span>Week of November 2, 2026</span></p>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+
+    <p class="intro">This issue tracks the robots arriving in the maneuver force: a self-driving logistics pilot coming to Fort Benning, a robotic hauler fielded in Europe, the four-star command being built to run it all, and the power and acquisition plumbing underneath. We close, from the WSG desk, with how to tell which of it actually works.</p>
+
+    <p class="lead-tag">This Week&rsquo;s Lead</p>
+    <h2>Self-Driving Logistics Is Coming to Fort Benning</h2>
+    <p>The Defense Innovation Unit has selected Fort Benning, Georgia, and Fort Hood, Texas, as the pilot locations for the next phase of its ROADS prize challenge &mdash; Robotic Operations for Autonomous Delivery and Sustainment &mdash; the Department of War&rsquo;s effort to evaluate and adopt commercial autonomous-vehicle technology for installation transportation and logistics. ROADS applies commercially developed self-driving technology to on-base missions such as passenger shuttles and logistics movement, with the stated goals of improving installation safety, reducing demand on military personnel, increasing fleet utilization, and lowering transportation costs (Defense Innovation Unit).</p>
+    <p>Five companies are advancing to Phase III &mdash; Forterra/May Mobility, Applied Intuition, Perrone Robotics, Overland AI/Gatik, and Bot Auto &mdash; for further development and on-base evaluations. Vendor mapping begins this fall, followed by phased demonstrations through the end of 2026; initial operations will run with safety drivers while DIU, Fort Benning, and Fort Hood assess technical performance, operational suitability, user needs, safety, and data management, and work out the requirements for broader adoption. DIU frames ROADS as more than a demonstration &mdash; a way to establish the operational, safety, and installation processes needed to move commercial autonomy &ldquo;from isolated demonstrations toward repeatable deployment across the Department.&rdquo;</p>
+
+    <div class="section">
+      <p class="lead-tag">Robotics in the Logistics Tail</p>
+      <h2>A Robotic Hauler Joins the Force in Europe</h2>
+      <p>While ROADS brings autonomy onto U.S. installations, the Army is also pushing robotic logistics into the field abroad. AZAK, a Denver-based firm, builds a chassis-free, wheel-centric unmanned ground vehicle &mdash; each wheel is a self-contained power unit holding its own motor, gearbox, electronics, and battery below the wheel&rsquo;s center, giving a low center of gravity the company says lets it climb over obstacles rather than drive around them. The Army selected AZAK for a rapid-acquisition program to field the high-torque vehicle after Soldier-led trials (<a href="https://thedefensepost.com/2026/09/07/ugv-truck-us-army/" target="_blank" rel="noopener">The Defense Post</a>), and <a href="https://defence-blog.com/u-s-army-fields-azak-robotic-wheel-system-in-germany/" target="_blank" rel="noopener">Defence Blog</a> reports the system has now begun fielding with Army forces in Germany. The vehicle drew attention for a demonstration in which a roughly 500-pound unit towed a 53,000-pound truck &mdash; a company figure, with test conditions not detailed. Quantity, receiving unit, and contract value have not been disclosed (Defence Blog).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Command Behind the Robots</p>
+      <h2>The Army Builds a Four-Star Home for Autonomous Warfare</h2>
+      <p>The autonomy arriving on bases and in Europe now has an institutional home taking shape above it. On September 30, at Marine Corps Base Quantico, Secretary of War Pete Hegseth ordered the creation of a four-star Autonomous Warfare Command (AUTOWARCOM), targeted to stand up by October 1, 2027, with its own budget, manpower, and new career fields for the Soldiers who operate unmanned systems. In the interim, Project Agincourt &mdash; run by the Direct Reporting Portfolio Manager for Unmanned Systems (DRPM-UxS), with Owen West as its &ldquo;CEO&rdquo; and Navy SEAL Senior Chief Max Strasiser as &ldquo;COO&rdquo; &mdash; is building the pathway: the organizational changes, the legislation, and the career tracks the new command will need (<a href="https://www.war.gov/News/Releases/Release/Article/4630269/" target="_blank" rel="noopener">Department of War</a>).</p>
+      <p>The more consequential piece for industry is the acquisition model Agincourt is prototyping, which the department calls &ldquo;warfighting acquisition.&rdquo; Decisions and funding move toward combatant commands and frontline units; vendors&rsquo; systems are flown and scored by operators and tested in exercises and, where possible, combat. It builds on Drone Dominance, a $1.1 billion, four-phase buy of one-way attack drones in which operators fly and score competitors&rsquo; aircraft and orders follow the results. The department&rsquo;s fiscal 2027 request routes roughly $75 billion across drones and counter-drone work. Hegseth&rsquo;s framing: &ldquo;The pace of war is changing faster than the process to support it.&rdquo;</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Enabler</p>
+      <h2>The Quiet Contract That Powers the New Gear</h2>
+      <p>None of the sensors, radios, or weapon stations the Army keeps adding to its vehicles run without electrical power &mdash; and the Stryker&rsquo;s power budget is now getting an upgrade. General Dynamics Land Systems received a $135.9 million contract modification, announced by the Department of War on October 26, raising the total to $162.4 million, for complete retrofit kits of the Stryker&rsquo;s Enhanced Power Distribution Unit Version 2, destined for vehicles already in service. A power distribution unit routes electrical power from the vehicle&rsquo;s generator and batteries to radios, computers, sensors, and weapon stations; the Army cites growing power demand as it adds equipment to the Stryker. Managed by Army Contracting Command at Detroit Arsenal, the work runs through August 2030. Quantities, variants, and an installation schedule were not disclosed (<a href="https://defence-blog.com/general-dynamics-gets-136m-to-upgrade-stryker-power-system/" target="_blank" rel="noopener">Defence Blog</a>).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">Who Buys It</p>
+      <h2>One Buyer for the Squad as a System</h2>
+      <p>The organization that buys much of this &mdash; the vehicles Soldiers fight from and the gear they wear and carry &mdash; has been reorganized into a single enterprise. The Portfolio Acquisition Executive&ndash;Maneuver Ground (PAE Maneuver Ground), commanded by Brig. Gen. Troy M. Denomy, delivers 186 programs of record and 253 other products, and was created in the Army&rsquo;s largest acquisition reform in decades by merging PEO Soldier with PEO Combat Platforms. Its organizing idea is &ldquo;the squad as the Army&rsquo;s foundational combat system&rdquo; &mdash; closing the seam between mounted and dismounted formations through an Adaptive Squad Architecture that integrates weapons, protection, mobility, power, and data across the squad.</p>
+      <p>For a firm trying to find the right door, the portfolio&rsquo;s program-manager offices are the map: PM Soldier Lethality, PM Soldier Survivability, PM Soldier Warrior, PM Maneuver Medical Systems, PM Mobile Brigade, PM Abrams, PM XM30, PM Mounted Armored Vehicles, and the Stryker and layered-survivability efforts. The command&rsquo;s motto &mdash; &ldquo;The Soldier: Every Ounce Matters. Every Bullet Counts.&rdquo; &mdash; captures the focus (<a href="https://paemaneuverground.army.mil/About/" target="_blank" rel="noopener">PAE Maneuver Ground</a>).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">WSG Insights</p>
+      <h2>From the Willis Strategy Group Desk</h2>
+      <p>A recurring feature spotlighting our own analysis of the ideas shaping defense, experimentation, and leadership. This week it comes from the source &mdash; a Quick-Fire Interview our president, Chris Willis, gave ahead of the Future Ground Maneuver Summit 2027.</p>
+      <div class="insight-box">
+        <h3>Telling whether a new technology actually works</h3>
+        <p>Ask Chris Willis what separates a successful military innovation effort from an expensive one, and the answer starts before any prototype arrives: correctly identify the problem &mdash; the capability gap. What do we need to do, under a given scenario against a given enemy, to accomplish the mission; and if we cannot, where is the gap? Solutions that come from Soldiers and industry, he says, tend to beat top-down ideas &mdash; and where organizations most often go wrong is skipping the front-end analysis. His method is four steps: identify the gap; decide what you must measure to know whether the technology closed it; build a data-collection plan; and analyze the data to see whether the gap was actually mitigated. &ldquo;Sometimes organizations don&rsquo;t do front-end analysis, and they end up wasting time and money.&rdquo;</p>
+        <p>On the tension every program feels &mdash; speed versus rigor &mdash; Willis draws a sharp line. Rigor comes from that front- and back-end analysis. Speed comes from &ldquo;an environment where failure is rewarded, not penalized,&rdquo; because &ldquo;we learn from our failures more than our successes.&rdquo; He points to SpaceX as the only company that talked openly about failure when NASA was choosing commercial partners &mdash; a willingness he calls &ldquo;even more important to small start-ups.&rdquo; And the lesson he draws from Ukraine is not about any one drone: it is the Ukrainian forces&rsquo; learn-and-adapt cycle, run at an unprecedented rate. &ldquo;The US Armed Forces and American industry must learn at a quicker pace and build innovative technology at pace with that learning.&rdquo;</p>
+        <p>It is the same argument an Army acquisition officer, Col. Rachael Hoagland, made from nine months in Ukraine in a recent Modern War Institute essay &mdash; that U.S. institutions reward compliance with requirements written in advance rather than the ability to adapt when the threat changes. The fix, in both accounts, is to buy for adaptability and measure what you field. Chris Willis will facilitate an innovation panel at the Future Ground Maneuver Summit in Columbus, March 30&ndash;31, 2027.</p>
+        <a class="readit" href="https://eco-cdn.iqpc.com/eco/files/event_content/fgm27-willis-interview-updated-vW1Ove3JFC28OIbA4yxuyxSIFw8i8rjL9QtpcihvS.pdf" target="_blank" rel="noopener">Read the full interview: &ldquo;Quick-Fire Interview with Chris Willis&rdquo; (PDF) &rarr;</a>
+        <p class="related">Related reading: <a href="https://mwi.westpoint.edu/i-saw-ukraines-rapid-adaptation-cycle-in-action-and-this-is-what-the-us-military-should-learn-from-it/" target="_blank" rel="noopener">Modern War Institute &mdash; &ldquo;Ukraine&rsquo;s Rapid Adaptation Cycle&rdquo;</a>.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">By Audience</p>
+      <h2>What This Week Means for You</h2>
+
+      <div class="aud">
+        <h3><span class="num">01</span> For Business Owners &amp; Small Business</h3>
+        <ul>
+          <li><strong>A test bed at home:</strong> Fort Benning is now a named national site for autonomous ground logistics (ROADS). Firms in autonomy, sensors, mapping, fleet operations, or installation services should track the Phase III vendors and the on-base evaluations.</li>
+          <li><strong>Know the buyer:</strong> PAE Maneuver Ground owns the ground-combat and Soldier-systems portfolio; its PM offices (lethality, survivability, Abrams, XM30, Stryker) are the doors.</li>
+          <li><strong>Build to be tested:</strong> the Army&rsquo;s &ldquo;warfighting acquisition&rdquo; model rewards firms whose systems can be flown and scored by operators quickly &mdash; design to be demonstrated, not just briefed.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">02</span> For Investors</h3>
+        <ul>
+          <li>Autonomous ground logistics is moving from demonstration to installation pilots (ROADS, AZAK) &mdash; a near-term, dual-use commercial-autonomy market with named competitors.</li>
+          <li>AUTOWARCOM is a durable, funded demand signal for autonomy (FY27 request ~$75B across drones and counter-drone), though stand-up is a year out and the dollars run through Congress.</li>
+          <li>Watch the enablers, not just the platforms: vehicle electrical power (the Stryker EPDU upgrade) is a recurring, unglamorous spend as onboard demand grows.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">03</span> For Government &amp; Community Leaders</h3>
+        <ul>
+          <li>The ROADS pilot puts Columbus&ndash;Fort Benning at the center of a national autonomy effort &mdash; a workforce, partnership, and economic-development opportunity worth organizing around now.</li>
+          <li>The Future Ground Maneuver Summit comes to the Columbus Convention Center March 30&ndash;31, 2027, with WSG&rsquo;s Chris Willis facilitating an innovation panel &mdash; a chance to put the region&rsquo;s maneuver-and-experimentation expertise on display.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">On the Calendar</p>
+      <h2>Dates to Watch</h2>
+      <div class="cal">
+        <div class="cal-row"><span class="d">Nov. 17, 2026</span><span class="e">JIOP Virtual Industry Day, 2:00&ndash;3:30 p.m. ET (counter-UAS, EW, C2, power projection, autonomy).</span></div>
+        <div class="cal-row"><span class="d">Nov. 17, 2026</span><span class="e">AUSA Hot Topic: Transformation &amp; Training Command (T2COM), Arlington, VA.</span></div>
+        <div class="cal-row"><span class="d">Nov. 30&ndash;Dec. 4, 2026</span><span class="e">I/ITSEC 2026 &mdash; modeling, simulation &amp; training conference, Orlando, FL.</span></div>
+        <div class="cal-row"><span class="d">Dec. 3&ndash;4, 2026</span><span class="e">LANDEURO 2026, Wiesbaden, Germany.</span></div>
+        <div class="cal-row"><span class="d">Mar. 16&ndash;18, 2027</span><span class="e">AUSA Global Force Symposium &amp; Exposition, Huntsville, AL.</span></div>
+        <div class="cal-row"><span class="d">Mar. 30&ndash;31, 2027</span><span class="e">Future Ground Maneuver Summit, Columbus Convention Center &mdash; WSG&rsquo;s Chris Willis facilitating an innovation panel.</span></div>
+      </div>
+      <p class="cal-note">Small-business resources: <a href="https://www.sba.gov/swpc" target="_blank" rel="noopener">SBA Smaller War Plants Commission</a> &middot; SBIR/STTR: <a href="https://www.sbir.gov/topics" target="_blank" rel="noopener">SBIR.gov</a> &middot; <a href="https://www.dodsbirsttr.mil/topics-app/" target="_blank" rel="noopener">DoD SBIR/STTR (DSIP)</a>.</p>
+    </div>
+
+    <div class="cta">
+      <h3>Talk to Willis Strategy Group</h3>
+      <p>Trying to get into the ROADS evaluations, find the right program-manager office, or position for the autonomy build-out? Email Willis Strategy Group at management@willis-strategy.com.</p>
+      <a href="mailto:management@willis-strategy.com">Email WSG</a>
+    </div>
+
+    <p class="disclaimer">The Defense Dispatch summarizes publicly reported information for general awareness and is not legal, financial, or investment advice. Figures, dates, and program details reflect sources available at publication; several items are early-stage, industry-stated, or pending appropriation rather than funded programs of record, and are subject to change. Verify against the primary source before acting.</p>
+
+  </div>
+</article>
+
+
+
+
+
+
+
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+</body>
+</html>

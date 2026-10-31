@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 26 Oct 2026 13:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 02 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 07</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-07.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-07.html</guid>
+    <pubDate>Mon, 02 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Issue 07 — Autonomy Comes to the Maneuver Force: DIU’s self-driving logistics pilot at Fort Benning, a robotic hauler fielded in Germany, the four-star AUTOWARCOM, and how to tell which new tech actually works.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 06</title>
