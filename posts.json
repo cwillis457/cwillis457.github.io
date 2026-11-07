@@ -1,9 +1,20 @@
 [
   {
     "type": "dispatch",
+    "date": "2026-11-09",
+    "href": "/insights/defense-dispatch-issue-08.html",
+    "tag": "New · Weekly Briefing",
+    "title": "Defense Dispatch",
+    "blurb": "Issue 08 — The Proving Ground: the Army’s biggest experiment tests Next-Gen C2, the Pentagon’s first M&S strategy in 30 years waits on AI, a one-stop test-range portal, DARPA autonomy at Fort Knox, and measure before you buy.",
+    "cta": "Read Issue 08 →",
+    "issueLabel": "Issue 08",
+    "issueDate": "Week of November 9, 2026"
+  },
+  {
+    "type": "dispatch",
     "date": "2026-11-02",
     "href": "/insights/defense-dispatch-issue-07.html",
-    "tag": "New · Weekly Briefing",
+    "tag": "Weekly Briefing",
     "title": "Defense Dispatch",
     "blurb": "Issue 07 — Autonomy Comes to the Maneuver Force: DIU’s self-driving logistics pilot at Fort Benning, a robotic hauler fielded in Germany, the four-star AUTOWARCOM, and how to tell which new tech actually works.",
     "cta": "Read Issue 07 →",
