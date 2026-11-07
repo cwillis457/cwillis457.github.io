@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Defense Dispatch — Issue 08 | Willis Strategy Group</title>
+<meta name="description" content="Columbus–Chattahoochee Valley Area Defense Dispatch, Issue 08 — The Proving Ground: Project Convergence-Capstone 6 and Next-Gen C2, the Pentagon's new modeling-and-simulation strategy and AI, the Global 21 wargame, testrange.army.mil, DARPA RACER at Fort Knox, and Office of Strategic Capital loans.">
+<meta property="og:title" content="Defense Dispatch — Issue 08 | Willis Strategy Group">
+<meta property="og:description" content="A weekly defense innovation and investment briefing for the Columbus–Fort Benning region.">
+<meta property="og:url" content="https://willis-strategy.com/insights/defense-dispatch-issue-08.html">
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" title="Willis Strategy Group Insights" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.art-head{background:var(--ink);color:#fff;padding:72px 0 56px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.02;font-size:clamp(2rem,5.5vw,3.2rem);text-transform:uppercase}
+.subtitle{margin-top:14px;color:var(--mist);font-size:1.05rem;max-width:60ch}
+.issue-line{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--brass);letter-spacing:.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.issue-line span{color:var(--slate)}
+article{padding:20px 0 40px}
+.lead-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-dim);margin:44px 0 10px}
+h2{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.5rem;line-height:1.1;margin:6px 0 18px;color:var(--ink)}
+h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.1rem;margin:28px 0 10px;color:var(--ink)}
+article p{margin-bottom:20px;color:#3c4f68}
+article ul{margin:0 0 22px 22px;color:#3c4f68}
+article li{margin-bottom:10px;padding-left:4px}
+.section{border-top:1px solid var(--mist);padding-top:8px;margin-top:44px}
+.callout{background:var(--navy);color:#fff;padding:26px 28px;margin:28px 0;border-left:4px solid var(--brass)}
+.callout .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.callout p{color:var(--mist);margin:0;font-size:.96rem}
+.aud{background:var(--navy);border:1px solid var(--navy);padding:26px 28px;margin:22px 0}
+.aud h3{margin-top:0;color:var(--brass);display:flex;align-items:baseline;gap:10px}
+.aud h3 .num{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--slate)}
+.aud ul{color:var(--mist)}
+.aud li strong{color:#fff}
+.aud a{color:var(--brass)}
+.aud ul{margin-bottom:0}
+.cal{background:#fff;border:1px solid var(--mist)}
+.cal-row{display:flex;gap:18px;padding:13px 20px;border-bottom:1px solid var(--mist);font-size:.9rem}
+.cal-row:last-child{border-bottom:none}
+.cal-row .d{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--brass-dim);min-width:118px;flex-shrink:0;padding-top:2px}
+.cal-row .e{color:#3c4f68}
+@media(max-width:560px){.cal-row{flex-direction:column;gap:3px}.cal-row .d{min-width:0}}
+.cal-note{font-size:.82rem;color:var(--slate);margin-top:12px}
+.cta{background:var(--ink);color:#fff;padding:36px 32px;margin:52px 0 0;text-align:center}
+.cta h3{color:#fff;margin-top:0;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.3rem}
+.cta p{color:var(--mist);max-width:52ch;margin:12px auto 22px;font-size:.96rem}
+.cta a{display:inline-block;background:var(--brass);color:var(--ink);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;font-weight:500}
+.cta p a.sub-link{display:inline;background:none;padding:0;color:var(--brass);font-family:inherit;font-size:inherit;letter-spacing:0;text-transform:none;border-bottom:1px solid rgba(201,162,39,.5)}
+.cta a:hover{background:var(--brass-dim)}
+.src{font-size:.82rem;color:var(--slate)}
+.insight-box{background:#fff;color:var(--ink);border:1px solid var(--mist);padding:26px 28px;margin:22px 0;border-left:4px solid var(--brass)}
+.insight-box h3{color:var(--ink);margin-top:0}
+.insight-box p{color:#3c4f68}
+.insight-box a.readit{display:inline-block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dim);text-decoration:none;border-bottom:1px solid rgba(156,127,30,.5)}
+.insight-box .related{margin:14px 0 0;font-size:.88rem}
+.insight-box .related a{color:var(--brass-dim)}
+.insight-box a.readit:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.special{margin-top:16px;font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.15rem;color:var(--brass)}
+.intro{font-size:1.1rem;color:var(--steel) !important;border-left:3px solid var(--brass);padding-left:20px;margin-top:40px}
+article blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 22px;margin:4px 0 26px;font-size:1.15rem;color:var(--steel);font-style:italic}
+.callout a{color:var(--brass)}
+.next-up{background:#fff;border:1px solid var(--mist);border-left:4px solid var(--brass);padding:22px 26px;margin:48px 0 0}
+.next-up .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:8px}
+.next-up a{color:var(--brass-dim)}
+.intro a{color:var(--brass-dim)}
+.next-up p{margin:0;color:#3c4f68}
+.disclaimer{font-size:.78rem;color:var(--slate);border-top:1px solid var(--mist);margin-top:44px;padding-top:20px;font-style:italic}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+
+/* EOA promo bars */
+.eoa-bar{background:var(--brass);color:var(--ink);text-align:center;padding:16px 20px;font-family:'IBM Plex Mono',monospace;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.6}
+.eoa-bar a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(11,29,51,.45)}
+.eoa-bar a:hover{border-bottom-color:var(--ink)}
+.eoa-bar .eoa-mark{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.06em;margin-right:12px;font-size:1.1rem}
+@media(max-width:560px){.eoa-bar{font-size:.78rem;letter-spacing:.08em;padding:13px 14px}}
+</style>
+</head>
+<body>
+
+
+<div class="eoa-bar" role="complementary" aria-label="Contact Willis Strategy Group"><span class="eoa-mark">WSG</span>Defense Business Development &middot; Business Management Consulting &middot; <a href="/#contact" style="white-space:nowrap">Contact WSG &rarr;</a></div>
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/insights/index.html">&larr; Insights</a>
+  </div>
+</nav>
+
+<div class="art-head">
+  <div class="wrap">
+    <p class="kind">Defense Dispatch &middot; Weekly Briefing</p>
+    <h1>Columbus&ndash;Chattahoochee Valley Area Defense Dispatch</h1>
+    <p class="special">Issue 08 &mdash; The Proving Ground</p>
+    <p class="subtitle">A weekly briefing for owners, investors, government leaders, and small businesses in the Columbus&ndash;Fort Benning region.</p>
+    <p class="issue-line">Issue 08 &nbsp;&middot;&nbsp; <span>Week of November 9, 2026</span></p>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+
+    <p class="intro">This issue is about how the force decides what works. The Army ran its largest experiment yet at Fort Irwin in July, putting its new command-and-control architecture through nine days of division-scale, multinational maneuver. Underneath it, the Pentagon is finishing its first modeling-and-simulation strategy in more than thirty years — and holding it back to make sense of artificial intelligence, a tension a record Navy wargame put to the test. The Army also opened a single front door to its test ranges, DARPA ran autonomous vehicles against a live problem at Fort Knox, and federal capital kept flowing into the drone industrial base. We close, from the WSG desk, with the oldest lesson in experimentation: measure before you buy.</p>
+
+    <p class="lead-tag">This Week&rsquo;s Lead</p>
+    <h2>The Army&rsquo;s Biggest Experiment Puts Its New Command-and-Control to the Test</h2>
+    <p>The Army closed out its largest modernization experiment to date this summer, and the headline capability on trial was the one meant to tie the whole force together. Project Convergence-Capstone 6 (PC-C6), held July 20–29 at Fort Irwin, California, brought more than 9,700 Soldiers together with joint, allied, and industry participants to put over 90 new technologies through a live and simulated battlefield. Project Convergence is the Army&rsquo;s premier experimentation venue — a persistent campaign that gives the force the scale to try future concepts and formations against real operational problems — and PC-C6 was its biggest iteration yet (<a href="https://www.ausa.org/articles/tech-convergence-army-expands-transformation-evaluation-event" target="_blank" rel="noopener">AUSA</a>).</p>
+    <p>The central focus was continued validation of Next-Generation Command and Control (Next-Gen C2), which replaces the Army&rsquo;s legacy, fragmented mission-command systems with an open, extensible set of warfighting applications and AI tools, a common data layer, and more resilient communications. Where earlier events validated individual technologies, PC-C6 stressed interoperability and integration at the division level. Brig. Gen. Daniel Hibner, commander of Army Joint Modernization Command, framed the objective plainly: &ldquo;what we&rsquo;re really looking to validate is how effectively we can close the digital kill chain, how fast can we close it and how we can leverage AI and machine learning to … sense and hit time-sensitive targets as efficiently as possible&rdquo; — while reducing Soldiers&rsquo; cognitive load and preventing a &ldquo;siloed ecosystem of information.&rdquo; The experiment added allies from the United Kingdom, Australia, New Zealand, and Canada and more than 2,000 extra personnel, incorporating live multinational maneuver for the first time, and — for the first time at the capstone — built in &ldquo;free play&rdquo; rather than a strictly scripted scenario.</p>
+    <p>The more consequential shift for industry is how the Army now intends to buy. Brent Ingraham, assistant secretary of the Army for acquisition, logistics and technology, called PC-C6 &ldquo;more than a successful technology demonstration … an example of how the Army is changing the way we acquire and field new technology,&rdquo; pointing to a &ldquo;commercial-first&rdquo; strategy for Next-Gen C2 that drops the legacy requirement-then-years-to-a-prototype cycle. Joseph Welch — portfolio acquisition executive for Command and Control and executive director of Army Transformation and Training Command — said the effort has moved &ldquo;from a collection of disparate programs&rdquo; to &ldquo;an ecosystem of capability,&rdquo; and has encouraged industry &ldquo;self-teaming.&rdquo; In the coming months the Army plans to launch a platform for industry to access the common data architecture and plug in third-party applications and AI models; 4th Infantry Division, 25th Infantry Division, and I Corps carry the work forward through fielding and the planned Ivy Sting and Lightning Surge events. Acting Chief of Staff Gen. Christopher LaNeve, who watched Next-Gen C2 perform at scale, said the next step is to &ldquo;take a hard look at lessons learned&rdquo; (<a href="https://www.ausa.org/articles/tech-convergence-army-expands-transformation-evaluation-event" target="_blank" rel="noopener">AUSA</a>).</p>
+
+    <div class="section">
+      <p class="lead-tag">The Strategy Underneath</p>
+      <h2>The Pentagon Rewrites the Rules for Modeling and Simulation</h2>
+      <p>If PC-C6 is where the Army proves what works, a parallel effort is rewriting how the department conducts modeling and simulation in the first place. The Department of War is finishing its first new modeling-and-simulation strategy in more than thirty years — and has deliberately pushed back its release to align it with recent advances in artificial intelligence. The forthcoming Modeling and Simulation Strategy for Engineering would be the first official strategy document on the subject since the department&rsquo;s 1995 Modeling and Simulation Master Plan. Speaking at the National Training and Simulation Association&rsquo;s MODSIM World conference, Darryl Howell, a contractor supporting the digital engineering, modeling and simulation directorate in the office of the under secretary of war for research and engineering, said the goal of delivering capability to the warfighter quickly has not changed — but &ldquo;what&rsquo;s different about what&rsquo;s happening now is we&rsquo;ve got some amazing capabilities we&rsquo;ve never had before, especially with respect to models and simulations&rdquo; (<a href="https://www.nationaldefensemagazine.org/articles/2026/11/3/pentagon-studies-role-of-ai-in-new-modeling-simulation-strategy" target="_blank" rel="noopener">National Defense Magazine</a>).</p>
+      <p>The directorate&rsquo;s director, Daniel Hettema, described a more &ldquo;democratized&rdquo; approach — treating modeling and simulation as &ldquo;the tool in the toolbox for practitioners across the department&rdquo; rather than a single office&rsquo;s remit — with the enterprise streamlined into three concentrations: training, engineering, and analysis. The new strategy carries five goals: a joint, community-wide technical framework; trusted, authoritative, validated data sources (which Howell called the most important — &ldquo;we don&rsquo;t want to get to the end and not know what we have&rdquo;); stronger acquisition and program-management skills through professional-development systems; wider use of enterprise-level M&amp;S services; and policies and infrastructure agile enough for rapid assessment and procurement.</p>
+      <p>The AI question is why the document is still on hold. The department&rsquo;s last policy on verifying, validating, and accrediting models dates to September 2024, before the latest wave of AI, and officials planned a workshop this fall on the technology&rsquo;s implications. The tension was on open display at the conference. Richard Boyd, CEO of UltiSim, argued that AI outputs need an &ldquo;epistemic airlock&rdquo; — a separate environment where results are validated before they touch the larger dataset — because the moment AI touches something, &ldquo;it should immediately have a question mark over it … it&rsquo;s by definition guilty until proven innocent.&rdquo; Eric Davis, a program manager in DARPA&rsquo;s Strategic Technology Office, said his entire $250 million portfolio is AI-related, yet includes &ldquo;not a single large language model&rdquo;: such models &ldquo;maximize&rdquo; human approval but &ldquo;lack … internal models of causal reality,&rdquo; and an 85-percent-accurate plan &ldquo;isn&rsquo;t going to cut it&rdquo; when lives are at stake. His fix is to pair AI with simulation as an &ldquo;internal world model&rdquo; for testing hypotheses before action. As Hettema put it, &ldquo;the age of platforms is over&rdquo; — the future fight is won by integrating capabilities across systems, a data-and-engineering challenge the strategy is meant to govern. The document is expected &ldquo;soon&rdquo; (<a href="https://www.nationaldefensemagazine.org/articles/2026/11/3/pentagon-studies-role-of-ai-in-new-modeling-simulation-strategy" target="_blank" rel="noopener">National Defense Magazine</a>).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">When AI Goes to the Wargame</p>
+      <h2>The Largest Wargame Yet Becomes a Test of AI Itself</h2>
+      <p>If the strategy is the policy, a wargame this fall was the field test. The U.S. Naval War College ran Global 21 — more than 700 participants across nine 20-hour days, which its organizers call the largest and most sophisticated wargame in the college&rsquo;s history — and used it to try modeling-and-simulation adjudication and AI analysis tools at scale. A high-fidelity simulation suite called Virtual Wizard adjudicated detection, tracking, and targeting for a set of surface tracks in its first use in a major wargame, and a multi-agent generative-AI system from the Air Force Wargaming Institute, MAGE, helped surface findings during play. The verdict on the AI, from the game&rsquo;s own analysts, is the line worth remembering, it &ldquo;can be remarkably good at describing a wargame while remaining unreliable at analyzing one.&rdquo; It summarized well but struggled to separate significant events from noise and to judge what mattered operationally (<a href="https://cimsec.org/rethinking-wargame-design-and-analysis-in-the-modern-age-lessons-learned-from-global-21/" target="_blank" rel="noopener">CIMSEC</a>).</p>
+      <p>The design lessons track the strategy&rsquo;s themes almost exactly. Analytic design should come first, the authors argue, with structured data captured from the outset — common unit identifiers, time-stamped decisions tied to their rationale — so that both human and machine analysis stay traceable; computational models should be used only where outcomes are governed by physics and the research question demands that fidelity, because &ldquo;the most effective solution may not be to model everything.&rdquo; Model-enabled adjudication also costs more — in computing, specialized people, and space. The piece reflects the personal views of its authors, Naval War College Wargaming Department faculty Jonathan Compton, David Sampson, and Joseph Mroszczyk, not the Navy&rsquo;s. Together with the forthcoming strategy, it points the same direction: AI is a powerful describer, not yet a trustworthy analyst, and validated data and human judgment remain the core of credible results.</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Front Door to the Range</p>
+      <h2>One Place to Book a Test</h2>
+      <p>Proving a system also means getting onto a range, and the Army just made that easier. CECOM&rsquo;s Software Engineering Center (ASIC) and the Army Test and Evaluation Command (ATEC) launched testrange.army.mil, a single online &ldquo;storefront&rdquo; where industry can request access to Army test ranges, backed by an ATEC-managed concierge team that books testing across multiple sites. It replaces a patchwork in which each range ran its own process and vendors often worked from outdated information. The portal covers unmanned aircraft, counter-UAS, low-cost interceptors, and long-range fires, and reaches National Guard and international installations; commercial testing on Army proving grounds runs under 10 U.S.C. § 4175 and Commercial Services Agreements. Directed in July 2026 by then-Secretary of the Army Dan Driscoll, it was stood up as a minimum viable product in about three weeks on a configured Salesforce application with no custom code, and is updated in two-week sprints. The Army&rsquo;s framing: &ldquo;enterprise-level speed means increased lethality on the battlefield&rdquo; (<a href="https://www.army.mil/article/296287/cecom_asic_and_atec_centralize_test_range_booking_to_fast_track_lethality" target="_blank" rel="noopener">Army.mil</a>). The front door is at <a href="https://testrange.army.mil" target="_blank" rel="noopener">testrange.army.mil</a>.</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">Where Autonomy Gets Tested</p>
+      <h2>Four Robots and a Human in the Loop at Fort Knox</h2>
+      <p>One recent test shows what that experimentation looks like in the dirt. On October 15 at the St. Vith Range, Fort Knox, DARPA&rsquo;s RACER program — Robotic Autonomy in Complex Environments with Resiliency — ran four autonomous ground vehicles as a team searching for enemy forces, three of them carrying drone payloads. The lead vehicle detected a target and stopped for a human command before a simulated strike roughly 300 yards out. DARPA calls it the first &ldquo;space-to-tactical&rdquo; ground autonomy experiment, linking satellite-cued tasking to ground vehicles; U.S. European Command requested the effort, and Fort Knox supported it. Technical advisor Jason Gregory framed the control question the Dispatch keeps returning to: operators have &ldquo;total control … they don&rsquo;t pull the trigger until a human says pull the trigger.&rdquo; Named partners include Anduril and Overland AI — the latter also among the finalists in the Fort Benning ROADS logistics pilot <a href="/insights/defense-dispatch-issue-07.html">covered last issue</a> — with a further test set for December 2026 to gather Soldier feedback. The demonstration was reconnaissance and targeting, not logistics, and the strike was simulated; treat it as an experiment, not a fielded capability (<a href="https://www.darpa.mil/news/2026/autonomous-vehicles-deliver" target="_blank" rel="noopener">DARPA</a>).</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">The Capital Behind the Base</p>
+      <h2>Federal Dollars Keep Flowing to the Drone Industrial Base</h2>
+      <p>None of this gets built without an industrial base, and the government is still writing checks to expand one. In early November the Department of War&rsquo;s Office of Strategic Capital announced a conditional loan commitment with Neros Inc., a U.S. maker of first-person-view attack drones — the company behind the Archer strike drone, which raised roughly $250 million in a Series C round in August (<a href="https://www.war.gov/News/Releases/Release/Article/4638926/" target="_blank" rel="noopener">Department of War</a>; <a href="https://dronexl.co/2026/08/18/neros-250m-series-c-army-million-drones/" target="_blank" rel="noopener">DroneXL</a>). The Office of Strategic Capital issues long-term financing designed to pull private capital into critical defense-industrial-base capacity, the debt-and-credit complement to the equity-style Army Strategic Capital Initiative covered earlier this year. Its recent commitments trace the pattern: up to $1.5 billion to Wolfspeed for silicon-carbide semiconductors in October — the office&rsquo;s largest to date — $820 million to Performance Drone Works for domestic drone-component manufacturing in August, and $725 million to Energy Fuels for critical minerals in June. The terms of the Neros commitment were not detailed here; the direction is unmistakable — Washington is systematically de-risking private capital into American defense manufacturing, from chips and minerals to the drones the maneuver force is fielding in its force.</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">WSG Insights</p>
+      <h2>From the Willis Strategy Group Desk</h2>
+      <p>A recurring feature spotlighting our own analysis of the ideas shaping defense, experimentation, and leadership.</p>
+      <div class="insight-box">
+        <h3>Measure before you buy</h3>
+        <p>Read this issue end to end and one thread runs through all of it: a new strategy, a record wargame, a test-range storefront, an autonomy experiment, and a capital pipeline are all circling the same question — does the thing work, and how would you know? In our experience running experimentation, that question is answered, or lost, long before a prototype shows up. The failures we have seen rarely come from bad engineering; they come from skipping the front-end analysis — not pinning down the capability gap, and not deciding in advance what to measure to tell whether a system closed it. The discipline is unglamorous and it is the whole game: identify the gap against a real scenario and enemy; decide what you must measure; build the data-collection plan; then analyze whether the gap narrowed.</p>
+        <p>That is why the AI debate running through the modeling-and-simulation world lands where it does. The warning from the Pentagon&rsquo;s own strategists and from the Global 21 analysts is the same one — AI can describe a problem fluently while getting the analysis wrong — and the remedy is the same discipline: validated, traceable data and a human who owns the judgment. &ldquo;Analytic design should come first,&rdquo; as the Global 21 team put it, is not a wargaming nicety; it is the rule that keeps speed from becoming expensive motion. Rigor comes from the front- and back-end analysis. Speed comes from an environment that rewards failure rather than punishing it, because that is where the learning is. The organizations that pair the two — buying for adaptability and measuring what they field — are the ones that will turn this moment&rsquo;s flood of new technology into capability instead of receipts. WSG&rsquo;s Chris Willis will facilitate an innovation panel on exactly these questions at the Future Ground Maneuver Summit in Columbus, March 30–31, 2027. We will also cover modeling and simulation in more depth following the I/ITSEC Conference, 30 NOV–04 DEC, 2026.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">By Audience</p>
+      <h2>What This Week Means for You</h2>
+
+      <div class="aud">
+        <h3><span class="num">01</span> For Business Owners &amp; Small Business</h3>
+        <ul>
+          <li><strong>A single door to the range:</strong> if you build UAS, counter-UAS, interceptors, or fires, <a href="https://testrange.army.mil" target="_blank" rel="noopener">testrange.army.mil</a> is now the front door to request Army range access, with a concierge team to book it.</li>
+          <li><strong>The Army is buying &ldquo;commercial-first&rdquo;:</strong> Next-Gen C2 is being acquired with industry &ldquo;self-teaming,&rdquo; and the Army plans a platform to let third-party applications and AI models plug into its common data architecture — a direct opening for software, data, and AI firms.</li>
+          <li><strong>Start with the on-ramp:</strong> the Department of War&rsquo;s LYNX platform (<a href="https://www.lynxconnect.io/" target="_blank" rel="noopener">lynxconnect.io</a>) is a free digital front door for small and nontraditional suppliers — build a profile, run a readiness assessment, and get a roadmap into defense contracting.</li>
+          <li><strong>The M&amp;S workforce is a credential:</strong> the forthcoming strategy explicitly wants to grow it — NTSA&rsquo;s Certified Modeling &amp; Simulation Professional (CMSP) program, with prep workshops run at I/ITSEC, is the recognized path.</li>
+          <li><strong>Build to be measured:</strong> strategy, wargames, and ranges all reward systems designed to be demonstrated and scored by operators — not just briefed.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">02</span> For Investors</h3>
+        <ul>
+          <li>Federal capital keeps de-risking the drone and industrial base: the Office of Strategic Capital&rsquo;s loan commitments (Wolfspeed ~$1.5B, Performance Drone Works $820M, Energy Fuels $725M, and now Neros) are a durable, policy-driven demand signal.</li>
+          <li>Modeling, simulation, and AI are a live market: the forthcoming M&amp;S strategy and the Global 21 wargame both point toward validated data, verification-and-accreditation, digital twins, and synthetic environments — around a clear &ldquo;AI needs simulation&rdquo; thesis.</li>
+          <li>Autonomy keeps moving to real test events (DARPA RACER at Fort Knox; next test December 2026) — watch the named partners, including Anduril and Overland AI.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">03</span> For Government &amp; Community Leaders</h3>
+        <ul>
+          <li>A national M&amp;S priority plays to this region&rsquo;s strength: the Army&rsquo;s modeling-and-simulation and experimentation lineage runs through Fort Benning, and a CMSP-credentialed workforce is an asset worth cultivating locally.</li>
+          <li>The Future Ground Maneuver Summit comes to the Columbus Convention Center March 30–31, 2027, with WSG&rsquo;s Chris Willis facilitating an innovation panel — a chance to showcase the region&rsquo;s maneuver-and-experimentation expertise.</li>
+          <li>ROID &ldquo;DIRT Days&rdquo; at Camp Blanding (February 2027) is a near-term way for regional firms to put technology in front of Army units — RFI responses are due November 15.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">On the Calendar</p>
+      <h2>Dates to Watch</h2>
+      <div class="cal">
+        <div class="cal-row"><span class="d">Nov. 15, 2026</span><span class="e">ROID &ldquo;DIRT Days&rdquo; 27-01 RFI deadline — registration and proposal due 11:59 p.m. ET (CMI2 / DEVCOM ARL / CENTCOM).</span></div>
+        <div class="cal-row"><span class="d">Nov. 17, 2026</span><span class="e">JIOP Virtual Industry Day, 2:00–3:30 p.m. ET (counter-UAS, EW, C2, power projection, autonomy).</span></div>
+        <div class="cal-row"><span class="d">Nov. 17, 2026</span><span class="e">AUSA Hot Topic: Transformation &amp; Training Command (T2COM), Arlington, VA.</span></div>
+        <div class="cal-row"><span class="d">Nov. 30–Dec. 4, 2026</span><span class="e">I/ITSEC 2026 — modeling, simulation &amp; training conference, Orlando, FL (NTSA CMSP prep workshops &amp; exams on site).</span></div>
+        <div class="cal-row"><span class="d">Dec. 3–4, 2026</span><span class="e">LANDEURO 2026, Wiesbaden, Germany.</span></div>
+        <div class="cal-row"><span class="d">Feb. 14–19, 2027</span><span class="e">ROID &ldquo;DIRT Days&rdquo; 27-01, Camp Blanding Joint Training Center, FL — contested-logistics validation event.</span></div>
+        <div class="cal-row"><span class="d">Mar. 16–18, 2027</span><span class="e">AUSA Global Force Symposium &amp; Exposition, Huntsville, AL.</span></div>
+        <div class="cal-row"><span class="d">Mar. 30–31, 2027</span><span class="e">Future Ground Maneuver Summit, Columbus Convention Center — WSG&rsquo;s Chris Willis facilitating an innovation panel.</span></div>
+      </div>
+      <p class="cal-note">Small-business resources: <a href="https://www.sba.gov/swpc" target="_blank" rel="noopener">SBA Smaller War Plants Commission</a> &middot; SBIR/STTR: <a href="https://www.sbir.gov/topics" target="_blank" rel="noopener">SBIR.gov</a> &middot; <a href="https://www.dodsbirsttr.mil/topics-app/" target="_blank" rel="noopener">DoD SBIR/STTR (DSIP)</a> &middot; <a href="https://www.lynxconnect.io/" target="_blank" rel="noopener">DoW LYNX supplier on-ramp</a> &middot; M&amp;S credential: <a href="https://www.ntsa.org/cmsp" target="_blank" rel="noopener">NTSA CMSP</a>.</p>
+    </div>
+
+    <div class="cta">
+      <h3>Talk to Willis Strategy Group</h3>
+      <p>Trying to get your system onto a test range, find the right program office, or make sense of what the new modeling-and-simulation strategy means for your business? Email Willis Strategy Group at management@willis-strategy.com, and follow our commentary on Substack at <a href="https://substack.com/@crw91" target="_blank" rel="noopener" class="sub-link">@crw91</a>.</p>
+      <a href="mailto:management@willis-strategy.com">Email WSG</a>
+    </div>
+
+    <p class="disclaimer">The Defense Dispatch summarizes publicly reported information for general awareness and is not legal, financial, or investment advice. Figures, dates, and program details reflect sources available at publication; several items are early-stage, industry-stated, forthcoming, or pending appropriation rather than funded programs of record, and are subject to change. Verify against the primary source before acting.</p>
+
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+</body>
+</html>

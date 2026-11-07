@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 02 Nov 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 08</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-08.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-08.html</guid>
+    <pubDate>Mon, 09 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Issue 08 — The Proving Ground: the Army’s biggest experiment tests Next-Gen C2, the Pentagon’s first M&amp;S strategy in 30 years waits on AI, a one-stop test-range portal, DARPA autonomy at Fort Knox, and measure before you buy.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 07</title>
