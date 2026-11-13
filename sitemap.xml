@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://willis-strategy.com/insights/index.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://willis-strategy.com/insights/review-theo-of-golden.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://willis-strategy.com/insights/review-damn-fine-soldiers.html</loc>

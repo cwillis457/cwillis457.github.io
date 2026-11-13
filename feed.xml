@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 09 Nov 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Theo of Golden — Allen Levi</title>
+    <link>https://willis-strategy.com/insights/review-theo-of-golden.html</link>
+    <guid>https://willis-strategy.com/insights/review-theo-of-golden.html</guid>
+    <pubDate>Fri, 13 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Allen Levi’s breakaway bestseller is set in “Golden” — a river town that is unmistakably Columbus. A note from the WSG desk on why a novel about paying attention is civic capital for the Chattahoochee Valley.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 08</title>
