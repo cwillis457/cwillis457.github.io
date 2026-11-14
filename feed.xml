@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Fri, 13 Nov 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Defense Dispatch — Issue 09</title>
+    <link>https://willis-strategy.com/insights/defense-dispatch-issue-09.html</link>
+    <guid>https://willis-strategy.com/insights/defense-dispatch-issue-09.html</guid>
+    <pubDate>Mon, 16 Nov 2026 12:00:00 GMT</pubDate>
+    <description>Issue 09 — The Drone Force: a CSIS study puts hard questions to land power, drone warfare comes to every echelon, attritable drones flown until they break, a clip-on mortar kit, and the AI and lasers on both ends of the kill chain.</description>
+  </item>
 
   <item>
     <title>Theo of Golden — Allen Levi</title>
