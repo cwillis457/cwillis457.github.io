@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Defense Dispatch — Issue 10 | Willis Strategy Group</title>
+<meta name="description" content="Columbus–Chattahoochee Valley Area Defense Dispatch, Issue 10 — Smarter, Not Smaller: Gen. Mingus on autonomy and combined arms, an 18-drone swarm from a robot at Grafenwoehr, the 128-hour FUZE/Jailbreak/G-TEAD pathway and xTech prizes, I/ITSEC 2026, and RUSI's finding that drones don't shrink the battalion.">
+<meta property="og:title" content="Defense Dispatch — Issue 10 | Willis Strategy Group">
+<meta property="og:description" content="A weekly defense innovation and investment briefing for the Columbus–Fort Benning region.">
+<meta property="og:url" content="https://willis-strategy.com/insights/defense-dispatch-issue-10.html">
+<meta property="og:type" content="article">
+<link rel="alternate" type="application/rss+xml" title="Willis Strategy Group Insights" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1D33;--navy:#12294A;--steel:#3E5C76;--slate:#8A9BB0;--mist:#DCE3EC;--paper:#F5F7FA;--brass:#C9A227;--brass-dim:#9C7F1E}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;color:var(--ink);background:var(--paper) !important;line-height:1.7;font-size:17px;color-scheme:light}
+a{color:var(--brass-dim)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+nav{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.mark{font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:.04em;color:#fff;font-size:1.05rem;text-decoration:none}
+.mark span{color:var(--brass)}
+.back{text-decoration:none;font-size:.8rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#DCE3EC}
+.back:hover{color:var(--brass)}
+.art-head{background:var(--ink);color:#fff;padding:72px 0 56px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.kind{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+h1{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:78%;line-height:1.02;font-size:clamp(2rem,5.5vw,3.2rem);text-transform:uppercase}
+.subtitle{margin-top:14px;color:var(--mist);font-size:1.05rem;max-width:60ch}
+.issue-line{margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--brass);letter-spacing:.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.issue-line span{color:var(--slate)}
+article{padding:20px 0 40px}
+.lead-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-dim);margin:44px 0 10px}
+h2{font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.5rem;line-height:1.1;margin:6px 0 18px;color:var(--ink)}
+h3{font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.1rem;margin:28px 0 10px;color:var(--ink)}
+article p{margin-bottom:20px;color:#3c4f68}
+article ul{margin:0 0 22px 22px;color:#3c4f68}
+article li{margin-bottom:10px;padding-left:4px}
+.section{border-top:1px solid var(--mist);padding-top:8px;margin-top:44px}
+.callout{background:var(--navy);color:#fff;padding:26px 28px;margin:28px 0;border-left:4px solid var(--brass)}
+.callout .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.callout p{color:var(--mist);margin:0;font-size:.96rem}
+.aud{background:var(--navy);border:1px solid var(--navy);padding:26px 28px;margin:22px 0}
+.aud h3{margin-top:0;color:var(--brass);display:flex;align-items:baseline;gap:10px}
+.aud h3 .num{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--slate)}
+.aud ul{color:var(--mist)}
+.aud li strong{color:#fff}
+.aud a{color:var(--brass)}
+.aud ul{margin-bottom:0}
+.cal{background:#fff;border:1px solid var(--mist)}
+.cal-row{display:flex;gap:18px;padding:13px 20px;border-bottom:1px solid var(--mist);font-size:.9rem}
+.cal-row:last-child{border-bottom:none}
+.cal-row .d{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--brass-dim);min-width:118px;flex-shrink:0;padding-top:2px}
+.cal-row .e{color:#3c4f68}
+@media(max-width:560px){.cal-row{flex-direction:column;gap:3px}.cal-row .d{min-width:0}}
+.cal-note{font-size:.82rem;color:var(--slate);margin-top:12px}
+.cta{background:var(--ink);color:#fff;padding:36px 32px;margin:52px 0 0;text-align:center}
+.cta h3{color:#fff;margin-top:0;font-family:'Archivo',sans-serif;font-weight:800;font-stretch:80%;text-transform:uppercase;font-size:1.3rem}
+.cta p{color:var(--mist);max-width:52ch;margin:12px auto 22px;font-size:.96rem}
+.cta a{display:inline-block;background:var(--brass);color:var(--ink);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;font-weight:500}
+.cta p a.sub-link{display:inline;background:none;padding:0;color:var(--brass);font-family:inherit;font-size:inherit;letter-spacing:0;text-transform:none;border-bottom:1px solid rgba(201,162,39,.5)}
+.cta a:hover{background:var(--brass-dim)}
+.src{font-size:.82rem;color:var(--slate)}
+.insight-box{background:#fff;color:var(--ink);border:1px solid var(--mist);padding:26px 28px;margin:22px 0;border-left:4px solid var(--brass)}
+.insight-box h3{color:var(--ink);margin-top:0}
+.insight-box p{color:#3c4f68}
+.insight-box a.readit{display:inline-block;margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dim);text-decoration:none;border-bottom:1px solid rgba(156,127,30,.5)}
+.insight-box .related{margin:14px 0 0;font-size:.88rem}
+.insight-box .related a{color:var(--brass-dim)}
+.insight-box a.readit:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.special{margin-top:16px;font-family:'Archivo',sans-serif;font-weight:700;font-stretch:85%;font-size:1.15rem;color:var(--brass)}
+.intro{font-size:1.1rem;color:var(--steel) !important;border-left:3px solid var(--brass);padding-left:20px;margin-top:40px}
+article blockquote{border-left:3px solid var(--brass);padding:6px 0 6px 22px;margin:4px 0 26px;font-size:1.15rem;color:var(--steel);font-style:italic}
+.callout a{color:var(--brass)}
+.next-up{background:#fff;border:1px solid var(--mist);border-left:4px solid var(--brass);padding:22px 26px;margin:48px 0 0}
+.next-up .c-tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:8px}
+.next-up a{color:var(--brass-dim)}
+.intro a{color:var(--brass-dim)}
+.next-up p{margin:0;color:#3c4f68}
+.disclaimer{font-size:.78rem;color:var(--slate);border-top:1px solid var(--mist);margin-top:44px;padding-top:20px;font-style:italic}
+footer{background:var(--ink);color:var(--slate);padding:28px 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.06em;text-align:center}
+
+/* EOA promo bars */
+.eoa-bar{background:var(--brass);color:var(--ink);text-align:center;padding:16px 20px;font-family:'IBM Plex Mono',monospace;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;line-height:1.6}
+.eoa-bar a{color:var(--ink);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(11,29,51,.45)}
+.eoa-bar a:hover{border-bottom-color:var(--ink)}
+.eoa-bar .eoa-mark{font-family:'Archivo',sans-serif;font-weight:900;letter-spacing:.06em;margin-right:12px;font-size:1.1rem}
+@media(max-width:560px){.eoa-bar{font-size:.78rem;letter-spacing:.08em;padding:13px 14px}}
+</style>
+</head>
+<body>
+
+
+<div class="eoa-bar" role="complementary" aria-label="Contact Willis Strategy Group"><span class="eoa-mark">WSG</span>Defense Business Development &middot; Business Management Consulting &middot; <a href="/#contact" style="white-space:nowrap">Contact WSG &rarr;</a></div>
+<nav>
+  <div class="nav-inner">
+    <a class="mark" href="/">WILLIS <span>STRATEGY</span> GROUP</a>
+    <a class="back" href="/insights/index.html">&larr; Insights</a>
+  </div>
+</nav>
+
+<div class="art-head">
+  <div class="wrap">
+    <p class="kind">Defense Dispatch &middot; Weekly Briefing</p>
+    <h1>Columbus&ndash;Chattahoochee Valley Area Defense Dispatch</h1>
+    <p class="special">Issue 10 &mdash; Smarter, Not Smaller</p>
+    <p class="subtitle">A weekly briefing for owners, investors, government leaders, and small businesses in the Columbus&ndash;Fort Benning region.</p>
+    <p class="issue-line">Issue 10 &nbsp;&middot;&nbsp; <span>Week of November 23, 2026</span></p>
+  </div>
+</div>
+
+<article>
+  <div class="wrap">
+
+    <p class="intro">Two documents landed this month that frame the Army’s autonomy moment better than any demonstration could. In the first, the Army’s recently retired Vice CSA argues that combined arms is being reinvented around agentic machines — that soon “the formation, not the platform, becomes the weapon.” In the second, published this week by the Royal United Services Institute (RUSI), the analyst whose book on future war we reviewed last year delivers the sober footnote, and we close this issue with it: drones make an infantry battalion deadlier, but they do not make it smaller. Between those poles — the promise of autonomous mass and the stubborn arithmetic of the people it still takes to run it — sits the rest of this issue: an eighteen-drone swarm fired from a robot in Germany, a contracting machine that puts commercial technology in Soldiers’ hands in 128 hours, and the Army’s admission that, for now, one robotic mission in five still ends in an emergency stop.</p>
+
+    <p class="lead-tag">This Week’s Lead</p>
+    <h2>The Formation Becomes the Weapon</h2>
+    <p>The most important argument in landpower this month did not come from a program office but from an essay. Writing for West Point’s <a href="https://mwi.westpoint.edu/autonomy-and-combined-arms-maneuver-the-elements-remain-but-how-we-deliver-them-is-changing-forever/" target="_blank" rel="noopener">Modern War Institute</a>, retired Gen. James Mingus — until recently the 39th Vice Chief of Staff of the Army — makes the case that combined arms maneuver is being reinvented rather than discarded. The classic elements endure: forces still must sense, decide, mass, maneuver, strike, and sustain. What is changing “forever,” he writes, is how those effects are delivered — by agentic AI acting as the orchestrator and connective tissue across many human and autonomous systems. The value, in his telling, lies in the orchestration, not in any individual machine.</p>
+    <p>His formulation is disciplined about who is in charge. “Humans command, while AI and machines control,” Mingus writes; “humans own intent and purpose.” Mass does not disappear in a transparent battlespace — “it changes form,” achieved by dispersing forces and concentrating effects rather than bodies. The heterogeneous, self-reorganizing human-machine formation — reconnaissance, communications, jamming, deception, protection, and strike, woven together — becomes the real unit of combat power, which is why he argues “the formation, not the platform, becomes the weapon.” The through-line for anyone buying or building: measure combat power by the whole networked formation, command it at machine speed within human-set intent and risk, and procure the architecture that links everything rather than the best standalone box. The aim, he insists, “is not autonomous war, but human-directed war with autonomous means” — the human “must remain responsible for the purpose of violence even as machines increasingly execute its mechanics” (<a href="https://mwi.westpoint.edu/autonomy-and-combined-arms-maneuver-the-elements-remain-but-how-we-deliver-them-is-changing-forever/" target="_blank" rel="noopener">Modern War Institute</a>).</p>
+
+    <div class="section">
+      <h2>Eighteen Drones From a Robot at Grafenwoehr</h2>
+      <p>Two days after that essay was published, a live demonstration in Bavaria looked a great deal like Mingus’s formation on the ground. At the Grafenwoehr Training Area on November 12, a containerized uncrewed ground vehicle — the R3NEGADE — rolled out of a shipping container and launched an eighteen-drone first-person-view swarm from an onboard launcher. It did not act alone: a second ground robot carried twin anti-tank launchers, smoke-laying drones preceded the swarm, another carried a developmental anti-armor payload, and rocket-armed resupply drones ran in tandem. The event was staged by the DEVCOM Armaments Center (AC) with U.S. Army Europe and Africa and the 7th Army Training Command under an effort called the Remote Rapid Response Autonomous Contingency Team, and the Army framed it against its new “How the Army Fights” guidance — specifically the strike and endurance pillars — and the NATO Eastern Flank Deterrence Initiative (<a href="https://www.armyrecognition.com/news/army-news/2026/us-army-launches-18-drone-swarm-attack-from-ugv-in-germany-exercise-under-new-warfighting-strategy" target="_blank" rel="noopener">Army Recognition</a>).</p>
+      <p>This was a technology demonstration, not a fielded capability: Army officials attached no procurement decision or timeline, some of the systems were remotely operated rather than fully autonomous, and the manufacturers were not named. The most useful number to come out of the Army’s broader experimentation is a humbling one — roughly one robotic mission in five still ends in an <a href="https://www.armyrecognition.com/news/army-news/2026/us-army-launches-18-drone-swarm-attack-from-ugv-in-germany-exercise-under-new-warfighting-strategy" target="_blank" rel="noopener">emergency stop</a>. That figure, more than any swarm, is the true state of the art: the formation Mingus describes is arriving, but it is not yet dependable, and the gap between a compelling demonstration and a trustworthy capability is exactly the work ahead.</p>
+    </div>
+
+    <div class="section">
+      <h2>How Commercial Tech Reaches the Fight — Fast</h2>
+      <p>If the Army wants the architecture that links everything, it must buy differently, and this fall it showed how. Through its Pathway for Innovation and Technology (PIT), the service is pairing three tools. Army FUZE supplies the money and the legal muscle — Technology Maturation Initiative (TMI) funding, experimental-purpose procurement authority under 10 U.S.C. § 4023, and a contracting center that can close agreements in hours rather than months. Operation Jailbreak, run under the Secretary of the Army’s “Right to Integrate” campaign, pushes vendors to pry open their proprietary interfaces and publish standard APIs to a new Army API Marketplace — because in a formation-is-the-weapon world, a system that cannot connect is a system the Army cannot use. And the Global Tactical Edge Acquisition Directorate (G-TEAD) turns that into fielded kit through its Needs-Driven Acquisition events: a compressed sprint in which only vendors that have “jailbroken” their systems may compete, Soldiers hold 51 percent of the selection vote, and awards land within days. At the August “Falcon Fury” event, a FUZE surge team signed four experimental-purpose agreements — for robots, sensors, autonomy software, and communications — within 128 hours of the first solicitation, with systems deployed days later (<a href="https://pit.army.mil/update/the-engine-of-edge-acquisition-how-army-fuze-enables-operation-jailbreak-and-powers-g-teads-nano-ace/" target="_blank" rel="noopener">Army PIT</a>).</p>
+      <p>The complement to that machine is prize money, and the Army FUZE xTech program is where to find it. Its Q4 snapshot reports a busy year — twelve new competitions, roughly $9.5 million in cash prizes, and some $107 million in follow-on small-business research contracts — with about two dozen competitions planned for the coming year. Several are open now and squarely on this issue’s themes: xTech|Disrupt Fires is putting up $20 million for low-cost cruise-missile and drone interceptors, xTech|Apex Intercept $8 million more, xTech|Adaptive Strike $1.5 million for affordable drones, loitering munitions, and counter-UAS, and the open-topic xTech|Search 10 drew more than 1,900 submissions. New events are coming at CES in January and in a dismounted-interceptor competition after that. As the Army’s chief technology officer, Dr. Alex Miller, puts it, xTech is the Army’s way of “surveying the industry landscape and fast-tracking promising technology rather than falling victim to years-long studies” (<a href="https://www.xtech.army.mil" target="_blank" rel="noopener">Army FUZE xTech, Q4 FY26 snapshot</a>). One caution worth keeping in view, voiced in <a href="https://breakingdefense.com/2026/11/the-next-breakthrough-is-software-built-on-the-battlefield-by-agentic-bots/" target="_blank" rel="noopener">industry commentary this month</a>: as mission software increasingly gets written — and thrown away — at the edge by AI-assisted coders, “we won’t need to treat software as a permanent asset,” which is a bracing idea for vendors whose business model assumes the opposite. The reward goes to firms that show up open, fast, and willing to be measured by Soldiers.</p>
+    </div>
+
+    <div class="section">
+      <h2>I/ITSEC Comes to Orlando — With the Army in the Chair</h2>
+      <p>The autonomy story is also a training story, and next week the training world gathers only a six hour drive from Columbus. I/ITSEC — the Interservice/Industry Training, Simulation and Education Conference, the largest modeling-and-simulation and training event in the world, run by the National Training and Simulation Association (NTSA) — convenes at the Orange County Convention Center in Orlando from November 30 to December 3. The 2026 theme is “Beyond the Battlefield: Training Readiness and Lethality for All-Domain Dominance,” and, notably for this issue, the U.S. Army is the host service — a signal of how central synthetic training, simulation, and now autonomy-in-the-loop have become to landpower. Last year’s gathering drew close to 16,000 participants and more than 500 exhibitors from 55 nations, so expect the floor to be the clearest single read on where training technology is heading (<a href="https://www.iitsec.org" target="_blank" rel="noopener">NTSA</a>).</p>
+      <p>For this region, I/ITSEC is close to home turf. Modeling and simulation is the Chattahoochee Valley’s and Fort Benning’s deep bench, and the show is where the forthcoming Pentagon modeling-and-simulation strategy — <a href="https://www.nationaldefensemagazine.org/articles/2026/11/3/pentagon-studies-role-of-ai-in-new-modeling-simulation-strategy" target="_blank" rel="noopener">the first in thirty years</a>, which we covered <a href="/insights/defense-dispatch-issue-08.html">two issues ago</a> — meets the vendors who will have to execute it. Watch three threads in particular: how AI is being validated for use inside simulations rather than merely bolted on; how live, virtual, and constructive training is stitching autonomous systems into the force; and the workforce question, where NTSA’s Certified Modeling &amp; Simulation Professional credential runs its prep workshops on site. If you build, buy, or staff training technology, this is the week to be paying attention.</p>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">WSG Insights</p>
+      <h2>From the Willis Strategy Group Desk</h2>
+      <p>A recurring feature spotlighting our own reading of the ideas, people, and places shaping our region.</p>
+      <div class="insight-box">
+        <h3>Smarter, Not Smaller</h3>
+        <p>In a <a href="https://www.rusi.org/explore-our-research/publications/research-papers/integrating-tactical-uavs-infantry-battalion" target="_blank" rel="noopener">research paper published this week</a>, the Royal United Services Institute’s Dr. Jack Watling — whose book <em>The Arms of the Future</em> we <a href="https://willis-strategy.com/insights/review-arms-of-the-future.html">reviewed on this site</a> — and his colleague Robert Tollast turn from theory to the infantry battalion, and arrive at a conclusion worth pinning to the wall. Tactical drones, they find, are now essential: they improve a battalion’s ability to see, strike, survive, and maneuver. But they are “not a substitute for infantry, mortars, anti-tank weapons or skilled reconnaissance personnel,” and — against the hope that autonomy will thin the ranks — they conclude the opposite. Integrating uncrewed systems reshapes a battalion’s structure, training, and logistics; it does not shrink its manpower. Drones are personnel-intensive. Someone must fly, fix, protect, and resupply them, and someone must kill the enemy’s autonomous systems.</p>
+        <p>The <a href="https://www.rusi.org/explore-our-research/publications/research-papers/integrating-tactical-uavs-infantry-battalion" target="_blank" rel="noopener">recommendations</a> are refreshingly concrete: plan for the operators and maintainers that drones actually require; continue to execute combined arms rather than trading mortars and anti-tank weapons for quadcopters; shift reconnaissance toward uncrewed surveillance while preserving sniper-grade fieldcraft; build dedicated counter-drone interception teams into every plan; make last-mile logistics cheap and attritable, designed for frequent losses; and protect infantry mass, because taking and holding ground still decides things. Read against this issue’s enthusiasms — the swarm at Grafenwoehr, the 128-hour contract, the prize money — the Watling-Tollast paper is the ballast. It is not a brake on modernization; it is a reminder of what modernization costs, and of the truth running through Mingus’s essay too: the machines are changing how the Army fights, but they are not changing who is responsible for the fight. Smarter, yes. Smaller, no.</p>
+        <a class="readit" href="https://www.rusi.org/explore-our-research/publications/research-papers/integrating-tactical-uavs-infantry-battalion" target="_blank" rel="noopener">Read the RUSI paper &rarr;</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">By Audience</p>
+      <h2>What This Week Means for You</h2>
+
+      <div class="aud">
+        <h3><span class="num">01</span> For Business Owners &amp; Small Business</h3>
+        <ul>
+          <li><strong>The door is open and fast:</strong> the FUZE / Jailbreak / NANO ACE pathway can turn a commercial system into an Army agreement in days — but only if you’ve opened your interfaces and published standard APIs to the Army API Marketplace. Integration-readiness is now the price of entry.</li>
+          <li><strong>Where the prize money is:</strong> Army xTech has open competitions with cash on the table — Disrupt Fires ($20M), Apex Intercept ($8M), Adaptive Strike ($1.5M), and the open-topic Search 10 — plus xTech|Live at CES in January. Start at <a href="https://www.xtech.army.mil" target="_blank" rel="noopener">xtech.army.mil</a>.</li>
+          <li><strong>Build to be measured:</strong> Soldiers hold the majority vote in these events. Design to be demonstrated, scored, and connected — not briefed.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">02</span> For Investors</h3>
+        <ul>
+          <li>Value is shifting from platforms to orchestration: autonomy is being fielded as formations, not single systems, so data integration, open interfaces, and counter-UAS may matter more than any one airframe.</li>
+          <li>Mind the manpower math: the RUSI finding is that drones add operators, maintainers, logistics, and counter-drone teams. This is a services, sustainment, and training market as much as a hardware one — not a headcount-reduction play.</li>
+          <li>The acquisition machine is compressing time-to-contract (128-hour awards; two dozen xTech competitions coming) — faster revenue for firms that arrive API-ready, but shorter software lifecycles for those who don’t.</li>
+        </ul>
+      </div>
+
+      <div class="aud">
+        <h3><span class="num">03</span> For Government &amp; Community Leaders</h3>
+        <ul>
+          <li>Set expectations honestly: the autonomy curve has real costs — one robotic mission in five still ends in an emergency stop, and the force gets more complex, not leaner. Adoption is a training and sustainment problem, not just a buying one.</li>
+          <li>I/ITSEC (Orlando, Nov. 30–Dec. 3), with the Army as host service, puts the region’s modeling-and-simulation strength in the national spotlight — and the CMSP-credentialed workforce is a local asset worth cultivating.</li>
+          <li>The Future Ground Maneuver Summit comes to the Columbus Convention Center March 30–31, 2027, with WSG’s Chris Willis facilitating an innovation panel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="lead-tag">On the Calendar</p>
+      <h2>Dates to Watch</h2>
+      <div class="cal">
+        <div class="cal-row"><span class="d">Nov. 30–Dec. 3, 2026</span><span class="e">I/ITSEC 2026, Orange County Convention Center, Orlando, FL — the world’s largest M&amp;S and training conference (U.S. Army host service; NTSA CMSP workshops on site).</span></div>
+        <div class="cal-row"><span class="d">Dec. 3–4, 2026</span><span class="e">LANDEURO 2026, Wiesbaden, Germany.</span></div>
+        <div class="cal-row"><span class="d">Jan. 6–9, 2027</span><span class="e">CES 2027, Las Vegas, NV — Army FUZE xTech runs xTech|Live at CES 2027.</span></div>
+        <div class="cal-row"><span class="d">Feb. 14–19, 2027</span><span class="e"><a href="https://www.cmi2.org/dd-roid-rfi-27-01" target="_blank" rel="noopener">ROID “DIRT Days” 27-01</a>, Camp Blanding Joint Training Center, FL — contested-logistics validation event.</span></div>
+        <div class="cal-row"><span class="d">Feb. 23–24, 2027</span><span class="e">Chattahoochee Valley–Fort Benning AUSA Chapter Industry Day, Columbus Convention Center.</span></div>
+        <div class="cal-row"><span class="d">Mar. 16–18, 2027</span><span class="e">AUSA Global Force Symposium &amp; Exposition, Huntsville, AL.</span></div>
+        <div class="cal-row"><span class="d">Mar. 30–31, 2027</span><span class="e"><a href="https://www.idga.org/events-future-ground-maneuver-summit/index" target="_blank" rel="noopener">Future Ground Maneuver Summit</a>, Columbus Convention Center — WSG’s Chris Willis facilitating an innovation panel.</span></div>
+      </div>
+      <p class="cal-note">Small-business resources: <a href="https://www.xtech.army.mil" target="_blank" rel="noopener">Army FUZE xTech</a> &middot; <a href="https://www.sba.gov/swpc" target="_blank" rel="noopener">SBA Smaller War Plants Commission</a> &middot; SBIR/STTR: <a href="https://www.sbir.gov/topics" target="_blank" rel="noopener">SBIR.gov</a> &middot; <a href="https://www.dodsbirsttr.mil/topics-app/" target="_blank" rel="noopener">DoD SBIR/STTR (DSIP)</a> &middot; <a href="https://www.lynxconnect.io/" target="_blank" rel="noopener">DoW LYNX supplier on-ramp</a> &middot; M&amp;S credential: <a href="https://www.ntsa.org/cmsp" target="_blank" rel="noopener">NTSA CMSP</a>.</p>
+    </div>
+
+    <div class="cta">
+      <h3>Talk to Willis Strategy Group</h3>
+      <p>Trying to make your system API-ready for an Army competition, pick the right xTech or G-TEAD on-ramp, or think through what autonomy really means for your formation or your business? Email Willis Strategy Group at management@willis-strategy.com, and follow our commentary on Substack at <a href="https://substack.com/@crw91" target="_blank" rel="noopener" class="sub-link">@crw91</a>.</p>
+      <a href="mailto:management@willis-strategy.com">Email WSG</a>
+    </div>
+
+    <p class="disclaimer">The Defense Dispatch summarizes publicly reported information for general awareness and is not legal, financial, or investment advice. Figures, dates, and program details reflect sources available at publication; several items are early-stage, industry-stated, forthcoming, or demonstration events rather than funded programs of record, and are subject to change. Verify against the primary source before acting.</p>
+
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+<div class="eoa-bar" role="complementary" aria-label="EOA apps"><span class="eoa-mark">EOA</span><a href="https://apps.apple.com/us/app/eoa-biz-card/id6777495416">Biz Card</a> &middot; <a href="https://apps.apple.com/us/app/eoa-golf-score/id6787138366">Golf Score</a> &middot; No accounts, no tracking &middot; <a href="https://willis-strategy.com/eoa">All apps &rarr;</a></div>
+<footer>&copy; 2026 WILLIS STRATEGY GROUP, LLC &middot; COLUMBUS, GA</footer>
+
+</body>
+</html>
