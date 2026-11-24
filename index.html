@@ -162,6 +162,14 @@ footer{background:var(--ink);color:var(--slate);border-top:1px solid rgba(255,25
 </nav>
 
 <div class="dispatch-top">
+  <a class="dispatch-banner db-top" href="/insights/analysis-fy27-senate-defense-appropriations.html">
+    <div class="db-left">
+      <span class="db-tag">New &middot; From the WSG Desk &middot; Budget Analysis</span>
+      <span class="db-title">Following the Money</span>
+      <span class="db-sub">What the Senate&rsquo;s FY2027 defense bill signals for the maneuver force &mdash; autonomy and counter-drone bets, cheaper munitions at scale, a leaner C2 portfolio, and the training base behind it all.</span>
+    </div>
+    <span class="db-cta">Read the Analysis &rarr;</span>
+  </a>
   <a class="dispatch-banner" id="ddBanner" href="/insights/defense-dispatch-issue-10.html">
     <div class="db-left">
       <span class="db-tag" id="ddTag">New &middot; Weekly Briefing</span>
@@ -323,6 +331,20 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
         });
       }
     }
+    // Pinned banners — any non-dispatch post with "homeBanner": true sits above
+    // the Defense Dispatch banner (newest first). Remove the flag to retire one.
+    (function(){
+      var b=document.getElementById('ddBanner'); if(!b)return;
+      Array.prototype.forEach.call(document.querySelectorAll('.dispatch-top .db-top'),function(x){x.parentNode.removeChild(x);});
+      posts.filter(function(p){return p.type!=='dispatch'&&p.homeBanner;}).sort(byDate).forEach(function(p){
+        var c=b.cloneNode(true); c.removeAttribute('id'); c.classList.add('db-top'); c.classList.remove('db-extra');
+        Array.prototype.forEach.call(c.querySelectorAll('[id]'),function(n){n.removeAttribute('id');});
+        if(p.href)c.setAttribute('href',p.href);
+        var set=function(sel,v){var n=c.querySelector(sel); if(n&&v!=null)n.textContent=v;};
+        set('.db-tag',p.tag||p.kind); set('.db-title',p.bannerTitle||p.title); set('.db-sub',p.bannerBlurb||p.blurb); set('.db-cta',p.cta||'Read \u2192');
+        b.parentNode.insertBefore(c,b);
+      });
+    })();
     // Featured cards (newest first, capped by data-count)
     var g=document.getElementById('insGrid'); if(!g)return;
     var cap=parseInt(g.getAttribute('data-count'),10)||3;

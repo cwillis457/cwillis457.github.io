@@ -6,7 +6,15 @@
   <atom:link href="https://willis-strategy.com/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Articles, book reviews, and the weekly Defense Dispatch from Willis Strategy Group.</description>
   <language>en-us</language>
-  <lastBuildDate>Mon, 23 Nov 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 12:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>Following the Money: The Senate’s FY2027 Defense Bill</title>
+    <link>https://willis-strategy.com/insights/analysis-fy27-senate-defense-appropriations.html</link>
+    <guid>https://willis-strategy.com/insights/analysis-fy27-senate-defense-appropriations.html</guid>
+    <pubDate>Tue, 24 Nov 2026 12:00:00 GMT</pubDate>
+    <description>The Senate’s FY2027 defense bill bets big on autonomy and the counter-drone fight, reindustrializes munitions, consolidates sprawling C2 accounts, keeps faith with the close fight, and starts paying for the training base. What it signals for the maneuver force and this region.</description>
+  </item>
 
   <item>
     <title>Defense Dispatch — Issue 10</title>
