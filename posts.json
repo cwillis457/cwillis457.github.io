@@ -123,6 +123,21 @@
     "issueDate": "Week of September 21, 2026"
   },
   {
+    "type": "article",
+    "date": "2026-11-24",
+    "featured": false,
+    "homeBanner": true,
+    "kind": "Budget Analysis",
+    "href": "/insights/analysis-fy27-senate-defense-appropriations.html",
+    "title": "Following the Money: The Senate’s FY2027 Defense Bill",
+    "blurb": "The Senate’s FY2027 defense bill bets big on autonomy and the counter-drone fight, reindustrializes munitions, consolidates sprawling C2 accounts, keeps faith with the close fight, and starts paying for the training base. What it signals for the maneuver force and this region.",
+    "meta": "NOV 2026 · SENATE APPROPRIATIONS",
+    "tag": "New · From the WSG Desk · Budget Analysis",
+    "bannerTitle": "Following the Money",
+    "bannerBlurb": "What the Senate’s FY2027 defense bill signals for the maneuver force — autonomy and counter-drone bets, cheaper munitions at scale, a leaner C2 portfolio, and the training base behind it all.",
+    "cta": "Read the Analysis →"
+  },
+  {
     "type": "review",
     "date": "2026-11-13",
     "featured": false,
